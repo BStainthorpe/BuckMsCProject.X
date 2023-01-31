@@ -486,32 +486,32 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6749
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 6749: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"76 ./Global.h
-[; ;./Global.h: 76: uint8_t setPeriod = 0;
+"79 ./Global.h
+[; ;./Global.h: 79: uint8_t setPeriod = 0;
 [v _setPeriod `uc ~T0 @X0 1 e ]
 [i _setPeriod
 -> -> 0 `i `uc
 ]
-"77
-[; ;./Global.h: 77: uint16_t setDuty = 0;
+"80
+[; ;./Global.h: 80: uint16_t setDuty = 0;
 [v _setDuty `us ~T0 @X0 1 e ]
 [i _setDuty
 -> -> 0 `i `us
 ]
-"78
-[; ;./Global.h: 78: uint8_t prevPeriod = 0;
+"81
+[; ;./Global.h: 81: uint8_t prevPeriod = 0;
 [v _prevPeriod `uc ~T0 @X0 1 e ]
 [i _prevPeriod
 -> -> 0 `i `uc
 ]
-"79
-[; ;./Global.h: 79: uint16_t prevDuty = 0;
+"82
+[; ;./Global.h: 82: uint16_t prevDuty = 0;
 [v _prevDuty `us ~T0 @X0 1 e ]
 [i _prevDuty
 -> -> 0 `i `us
 ]
-"81
-[; ;./Global.h: 81: uint32_t clockFrequency = 0;
+"84
+[; ;./Global.h: 84: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
@@ -669,17 +669,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 "63
 [; ;Potentiometer.c: 63:         setDuty = (uint32_t)((uint32_t)((filteredDutyPot-45) * (uint32_t)setPeriod )) >> 8;
 [e = _setDuty -> >> * -> - -> _filteredDutyPot `ui -> -> 45 `i `ui `ul -> _setPeriod `ul -> 8 `i `us ]
-"64
-[; ;Potentiometer.c: 64:         setPWMDutyandPeriod(setDuty, setPeriod);
-[e ( _setPWMDutyandPeriod (2 , _setDuty _setPeriod ]
-"65
-[; ;Potentiometer.c: 65:         potSetCount = 0;
-[e = _potSetCount -> -> 0 `i `uc ]
 "66
-[; ;Potentiometer.c: 66:     }
+[; ;Potentiometer.c: 66:         uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+[v _maxDuty `us ~T0 @X0 1 a ]
+[e = _maxDuty -> / -> * -> -> -> 90 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
+"67
+[; ;Potentiometer.c: 67:         uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+[v _minDuty `us ~T0 @X0 1 a ]
+[e = _minDuty -> / -> * -> -> -> 10 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
+"68
+[; ;Potentiometer.c: 68:         if(setDuty > maxDuty) setDuty = maxDuty;
+[e $ ! > -> _setDuty `ui -> _maxDuty `ui 373  ]
+[e = _setDuty _maxDuty ]
+[e :U 373 ]
+"69
+[; ;Potentiometer.c: 69:         if(setDuty < minDuty) setDuty = minDuty;
+[e $ ! < -> _setDuty `ui -> _minDuty `ui 374  ]
+[e = _setDuty _minDuty ]
+[e :U 374 ]
+"71
+[; ;Potentiometer.c: 71:         setPWMDutyandPeriod(setDuty, setPeriod);
+[e ( _setPWMDutyandPeriod (2 , _setDuty _setPeriod ]
+"72
+[; ;Potentiometer.c: 72:         potSetCount = 0;
+[e = _potSetCount -> -> 0 `i `uc ]
+"73
+[; ;Potentiometer.c: 73:     }
 }
 [e :U 372 ]
-"68
-[; ;Potentiometer.c: 68: }
+"75
+[; ;Potentiometer.c: 75: }
 [e :UE 371 ]
 }

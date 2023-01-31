@@ -4508,7 +4508,7 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 62 "./Global.h"
+# 65 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4613,6 +4613,13 @@ void runPotScaling(){
         setPeriod = ((uint32_t)((filteredFreqPot - 45) * (uint32_t)(159u - 15u)) >> 10 ) + 15u;
 
         setDuty = (uint32_t)((uint32_t)((filteredDutyPot-45) * (uint32_t)setPeriod )) >> 8;
+
+
+        uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+        uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+        if(setDuty > maxDuty) setDuty = maxDuty;
+        if(setDuty < minDuty) setDuty = minDuty;
+
         setPWMDutyandPeriod(setDuty, setPeriod);
         potSetCount = 0;
     }

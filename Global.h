@@ -22,7 +22,10 @@ extern "C" {
 #define _XTAL_FREQ CLOCK_FREQUENCY_SELECT          //used by delay function
     
 #define MIN_PERIOD_FROM_POT    15u             //PR2 = (clockFrequency / (4*freq)) - 1 corresponds to 500,000 Hz
-#define MAX_PERIOD_FROM_POT    159u             
+#define MAX_PERIOD_FROM_POT    159u          
+    
+#define MIN_DUTY               10
+#define MAX_DUTY               90
     
 //List all outputs here to keep track - gpio defines are critical, pins are for indication
     //PWM

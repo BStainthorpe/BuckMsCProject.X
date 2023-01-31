@@ -14,36 +14,37 @@
 $dist/default/production\BuckMsCProject.X.production.o
 cinit CODE 0 6E 6E 1C 2 1
 idloc IDLOC 5 8000 8000 4 2 1
-text1 CODE 0 584 584 8 2 1
-text2 CODE 0 50F 50F 1C 2 1
-text3 CODE 0 8A 8A DB 2 1
-text4 CODE 0 57B 57B 9 2 1
-text5 CODE 0 52B 52B 17 2 1
-text6 CODE 0 165 165 8E 2 1
-text7 CODE 0 1F3 1F3 78 2 1
-text8 CODE 0 592 592 6 2 1
-text10 CODE 0 33A 33A 5F 2 1
-text11 CODE 0 26B 26B 6D 2 1
-text12 CODE 0 4C8 4C8 2B 2 1
-text13 CODE 0 495 495 33 2 1
-text14 CODE 0 3F4 3F4 58 2 1
-text15 CODE 0 399 399 5B 2 1
-text16 CODE 0 2D8 2D8 62 2 1
-text17 CODE 0 542 542 17 2 1
-text18 CODE 0 44C 44C 49 2 1
-maintext CODE 0 4F3 4F3 1C 2 1
+text1 CODE 0 657 657 8 2 1
+text2 CODE 0 5E2 5E2 1C 2 1
+text3 CODE 0 16D 16D DB 2 1
+text4 CODE 0 64E 64E 9 2 1
+text5 CODE 0 5FE 5FE 17 2 1
+text6 CODE 0 248 248 7C 2 1
+text7 CODE 0 2C4 2C4 6A 2 1
+text8 CODE 0 665 665 6 2 1
+text10 CODE 0 390 390 5F 2 1
+text11 CODE 0 8A 8A E3 2 1
+text12 CODE 0 57C 57C 2B 2 1
+text13 CODE 0 5A7 5A7 1F 2 1
+text14 CODE 0 549 549 33 2 1
+text15 CODE 0 3EF 3EF 5B 2 1
+text16 CODE 0 44A 44A 5B 2 1
+text17 CODE 0 4A5 4A5 5B 2 1
+text18 CODE 0 32E 32E 62 2 1
+text19 CODE 0 615 615 17 2 1
+text20 CODE 0 500 500 49 2 1
+maintext CODE 0 5C6 5C6 1C 2 1
 cstackCOMMON COMMON 1 70 70 E 1 1
-cstackBANK0 BANK0 1 58 58 D 1 1
-cstackBANK1 BANK1 1 E0 E0 8 1 1
-stringtext1 STRCODE 0 559 559 12 2 1
-stringtext2 STRCODE 0 56B 56B 10 2 1
+cstackBANK0 BANK0 1 20 20 1D 1 1
+stringtext1 STRCODE 0 62C 62C 12 2 1
+stringtext2 STRCODE 0 63E 63E 10 2 1
 intentry CODE 0 4 4 68 2 1
-bssBANK0 BANK0 1 20 20 38 1 1
+bssBANK0 BANK0 1 3D 3D 18 1 1
 bssBANK1 BANK1 1 A0 A0 40 1 1
-bssBANK2 BANK2 1 120 120 20 1 1
-clrtext CODE 0 58C 58C 6 2 1
+bssBANK2 BANK2 1 120 120 40 1 1
+clrtext CODE 0 65F 65F 6 2 1
 config CONFIG 4 8007 8007 2 2 1
-$C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
+$C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
 idloc IDLOC 5 8000 8000 4 2 1
 reset_vec CODE 0 0 0 2 2 1
 end_init CODE 0 6C 6C 2 2 1
@@ -54,20 +55,20 @@ config CONFIG 4 8007 8007 2 2 1
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 65-6F 1
-RAM E8-EF 1
-RAM 140-16F 1
+RAM 55-6F 1
+RAM E0-EF 1
+RAM 160-16F 1
 RAM 1A0-1EF 1
 RAM 220-24F 1
-BANK0 65-6F 1
-BANK1 E8-EF 1
-BANK2 140-16F 1
+BANK0 55-6F 1
+BANK1 E0-EF 1
+BANK2 160-16F 1
 BANK3 1A0-1EF 1
 BANK4 220-24F 1
 CONST 2-3 2
-CONST 598-FFF 2
+CONST 66B-FFF 2
 ENTRY 2-3 2
-ENTRY 598-FFF 2
+ENTRY 66B-FFF 2
 SFR10 500-56F 1
 SFR11 580-5EF 1
 SFR12 600-66F 1
@@ -91,7 +92,7 @@ SFR29 E80-EEF 1
 SFR30 F00-F6F 1
 SFR31 F80-FEF 1
 CODE 2-3 2
-CODE 598-FFF 2
+CODE 66B-FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-11F 1
@@ -105,9 +106,9 @@ SFR9 480-4EF 1
 BIGRAM 2000-216F 1
 EEDATA F000-F0FF 2
 STRCODE 2-3 2
-STRCODE 598-FFF 2
+STRCODE 66B-FFF 2
 STRING 2-3 2
-STRING 598-FFF 2
+STRING 66B-FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -122,30 +123,30 @@ STRING 598-FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\BuckMsCProject.X.production.o
-6E cinit CODE >2791:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-6E cinit CODE >2794:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-6E cinit CODE >2875:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-6F cinit CODE >2876:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-70 cinit CODE >2877:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-71 cinit CODE >2878:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-72 cinit CODE >2879:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-73 cinit CODE >2880:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-76 cinit CODE >2884:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-77 cinit CODE >2885:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-78 cinit CODE >2886:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-79 cinit CODE >2887:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-7A cinit CODE >2888:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-7B cinit CODE >2889:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-7E cinit CODE >2893:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-7F cinit CODE >2894:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-80 cinit CODE >2895:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-81 cinit CODE >2896:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-82 cinit CODE >2897:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-83 cinit CODE >2898:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-86 cinit CODE >2904:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-86 cinit CODE >2906:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-87 cinit CODE >2907:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-88 cinit CODE >2908:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
+6E cinit CODE >2793:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+6E cinit CODE >2796:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+6E cinit CODE >2877:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+6F cinit CODE >2878:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+70 cinit CODE >2879:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+71 cinit CODE >2880:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+72 cinit CODE >2881:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+73 cinit CODE >2882:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+76 cinit CODE >2886:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+77 cinit CODE >2887:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+78 cinit CODE >2888:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+79 cinit CODE >2889:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+7A cinit CODE >2890:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+7B cinit CODE >2891:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+7E cinit CODE >2895:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+7F cinit CODE >2896:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+80 cinit CODE >2897:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+81 cinit CODE >2898:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+82 cinit CODE >2899:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+83 cinit CODE >2900:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+86 cinit CODE >2906:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+86 cinit CODE >2908:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+87 cinit CODE >2909:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+88 cinit CODE >2910:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
 4 intentry CODE >41:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 6 intentry CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 A intentry CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
@@ -168,244 +169,282 @@ E intentry CODE >53:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 65 intentry CODE >90:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 69 intentry CODE >91:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 6A intentry CODE >94:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-44C text18 CODE >79:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-44D text18 CODE >80:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-44D text18 CODE >81:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-44E text18 CODE >82:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-450 text18 CODE >82:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-454 text18 CODE >83:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-459 text18 CODE >84:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-45B text18 CODE >85:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-45C text18 CODE >87:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-460 text18 CODE >88:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-461 text18 CODE >91:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-466 text18 CODE >92:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-47B text18 CODE >94:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-480 text18 CODE >95:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-494 text18 CODE >98:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-542 text17 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-542 text17 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-549 text17 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-552 text17 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-558 text17 CODE >23:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-2D8 text16 CODE >71:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2D9 text16 CODE >72:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2DA text16 CODE >73:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2DB text16 CODE >75:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2DD text16 CODE >75:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2E1 text16 CODE >76:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2E5 text16 CODE >77:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2E7 text16 CODE >78:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2E7 text16 CODE >79:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2E9 text16 CODE >79:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2EF text16 CODE >79:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2F3 text16 CODE >80:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2F8 text16 CODE >81:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2FA text16 CODE >82:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2FA text16 CODE >83:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-2FF text16 CODE >85:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-301 text16 CODE >86:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-305 text16 CODE >87:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-30A text16 CODE >87:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-310 text16 CODE >88:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-317 text16 CODE >88:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-31B text16 CODE >90:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-31D text16 CODE >91:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-321 text16 CODE >92:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-325 text16 CODE >93:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-329 text16 CODE >94:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-32A text16 CODE >95:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-331 text16 CODE >95:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-335 text16 CODE >97:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-339 text16 CODE >101:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-399 text15 CODE >25:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-399 text15 CODE >26:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-3AF text15 CODE >26:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-3B3 text15 CODE >27:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-3BC text15 CODE >28:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-3C5 text15 CODE >29:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-3DC text15 CODE >29:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-3E0 text15 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-3F3 text15 CODE >32:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-3F4 text14 CODE >39:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-3F4 text14 CODE >40:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-408 text14 CODE >40:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-40C text14 CODE >41:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-415 text14 CODE >42:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-41E text14 CODE >43:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-434 text14 CODE >43:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-438 text14 CODE >45:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-44B text14 CODE >46:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-495 text13 CODE >15:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-495 text13 CODE >119:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-49D text13 CODE >121:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-4A1 text13 CODE >122:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-4A9 text13 CODE >123:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-4B0 text13 CODE >124:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-4B7 text13 CODE >125:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-4BB text13 CODE >125:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-4BF text13 CODE >128:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-4C7 text13 CODE >129:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
-4C8 text12 CODE >48:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-4C8 text12 CODE >49:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-4CB text12 CODE >50:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-4D6 text12 CODE >51:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-4DF text12 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-4E8 text12 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-4EA text12 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-4F2 text12 CODE >53:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-26B text11 CODE >55:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-26B text11 CODE >57:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-270 text11 CODE >59:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-276 text11 CODE >61:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-29E text11 CODE >63:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-2CA text11 CODE >64:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-2D5 text11 CODE >65:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-2D7 text11 CODE >68:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-33A text10 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-33B text10 CODE >53:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-33B text10 CODE >54:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-33C text10 CODE >55:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-33E text10 CODE >55:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-342 text10 CODE >56:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-347 text10 CODE >57:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-349 text10 CODE >58:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-34A text10 CODE >60:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-34E text10 CODE >61:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-34F text10 CODE >64:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-354 text10 CODE >65:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-366 text10 CODE >66:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-374 text10 CODE >68:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-379 text10 CODE >69:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-38B text10 CODE >70:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-398 text10 CODE >73:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-592 text8 CODE >14:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-592 text8 CODE >16:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-595 text8 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-597 text8 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-1F3 text7 CODE >37:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-1F5 text7 CODE >39:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-1F6 text7 CODE >40:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-1F7 text7 CODE >41:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-1F8 text7 CODE >43:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-1FA text7 CODE >43:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-1FE text7 CODE >44:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-204 text7 CODE >45:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-205 text7 CODE >46:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-207 text7 CODE >49:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-209 text7 CODE >49:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-20F text7 CODE >49:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-213 text7 CODE >50:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-21A text7 CODE >51:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-21C text7 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-21E text7 CODE >53:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-21E text7 CODE >55:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-223 text7 CODE >56:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-228 text7 CODE >57:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-237 text7 CODE >58:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-246 text7 CODE >59:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-247 text7 CODE >60:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-24C text7 CODE >61:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-25B text7 CODE >62:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-26A text7 CODE >65:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
-165 text6 CODE >18:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-167 text6 CODE >19:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-167 text6 CODE >20:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-168 text6 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-16A text6 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-16E text6 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-175 text6 CODE >23:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-177 text6 CODE >24:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-178 text6 CODE >26:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-17E text6 CODE >27:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-17F text6 CODE >30:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-184 text6 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-18A text6 CODE >32:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-198 text6 CODE >33:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-1A8 text6 CODE >34:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-1A9 text6 CODE >35:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-1B9 text6 CODE >37:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-1BE text6 CODE >38:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-1C4 text6 CODE >39:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-1D2 text6 CODE >40:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-1E2 text6 CODE >41:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-1E3 text6 CODE >42:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-1F2 text6 CODE >45:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
-52B text5 CODE >14:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-52B text5 CODE >15:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-532 text5 CODE >16:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-539 text5 CODE >17:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-53D text5 CODE >18:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-541 text5 CODE >19:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-57B text4 CODE >15:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-57B text4 CODE >16:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-57F text4 CODE >17:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-583 text4 CODE >18:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
-8A text3 CODE >124:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-8C text3 CODE >128:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-8D text3 CODE >129:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-9B text3 CODE >130:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-AB text3 CODE >131:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-BB text3 CODE >132:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-CB text3 CODE >133:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-DB text3 CODE >134:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-EB text3 CODE >135:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-FB text3 CODE >136:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-10B text3 CODE >137:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-11B text3 CODE >138:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-129 text3 CODE >139:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-139 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-13E text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-143 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-146 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-149 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-14C text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-14F text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-152 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-155 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-158 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-15B text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-15E text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-161 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-164 text3 CODE >141:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-50F text2 CODE >16:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-50F text2 CODE >18:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-512 text2 CODE >20:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-514 text2 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-516 text2 CODE >23:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-518 text2 CODE >24:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-51A text2 CODE >26:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-51D text2 CODE >27:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-51F text2 CODE >28:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-521 text2 CODE >30:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-522 text2 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-524 text2 CODE >35:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-52A text2 CODE >36:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
-584 text1 CODE >17:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
-584 text1 CODE >19:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
-585 text1 CODE >20:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
-586 text1 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
-588 text1 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
-589 text1 CODE >23:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
-58B text1 CODE >25:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
-4F3 maintext CODE >102:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-4F3 maintext CODE >104:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-4F7 maintext CODE >106:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-4FA maintext CODE >107:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-4FD maintext CODE >108:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-500 maintext CODE >109:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-503 maintext CODE >110:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-506 maintext CODE >111:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-50C maintext CODE >113:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-50C maintext CODE >115:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-58C clrtext CODE >2864:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-58C clrtext CODE >2865:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-58D clrtext CODE >2866:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-58D clrtext CODE >2867:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-58E clrtext CODE >2868:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-58F clrtext CODE >2869:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-590 clrtext CODE >2870:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
-591 clrtext CODE >2871:C:\Users\B6028443\AppData\Local\Temp\xcAsfig.s
+500 text20 CODE >79:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+501 text20 CODE >80:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+501 text20 CODE >81:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+502 text20 CODE >82:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+504 text20 CODE >82:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+508 text20 CODE >83:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+50D text20 CODE >84:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+50F text20 CODE >85:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+510 text20 CODE >87:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+514 text20 CODE >88:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+515 text20 CODE >91:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+51A text20 CODE >92:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+52F text20 CODE >94:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+534 text20 CODE >95:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+548 text20 CODE >98:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+615 text19 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+615 text19 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+61C text19 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+625 text19 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+62B text19 CODE >23:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+32E text18 CODE >71:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+32F text18 CODE >72:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+330 text18 CODE >73:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+331 text18 CODE >75:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+333 text18 CODE >75:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+337 text18 CODE >76:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+33B text18 CODE >77:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+33D text18 CODE >78:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+33D text18 CODE >79:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+33F text18 CODE >79:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+345 text18 CODE >79:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+349 text18 CODE >80:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+34E text18 CODE >81:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+350 text18 CODE >82:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+350 text18 CODE >83:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+355 text18 CODE >85:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+357 text18 CODE >86:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+35B text18 CODE >87:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+360 text18 CODE >87:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+366 text18 CODE >88:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+36D text18 CODE >88:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+371 text18 CODE >90:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+373 text18 CODE >91:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+377 text18 CODE >92:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+37B text18 CODE >93:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+37F text18 CODE >94:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+380 text18 CODE >95:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+387 text18 CODE >95:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+38B text18 CODE >97:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+38F text18 CODE >101:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+4A5 text17 CODE >25:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+4A5 text17 CODE >26:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+4BB text17 CODE >26:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+4BF text17 CODE >27:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+4C8 text17 CODE >28:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+4D1 text17 CODE >29:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+4E8 text17 CODE >29:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+4EC text17 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+4FF text17 CODE >32:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+44A text16 CODE >39:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+44A text16 CODE >40:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+460 text16 CODE >40:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+464 text16 CODE >41:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+46D text16 CODE >42:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+476 text16 CODE >43:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+48D text16 CODE >43:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+491 text16 CODE >45:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+4A4 text16 CODE >46:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+3EF text15 CODE >5:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+3EF text15 CODE >13:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+3F8 text15 CODE >14:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+3FC text15 CODE >14:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+400 text15 CODE >15:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+402 text15 CODE >16:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+403 text15 CODE >17:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+40A text15 CODE >18:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+40E text15 CODE >16:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+412 text15 CODE >21:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+419 text15 CODE >22:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+41B text15 CODE >22:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+41F text15 CODE >22:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+423 text15 CODE >22:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+427 text15 CODE >22:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+42B text15 CODE >23:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+433 text15 CODE >24:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+434 text15 CODE >26:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+43B text15 CODE >27:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+441 text15 CODE >29:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+449 text15 CODE >30:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\__lldiv.c
+549 text14 CODE >15:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+549 text14 CODE >119:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+551 text14 CODE >121:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+555 text14 CODE >122:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+55D text14 CODE >123:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+564 text14 CODE >124:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+56B text14 CODE >125:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+56F text14 CODE >125:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+573 text14 CODE >128:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+57B text14 CODE >129:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul32.c
+5A7 text13 CODE >15:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
+5A7 text13 CODE >43:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
+5A9 text13 CODE >45:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
+5AD text13 CODE >46:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
+5B1 text13 CODE >47:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
+5B6 text13 CODE >48:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
+5BB text13 CODE >49:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
+5C1 text13 CODE >52:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
+5C5 text13 CODE >53:C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
+57C text12 CODE >48:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+57C text12 CODE >49:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+57F text12 CODE >50:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+58A text12 CODE >51:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+593 text12 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+59C text12 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+59E text12 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5A6 text12 CODE >53:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+8A text11 CODE >55:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+8A text11 CODE >57:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+8F text11 CODE >59:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+95 text11 CODE >61:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+BD text11 CODE >63:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+E9 text11 CODE >66:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+116 text11 CODE >67:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+143 text11 CODE >68:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+145 text11 CODE >68:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+149 text11 CODE >68:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+151 text11 CODE >69:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+153 text11 CODE >69:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+157 text11 CODE >69:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+15F text11 CODE >71:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+16A text11 CODE >72:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+16C text11 CODE >75:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+390 text10 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+391 text10 CODE >53:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+391 text10 CODE >54:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+392 text10 CODE >55:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+394 text10 CODE >55:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+398 text10 CODE >56:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+39D text10 CODE >57:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+39F text10 CODE >58:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+3A0 text10 CODE >60:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+3A4 text10 CODE >61:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+3A5 text10 CODE >64:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+3AA text10 CODE >65:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+3BC text10 CODE >66:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+3CA text10 CODE >68:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+3CF text10 CODE >69:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+3E1 text10 CODE >70:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+3EE text10 CODE >73:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+665 text8 CODE >14:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+665 text8 CODE >16:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+668 text8 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+66A text8 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2C4 text7 CODE >37:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2C6 text7 CODE >39:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2C7 text7 CODE >40:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2C8 text7 CODE >41:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2C9 text7 CODE >43:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2CB text7 CODE >43:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2CF text7 CODE >44:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2D3 text7 CODE >45:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2D4 text7 CODE >46:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2D6 text7 CODE >49:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2D8 text7 CODE >49:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2DE text7 CODE >49:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2E2 text7 CODE >50:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2E7 text7 CODE >51:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2E9 text7 CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2EB text7 CODE >53:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2EB text7 CODE >55:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2F0 text7 CODE >56:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+2F5 text7 CODE >57:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+301 text7 CODE >58:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+30E text7 CODE >59:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+30F text7 CODE >60:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+314 text7 CODE >61:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+320 text7 CODE >62:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+32D text7 CODE >65:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
+248 text6 CODE >18:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+24A text6 CODE >19:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+24A text6 CODE >20:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+24B text6 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+24D text6 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+251 text6 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+256 text6 CODE >23:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+258 text6 CODE >24:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+259 text6 CODE >26:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+25D text6 CODE >27:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+25E text6 CODE >30:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+263 text6 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+268 text6 CODE >32:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+274 text6 CODE >33:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+282 text6 CODE >34:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+283 text6 CODE >35:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+291 text6 CODE >37:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+296 text6 CODE >38:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+29B text6 CODE >39:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+2A7 text6 CODE >40:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+2B5 text6 CODE >41:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+2B6 text6 CODE >42:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+2C3 text6 CODE >45:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
+5FE text5 CODE >14:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+5FE text5 CODE >15:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+605 text5 CODE >16:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+60C text5 CODE >17:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+610 text5 CODE >18:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+614 text5 CODE >19:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+64E text4 CODE >15:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+64E text4 CODE >16:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+652 text4 CODE >17:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+656 text4 CODE >18:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
+16D text3 CODE >124:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+16F text3 CODE >128:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+170 text3 CODE >129:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+17E text3 CODE >130:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+18E text3 CODE >131:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+19E text3 CODE >132:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+1AE text3 CODE >133:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+1BE text3 CODE >134:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+1CE text3 CODE >135:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+1DE text3 CODE >136:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+1EE text3 CODE >137:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+1FE text3 CODE >138:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+20C text3 CODE >139:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+21C text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+221 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+226 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+229 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+22C text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+22F text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+232 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+235 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+238 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+23B text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+23E text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+241 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+244 text3 CODE >140:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+247 text3 CODE >141:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5E2 text2 CODE >16:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5E2 text2 CODE >18:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5E5 text2 CODE >20:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5E7 text2 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5E9 text2 CODE >23:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5EB text2 CODE >24:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5ED text2 CODE >26:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5F0 text2 CODE >27:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5F2 text2 CODE >28:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5F4 text2 CODE >30:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5F5 text2 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5F7 text2 CODE >35:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+5FD text2 CODE >36:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+657 text1 CODE >17:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
+657 text1 CODE >19:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
+658 text1 CODE >20:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
+659 text1 CODE >21:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
+65B text1 CODE >22:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
+65C text1 CODE >23:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
+65E text1 CODE >25:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
+5C6 maintext CODE >102:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5C6 maintext CODE >104:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5CA maintext CODE >106:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5CD maintext CODE >107:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5D0 maintext CODE >108:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5D3 maintext CODE >109:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5D6 maintext CODE >110:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5D9 maintext CODE >111:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5DF maintext CODE >113:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+5DF maintext CODE >115:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
+65F clrtext CODE >2866:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+65F clrtext CODE >2867:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+660 clrtext CODE >2868:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+660 clrtext CODE >2869:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+661 clrtext CODE >2870:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+662 clrtext CODE >2871:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+663 clrtext CODE >2872:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
+664 clrtext CODE >2873:C:\Users\B6028443\AppData\Local\Temp\xcAs82g.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -420,44 +459,48 @@ FB text3 CODE >136:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 %SYMTAB
 ___latbits 1 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _dutyPotFIFO 120 0 BANK2 1 bssBANK2 dist/default/production\BuckMsCProject.X.production.o
-__Hspace_0 598 0 ABS 0 - -
-__Hspace_1 140 0 ABS 0 - -
+runPotScaling@maxDuty 2E 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+__Hspace_0 66B 0 ABS 0 - -
+__Hspace_1 160 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 10010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 setPWMDutyandPeriod@dutyCycle 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
-__end_of_runPotScaling 5B0 0 CODE 0 text11 dist/default/production\BuckMsCProject.X.production.o
+__end_of_runPotScaling 2DA 0 CODE 0 text11 dist/default/production\BuckMsCProject.X.production.o
 readADCRaw@gpioNumber 7A 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 __Hstrings 0 0 ABS 0 strings -
 _LATA 10C 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _LATB 10D 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-_main 9E6 0 CODE 0 maintext dist/default/production\BuckMsCProject.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+_main B8C 0 CODE 0 maintext dist/default/production\BuckMsCProject.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-start D8 0 CODE 0 init C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-_filteredFreqPot 46 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+start D8 0 CODE 0 init C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+_filteredFreqPot 43 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+runPotScaling@minDuty 30 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 ?___lmul 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
+?___wmul 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 _OPTION_REGbits 95 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-__end_of_readFilteredFreqPot 898 0 CODE 0 text14 dist/default/production\BuckMsCProject.X.production.o
+__end_of_readFilteredFreqPot 94A 0 CODE 0 text16 dist/default/production\BuckMsCProject.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-initialiseADCPin@gpioNumber E3 0 BANK1 1 cstackBANK1 dist/default/production\BuckMsCProject.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
+initialiseADCPin@gpioNumber 38 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
 _OSCCONbits 99 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-readFilteredDutyPot@i_696 60 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+readFilteredDutyPot@i_696 28 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-readFilteredDutyPot@i 61 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+readFilteredDutyPot@i 29 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
-_initialisePotentiometers AF6 0 CODE 0 text4 dist/default/production\BuckMsCProject.X.production.o
+_initialisePotentiometers C9C 0 CODE 0 text4 dist/default/production\BuckMsCProject.X.production.o
 _PSTR1CONbits 296 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 __Hclrtext 0 0 ABS 0 clrtext -
-readFilteredFreqPot@sumOfSamples 5C 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
-_initialiseCurrentSensors A56 0 CODE 0 text5 dist/default/production\BuckMsCProject.X.production.o
+readFilteredFreqPot@sumOfSamples 24 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+_initialiseCurrentSensors BFC 0 CODE 0 text5 dist/default/production\BuckMsCProject.X.production.o
+___wmul@multiplicand 72 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 readADCRaw@i_614 79 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 _ADCON0 9D 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _ADCON1 9E 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
@@ -465,33 +508,36 @@ _ADRESH 9C 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _ADRESL 9B 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _ANSELA 18C 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _ANSELB 18D 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-readFilteredDutyPot@sumOfSamples 5C 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
-_latestIL1 4C 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+readFilteredDutyPot@sumOfSamples 24 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+_latestIL1 49 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 readGPIO@portType 73 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 _CCPR1L 291 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-_initialiseGPIO 2CA 0 CODE 0 text6 dist/default/production\BuckMsCProject.X.production.o
-__end_of___lmul 990 0 CODE 0 text13 dist/default/production\BuckMsCProject.X.production.o
+_initialiseGPIO 490 0 CODE 0 text6 dist/default/production\BuckMsCProject.X.production.o
+__end_of___lmul AF8 0 CODE 0 text14 dist/default/production\BuckMsCProject.X.production.o
+__end_of___wmul B8C 0 CODE 0 text13 dist/default/production\BuckMsCProject.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-readFilteredFreqPot@i_700 60 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+readFilteredFreqPot@i_700 28 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+__end_of___lldiv 894 0 CODE 0 text15 dist/default/production\BuckMsCProject.X.production.o
 _OPTION_REG 95 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-___stacklo 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-initialiseGPIO@portType E0 0 BANK1 1 cstackBANK1 dist/default/production\BuckMsCProject.X.production.o
+___stackhi 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+___stacklo 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+initialiseGPIO@portType 36 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 readGPIO@portNumber 75 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 writeGPIO@portNumber 75 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
-_currentTripRead$736 76 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
+___lldiv@counter 25 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+_currentTripRead$738 76 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 start_initialization DC 0 CODE 0 cinit dist/default/production\BuckMsCProject.X.production.o
-initialiseGPIO@direction 62 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+initialiseGPIO@direction 33 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 writeGPIO@portType 73 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
-_readFilteredDutyPot 732 0 CODE 0 text15 dist/default/production\BuckMsCProject.X.production.o
-_currentILFIFO C0 0 BANK1 1 bssBANK1 dist/default/production\BuckMsCProject.X.production.o
-__end_of_initialiseGPIO 3E6 0 CODE 0 text6 dist/default/production\BuckMsCProject.X.production.o
-clear_ram0 B18 0 CODE 0 clrtext dist/default/production\BuckMsCProject.X.production.o
-__pcstackBANK0 58 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
-__pcstackBANK1 E0 0 BANK1 1 cstackBANK1 dist/default/production\BuckMsCProject.X.production.o
-_readADCRaw 5B0 0 CODE 0 text16 dist/default/production\BuckMsCProject.X.production.o
+_readFilteredDutyPot 94A 0 CODE 0 text17 dist/default/production\BuckMsCProject.X.production.o
+_currentILFIFO A0 0 BANK1 1 bssBANK1 dist/default/production\BuckMsCProject.X.production.o
+___lldiv@dividend 7A 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
+__end_of_initialiseGPIO 588 0 CODE 0 text6 dist/default/production\BuckMsCProject.X.production.o
+clear_ram0 CBE 0 CODE 0 clrtext dist/default/production\BuckMsCProject.X.production.o
+__pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+_readADCRaw 65C 0 CODE 0 text18 dist/default/production\BuckMsCProject.X.production.o
 readADCRaw@returnValue 74 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
+___int_sp 0 0 STACK 2 stack C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -553,7 +599,7 @@ __Hbigram 0 0 ABS 0 bigram -
 __Hmaintext 0 0 ABS 0 maintext -
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 10012 0 CONFIG 4 config -
-_potSetCount 55 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+_potSetCount 52 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
@@ -566,8 +612,8 @@ __Lbank8 0 0 BANK8 1 bank8 -
 __Lbank9 0 0 BANK9 1 bank9 -
 __Lcinit DC 0 CODE 0 cinit -
 __Lidloc 0 0 IDLOC 5 idloc -
-__end_of_currentTripRead AB2 0 CODE 0 text17 dist/default/production\BuckMsCProject.X.production.o
-_timerSlotHalf 54 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+__end_of_currentTripRead C58 0 CODE 0 text19 dist/default/production\BuckMsCProject.X.production.o
+_timerSlotHalf 51 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 __Lsfr10 0 0 ABS 0 sfr10 -
 __Lsfr11 0 0 ABS 0 sfr11 -
 __Lsfr12 0 0 ABS 0 sfr12 -
@@ -622,32 +668,33 @@ __Lsfr7 0 0 ABS 0 sfr7 -
 __Lsfr8 0 0 ABS 0 sfr8 -
 __Lsfr9 0 0 ABS 0 sfr9 -
 __Ltext 0 0 ABS 0 text -
-__pstringtext1 AB2 0 STRCODE 0 stringtext1 dist/default/production\BuckMsCProject.X.production.o
-__pstringtext2 AD6 0 STRCODE 0 stringtext2 dist/default/production\BuckMsCProject.X.production.o
+__pstringtext1 C58 0 STRCODE 0 stringtext1 dist/default/production\BuckMsCProject.X.production.o
+__pstringtext2 C7C 0 STRCODE 0 stringtext2 dist/default/production\BuckMsCProject.X.production.o
 __pstringtext3 0 0 STRCODE 0 stringtext3 dist/default/production\BuckMsCProject.X.production.o
-___lmul 92A 0 CODE 0 text13 dist/default/production\BuckMsCProject.X.production.o
+___lmul A92 0 CODE 0 text14 dist/default/production\BuckMsCProject.X.production.o
+___wmul B4E 0 CODE 0 text13 dist/default/production\BuckMsCProject.X.production.o
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
-__LcstackBANK1 0 0 ABS 0 cstackBANK1 -
-initialiseGPIO@gpioNumber E1 0 BANK1 1 cstackBANK1 dist/default/production\BuckMsCProject.X.production.o
+initialiseGPIO@gpioNumber 37 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 int$flags 7E 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 _PR2 1B 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-__S0 598 0 ABS 0 - -
-__S1 140 0 ABS 0 - -
+__S0 66B 0 ABS 0 - -
+__S1 160 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-initialiseADCPin@gpioValid E0 0 BANK1 1 cstackBANK1 dist/default/production\BuckMsCProject.X.production.o
-_setupInternalOscillator 114 0 CODE 0 text3 dist/default/production\BuckMsCProject.X.production.o
-__end_of_readADCRaw 674 0 CODE 0 text16 dist/default/production\BuckMsCProject.X.production.o
-_filteredDutyPot 44 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
-__end_of_setupInternalOscillator 2CA 0 CODE 0 text3 dist/default/production\BuckMsCProject.X.production.o
-__end_of_readFilteredDutyPot 7E8 0 CODE 0 text15 dist/default/production\BuckMsCProject.X.production.o
+initialiseADCPin@gpioValid 35 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+_setupInternalOscillator 2DA 0 CODE 0 text3 dist/default/production\BuckMsCProject.X.production.o
+__end_of_readADCRaw 720 0 CODE 0 text18 dist/default/production\BuckMsCProject.X.production.o
+_filteredDutyPot 41 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+__end_of_setupInternalOscillator 490 0 CODE 0 text3 dist/default/production\BuckMsCProject.X.production.o
+__end_of_readFilteredDutyPot A00 0 CODE 0 text17 dist/default/production\BuckMsCProject.X.production.o
 __end_of_Tick980Hz D8 0 CODE 0 intentry dist/default/production\BuckMsCProject.X.production.o
-__end_of_setupTimer0Interrupt B18 0 CODE 0 text1 dist/default/production\BuckMsCProject.X.production.o
+__end_of_setupTimer0Interrupt CBE 0 CODE 0 text1 dist/default/production\BuckMsCProject.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-_currentTripRead A84 0 CODE 0 text17 dist/default/production\BuckMsCProject.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-__end_of_initialisePotentiometers B08 0 CODE 0 text4 dist/default/production\BuckMsCProject.X.production.o
-_clockFrequency 40 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+___lldiv@divisor 76 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
+_currentTripRead C2A 0 CODE 0 text19 dist/default/production\BuckMsCProject.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+__end_of_initialisePotentiometers CAE 0 CODE 0 text4 dist/default/production\BuckMsCProject.X.production.o
+_clockFrequency 3D 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 ?_readFilteredFreqPot 7B 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __LbssBANK1 0 0 ABS 0 bssBANK1 -
@@ -658,19 +705,22 @@ __Lstringtext3 0 0 ABS 0 stringtext3 -
 setPWMDutyandPeriod@period 72 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 _Tick980Hz 8 0 CODE 0 intentry dist/default/production\BuckMsCProject.X.production.o
 _PIE1bits 91 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-__end_of_initialiseCurrentSensors A84 0 CODE 0 text5 dist/default/production\BuckMsCProject.X.production.o
-_initialiseADCPin 3E6 0 CODE 0 text7 dist/default/production\BuckMsCProject.X.production.o
-__ptext10 674 0 CODE 0 text10 dist/default/production\BuckMsCProject.X.production.o
-__ptext11 4D6 0 CODE 0 text11 dist/default/production\BuckMsCProject.X.production.o
-__ptext12 990 0 CODE 0 text12 dist/default/production\BuckMsCProject.X.production.o
-__ptext13 92A 0 CODE 0 text13 dist/default/production\BuckMsCProject.X.production.o
-__ptext14 7E8 0 CODE 0 text14 dist/default/production\BuckMsCProject.X.production.o
-__ptext15 732 0 CODE 0 text15 dist/default/production\BuckMsCProject.X.production.o
-__ptext16 5B0 0 CODE 0 text16 dist/default/production\BuckMsCProject.X.production.o
-__ptext17 A84 0 CODE 0 text17 dist/default/production\BuckMsCProject.X.production.o
-__ptext18 898 0 CODE 0 text18 dist/default/production\BuckMsCProject.X.production.o
-initialiseADCPin@portType E1 0 BANK1 1 cstackBANK1 dist/default/production\BuckMsCProject.X.production.o
-initialiseADCPin@portNumber E2 0 BANK1 1 cstackBANK1 dist/default/production\BuckMsCProject.X.production.o
+__end_of_initialiseCurrentSensors C2A 0 CODE 0 text5 dist/default/production\BuckMsCProject.X.production.o
+_initialiseADCPin 588 0 CODE 0 text7 dist/default/production\BuckMsCProject.X.production.o
+__ptext10 720 0 CODE 0 text10 dist/default/production\BuckMsCProject.X.production.o
+__ptext11 114 0 CODE 0 text11 dist/default/production\BuckMsCProject.X.production.o
+__ptext12 AF8 0 CODE 0 text12 dist/default/production\BuckMsCProject.X.production.o
+__ptext13 B4E 0 CODE 0 text13 dist/default/production\BuckMsCProject.X.production.o
+__ptext14 A92 0 CODE 0 text14 dist/default/production\BuckMsCProject.X.production.o
+__ptext15 7DE 0 CODE 0 text15 dist/default/production\BuckMsCProject.X.production.o
+__ptext16 894 0 CODE 0 text16 dist/default/production\BuckMsCProject.X.production.o
+__ptext17 94A 0 CODE 0 text17 dist/default/production\BuckMsCProject.X.production.o
+__ptext18 65C 0 CODE 0 text18 dist/default/production\BuckMsCProject.X.production.o
+__ptext19 C2A 0 CODE 0 text19 dist/default/production\BuckMsCProject.X.production.o
+__ptext20 A00 0 CODE 0 text20 dist/default/production\BuckMsCProject.X.production.o
+initialiseADCPin@portType 36 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+___lldiv 7DE 0 CODE 0 text15 dist/default/production\BuckMsCProject.X.production.o
+initialiseADCPin@portNumber 37 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 __Lbank10 0 0 BANK10 1 bank10 -
 __Lbank11 0 0 BANK11 1 bank11 -
 __Lbank12 0 0 BANK12 1 bank12 -
@@ -693,55 +743,56 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
-__pmaintext 9E6 0 CODE 0 maintext dist/default/production\BuckMsCProject.X.production.o
+__pmaintext B8C 0 CODE 0 maintext dist/default/production\BuckMsCProject.X.production.o
 __Lbigram 0 0 ABS 0 bigram -
 ___lmul@multiplier 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 4 config -
-_readGPIO 898 0 CODE 0 text18 dist/default/production\BuckMsCProject.X.production.o
-__end_of_writeGPIO 732 0 CODE 0 text10 dist/default/production\BuckMsCProject.X.production.o
+___wmul@multiplier 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
+_readGPIO A00 0 CODE 0 text20 dist/default/production\BuckMsCProject.X.production.o
+__end_of_writeGPIO 7DE 0 CODE 0 text10 dist/default/production\BuckMsCProject.X.production.o
 writeGPIO@writeValue 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
-_setDuty 50 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+_setDuty 4D 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 _ADCON0bits 9D 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-__end_of_readGPIO 92A 0 CODE 0 text18 dist/default/production\BuckMsCProject.X.production.o
-_emergencyStop 52 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+__end_of_readGPIO A92 0 CODE 0 text20 dist/default/production\BuckMsCProject.X.production.o
+_emergencyStop 4F 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 readADCRaw@gpioValid 77 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
-readFilteredFreqPot@i 61 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
-_initialiseADCModule B24 0 CODE 0 text8 dist/default/production\BuckMsCProject.X.production.o
+readFilteredFreqPot@i 29 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+_initialiseADCModule CCA 0 CODE 0 text8 dist/default/production\BuckMsCProject.X.production.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
-__HcstackBANK1 0 0 ABS 0 cstackBANK1 -
 _PIR1bits 11 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 __Lend_init D8 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-_writeGPIO 674 0 CODE 0 text10 dist/default/production\BuckMsCProject.X.production.o
+_writeGPIO 720 0 CODE 0 text10 dist/default/production\BuckMsCProject.X.production.o
 end_of_initialization 10C 0 CODE 0 cinit dist/default/production\BuckMsCProject.X.production.o
-_setPWMDutyandPeriod 990 0 CODE 0 text12 dist/default/production\BuckMsCProject.X.production.o
+_setPWMDutyandPeriod AF8 0 CODE 0 text12 dist/default/production\BuckMsCProject.X.production.o
 __Hintentry D8 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
+?___lldiv 76 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 __Hreset_vec 4 0 CODE 0 reset_vec -
-_timerSlotQuarter 53 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+_timerSlotQuarter 50 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __HbssBANK1 0 0 ABS 0 bssBANK1 -
 __HbssBANK2 0 0 ABS 0 bssBANK2 -
-_setupPWM A1E 0 CODE 0 text2 dist/default/production\BuckMsCProject.X.production.o
-_runPotScaling 4D6 0 CODE 0 text11 dist/default/production\BuckMsCProject.X.production.o
-__end_of_initialiseADCPin 4D6 0 CODE 0 text7 dist/default/production\BuckMsCProject.X.production.o
-__ptext1 B08 0 CODE 0 text1 dist/default/production\BuckMsCProject.X.production.o
-__ptext2 A1E 0 CODE 0 text2 dist/default/production\BuckMsCProject.X.production.o
-__ptext3 114 0 CODE 0 text3 dist/default/production\BuckMsCProject.X.production.o
-__ptext4 AF6 0 CODE 0 text4 dist/default/production\BuckMsCProject.X.production.o
-__ptext5 A56 0 CODE 0 text5 dist/default/production\BuckMsCProject.X.production.o
-__ptext6 2CA 0 CODE 0 text6 dist/default/production\BuckMsCProject.X.production.o
-__ptext7 3E6 0 CODE 0 text7 dist/default/production\BuckMsCProject.X.production.o
-__ptext8 B24 0 CODE 0 text8 dist/default/production\BuckMsCProject.X.production.o
-_freqPotFIFO A0 0 BANK1 1 bssBANK1 dist/default/production\BuckMsCProject.X.production.o
+_setupPWM BC4 0 CODE 0 text2 dist/default/production\BuckMsCProject.X.production.o
+_runPotScaling 114 0 CODE 0 text11 dist/default/production\BuckMsCProject.X.production.o
+__end_of_initialiseADCPin 65C 0 CODE 0 text7 dist/default/production\BuckMsCProject.X.production.o
+__ptext1 CAE 0 CODE 0 text1 dist/default/production\BuckMsCProject.X.production.o
+__ptext2 BC4 0 CODE 0 text2 dist/default/production\BuckMsCProject.X.production.o
+__ptext3 2DA 0 CODE 0 text3 dist/default/production\BuckMsCProject.X.production.o
+__ptext4 C9C 0 CODE 0 text4 dist/default/production\BuckMsCProject.X.production.o
+__ptext5 BFC 0 CODE 0 text5 dist/default/production\BuckMsCProject.X.production.o
+__ptext6 490 0 CODE 0 text6 dist/default/production\BuckMsCProject.X.production.o
+__ptext7 588 0 CODE 0 text7 dist/default/production\BuckMsCProject.X.production.o
+__ptext8 CCA 0 CODE 0 text8 dist/default/production\BuckMsCProject.X.production.o
+_freqPotFIFO 140 0 BANK2 1 bssBANK2 dist/default/production\BuckMsCProject.X.production.o
 readGPIO@gpioNumber 74 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
-__end_of_setupPWM A56 0 CODE 0 text2 dist/default/production\BuckMsCProject.X.production.o
+__end_of_setupPWM BFC 0 CODE 0 text2 dist/default/production\BuckMsCProject.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 _APFCON0bits 11D 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
@@ -750,41 +801,43 @@ __Lreset_vec 0 0 CODE 0 reset_vec -
 __Hstringtext1 0 0 ABS 0 stringtext1 -
 __Hstringtext2 0 0 ABS 0 stringtext2 -
 __Hstringtext3 0 0 ABS 0 stringtext3 -
-___heap_hi 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
-___heap_lo 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAsfig.o
+___heap_hi 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
+___heap_lo 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAs82g.o
 __end_of__initialization 10C 0 CODE 0 cinit dist/default/production\BuckMsCProject.X.production.o
 ?_readADCRaw 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
-_currentIDSFIFO 20 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+_currentIDSFIFO C0 0 BANK1 1 bssBANK1 dist/default/production\BuckMsCProject.X.production.o
 __Lclrtext 0 0 ABS 0 clrtext -
 readADCRaw@i 78 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 ___lmul@product 78 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 ___lmul@multiplicand 74 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 readADCRaw@channel 76 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
+___lldiv@quotient 21 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
-_setPeriod 57 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+_setPeriod 54 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 __Hend_init DC 0 CODE 0 end_init -
-_readFilteredFreqPot 7E8 0 CODE 0 text14 dist/default/production\BuckMsCProject.X.production.o
-__end_of_main A1E 0 CODE 0 maintext dist/default/production\BuckMsCProject.X.production.o
-__end_of_initialiseADCModule B30 0 CODE 0 text8 dist/default/production\BuckMsCProject.X.production.o
+_readFilteredFreqPot 894 0 CODE 0 text16 dist/default/production\BuckMsCProject.X.production.o
+__end_of_main BC4 0 CODE 0 maintext dist/default/production\BuckMsCProject.X.production.o
+__end_of_initialiseADCModule CD6 0 CODE 0 text8 dist/default/production\BuckMsCProject.X.production.o
 _PORTA C 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _PORTB D 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _TRISA 8C 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _TRISB 8D 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-__end_of_setPWMDutyandPeriod 9E6 0 CODE 0 text12 dist/default/production\BuckMsCProject.X.production.o
+__end_of_setPWMDutyandPeriod B4E 0 CODE 0 text12 dist/default/production\BuckMsCProject.X.production.o
 _CCP1CON 293 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\BuckMsCProject.X.production.o
 _readILCurrentADCRaw 0 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 __initialization DC 0 CODE 0 cinit dist/default/production\BuckMsCProject.X.production.o
-__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
+__pbssBANK0 3D 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 __pbssBANK1 A0 0 BANK1 1 bssBANK1 dist/default/production\BuckMsCProject.X.production.o
 __pbssBANK2 120 0 BANK2 1 bssBANK2 dist/default/production\BuckMsCProject.X.production.o
 _T2CONbits 1C 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-setupInternalOscillator@selectedFreq 64 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
-_setupTimer0Interrupt B08 0 CODE 0 text1 dist/default/production\BuckMsCProject.X.production.o
-initialiseGPIO@portNumber E2 0 BANK1 1 cstackBANK1 dist/default/production\BuckMsCProject.X.production.o
+setupInternalOscillator@selectedFreq 35 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
+_setupTimer0Interrupt CAE 0 CODE 0 text1 dist/default/production\BuckMsCProject.X.production.o
+___wmul@product 74 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
+initialiseGPIO@portNumber 38 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 _CCP1CONbits 293 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 ?_readFilteredDutyPot 7B 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 # %SPLITSTAB Section
@@ -812,14 +865,14 @@ _CCP1CONbits 293 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text4 0 57B AF6 1D 2
+text4 0 64E C9C 1D 2
 cstackCOMMON 1 70 70 E 1
-stringtext1 0 559 AB2 22 2
-intentry 0 4 8 555 2
+cstackBANK0 1 20 20 35 1
+stringtext1 0 62C C58 22 2
+intentry 0 4 8 628 2
 reset_vec 0 0 0 2 2
-bssBANK0 1 20 20 45 1
-bssBANK1 1 A0 A0 48 1
-bssBANK2 1 120 120 20 1
+bssBANK1 1 A0 A0 40 1
+bssBANK2 1 120 120 40 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal

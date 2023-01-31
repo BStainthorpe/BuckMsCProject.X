@@ -4518,7 +4518,7 @@ uint16_t readILCurrentADCRaw();
 # 7 "ADC.c" 2
 
 # 1 "./Global.h" 1
-# 62 "./Global.h"
+# 65 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
