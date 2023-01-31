@@ -10,7 +10,10 @@
 #include "GPIO.h"
 #include "ADC.h"
 
-
+/*------------------------------------------------------------------------------
+ Function: initialiseCurrentSensors()
+ *Use: This function initialises the pins required for the current sensors
+------------------------------------------------------------------------------*/
 void initialiseCurrentSensors(){
     initialiseGPIO(gpioCurrentTripIL, GPIO_Input);
     initialiseGPIO(gpioCurrentTripIDS, GPIO_Input);
@@ -18,6 +21,10 @@ void initialiseCurrentSensors(){
     initialiseADCPin(gpioILCurrent);
 }
 
+/*------------------------------------------------------------------------------
+ Function: currentTripRead()
+ *Use: This function reads the current trip digital IO to detect overcurrent
+------------------------------------------------------------------------------*/
 uint8_t currentTripRead(){
     return readGPIO(gpioCurrentTripIL) || readGPIO(gpioCurrentTripIDS);
 }
