@@ -5,7 +5,7 @@ _Tick980Hz 4 0 CODE 0
 readGPIO@gpioNumber 78 0 COMMON 1
 _currentIDSFIFO C0 0 BANK1 1
 _PR2 1B 0 ABS 0
-__S0 6EF 0 ABS 0
+__S0 6F0 0 ABS 0
 __S1 160 0 ABS 0
 __S3 0 0 ABS 0
 i1writeGPIO@portNumber 75 0 COMMON 1
@@ -19,7 +19,7 @@ writeGPIO@gpioNumber 37 0 BANK0 1
 _LATA 10C 0 ABS 0
 _LATB 10D 0 ABS 0
 _currentILFIFO A0 0 BANK1 1
-_main 678 0 CODE 0
+_main 695 0 CODE 0
 ___sp 0 0 STACK 2
 btemp 7E 0 ABS 0
 __end_of_readFilteredFreqPot 50B 0 CODE 0
@@ -32,7 +32,7 @@ _TRISB 8D 0 ABS 0
 _PORTA C 0 ABS 0
 reset_vec 0 0 CODE 0
 _PORTB D 0 ABS 0
-_initialisePotentiometers 6D2 0 CODE 0
+_initialisePotentiometers 6D3 0 CODE 0
 readADCRaw@i 78 0 COMMON 1
 _runPotScaling 90 0 CODE 0
 wtemp0 7E 0 ABS 0
@@ -42,7 +42,7 @@ __Lconfig 0 0 CONFIG 4
 _filteredFreqPot 43 0 BANK0 1
 __Hstringtext1 0 0 ABS 0
 __Lstringtext1 0 0 ABS 0
-__pstringtext1 6B0 0 STRCODE 0
+__pstringtext1 6B1 0 STRCODE 0
 __end_of_writeGPIO 3F6 0 CODE 0
 __Hbigram 0 0 ABS 0
 __Lbigram 0 0 ABS 0
@@ -51,7 +51,7 @@ __Hram 0 0 ABS 0
 __Lram 0 0 ABS 0
 int$flags 7E 0 ABS 0
 __end_of_readFilteredDutyPot 566 0 CODE 0
-__end_of_setupPWM 6B0 0 CODE 0
+__end_of_setupPWM 695 0 CODE 0
 __Hfunctab 0 0 ENTRY 0
 __Lfunctab 0 0 ENTRY 0
 _ADCON0 9D 0 ABS 0
@@ -116,8 +116,8 @@ ___lmul 5AB 0 CODE 0
 __Hinit 72 0 CODE 0
 __Linit 72 0 CODE 0
 ___wmul 659 0 CODE 0
-__pstringtext2 6C2 0 STRCODE 0
-__end_of_main 694 0 CODE 0
+__pstringtext2 6C3 0 STRCODE 0
+__end_of_main 6B1 0 CODE 0
 __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
 ___lmul@multiplier 70 0 COMMON 1
@@ -178,7 +178,7 @@ runPotScaling@maxDuty 2E 0 BANK0 1
 __Hstrings 0 0 ABS 0
 _T2CONbits 1C 0 ABS 0
 __Lstrings 0 0 ABS 0
-_setupTimer0Interrupt 6DB 0 CODE 0
+_setupTimer0Interrupt 6DC 0 CODE 0
 _CCP1CON 293 0 ABS 0
 __Hbank0 0 0 ABS 0
 __Lbank0 0 0 ABS 0
@@ -210,16 +210,16 @@ __Hbank9 0 0 BANK9 1
 __Lbank9 0 0 BANK9 1
 _latestIL1 49 0 BANK0 1
 _tripIDS 54 0 BANK0 1
-__ptext1 6DB 0 CODE 0
-__ptext2 694 0 CODE 0
+__ptext1 6DC 0 CODE 0
+__ptext2 678 0 CODE 0
 __ptext3 173 0 CODE 0
-__ptext4 6D2 0 CODE 0
+__ptext4 6D3 0 CODE 0
 __ptext5 636 0 CODE 0
 __ptext6 396 0 CODE 0
 initialiseGPIO@portType 36 0 BANK0 1
 __ptext7 24E 0 CODE 0
 __ptext8 2CA 0 CODE 0
-__ptext9 6E9 0 CODE 0
+__ptext9 6EA 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
 _initialiseADCPin 2CA 0 CODE 0
@@ -242,7 +242,7 @@ readFilteredFreqPot@i_706 28 0 BANK0 1
 __Hstack 0 0 STACK 2
 __Lstack 0 0 STACK 2
 __end_of___lldiv 4B0 0 CODE 0
-__Hspace_0 6EF 0 ABS 0
+__Hspace_0 6F0 0 ABS 0
 readADCRaw@i_616 79 0 COMMON 1
 __Lspace_0 0 0 ABS 0
 __Hspace_1 160 0 ABS 0
@@ -250,7 +250,7 @@ __Lspace_1 0 0 ABS 0
 ?___lmul 70 0 COMMON 1
 __Hspace_2 0 0 ABS 0
 __Lspace_2 0 0 ABS 0
-_initialiseADCModule 6E9 0 CODE 0
+_initialiseADCModule 6EA 0 CODE 0
 ?___wmul 70 0 COMMON 1
 __Hcinit 90 0 CODE 0
 __Lcinit 74 0 CODE 0
@@ -259,13 +259,13 @@ __Hspace_3 0 0 ABS 0
 __Lspace_3 0 0 ABS 0
 __Hspace_4 10010 0 ABS 0
 __Lspace_4 0 0 ABS 0
-__end_of_setupTimer0Interrupt 6E3 0 CODE 0
+__end_of_setupTimer0Interrupt 6E4 0 CODE 0
 _setDuty 4D 0 BANK0 1
 writeGPIO@portType 36 0 BANK0 1
 readADCRaw@gpioNumber 7A 0 COMMON 1
 _readILCurrentADCRaw 0 0 ABS 0
 _freqPotFIFO 140 0 BANK2 1
-clear_ram0 6E3 0 CODE 0
+clear_ram0 6E4 0 CODE 0
 __end_of_runPotScaling 173 0 CODE 0
 _dutyPotFIFO 120 0 BANK2 1
 __end_of_setupInternalOscillator 24E 0 CODE 0
@@ -336,7 +336,7 @@ __ptext15 5AB 0 CODE 0
 readFilteredDutyPot@sumOfSamples 24 0 BANK0 1
 __ptext16 455 0 CODE 0
 __ptext17 4B0 0 CODE 0
-__end_of_initialiseADCModule 6EF 0 CODE 0
+__end_of_initialiseADCModule 6F0 0 CODE 0
 __ptext18 50B 0 CODE 0
 __ptext19 334 0 CODE 0
 _OSCCONbits 99 0 ABS 0
@@ -372,13 +372,13 @@ __end_of_currentTripRead 60B 0 CODE 0
 start_initialization 74 0 CODE 0
 ___lldiv@quotient 21 0 BANK0 1
 readGPIO@portNumber 76 0 COMMON 1
-_setupPWM 694 0 CODE 0
+_setupPWM 678 0 CODE 0
 __end_of_readADCRaw 396 0 CODE 0
 i1writeGPIO@portType 73 0 COMMON 1
 writeGPIO@writeValue 33 0 BANK0 1
 __Hmaintext 0 0 ABS 0
 __Lmaintext 0 0 ABS 0
-__pmaintext 678 0 CODE 0
+__pmaintext 695 0 CODE 0
 _OPTION_REGbits 95 0 ABS 0
 _timerSlotHalf 51 0 BANK0 1
 _currentTripRead 5DE 0 CODE 0
@@ -389,23 +389,23 @@ ___lmul@product 78 0 COMMON 1
 ___wmul@product 74 0 COMMON 1
 _emergencyStop 4F 0 BANK0 1
 __end_of_initialiseGPIO 2CA 0 CODE 0
-__end_of_initialisePotentiometers 6DB 0 CODE 0
+__end_of_initialisePotentiometers 6DC 0 CODE 0
 readADCRaw@channel 76 0 COMMON 1
 ___lldiv@dividend 7A 0 COMMON 1
 _PSTR1CONbits 296 0 ABS 0
 readFilteredFreqPot@i 29 0 BANK0 1
 %segments
 reset_vec 0 3 CODE 0 0
-intentry 8 D5F CODE 8 0
+intentry 8 D61 CODE 8 0
 cstackCOMMON 70 7D COMMON 70 1
 bssBANK1 A0 DF BANK1 A0 1
 bssBANK2 120 15F BANK2 120 1
 cstackBANK0 20 56 BANK0 20 1
-stringtext1 D60 DA3 STRCODE D60 0
-text4 DA4 DDD CODE DA4 0
+stringtext1 D62 DA5 STRCODE D62 0
+text4 DA6 DDF CODE DA6 0
 %locals
 dist/default/production\BuckMsCProject.X.production.o
-C:\Users\B6028443\AppData\Local\Temp\xcAsbf0.s
+C:\Users\B6028443\AppData\Local\Temp\xcAs7jc.s
 2796 74 0 CODE 0
 2799 74 0 CODE 0
 2886 74 0 CODE 0
@@ -430,47 +430,48 @@ C:\Users\B6028443\AppData\Local\Temp\xcAsbf0.s
 2917 8C 0 CODE 0
 2918 8D 0 CODE 0
 2919 8E 0 CODE 0
-2875 6E3 0 CODE 0
-2876 6E3 0 CODE 0
-2877 6E4 0 CODE 0
-2878 6E4 0 CODE 0
-2879 6E5 0 CODE 0
-2880 6E6 0 CODE 0
-2881 6E7 0 CODE 0
-2882 6E8 0 CODE 0
+2875 6E4 0 CODE 0
+2876 6E4 0 CODE 0
+2877 6E5 0 CODE 0
+2878 6E5 0 CODE 0
+2879 6E6 0 CODE 0
+2880 6E7 0 CODE 0
+2881 6E8 0 CODE 0
+2882 6E9 0 CODE 0
 main.c
-103 678 0 CODE 0
-105 678 0 CODE 0
-107 67C 0 CODE 0
-108 67F 0 CODE 0
-109 682 0 CODE 0
-110 685 0 CODE 0
-111 688 0 CODE 0
-112 68B 0 CODE 0
-114 691 0 CODE 0
-116 691 0 CODE 0
+103 695 0 CODE 0
+105 695 0 CODE 0
+107 699 0 CODE 0
+108 69C 0 CODE 0
+109 69F 0 CODE 0
+110 6A2 0 CODE 0
+111 6A5 0 CODE 0
+112 6A8 0 CODE 0
+114 6AE 0 CODE 0
+116 6AE 0 CODE 0
 Timer0.c
-17 6DB 0 CODE 0
-19 6DB 0 CODE 0
-20 6DC 0 CODE 0
-21 6DD 0 CODE 0
-22 6DF 0 CODE 0
-23 6E0 0 CODE 0
-25 6E2 0 CODE 0
+17 6DC 0 CODE 0
+19 6DC 0 CODE 0
+20 6DD 0 CODE 0
+21 6DE 0 CODE 0
+22 6E0 0 CODE 0
+23 6E1 0 CODE 0
+25 6E3 0 CODE 0
 PWM.c
-16 694 0 CODE 0
-18 694 0 CODE 0
-20 697 0 CODE 0
-21 699 0 CODE 0
-23 69B 0 CODE 0
-24 69D 0 CODE 0
-26 69F 0 CODE 0
-27 6A2 0 CODE 0
-28 6A4 0 CODE 0
-30 6A6 0 CODE 0
-31 6A7 0 CODE 0
-35 6A9 0 CODE 0
-36 6AF 0 CODE 0
+16 678 0 CODE 0
+18 678 0 CODE 0
+20 67B 0 CODE 0
+21 67D 0 CODE 0
+23 67F 0 CODE 0
+24 681 0 CODE 0
+25 683 0 CODE 0
+27 684 0 CODE 0
+28 687 0 CODE 0
+29 689 0 CODE 0
+31 68B 0 CODE 0
+32 68C 0 CODE 0
+36 68E 0 CODE 0
+37 694 0 CODE 0
 main.c
 125 173 0 CODE 0
 129 175 0 CODE 0
@@ -500,10 +501,10 @@ main.c
 141 24A 0 CODE 0
 142 24D 0 CODE 0
 Potentiometer.c
-15 6D2 0 CODE 0
-16 6D2 0 CODE 0
-17 6D6 0 CODE 0
-18 6DA 0 CODE 0
+15 6D3 0 CODE 0
+16 6D3 0 CODE 0
+17 6D7 0 CODE 0
+18 6DB 0 CODE 0
 CurrentSensor.c
 17 636 0 CODE 0
 18 636 0 CODE 0
@@ -580,10 +581,10 @@ ADC.c
 61 31A 0 CODE 0
 62 326 0 CODE 0
 65 333 0 CODE 0
-14 6E9 0 CODE 0
-16 6E9 0 CODE 0
-22 6EC 0 CODE 0
-31 6EE 0 CODE 0
+14 6EA 0 CODE 0
+16 6EA 0 CODE 0
+22 6ED 0 CODE 0
+31 6EF 0 CODE 0
 main.c
 41 4 0 CODE 0
 52 6 0 CODE 0
@@ -644,14 +645,14 @@ Potentiometer.c
 72 170 0 CODE 0
 75 172 0 CODE 0
 PWM.c
-48 60B 0 CODE 0
 49 60B 0 CODE 0
-50 60E 0 CODE 0
-51 619 0 CODE 0
-52 622 0 CODE 0
-52 62B 0 CODE 0
-52 62D 0 CODE 0
-53 635 0 CODE 0
+50 60B 0 CODE 0
+51 60E 0 CODE 0
+52 619 0 CODE 0
+53 622 0 CODE 0
+53 62B 0 CODE 0
+53 62D 0 CODE 0
+54 635 0 CODE 0
 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
 15 659 0 CODE 0
 43 659 0 CODE 0

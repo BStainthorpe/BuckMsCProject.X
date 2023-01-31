@@ -36,7 +36,7 @@ freq8M 8
 freq16M 9
 freq32M 10
 ]
-"35 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+"36 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
 [e E2804 GPIO_PORTS `uc
 pinRA0 0
 pinRA1 1
@@ -180,7 +180,7 @@ pinRB7 15
 [v _runPotScaling runPotScaling `(v  1 e 1 0 ]
 "16 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
 [v _setupPWM setupPWM `(v  1 e 1 0 ]
-"48
+"49
 [v _setPWMDutyandPeriod setPWMDutyandPeriod `(v  1 e 1 0 ]
 "17 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
 [v _setupTimer0Interrupt setupTimer0Interrupt `(v  1 e 1 0 ]
@@ -405,7 +405,7 @@ pinRB7 15
 "16 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
 [v _setupPWM setupPWM `(v  1 e 1 0 ]
 {
-"36
+"37
 } 0
 "125 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 [v _setupInternalOscillator setupInternalOscillator `(v  1 e 1 0 ]
@@ -505,12 +505,12 @@ pinRB7 15
 [v runPotScaling@maxDuty maxDuty `us  1 a 2 14 ]
 "75
 } 0
-"48 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
+"49 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\PWM.c
 [v _setPWMDutyandPeriod setPWMDutyandPeriod `(v  1 e 1 0 ]
 {
 [v setPWMDutyandPeriod@dutyCycle dutyCycle `us  1 p 2 0 ]
 [v setPWMDutyandPeriod@period period `uc  1 p 1 2 ]
-"53
+"54
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]

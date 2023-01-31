@@ -22,6 +22,7 @@ void setupPWM(){
 
     APFCON0bits.P1DSEL = 1;        //setup Alternate Pin Function Register bit for PWM output P1D on RA6
     PSTR1CONbits.STR1D = 1;        //Steer P1D from CCP1
+    PSTR1CONbits.STR1A = 0;        //Assign P1A to port pin - to prevent PWM appearing here
     
     T2CONbits.T2CKPS = 0b00;       //1:1 prescaler on timer 1
     PIE1bits.TMR2IE = 0;
