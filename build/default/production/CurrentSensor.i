@@ -4554,15 +4554,24 @@ uint16_t readILCurrentADCRaw();
 
 
 
+
+
+
 void initialiseCurrentSensors(){
     initialiseGPIO(pinRA3, 1);
     initialiseGPIO(pinRA1, 1);
     initialiseADCPin(pinRA0);
     initialiseADCPin(pinRA3);
+    initialiseGPIO(pinRB3, 0);
+    writeGPIO(9, 0);
 }
 
+
+
+
+
 uint8_t currentTripRead(){
-    return readGPIO(pinRA3) || readGPIO(pinRA1);
+    return (~(readGPIO(pinRA3) || readGPIO(pinRA1)));
 }
 
 
@@ -4591,4 +4600,12 @@ uint16_t readFilteredIL(){
     for(uint8_t i=0; i<16; i++) sumOfSamples += currentILFIFO[i];
 
     return (sumOfSamples >> 4);
+}
+
+
+
+
+
+void currentTripReset(){
+    writeGPIO(pinRB3, 1);
 }

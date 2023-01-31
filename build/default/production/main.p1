@@ -53,8 +53,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 571: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x011)));
 [v _PIR1bits `VS39 ~T0 @X0 0 e@17 ]
 [p mainexit ]
-"104 main.c
-[; ;main.c: 104:     setupInternalOscillator(freq32M);
+"105 main.c
+[; ;main.c: 105:     setupInternalOscillator(freq32M);
 [c E2830 0 1 2 3 4 5 6 7 8 9 10 .. ]
 [n E2830 internalClockFreqSelec freq31k freq62k5 freq125k freq250k freq500k freq1M freq2M freq4M freq8M freq16M freq32M  ]
 "31
@@ -714,208 +714,211 @@ Version 4.0 HI-TECH Software Intermediate Code
 "67
 [; ;main.c: 67:                 writeGPIO(pinRB4, 1);
 [e ( _writeGPIO (2 , . `E2805 12 -> -> 1 `i `uc ]
-"69
-[; ;main.c: 69:                 filteredDutyPot = readFilteredDutyPot();
-[e = _filteredDutyPot ( _readFilteredDutyPot ..  ]
+"68
+[; ;main.c: 68:                 writeGPIO(9, 1);
+[e ( _writeGPIO (2 , -> -> 9 `i `E2805 -> -> 1 `i `uc ]
 "70
-[; ;main.c: 70:                 filteredFreqPot = readFilteredFreqPot();
+[; ;main.c: 70:                 filteredDutyPot = readFilteredDutyPot();
+[e = _filteredDutyPot ( _readFilteredDutyPot ..  ]
+"71
+[; ;main.c: 71:                 filteredFreqPot = readFilteredFreqPot();
 [e = _filteredFreqPot ( _readFilteredFreqPot ..  ]
-"72
-[; ;main.c: 72:                 if(~emergencyStop){
+"73
+[; ;main.c: 73:                 if(~emergencyStop){
 [e $ ! != ~ -> _emergencyStop `i -> 0 `i 362  ]
 {
-"73
-[; ;main.c: 73:                     runPotScaling();
-[e ( _runPotScaling ..  ]
 "74
-[; ;main.c: 74:                 }
+[; ;main.c: 74:                     runPotScaling();
+[e ( _runPotScaling ..  ]
+"75
+[; ;main.c: 75:                 }
 }
 [e :U 362 ]
-"75
-[; ;main.c: 75:             }
+"76
+[; ;main.c: 76:             }
 }
 [e :U 361 ]
-"77
-[; ;main.c: 77:             if(timerSlotQuarter == 1){
+"78
+[; ;main.c: 78:             if(timerSlotQuarter == 1){
 [e $ ! == -> _timerSlotQuarter `i -> 1 `i 363  ]
 {
-"79
-[; ;main.c: 79:             }
+"80
+[; ;main.c: 80:             }
 }
 [e :U 363 ]
-"81
-[; ;main.c: 81:             timerSlotQuarter = ~timerSlotQuarter;
-[e = _timerSlotQuarter -> ~ -> _timerSlotQuarter `i `a ]
 "82
-[; ;main.c: 82:         }
+[; ;main.c: 82:             timerSlotQuarter = ~timerSlotQuarter;
+[e = _timerSlotQuarter -> ~ -> _timerSlotQuarter `i `a ]
+"83
+[; ;main.c: 83:         }
 }
 [e :U 360 ]
-"84
-[; ;main.c: 84:         timerSlotHalf = ~timerSlotHalf;
-[e = _timerSlotHalf -> ~ -> _timerSlotHalf `i `a ]
 "85
-[; ;main.c: 85:         INTCONbits.TMR0IF = 0;
+[; ;main.c: 85:         timerSlotHalf = ~timerSlotHalf;
+[e = _timerSlotHalf -> ~ -> _timerSlotHalf `i `a ]
+"86
+[; ;main.c: 86:         INTCONbits.TMR0IF = 0;
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"87
-[; ;main.c: 87:     }
+"88
+[; ;main.c: 88:     }
 }
 [e :U 357 ]
-"89
-[; ;main.c: 89:     if("((PIR1)&07Fh)" "," "2"){
+"90
+[; ;main.c: 90:     if("((PIR1)&07Fh)" "," "2"){
 [e $ ! != :s 4C -> -> 0 `i `*uc 364  ]
 {
-"90
-[; ;main.c: 90:         latestIL1 = readILCurrentADCRaw;
-[e = _latestIL1 -> &U _readILCurrentADCRaw `us ]
 "91
-[; ;main.c: 91:         PIR1bits.CCP1IF = 0;
-[e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 91:         latestIL1 = readILCurrentADCRaw;
+[e = _latestIL1 -> &U _readILCurrentADCRaw `us ]
 "92
-[; ;main.c: 92:     }
+[; ;main.c: 92:         PIR1bits.CCP1IF = 0;
+[e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
+"93
+[; ;main.c: 93:     }
 }
 [e :U 364 ]
-"94
-[; ;main.c: 94: }
+"95
+[; ;main.c: 95: }
 [e :UE 356 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"102
-[; ;main.c: 102: int main(int argc, char** argv) {
+"103
+[; ;main.c: 103: int main(int argc, char** argv) {
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-"104
-[; ;main.c: 104:     setupInternalOscillator(freq32M);
+"105
+[; ;main.c: 105:     setupInternalOscillator(freq32M);
 [e ( _setupInternalOscillator (1 . `E2830 10 ]
-"106
-[; ;main.c: 106:     setupPWM();
-[e ( _setupPWM ..  ]
 "107
-[; ;main.c: 107:     setupTimer0Interrupt();
-[e ( _setupTimer0Interrupt ..  ]
+[; ;main.c: 107:     setupPWM();
+[e ( _setupPWM ..  ]
 "108
-[; ;main.c: 108:     initialiseADCModule();
-[e ( _initialiseADCModule ..  ]
+[; ;main.c: 108:     setupTimer0Interrupt();
+[e ( _setupTimer0Interrupt ..  ]
 "109
-[; ;main.c: 109:     initialiseCurrentSensors();
-[e ( _initialiseCurrentSensors ..  ]
+[; ;main.c: 109:     initialiseADCModule();
+[e ( _initialiseADCModule ..  ]
 "110
-[; ;main.c: 110:     initialisePotentiometers();
-[e ( _initialisePotentiometers ..  ]
+[; ;main.c: 110:     initialiseCurrentSensors();
+[e ( _initialiseCurrentSensors ..  ]
 "111
-[; ;main.c: 111:     initialiseGPIO(pinRB4, 0);
+[; ;main.c: 111:     initialisePotentiometers();
+[e ( _initialisePotentiometers ..  ]
+"112
+[; ;main.c: 112:     initialiseGPIO(pinRB4, 0);
 [e ( _initialiseGPIO (2 , . `E2805 12 -> -> 0 `i `uc ]
-"113
-[; ;main.c: 113:     while(1){
+"114
+[; ;main.c: 114:     while(1){
 [e :U 367 ]
 {
-"115
-[; ;main.c: 115:     }
+"116
+[; ;main.c: 116:     }
 }
 [e :U 366 ]
 [e $U 367  ]
 [e :U 368 ]
-"116
-[; ;main.c: 116:     return (0);
+"117
+[; ;main.c: 117:     return (0);
 [e ) -> 0 `i ]
 [e $UE 365  ]
-"117
-[; ;main.c: 117: }
+"118
+[; ;main.c: 118: }
 [e :UE 365 ]
 }
-"124
-[; ;main.c: 124: void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq){
+"125
+[; ;main.c: 125: void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq){
 [v _setupInternalOscillator `(v ~T0 @X0 1 ef1`CE2830 ]
 {
 [e :U _setupInternalOscillator ]
 [v _selectedFreq `CE2830 ~T0 @X0 1 r1 ]
 [f ]
-"128
-[; ;main.c: 128:     switch(selectedFreq){
+"129
+[; ;main.c: 129:     switch(selectedFreq){
 [e $U 371  ]
 {
-"129
-[; ;main.c: 129:         case freq31k: OSCCONbits.IRCF = 0b0000; OSCCONbits.SPLLEN = 0; clockFrequency = 31000; break;
+"130
+[; ;main.c: 130:         case freq31k: OSCCONbits.IRCF = 0b0000; OSCCONbits.SPLLEN = 0; clockFrequency = 31000; break;
 [e :U 372 ]
 [e = . . _OSCCONbits 1 2 -> -> 0 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> -> 31000 `i `l `ul ]
 [e $U 370  ]
-"130
-[; ;main.c: 130:         case freq62k5: OSCCONbits.IRCF = 0b0100; OSCCONbits.SPLLEN = 0; clockFrequency = 62500; break;
+"131
+[; ;main.c: 131:         case freq62k5: OSCCONbits.IRCF = 0b0100; OSCCONbits.SPLLEN = 0; clockFrequency = 62500; break;
 [e :U 373 ]
 [e = . . _OSCCONbits 1 2 -> -> 4 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 62500 `l `ul ]
 [e $U 370  ]
-"131
-[; ;main.c: 131:         case freq125k: OSCCONbits.IRCF = 0b0101; OSCCONbits.SPLLEN = 0; clockFrequency = 125000; break;
+"132
+[; ;main.c: 132:         case freq125k: OSCCONbits.IRCF = 0b0101; OSCCONbits.SPLLEN = 0; clockFrequency = 125000; break;
 [e :U 374 ]
 [e = . . _OSCCONbits 1 2 -> -> 5 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 125000 `l `ul ]
 [e $U 370  ]
-"132
-[; ;main.c: 132:         case freq250k: OSCCONbits.IRCF = 0b0110; OSCCONbits.SPLLEN = 0; clockFrequency = 250000; break;
+"133
+[; ;main.c: 133:         case freq250k: OSCCONbits.IRCF = 0b0110; OSCCONbits.SPLLEN = 0; clockFrequency = 250000; break;
 [e :U 375 ]
 [e = . . _OSCCONbits 1 2 -> -> 6 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 250000 `l `ul ]
 [e $U 370  ]
-"133
-[; ;main.c: 133:         case freq500k: OSCCONbits.IRCF = 0b0111; OSCCONbits.SPLLEN = 0; clockFrequency = 500000; break;
+"134
+[; ;main.c: 134:         case freq500k: OSCCONbits.IRCF = 0b0111; OSCCONbits.SPLLEN = 0; clockFrequency = 500000; break;
 [e :U 376 ]
 [e = . . _OSCCONbits 1 2 -> -> 7 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 500000 `l `ul ]
 [e $U 370  ]
-"134
-[; ;main.c: 134:         case freq1M: OSCCONbits.IRCF = 0b1011; OSCCONbits.SPLLEN = 0; clockFrequency = 1000000; break;
+"135
+[; ;main.c: 135:         case freq1M: OSCCONbits.IRCF = 0b1011; OSCCONbits.SPLLEN = 0; clockFrequency = 1000000; break;
 [e :U 377 ]
 [e = . . _OSCCONbits 1 2 -> -> 11 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 1000000 `l `ul ]
 [e $U 370  ]
-"135
-[; ;main.c: 135:         case freq2M: OSCCONbits.IRCF = 0b1100; OSCCONbits.SPLLEN = 0; clockFrequency = 2000000; break;
+"136
+[; ;main.c: 136:         case freq2M: OSCCONbits.IRCF = 0b1100; OSCCONbits.SPLLEN = 0; clockFrequency = 2000000; break;
 [e :U 378 ]
 [e = . . _OSCCONbits 1 2 -> -> 12 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 2000000 `l `ul ]
 [e $U 370  ]
-"136
-[; ;main.c: 136:         case freq4M: OSCCONbits.IRCF = 0b1101; OSCCONbits.SPLLEN = 0; clockFrequency = 4000000; break;
+"137
+[; ;main.c: 137:         case freq4M: OSCCONbits.IRCF = 0b1101; OSCCONbits.SPLLEN = 0; clockFrequency = 4000000; break;
 [e :U 379 ]
 [e = . . _OSCCONbits 1 2 -> -> 13 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 4000000 `l `ul ]
 [e $U 370  ]
-"137
-[; ;main.c: 137:         case freq8M: OSCCONbits.IRCF = 0b1110; OSCCONbits.SPLLEN = 0; clockFrequency = 8000000; break;
+"138
+[; ;main.c: 138:         case freq8M: OSCCONbits.IRCF = 0b1110; OSCCONbits.SPLLEN = 0; clockFrequency = 8000000; break;
 [e :U 380 ]
 [e = . . _OSCCONbits 1 2 -> -> 14 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 8000000 `l `ul ]
 [e $U 370  ]
-"138
-[; ;main.c: 138:         case freq16M: OSCCONbits.IRCF = 0b1111; OSCCONbits.SPLLEN = 0; clockFrequency = 16000000; break;
+"139
+[; ;main.c: 139:         case freq16M: OSCCONbits.IRCF = 0b1111; OSCCONbits.SPLLEN = 0; clockFrequency = 16000000; break;
 [e :U 381 ]
 [e = . . _OSCCONbits 1 2 -> -> 15 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 16000000 `l `ul ]
 [e $U 370  ]
-"139
-[; ;main.c: 139:         case freq32M: OSCCONbits.IRCF = 0b1110; OSCCONbits.SPLLEN = 1; clockFrequency = 32000000; break;
+"140
+[; ;main.c: 140:         case freq32M: OSCCONbits.IRCF = 0b1110; OSCCONbits.SPLLEN = 1; clockFrequency = 32000000; break;
 [e :U 382 ]
 [e = . . _OSCCONbits 1 2 -> -> 14 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 1 `i `uc ]
 [e = _clockFrequency -> -> 32000000 `l `ul ]
 [e $U 370  ]
-"140
-[; ;main.c: 140:     }
+"141
+[; ;main.c: 141:     }
 }
 [e $U 370  ]
 [e :U 371 ]
@@ -932,8 +935,8 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E2830 10 `ui 382
  370 ]
 [e :U 370 ]
-"141
-[; ;main.c: 141: }
+"142
+[; ;main.c: 142: }
 [e :UE 369 ]
 }
 [a 1C 40 40 73 78 84 67 79 78 41 38 48 55 70 104 41 44 50 0 ]

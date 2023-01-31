@@ -65,6 +65,7 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
             if(timerSlotQuarter == false){
                 //slot 3--------------------------------------------------------
                 writeGPIO(gpioSlotTest, 1); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz
+                writeGPIO(pinOverCurrentClear, 1); //pull over current pin high to turn on OC MOSFET - OC will not clear unless pin is low for 1uS
                 
                 filteredDutyPot = readFilteredDutyPot();
                 filteredFreqPot = readFilteredFreqPot();

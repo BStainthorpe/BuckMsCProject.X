@@ -4615,6 +4615,7 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
             if(timerSlotQuarter == 0){
 
                 writeGPIO(pinRB4, 1);
+                writeGPIO(9, 1);
 
                 filteredDutyPot = readFilteredDutyPot();
                 filteredFreqPot = readFilteredFreqPot();
