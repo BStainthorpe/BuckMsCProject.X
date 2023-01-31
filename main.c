@@ -52,13 +52,13 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
         if(currentTripRead() == 1){
             transToOverCurrentFault();
         }
-        
         setPWMDutyandPeriod(setDuty, setPeriod);
         
        //each half slot occurs at 490Hz or every 2ms
         if(timerSlotHalf == false){
             //slot 1------------------------------------------------------------
             writeGPIO(gpioSlotTest, 0); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz on RB4
+            controlRoutine();
         }
         if(timerSlotHalf == true){
             //slot 2------------------------------------------------------------

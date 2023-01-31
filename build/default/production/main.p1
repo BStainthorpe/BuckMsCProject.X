@@ -14,13 +14,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17 ./PWM.h
 [; ;./PWM.h: 17: void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
 [v _setPWMDutyandPeriod `(v ~T0 @X0 0 ef2`us`uc ]
-"61 main.c
-[; ;main.c: 61:             writeGPIO(pinRB4, 0);
+"60 main.c
+[; ;main.c: 60:             writeGPIO(pinRB4, 0);
 [c E2805 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
 [n E2805 GPIO_PORTS pinRA0 pinRA1 pinRA2 pinRA3 pinRA4 pinRA5 pinRA6 pinRA7 pinRB0 pinRB1 pinRB2 pinRB3 pinRB4 pinRB5 pinRB6 pinRB7  ]
 "51 ./GPIO.h
 [; ;./GPIO.h: 51: void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 [v _writeGPIO `(v ~T0 @X0 0 ef2`CE2805`uc ]
+"35 ./Controller.h
+[; ;./Controller.h: 35: void controlRoutine();
+[v _controlRoutine `(v ~T0 @X0 0 e? ]
 "46 ./CurrentSensor.h
 [; ;./CurrentSensor.h: 46: uint16_t readFilteredIL();
 [v _readFilteredIL `(us ~T0 @X0 0 e? ]
@@ -735,16 +738,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 54:         }
 }
 [e :U 358 ]
-"56
-[; ;main.c: 56:         setPWMDutyandPeriod(setDuty, setPeriod);
+"55
+[; ;main.c: 55:         setPWMDutyandPeriod(setDuty, setPeriod);
 [e ( _setPWMDutyandPeriod (2 , _setDuty _setPeriod ]
-"59
-[; ;main.c: 59:         if(timerSlotHalf == 0){
+"58
+[; ;main.c: 58:         if(timerSlotHalf == 0){
 [e $ ! == -> _timerSlotHalf `i -> 0 `i 359  ]
 {
-"61
-[; ;main.c: 61:             writeGPIO(pinRB4, 0);
+"60
+[; ;main.c: 60:             writeGPIO(pinRB4, 0);
 [e ( _writeGPIO (2 , . `E2805 12 -> -> 0 `i `uc ]
+"61
+[; ;main.c: 61:             controlRoutine();
+[e ( _controlRoutine ..  ]
 "62
 [; ;main.c: 62:         }
 }

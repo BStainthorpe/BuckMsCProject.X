@@ -12,7 +12,7 @@
 #include "ADC.h"
 
 /*------------------------------------------------------------------------------
- Function: transToPotControl()
+ Function: transToPotControl(state)
  *Use: This function sets the state to pot control and performs any setup
 ------------------------------------------------------------------------------*/
 void transToPotControl(){
@@ -20,7 +20,7 @@ void transToPotControl(){
 }
 
 /*------------------------------------------------------------------------------
- Function: transToVoltageModeControl()
+ Function: transToVoltageModeControl(state)
  *Use: This function sets the state to voltage mode control and performs any
  * setup
 ------------------------------------------------------------------------------*/
@@ -29,7 +29,7 @@ void transToVoltageModeControl(){
 }
 
 /*------------------------------------------------------------------------------
- Function: transToCurrentModeControl()
+ Function: transToCurrentModeControl(state)
  *Use: This function sets the state to current mode control and performs any
  * setup
 ------------------------------------------------------------------------------*/
@@ -38,7 +38,7 @@ void transToCurrentModeControl(){
 }
 
 /*------------------------------------------------------------------------------
- Function: transToOverCurrentFault()
+ Function: transToOverCurrentFault(state)
  *Use: This function sets the state to over current fault and clears the PWM
  * outputs
 ------------------------------------------------------------------------------*/

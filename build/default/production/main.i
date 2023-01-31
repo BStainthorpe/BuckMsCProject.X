@@ -4641,13 +4641,13 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
         if(currentTripRead() == 1){
             transToOverCurrentFault();
         }
-
         setPWMDutyandPeriod(setDuty, setPeriod);
 
 
         if(timerSlotHalf == 0){
 
             writeGPIO(pinRB4, 0);
+            controlRoutine();
         }
         if(timerSlotHalf == 1){
 
