@@ -1,11 +1,24 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"20 Controller.c
-[; ;Controller.c: 20:     voutFIFO[16 -1] = readADCRaw(pinRA4);
+"96 ./Global.h
+[; ;./Global.h: 96: enum stateMachine currentState = 0;
+[c E2823 0 1 2 3 4 .. ]
+[n E2823 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
+"22 Controller.c
+[; ;Controller.c: 22:     voutFIFO[16 -1] = readADCRaw(pinRA4);
 [c E2798 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
 [n E2798 GPIO_PORTS pinRA0 pinRA1 pinRA2 pinRA3 pinRA4 pinRA5 pinRA6 pinRA7 pinRB0 pinRB1 pinRB2 pinRB3 pinRB4 pinRB5 pinRB6 pinRB7  ]
 "28 ./ADC.h
 [; ;./ADC.h: 28: uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 [v _readADCRaw `(us ~T0 @X0 0 ef1`CE2798 ]
+"37 ./Controller.h
+[; ;./Controller.h: 37: void runVoltageModeControl();
+[v _runVoltageModeControl `(v ~T0 @X0 0 e? ]
+"36
+[; ;./Controller.h: 36: void runCurrentModeControl();
+[v _runCurrentModeControl `(v ~T0 @X0 0 e? ]
+"48 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 48: int16_t convertRawToMilliAmps(uint16_t rawvalue);
+[v _convertRawToMilliAmps `(s ~T0 @X0 0 ef1`us ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -480,32 +493,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6749
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 6749: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"79 ./Global.h
-[; ;./Global.h: 79: uint8_t setPeriod = 0;
+"96 ./Global.h
+[; ;./Global.h: 96: enum stateMachine currentState = 0;
+[v _currentState `E2823 ~T0 @X0 1 e ]
+[i _currentState
+-> -> 0 `i `E2823
+]
+"99
+[; ;./Global.h: 99: uint8_t setPeriod = 0;
 [v _setPeriod `uc ~T0 @X0 1 e ]
 [i _setPeriod
 -> -> 0 `i `uc
 ]
-"80
-[; ;./Global.h: 80: uint16_t setDuty = 0;
+"100
+[; ;./Global.h: 100: uint16_t setDuty = 0;
 [v _setDuty `us ~T0 @X0 1 e ]
 [i _setDuty
 -> -> 0 `i `us
 ]
-"81
-[; ;./Global.h: 81: uint8_t prevPeriod = 0;
+"101
+[; ;./Global.h: 101: uint8_t prevPeriod = 0;
 [v _prevPeriod `uc ~T0 @X0 1 e ]
 [i _prevPeriod
 -> -> 0 `i `uc
 ]
-"82
-[; ;./Global.h: 82: uint16_t prevDuty = 0;
+"102
+[; ;./Global.h: 102: uint16_t prevDuty = 0;
 [v _prevDuty `us ~T0 @X0 1 e ]
 [i _prevDuty
 -> -> 0 `i `us
 ]
-"84
-[; ;./Global.h: 84: uint32_t clockFrequency = 0;
+"105
+[; ;./Global.h: 105: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
@@ -519,14 +538,50 @@ Version 4.0 HI-TECH Software Intermediate Code
 "31
 [; ;./Controller.h: 31: uint16_t voutFIFO[16];
 [v _voutFIFO `us ~T0 @X0 -> 16 `i e ]
-"18 Controller.c
-[; ;Controller.c: 18: uint16_t readFilteredVout(){
+"34 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 34: volatile uint16_t latestIL = 0;
+[v _latestIL `Vus ~T0 @X0 1 e ]
+[i _latestIL
+-> -> 0 `i `us
+]
+"35
+[; ;./CurrentSensor.h: 35: uint16_t filteredIDS = 0;
+[v _filteredIDS `us ~T0 @X0 1 e ]
+[i _filteredIDS
+-> -> 0 `i `us
+]
+"36
+[; ;./CurrentSensor.h: 36: uint16_t filteredIL = 0;
+[v _filteredIL `us ~T0 @X0 1 e ]
+[i _filteredIL
+-> -> 0 `i `us
+]
+"37
+[; ;./CurrentSensor.h: 37: uint16_t currentIDSFIFO[16];
+[v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
+"38
+[; ;./CurrentSensor.h: 38: uint16_t currentILFIFO[16];
+[v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
+"40
+[; ;./CurrentSensor.h: 40: _Bool tripIDS = 0;
+[v _tripIDS `a ~T0 @X0 1 e ]
+[i _tripIDS
+-> -> 0 `i `a
+]
+"41
+[; ;./CurrentSensor.h: 41: _Bool tripIL = 0;
+[v _tripIL `a ~T0 @X0 1 e ]
+[i _tripIL
+-> -> 0 `i `a
+]
+"20 Controller.c
+[; ;Controller.c: 20: uint16_t readFilteredVout(){
 [v _readFilteredVout `(us ~T0 @X0 1 ef ]
 {
 [e :U _readFilteredVout ]
 [f ]
-"19
-[; ;Controller.c: 19:     for(uint8_t i=0; i<16 -1; i++) voutFIFO[i] = voutFIFO[i+1];
+"21
+[; ;Controller.c: 21:     for(uint8_t i=0; i<16 -1; i++) voutFIFO[i] = voutFIFO[i+1];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -538,15 +593,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i - -> 16 `i -> 1 `i 357  ]
 [e :U 358 ]
 }
-"20
-[; ;Controller.c: 20:     voutFIFO[16 -1] = readADCRaw(pinRA4);
+"22
+[; ;Controller.c: 22:     voutFIFO[16 -1] = readADCRaw(pinRA4);
 [e = *U + &U _voutFIFO * -> -> - -> 16 `i -> 1 `i `ui `ux -> -> # *U &U _voutFIFO `ui `ux ( _readADCRaw (1 . `E2798 4 ]
-"21
-[; ;Controller.c: 21:     uint32_t sumOfSamples = 0;
+"23
+[; ;Controller.c: 23:     uint32_t sumOfSamples = 0;
 [v _sumOfSamples `ul ~T0 @X0 1 a ]
 [e = _sumOfSamples -> -> -> 0 `i `l `ul ]
-"22
-[; ;Controller.c: 22:     for(uint8_t i=0; i<16; i++) sumOfSamples += voutFIFO[i];
+"24
+[; ;Controller.c: 24:     for(uint8_t i=0; i<16; i++) sumOfSamples += voutFIFO[i];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -558,34 +613,94 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 16 `i 360  ]
 [e :U 361 ]
 }
-"24
-[; ;Controller.c: 24:     return (sumOfSamples >> 4);
+"26
+[; ;Controller.c: 26:     return (sumOfSamples >> 4);
 [e ) -> >> _sumOfSamples -> 4 `i `us ]
 [e $UE 356  ]
-"25
-[; ;Controller.c: 25: }
+"27
+[; ;Controller.c: 27: }
 [e :UE 356 ]
 }
-"32
-[; ;Controller.c: 32: int16_t convertRawToDeciVolts(uint16_t rawValue){
+"34
+[; ;Controller.c: 34: int16_t convertRawToDeciVolts(uint16_t rawValue){
 [v _convertRawToDeciVolts `(s ~T0 @X0 1 ef1`us ]
 {
 [e :U _convertRawToDeciVolts ]
 [v _rawValue `us ~T0 @X0 1 r1 ]
 [f ]
-"33
-[; ;Controller.c: 33:     int16_t offsetted = (int16_t)(rawValue - 0u);
+"35
+[; ;Controller.c: 35:     int16_t offsetted = (int16_t)(rawValue - 0u);
 [v _offsetted `s ~T0 @X0 1 a ]
 [e = _offsetted -> - -> _rawValue `ui -> 0 `ui `s ]
-"34
-[; ;Controller.c: 34:     int16_t returnValuedV = (int32_t)(offsetted * 245u) >> 10u;
+"36
+[; ;Controller.c: 36:     int16_t returnValuedV = (int32_t)(offsetted * 245u) >> 10u;
 [v _returnValuedV `s ~T0 @X0 1 a ]
 [e = _returnValuedV -> >> -> * -> _offsetted `ui -> 245 `ui `l -> 10 `ui `s ]
-"35
-[; ;Controller.c: 35:     return returnValuedV;
+"37
+[; ;Controller.c: 37:     return returnValuedV;
 [e ) _returnValuedV ]
 [e $UE 363  ]
-"36
-[; ;Controller.c: 36: }
+"38
+[; ;Controller.c: 38: }
 [e :UE 363 ]
+}
+"45
+[; ;Controller.c: 45: void controlRoutine(){
+[v _controlRoutine `(v ~T0 @X0 1 ef ]
+{
+[e :U _controlRoutine ]
+[f ]
+"47
+[; ;Controller.c: 47:     if(currentState == voltageModeControl){
+[e $ ! == -> _currentState `ui -> . `E2823 2 `ui 365  ]
+{
+"48
+[; ;Controller.c: 48:         runVoltageModeControl();
+[e ( _runVoltageModeControl ..  ]
+"49
+[; ;Controller.c: 49:     }
+}
+[e :U 365 ]
+"50
+[; ;Controller.c: 50:     if(currentState == currentModeControl){
+[e $ ! == -> _currentState `ui -> . `E2823 3 `ui 366  ]
+{
+"51
+[; ;Controller.c: 51:         runCurrentModeControl();
+[e ( _runCurrentModeControl ..  ]
+"52
+[; ;Controller.c: 52:     }
+}
+[e :U 366 ]
+"53
+[; ;Controller.c: 53: }
+[e :UE 364 ]
+}
+"60
+[; ;Controller.c: 60: void runVoltageModeControl(){
+[v _runVoltageModeControl `(v ~T0 @X0 1 ef ]
+{
+[e :U _runVoltageModeControl ]
+[f ]
+"61
+[; ;Controller.c: 61:     int16_t newVoltage = convertRawToDeciVolts(filteredVout);
+[v _newVoltage `s ~T0 @X0 1 a ]
+[e = _newVoltage ( _convertRawToDeciVolts (1 _filteredVout ]
+"62
+[; ;Controller.c: 62: }
+[e :UE 367 ]
+}
+"69
+[; ;Controller.c: 69: void runCurrentModeControl(){
+[v _runCurrentModeControl `(v ~T0 @X0 1 ef ]
+{
+[e :U _runCurrentModeControl ]
+[f ]
+"70
+[; ;Controller.c: 70:     int16_t newCurrent = convertRawToMilliAmps(filteredIL);
+[v _newCurrent `s ~T0 @X0 1 a ]
+[e = _newCurrent ( _convertRawToMilliAmps (1 _filteredIL ]
+"71
+[; ;Controller.c: 71: }
+[e :UE 368 ]
 }

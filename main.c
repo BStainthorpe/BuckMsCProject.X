@@ -23,10 +23,10 @@
 #include "Controller.h"
 #include "ADC.h"
 #include "Potentiometer.h"
+#include "StateMachine.h"
 
 volatile bool timerSlotHalf = 0;
 volatile bool timerSlotQuarter = 0;
-volatile bool emergencyStop = 0;
 
 void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq);
 
@@ -43,16 +43,18 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
     if (TMR0IF_bit) {   //Check if Timer0 has caused the interrupt. Timer 0 interrupt operates at 980Hz or every 1ms
        
     //Timer Interrupt Slots:     Timing Graph:                        Functions:
-    //980Hz interrupt            |------|------|------|------|        currentTripRead()
+    //980Hz interrupt            |------|------|------|------|        currentTripRead() setPWMDutyandPeriod()
     //490Hz Slot 1:              1-------------1-------------1        controlRoutine()
     //490Hz Slot 2:              -------2-------------2-------        readFilteredVout() readFilteredIL()
     //245Hz Slot 3:              -------3---------------------        runPotScaling()
     //245Hz Slot 4:              ---------------------4-------        readFilteredDutyPot() readFilteredFreqPot()
        
         if(currentTripRead() == 1){
-            emergencyStop = 1;         //flag an emergency stop
-            setPWMDutyandPeriod(0, 0);   //clear PWM  
+            transToOverCurrentFault();
         }
+        
+        setPWMDutyandPeriod(setDuty, setPeriod);
+        
        //each half slot occurs at 490Hz or every 2ms
         if(timerSlotHalf == false){
             //slot 1------------------------------------------------------------
@@ -61,17 +63,14 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
         if(timerSlotHalf == true){
             //slot 2------------------------------------------------------------
             filteredIL = readFilteredIL();
-            //filteredIDS = readFilteredIDS();
+            //filteredIDS = readFilteredIDS();     
             filteredVout = readFilteredVout();
             
             //each quarter slot occurs at 245Hz or every 4ms
             if(timerSlotQuarter == false){
                 //slot 3--------------------------------------------------------
                 writeGPIO(gpioSlotTest, 1); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz on RB4
-                
-                if(~emergencyStop){
-                    runPotScaling();
-                }
+                runPotScaling();
             }
             
             if(timerSlotQuarter == true){
@@ -111,8 +110,13 @@ int main(int argc, char** argv) {
     initialiseCurrentSensors();
     initialisePotentiometers();
     initialiseGPIO(gpioSlotTest, GPIO_Output);
+    if(~readGPIO(gpioControlSelect)){                        //read pin which selects closed loop or open loop pot controlled
+        if(CONTROL_METHOD)  transToVoltageModeControl();
+        if(~CONTROL_METHOD)  transToCurrentModeControl(); //option here to hard code voltage mode or current mode 
+    }
+    else transToPotControl();
 
-    while(1){
+    while(1){           //infinite loop to hold uC in operation
         
     }
     return (EXIT_SUCCESS);

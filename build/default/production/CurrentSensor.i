@@ -4505,7 +4505,28 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 65 "./Global.h"
+
+# 1 "./StateMachine.h" 1
+# 20 "./StateMachine.h"
+# 1 "./Global.h" 1
+# 20 "./StateMachine.h" 2
+
+
+
+enum stateMachine{
+    initialising,
+    potControl,
+    voltageModeControl,
+    currentModeControl,
+    overCurrentFault
+};
+
+void transToPotControl();
+void transToVoltageModeControl();
+void transToCurrentModeControl();
+void transToOverCurrentFault();
+# 20 "./Global.h" 2
+# 82 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4520,10 +4541,14 @@ enum internalClockFreqSelec{
     freq32M
 };
 
+enum stateMachine currentState = 0;
+
+
 uint8_t setPeriod = 0;
 uint16_t setDuty = 0;
 uint8_t prevPeriod = 0;
 uint16_t prevDuty = 0;
+
 
 uint32_t clockFrequency = 0;
 # 7 "CurrentSensor.c" 2

@@ -4505,7 +4505,28 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 65 "./Global.h"
+
+# 1 "./StateMachine.h" 1
+# 20 "./StateMachine.h"
+# 1 "./Global.h" 1
+# 20 "./StateMachine.h" 2
+
+
+
+enum stateMachine{
+    initialising,
+    potControl,
+    voltageModeControl,
+    currentModeControl,
+    overCurrentFault
+};
+
+void transToPotControl();
+void transToVoltageModeControl();
+void transToCurrentModeControl();
+void transToOverCurrentFault();
+# 20 "./Global.h" 2
+# 82 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4520,10 +4541,14 @@ enum internalClockFreqSelec{
     freq32M
 };
 
+enum stateMachine currentState = 0;
+
+
 uint8_t setPeriod = 0;
 uint16_t setDuty = 0;
 uint8_t prevPeriod = 0;
 uint16_t prevDuty = 0;
+
 
 uint32_t clockFrequency = 0;
 # 7 "Controller.c" 2
@@ -4534,6 +4559,10 @@ uint16_t filteredVout = 0;
 uint16_t voutFIFO[16];
 
 uint16_t readFilteredVout();
+int16_t convertRawToDeciVolts(uint16_t rawValue);
+void controlRoutine();
+void runCurrentModeControl();
+void runVoltageModeControl();
 # 8 "Controller.c" 2
 
 
@@ -4545,6 +4574,26 @@ void initialiseADCModule();
 uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 uint16_t readILCurrentADCRaw();
 # 11 "Controller.c" 2
+
+# 1 "./CurrentSensor.h" 1
+# 34 "./CurrentSensor.h"
+volatile uint16_t latestIL = 0;
+uint16_t filteredIDS = 0;
+uint16_t filteredIL = 0;
+uint16_t currentIDSFIFO[16];
+uint16_t currentILFIFO[16];
+
+_Bool tripIDS = 0;
+_Bool tripIL = 0;
+
+void initialiseCurrentSensors();
+_Bool currentTripRead();
+uint16_t readFilteredIDS();
+uint16_t readFilteredIL();
+void currentTripReset();
+int16_t convertRawToMilliAmps(uint16_t rawvalue);
+# 12 "Controller.c" 2
+
 
 
 
@@ -4570,4 +4619,37 @@ int16_t convertRawToDeciVolts(uint16_t rawValue){
     int16_t offsetted = (int16_t)(rawValue - 0u);
     int16_t returnValuedV = (int32_t)(offsetted * 245u) >> 10u;
     return returnValuedV;
+}
+
+
+
+
+
+
+void controlRoutine(){
+
+    if(currentState == voltageModeControl){
+        runVoltageModeControl();
+    }
+    if(currentState == currentModeControl){
+        runCurrentModeControl();
+    }
+}
+
+
+
+
+
+
+void runVoltageModeControl(){
+    int16_t newVoltage = convertRawToDeciVolts(filteredVout);
+}
+
+
+
+
+
+
+void runCurrentModeControl(){
+    int16_t newCurrent = convertRawToMilliAmps(filteredIL);
 }

@@ -25,14 +25,16 @@ extern "C" {
 #define VOLTAGE_SENSOR_MANTISSA     10u
 #define VOLTAGE_SENSOR_OFFSET       0u
     
-#define SIZE_OF_VSENSOR_FILTER      16      //note there are variables in the filter functions which require change depending on this number    
+#define SIZE_OF_VSENSOR_FILTER      16      //note there are variables in the filter functions which require change depending on this number 
     
 uint16_t filteredVout = 0;
 uint16_t voutFIFO[SIZE_OF_VSENSOR_FILTER];
 
 uint16_t readFilteredVout();
 int16_t convertRawToDeciVolts(uint16_t rawValue);
-
+void controlRoutine();
+void runCurrentModeControl();
+void runVoltageModeControl();
 
 #ifdef	__cplusplus
 }

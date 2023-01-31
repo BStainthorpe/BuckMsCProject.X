@@ -28,6 +28,8 @@
       <itemPath>Global.h</itemPath>
       <itemPath>CurrentSensor.c</itemPath>
       <itemPath>CurrentSensor.h</itemPath>
+      <itemPath>StateMachine.c</itemPath>
+      <itemPath>StateMachine.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

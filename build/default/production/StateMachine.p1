@@ -1,55 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "96 ./Global.h
 [; ;./Global.h: 96: enum stateMachine currentState = 0;
-[c E2829 0 1 2 3 4 .. ]
-[n E2829 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
-"1888 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1888: extern volatile unsigned char ADCON0 __attribute__((address(0x09D)));
-[v _ADCON0 `Vuc ~T0 @X0 0 e@157 ]
-"1968
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1968: extern volatile unsigned char ADCON1 __attribute__((address(0x09E)));
-[v _ADCON1 `Vuc ~T0 @X0 0 e@158 ]
-"37 ADC.c
-[; ;ADC.c: 37: void initialiseADCPin(const enum GPIO_PORTS gpioNumber){
-[c E2798 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
-[n E2798 GPIO_PORTS pinRA0 pinRA1 pinRA2 pinRA3 pinRA4 pinRA5 pinRA6 pinRA7 pinRB0 pinRB1 pinRB2 pinRB3 pinRB4 pinRB5 pinRB6 pinRB7  ]
-"1153 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1153: extern volatile unsigned char TRISA __attribute__((address(0x08C)));
-[v _TRISA `Vuc ~T0 @X0 0 e@140 ]
-"2862
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 2862: extern volatile unsigned char ANSELA __attribute__((address(0x18C)));
-[v _ANSELA `Vuc ~T0 @X0 0 e@396 ]
-"1215
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1215: extern volatile unsigned char TRISB __attribute__((address(0x08D)));
-[v _TRISB `Vuc ~T0 @X0 0 e@141 ]
-"2914
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 2914: extern volatile unsigned char ANSELB __attribute__((address(0x18D)));
-[v _ANSELB `Vuc ~T0 @X0 0 e@397 ]
-"1894
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1894:     struct {
-[s S105 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S105 . ADON GO_nDONE CHS0 CHS1 CHS2 CHS3 CHS4 ]
-"1903
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1903:     struct {
-[s S106 :1 `uc 1 :1 `uc 1 :5 `uc 1 ]
-[n S106 . . ADGO CHS ]
-"1908
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1908:     struct {
-[s S107 :1 `uc 1 :1 `uc 1 ]
-[n S107 . . GO ]
-"1893
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1893: typedef union {
-[u S104 `S105 1 `S106 1 `S107 1 ]
-[n S104 . . . . ]
-"1913
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1913: extern volatile ADCON0bits_t ADCON0bits __attribute__((address(0x09D)));
-[v _ADCON0bits `VS104 ~T0 @X0 0 e@157 ]
-"1868
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1868: extern volatile unsigned char ADRESH __attribute__((address(0x09C)));
-[v _ADRESH `Vuc ~T0 @X0 0 e@156 ]
-"1848
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1848: extern volatile unsigned char ADRESL __attribute__((address(0x09B)));
-[v _ADRESL `Vuc ~T0 @X0 0 e@155 ]
+[c E2823 0 1 2 3 4 .. ]
+[n E2823 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -526,9 +479,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSH equ 0FEFh ;# ">
 "96 ./Global.h
 [; ;./Global.h: 96: enum stateMachine currentState = 0;
-[v _currentState `E2829 ~T0 @X0 1 e ]
+[v _currentState `E2823 ~T0 @X0 1 e ]
 [i _currentState
--> -> 0 `i `E2829
+-> -> 0 `i `E2823
 ]
 "99
 [; ;./Global.h: 99: uint8_t setPeriod = 0;
@@ -560,263 +513,61 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"14 ADC.c
-[; ;ADC.c: 14: void initialiseADCModule(){
-[v _initialiseADCModule `(v ~T0 @X0 1 ef ]
+"18 StateMachine.c
+[; ;StateMachine.c: 18: void transToPotControl(){
+[v _transToPotControl `(v ~T0 @X0 1 ef ]
 {
-[e :U _initialiseADCModule ]
+[e :U _transToPotControl ]
 [f ]
-"16
-[; ;ADC.c: 16:     ADCON0 = 0b00000001;
-[e = _ADCON0 -> -> 1 `i `uc ]
-"22
-[; ;ADC.c: 22:     ADCON1 = 0b10000000;
-[e = _ADCON1 -> -> 128 `i `uc ]
-"31
-[; ;ADC.c: 31: }
+"19
+[; ;StateMachine.c: 19:     currentState = potControl;
+[e = _currentState . `E2823 1 ]
+"20
+[; ;StateMachine.c: 20: }
 [e :UE 356 ]
 }
-"37
-[; ;ADC.c: 37: void initialiseADCPin(const enum GPIO_PORTS gpioNumber){
-[v _initialiseADCPin `(v ~T0 @X0 1 ef1`CE2798 ]
+"27
+[; ;StateMachine.c: 27: void transToVoltageModeControl(){
+[v _transToVoltageModeControl `(v ~T0 @X0 1 ef ]
 {
-[e :U _initialiseADCPin ]
-[v _gpioNumber `CE2798 ~T0 @X0 1 r1 ]
+[e :U _transToVoltageModeControl ]
 [f ]
-"39
-[; ;ADC.c: 39:     uint8_t portNumber = 0;
-[v _portNumber `uc ~T0 @X0 1 a ]
-[e = _portNumber -> -> 0 `i `uc ]
-"40
-[; ;ADC.c: 40:     uint8_t portType = 0;
-[v _portType `uc ~T0 @X0 1 a ]
-[e = _portType -> -> 0 `i `uc ]
-"41
-[; ;ADC.c: 41:     uint8_t gpioValid = 0;
-[v _gpioValid `uc ~T0 @X0 1 a ]
-[e = _gpioValid -> -> 0 `i `uc ]
-"43
-[; ;ADC.c: 43:     if(gpioNumber < 4){
-[e $ ! < -> _gpioNumber `ui -> -> 4 `i `ui 358  ]
-{
-"44
-[; ;ADC.c: 44:         portNumber = gpioNumber;
-[e = _portNumber -> _gpioNumber `uc ]
-"45
-[; ;ADC.c: 45:         portType = 0;
-[e = _portType -> -> 0 `i `uc ]
-"46
-[; ;ADC.c: 46:         gpioValid = 1;
-[e = _gpioValid -> -> 1 `i `uc ]
-"47
-[; ;ADC.c: 47:     }
-}
-[e :U 358 ]
-"49
-[; ;ADC.c: 49:     if((gpioNumber > 8u) && (gpioNumber <= 15u)){
-[e $ ! && > -> _gpioNumber `ui -> 8 `ui <= -> _gpioNumber `ui -> 15 `ui 359  ]
-{
-"50
-[; ;ADC.c: 50:         portNumber = gpioNumber - 8;
-[e = _portNumber -> - -> _gpioNumber `ui -> -> 8 `i `ui `uc ]
-"51
-[; ;ADC.c: 51:         portType = 1;
-[e = _portType -> -> 1 `i `uc ]
-"52
-[; ;ADC.c: 52:         gpioValid = 1;
-[e = _gpioValid -> -> 1 `i `uc ]
-"53
-[; ;ADC.c: 53:     }
-}
-[e :U 359 ]
-"55
-[; ;ADC.c: 55:     if(gpioValid){
-[e $ ! != -> _gpioValid `i -> 0 `i 360  ]
-{
-"56
-[; ;ADC.c: 56:         if(portType == 0){
-[e $ ! == -> _portType `i -> 0 `i 361  ]
-{
-"57
-[; ;ADC.c: 57:             TRISA |= (1 << (uint8_t)portNumber);
-[e =| _TRISA -> << -> 1 `i -> _portNumber `i `Vuc ]
-"58
-[; ;ADC.c: 58:             ANSELA |= (1 << (uint8_t)portNumber);
-[e =| _ANSELA -> << -> 1 `i -> _portNumber `i `Vuc ]
-"59
-[; ;ADC.c: 59:         }
-}
-[e $U 362  ]
-"60
-[; ;ADC.c: 60:         else if(portType == 1){
-[e :U 361 ]
-[e $ ! == -> _portType `i -> 1 `i 363  ]
-{
-"61
-[; ;ADC.c: 61:             TRISB |= (1 << (uint8_t)portNumber);
-[e =| _TRISB -> << -> 1 `i -> _portNumber `i `Vuc ]
-"62
-[; ;ADC.c: 62:             ANSELB |= (1 << (uint8_t)portNumber);
-[e =| _ANSELB -> << -> 1 `i -> _portNumber `i `Vuc ]
-"63
-[; ;ADC.c: 63:         }
-}
-[e :U 363 ]
-[e :U 362 ]
-"64
-[; ;ADC.c: 64:     }
-}
-[e :U 360 ]
-"65
-[; ;ADC.c: 65: }
+"28
+[; ;StateMachine.c: 28:     currentState = voltageModeControl;
+[e = _currentState . `E2823 2 ]
+"29
+[; ;StateMachine.c: 29: }
 [e :UE 357 ]
 }
-"71
-[; ;ADC.c: 71: uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
-[v _readADCRaw `(us ~T0 @X0 1 ef1`CE2798 ]
+"36
+[; ;StateMachine.c: 36: void transToCurrentModeControl(){
+[v _transToCurrentModeControl `(v ~T0 @X0 1 ef ]
 {
-[e :U _readADCRaw ]
-[v _gpioNumber `CE2798 ~T0 @X0 1 r1 ]
+[e :U _transToCurrentModeControl ]
 [f ]
-"72
-[; ;ADC.c: 72:     uint8_t channel = 0;
-[v _channel `uc ~T0 @X0 1 a ]
-[e = _channel -> -> 0 `i `uc ]
-"73
-[; ;ADC.c: 73:     uint8_t gpioValid = 0;
-[v _gpioValid `uc ~T0 @X0 1 a ]
-[e = _gpioValid -> -> 0 `i `uc ]
-"75
-[; ;ADC.c: 75:     if(gpioNumber < 4){
-[e $ ! < -> _gpioNumber `ui -> -> 4 `i `ui 365  ]
-{
-"76
-[; ;ADC.c: 76:         channel = gpioNumber;
-[e = _channel -> _gpioNumber `uc ]
-"77
-[; ;ADC.c: 77:         gpioValid = 1;
-[e = _gpioValid -> -> 1 `i `uc ]
-"78
-[; ;ADC.c: 78:     }
+"37
+[; ;StateMachine.c: 37:     currentState = currentModeControl;
+[e = _currentState . `E2823 3 ]
+"38
+[; ;StateMachine.c: 38: }
+[e :UE 358 ]
 }
-[e :U 365 ]
-"79
-[; ;ADC.c: 79:     if((gpioNumber > 8u) && (gpioNumber <= 15u)){
-[e $ ! && > -> _gpioNumber `ui -> 8 `ui <= -> _gpioNumber `ui -> 15 `ui 366  ]
+"45
+[; ;StateMachine.c: 45: void transToOverCurrentFault(){
+[v _transToOverCurrentFault `(v ~T0 @X0 1 ef ]
 {
-"80
-[; ;ADC.c: 80:         channel = 12u - (gpioNumber - 8);
-[e = _channel -> - -> 12 `ui - -> _gpioNumber `ui -> -> 8 `i `ui `uc ]
-"81
-[; ;ADC.c: 81:         gpioValid = 1;
-[e = _gpioValid -> -> 1 `i `uc ]
-"82
-[; ;ADC.c: 82:     }
-}
-[e :U 366 ]
-"83
-[; ;ADC.c: 83:     if(gpioValid){
-[e $ ! != -> _gpioValid `i -> 0 `i 367  ]
-{
-"85
-[; ;ADC.c: 85:         if(~ADCON0bits.GO_nDONE){
-[e $ ! != ~ -> . . _ADCON0bits 0 1 `i -> 0 `i 368  ]
-{
-"86
-[; ;ADC.c: 86:             ADCON0 &= ~(0b01111100);
-[e =& _ADCON0 -> ~ -> 124 `i `Vuc ]
-"87
-[; ;ADC.c: 87:             ADCON0 |= (channel << 2);
-[e =| _ADCON0 -> << -> _channel `i -> 2 `i `Vuc ]
-"88
-[; ;ADC.c: 88:             for(uint8_t i = 0; i < 8; i++);
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 369  ]
-[e $U 370  ]
-[e :U 369 ]
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 369  ]
-[e :U 370 ]
-}
-"90
-[; ;ADC.c: 90:             ADCON0bits.GO_nDONE = 1;
-[e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
-"91
-[; ;ADC.c: 91:             while(ADCON0bits.GO_nDONE);
-[e $U 372  ]
-[e :U 373 ]
-[e :U 372 ]
-[e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 373  ]
-[e :U 374 ]
-"92
-[; ;ADC.c: 92:             unsigned int returnValue = ((ADRESH<<8)+ADRESL);
-[v _returnValue `ui ~T0 @X0 1 a ]
-[e = _returnValue -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
-"93
-[; ;ADC.c: 93:             ADCON0 &= ~(0b01111100);
-[e =& _ADCON0 -> ~ -> 124 `i `Vuc ]
-"94
-[; ;ADC.c: 94:             ADCON0 |= (0b010 << 2);
-[e =| _ADCON0 -> << -> 2 `i -> 2 `i `Vuc ]
-"95
-[; ;ADC.c: 95:             for(uint8_t i = 0; i < 8; i++);
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 375  ]
-[e $U 376  ]
-[e :U 375 ]
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 375  ]
-[e :U 376 ]
-}
-"97
-[; ;ADC.c: 97:             return returnValue;
-[e ) -> _returnValue `us ]
-[e $UE 364  ]
-"98
-[; ;ADC.c: 98:         }
-}
-[e :U 368 ]
-"100
-[; ;ADC.c: 100:     }
-}
-[e :U 367 ]
-"101
-[; ;ADC.c: 101: }
-[e :UE 364 ]
-}
-"108
-[; ;ADC.c: 108: uint16_t readILCurrentADCRaw(){
-[v _readILCurrentADCRaw `(us ~T0 @X0 1 ef ]
-{
-[e :U _readILCurrentADCRaw ]
+[e :U _transToOverCurrentFault ]
 [f ]
-"110
-[; ;ADC.c: 110:     if(~ADCON0bits.GO_nDONE){
-[e $ ! != ~ -> . . _ADCON0bits 0 1 `i -> 0 `i 379  ]
-{
-"111
-[; ;ADC.c: 111:         ADCON0bits.GO_nDONE = 1;
-[e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
-"112
-[; ;ADC.c: 112:         while(ADCON0bits.GO_nDONE);
-[e $U 380  ]
-[e :U 381 ]
-[e :U 380 ]
-[e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 381  ]
-[e :U 382 ]
-"113
-[; ;ADC.c: 113:         return ((ADRESH<<8)+ADRESL);
-[e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `us ]
-[e $UE 378  ]
-"114
-[; ;ADC.c: 114:     }
-}
-[e :U 379 ]
-"116
-[; ;ADC.c: 116: }
-[e :UE 378 ]
+"46
+[; ;StateMachine.c: 46:     setDuty = 0;
+[e = _setDuty -> -> 0 `i `us ]
+"47
+[; ;StateMachine.c: 47:     setPeriod = 0;
+[e = _setPeriod -> -> 0 `i `uc ]
+"48
+[; ;StateMachine.c: 48:     currentState = overCurrentFault;
+[e = _currentState . `E2823 4 ]
+"49
+[; ;StateMachine.c: 49: }
+[e :UE 359 ]
 }

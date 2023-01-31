@@ -54,22 +54,22 @@ uint16_t readFilteredFreqPot(){
 ------------------------------------------------------------------------------*/
 void runPotScaling(){
     
-    potSetCount++;
-    //use potSetCount and POT_SET_DIVIDER to reduce the frequency of pot reads to: Slot 4 Freq / POT_SET_DIVIDER, this reduces jitter in signal
-    if(potSetCount == POT_SET_DIVIDER){
-        //to calculate the required period we scale according to the min and max periods, shift by 10 bits to perform ADC scaling (1024 max ADC value) 
-        setPeriod = ((uint32_t)((filteredFreqPot - POT_OFFSET) * (uint32_t)(MAX_PERIOD_FROM_POT - MIN_PERIOD_FROM_POT)) >> 10 ) + MIN_PERIOD_FROM_POT;
-        //100% duty equates to a duty value of 4*setPeriod, therefore only shift by 8 bits to perform ADC scaling (>>10) and also multiply by 4
-        setDuty =  (uint32_t)((uint32_t)((filteredDutyPot-POT_OFFSET) * (uint32_t)setPeriod )) >> 8;
-        
-        //limit duty cycle between specified min and max values. Divide by 25 as MAX_DUTY is in %, and 100% duty corresponds to 4*period
-        uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) MAX_DUTY) * setPeriod)) /  25);
-        uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) MIN_DUTY) * setPeriod)) /  25);
-        if(setDuty > maxDuty) setDuty = maxDuty;
-        if(setDuty < minDuty) setDuty = minDuty;
-        
-        setPWMDutyandPeriod(setDuty, setPeriod);
-        potSetCount = 0;
-    }
-  
+    if(currentState == potControl){
+        potSetCount++;
+        //use potSetCount and POT_SET_DIVIDER to reduce the frequency of pot reads to: Slot 4 Freq / POT_SET_DIVIDER, this reduces jitter in signal
+        if(potSetCount == POT_SET_DIVIDER){
+            //to calculate the required period we scale according to the min and max periods, shift by 10 bits to perform ADC scaling (1024 max ADC value) 
+            setPeriod = ((uint32_t)((filteredFreqPot - POT_OFFSET) * (uint32_t)(MAX_PERIOD_FROM_POT - MIN_PERIOD_FROM_POT)) >> 10 ) + MIN_PERIOD_FROM_POT;
+            //100% duty equates to a duty value of 4*setPeriod, therefore only shift by 8 bits to perform ADC scaling (>>10) and also multiply by 4
+            setDuty =  (uint32_t)((uint32_t)((filteredDutyPot-POT_OFFSET) * (uint32_t)setPeriod )) >> 8;
+
+            //limit duty cycle between specified min and max values. Divide by 25 as MAX_DUTY is in %, and 100% duty corresponds to 4*period
+            uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) MAX_DUTY) * setPeriod)) /  25);
+            uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) MIN_DUTY) * setPeriod)) /  25);
+            if(setDuty > maxDuty) setDuty = maxDuty;
+            if(setDuty < minDuty) setDuty = minDuty;
+
+            potSetCount = 0;
+        }
+    }  
 }

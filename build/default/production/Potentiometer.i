@@ -4508,7 +4508,28 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 65 "./Global.h"
+
+# 1 "./StateMachine.h" 1
+# 20 "./StateMachine.h"
+# 1 "./Global.h" 1
+# 20 "./StateMachine.h" 2
+
+
+
+enum stateMachine{
+    initialising,
+    potControl,
+    voltageModeControl,
+    currentModeControl,
+    overCurrentFault
+};
+
+void transToPotControl();
+void transToVoltageModeControl();
+void transToCurrentModeControl();
+void transToOverCurrentFault();
+# 20 "./Global.h" 2
+# 82 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4523,10 +4544,14 @@ enum internalClockFreqSelec{
     freq32M
 };
 
+enum stateMachine currentState = 0;
+
+
 uint8_t setPeriod = 0;
 uint16_t setDuty = 0;
 uint8_t prevPeriod = 0;
 uint16_t prevDuty = 0;
+
 
 uint32_t clockFrequency = 0;
 # 15 "./Potentiometer.h" 2
@@ -4606,22 +4631,22 @@ uint16_t readFilteredFreqPot(){
 # 55 "Potentiometer.c"
 void runPotScaling(){
 
-    potSetCount++;
+    if(currentState == potControl){
+        potSetCount++;
 
-    if(potSetCount == 32){
+        if(potSetCount == 32){
 
-        setPeriod = ((uint32_t)((filteredFreqPot - 45) * (uint32_t)(159u - 15u)) >> 10 ) + 15u;
+            setPeriod = ((uint32_t)((filteredFreqPot - 45) * (uint32_t)(159u - 15u)) >> 10 ) + 15u;
 
-        setDuty = (uint32_t)((uint32_t)((filteredDutyPot-45) * (uint32_t)setPeriod )) >> 8;
+            setDuty = (uint32_t)((uint32_t)((filteredDutyPot-45) * (uint32_t)setPeriod )) >> 8;
 
 
-        uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
-        uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
-        if(setDuty > maxDuty) setDuty = maxDuty;
-        if(setDuty < minDuty) setDuty = minDuty;
+            uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+            uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+            if(setDuty > maxDuty) setDuty = maxDuty;
+            if(setDuty < minDuty) setDuty = minDuty;
 
-        setPWMDutyandPeriod(setDuty, setPeriod);
-        potSetCount = 0;
+            potSetCount = 0;
+        }
     }
-
 }

@@ -74,7 +74,7 @@ void currentTripReset(){
 }
 
 /*------------------------------------------------------------------------------
- Function: convertRawToMilliAmps(rawvalue)
+ Function: convertRawToMilliAmps(rawValue)
  *Use: This function converts a raw current ADC value to milli Amps according
  * to the current sensor gain function, note the output is signed
 ------------------------------------------------------------------------------*/

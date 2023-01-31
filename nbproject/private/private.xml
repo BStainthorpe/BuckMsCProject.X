@@ -4,15 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/main.c</file>
-            <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/ADC.h</file>
             <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/CurrentSensor.c</file>
             <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/Potentiometer.c</file>
             <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/GPIO.c</file>
             <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/CurrentSensor.h</file>
-            <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/Potentiometer.h</file>
+            <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/StateMachine.h</file>
             <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/PWM.c</file>
             <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/Global.h</file>
+            <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/Controller.h</file>
+            <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/StateMachine.c</file>
             <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/ADC.c</file>
+            <file>file:/C:/Users/B6028443/MPLABXProjects/BuckMsCProject.X/Controller.c</file>
         </group>
     </open-files>
 </project-private>

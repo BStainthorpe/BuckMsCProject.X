@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c PWM.c Timer0.c ADC.c GPIO.c Potentiometer.c Controller.c CurrentSensor.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c PWM.c Timer0.c ADC.c GPIO.c Potentiometer.c Controller.c CurrentSensor.c StateMachine.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/PWM.p1 ${OBJECTDIR}/Timer0.p1 ${OBJECTDIR}/ADC.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Potentiometer.p1 ${OBJECTDIR}/Controller.p1 ${OBJECTDIR}/CurrentSensor.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/PWM.p1.d ${OBJECTDIR}/Timer0.p1.d ${OBJECTDIR}/ADC.p1.d ${OBJECTDIR}/GPIO.p1.d ${OBJECTDIR}/Potentiometer.p1.d ${OBJECTDIR}/Controller.p1.d ${OBJECTDIR}/CurrentSensor.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/PWM.p1 ${OBJECTDIR}/Timer0.p1 ${OBJECTDIR}/ADC.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Potentiometer.p1 ${OBJECTDIR}/Controller.p1 ${OBJECTDIR}/CurrentSensor.p1 ${OBJECTDIR}/StateMachine.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/PWM.p1.d ${OBJECTDIR}/Timer0.p1.d ${OBJECTDIR}/ADC.p1.d ${OBJECTDIR}/GPIO.p1.d ${OBJECTDIR}/Potentiometer.p1.d ${OBJECTDIR}/Controller.p1.d ${OBJECTDIR}/CurrentSensor.p1.d ${OBJECTDIR}/StateMachine.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/PWM.p1 ${OBJECTDIR}/Timer0.p1 ${OBJECTDIR}/ADC.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Potentiometer.p1 ${OBJECTDIR}/Controller.p1 ${OBJECTDIR}/CurrentSensor.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/PWM.p1 ${OBJECTDIR}/Timer0.p1 ${OBJECTDIR}/ADC.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/Potentiometer.p1 ${OBJECTDIR}/Controller.p1 ${OBJECTDIR}/CurrentSensor.p1 ${OBJECTDIR}/StateMachine.p1
 
 # Source Files
-SOURCEFILES=main.c PWM.c Timer0.c ADC.c GPIO.c Potentiometer.c Controller.c CurrentSensor.c
+SOURCEFILES=main.c PWM.c Timer0.c ADC.c GPIO.c Potentiometer.c Controller.c CurrentSensor.c StateMachine.c
 
 
 
@@ -158,6 +158,14 @@ ${OBJECTDIR}/CurrentSensor.p1: CurrentSensor.c  nbproject/Makefile-${CND_CONF}.m
 	@-${MV} ${OBJECTDIR}/CurrentSensor.d ${OBJECTDIR}/CurrentSensor.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/CurrentSensor.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/StateMachine.p1: StateMachine.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/StateMachine.p1.d 
+	@${RM} ${OBJECTDIR}/StateMachine.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=pickit3   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/StateMachine.p1 StateMachine.c 
+	@-${MV} ${OBJECTDIR}/StateMachine.d ${OBJECTDIR}/StateMachine.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/StateMachine.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
@@ -222,6 +230,14 @@ ${OBJECTDIR}/CurrentSensor.p1: CurrentSensor.c  nbproject/Makefile-${CND_CONF}.m
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/CurrentSensor.p1 CurrentSensor.c 
 	@-${MV} ${OBJECTDIR}/CurrentSensor.d ${OBJECTDIR}/CurrentSensor.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/CurrentSensor.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/StateMachine.p1: StateMachine.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/StateMachine.p1.d 
+	@${RM} ${OBJECTDIR}/StateMachine.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/StateMachine.p1 StateMachine.c 
+	@-${MV} ${OBJECTDIR}/StateMachine.d ${OBJECTDIR}/StateMachine.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/StateMachine.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

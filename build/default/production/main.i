@@ -4524,7 +4524,28 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 65 "./Global.h"
+
+# 1 "./StateMachine.h" 1
+# 20 "./StateMachine.h"
+# 1 "./Global.h" 1
+# 20 "./StateMachine.h" 2
+
+
+
+enum stateMachine{
+    initialising,
+    potControl,
+    voltageModeControl,
+    currentModeControl,
+    overCurrentFault
+};
+
+void transToPotControl();
+void transToVoltageModeControl();
+void transToCurrentModeControl();
+void transToOverCurrentFault();
+# 20 "./Global.h" 2
+# 82 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4539,10 +4560,14 @@ enum internalClockFreqSelec{
     freq32M
 };
 
+enum stateMachine currentState = 0;
+
+
 uint8_t setPeriod = 0;
 uint16_t setDuty = 0;
 uint8_t prevPeriod = 0;
 uint16_t prevDuty = 0;
+
 
 uint32_t clockFrequency = 0;
 # 20 "main.c" 2
@@ -4573,6 +4598,10 @@ uint16_t filteredVout = 0;
 uint16_t voutFIFO[16];
 
 uint16_t readFilteredVout();
+int16_t convertRawToDeciVolts(uint16_t rawValue);
+void controlRoutine();
+void runCurrentModeControl();
+void runVoltageModeControl();
 # 23 "main.c" 2
 
 # 1 "./ADC.h" 1
@@ -4599,9 +4628,9 @@ uint16_t dutyPotFIFO[16];
 # 25 "main.c" 2
 
 
+
 volatile _Bool timerSlotHalf = 0;
 volatile _Bool timerSlotQuarter = 0;
-volatile _Bool emergencyStop = 0;
 
 void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq);
 # 41 "main.c"
@@ -4610,9 +4639,11 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
     if ("((INTCON)&07Fh)" "," "2") {
 # 52 "main.c"
         if(currentTripRead() == 1){
-            emergencyStop = 1;
-            setPWMDutyandPeriod(0, 0);
+            transToOverCurrentFault();
         }
+
+        setPWMDutyandPeriod(setDuty, setPeriod);
+
 
         if(timerSlotHalf == 0){
 
@@ -4628,10 +4659,7 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
             if(timerSlotQuarter == 0){
 
                 writeGPIO(pinRB4, 1);
-
-                if(~emergencyStop){
-                    runPotScaling();
-                }
+                runPotScaling();
             }
 
             if(timerSlotQuarter == 1){
@@ -4671,6 +4699,11 @@ int main(int argc, char** argv) {
     initialiseCurrentSensors();
     initialisePotentiometers();
     initialiseGPIO(pinRB4, 0);
+    if(~readGPIO(pinRB0)){
+        if(1) transToVoltageModeControl();
+        if(~1) transToCurrentModeControl();
+    }
+    else transToPotControl();
 
     while(1){
 

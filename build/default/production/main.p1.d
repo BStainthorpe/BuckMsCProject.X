@@ -4,6 +4,7 @@ PWM.h  \
 Timer0.h  \
 Global.h  \
 GPIO.h  \
+StateMachine.h  \
 CurrentSensor.h  \
 Controller.h  \
 ADC.h  \

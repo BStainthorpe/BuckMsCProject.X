@@ -1,4 +1,4 @@
-# 1 "GPIO.c"
+# 1 "StateMachine.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "GPIO.c" 2
+# 1 "StateMachine.c" 2
 
 
 
@@ -4552,35 +4552,26 @@ uint16_t prevDuty = 0;
 
 
 uint32_t clockFrequency = 0;
-# 8 "GPIO.c" 2
-# 18 "GPIO.c"
-void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction){
-    uint8_t portNumber = 0;
-    uint8_t portType = 0;
-    if(gpioNumber > 7){
-        portNumber = gpioNumber - 8;
-        portType = 1;
-    }
-    else{
-        portNumber = gpioNumber;
-        portType = 0;
-    }
+# 8 "StateMachine.c" 2
 
-    if(portType == 0){
-        if(direction){
-            TRISA |= (1 << (uint8_t)portNumber);
-            ANSELA &= ~(1 << (uint8_t)portNumber);
-        }
-        else if(~direction) TRISA &= ~(1 << (uint8_t)portNumber);
-    }
-    else if(portType == 1){
-        if(direction){
-            TRISB |= (1 << (uint8_t)portNumber);
-            ANSELB &= ~(1 << (uint8_t)portNumber);
-        }
-        else if(~direction) TRISB &= ~(1 << (uint8_t)portNumber);
-    }
 
+
+
+# 1 "./ADC.h" 1
+# 26 "./ADC.h"
+void initialiseADCPin(const enum GPIO_PORTS gpioNumber);
+void initialiseADCModule();
+uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
+uint16_t readILCurrentADCRaw();
+# 12 "StateMachine.c" 2
+
+
+
+
+
+
+void transToPotControl(){
+    currentState = potControl;
 }
 
 
@@ -4588,54 +4579,26 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction){
 
 
 
-void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue){
-    uint8_t portNumber = 0;
-    uint8_t portType = 0;
-    if(gpioNumber > 7){
-        portNumber = gpioNumber - 8;
-        portType = 1;
-    }
-    else{
-        portNumber = gpioNumber;
-        portType = 0;
-    }
-
-    if(portType == 0){
-        if(writeValue) LATA |= (1 << (uint8_t)portNumber);
-        else if(~writeValue) LATA &= ~(1 << (uint8_t)portNumber);
-    }
-    else if(portType == 1){
-        if(writeValue) LATB |= (1 << (uint8_t)portNumber);
-        else if(~writeValue) LATB &= ~(1 << (uint8_t)portNumber);
-    }
-
+void transToVoltageModeControl(){
+    currentState = voltageModeControl;
 }
 
 
 
 
 
-_Bool readGPIO(const enum GPIO_PORTS gpioNumber){
-    uint8_t portNumber = 0;
-    uint8_t portType = 0;
-    if(gpioNumber > 7){
-        portNumber = gpioNumber - 8;
-        portType = 1;
-    }
-    else{
-        portNumber = gpioNumber;
-        portType = 0;
-    }
 
-    if(portType == 0){
-        uint8_t readA = PORTA;
-        uint8_t returnValueA = ((readA >> ((uint8_t) portNumber)) & 1u);
-        return returnValueA;
-    }
-    else if(portType == 1){
-        uint8_t readB = PORTB;
-        uint8_t returnValueB = ((readB >> ((uint8_t) portNumber)) & 1u);
-        return returnValueB;
-    }
+void transToCurrentModeControl(){
+    currentState = currentModeControl;
+}
 
+
+
+
+
+
+void transToOverCurrentFault(){
+    setDuty = 0;
+    setPeriod = 0;
+    currentState = overCurrentFault;
 }
