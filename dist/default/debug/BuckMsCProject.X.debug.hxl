@@ -9,12 +9,12 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 5h		(dist/default/debug\BuckMsCProject.X.debug.hex)
-  8h - E0Bh		(dist/default/debug\BuckMsCProject.X.debug.hex)
+  8h - DFFh		(dist/default/debug\BuckMsCProject.X.debug.hex)
   10000h - 10007h		(dist/default/debug\BuckMsCProject.X.debug.hex)
   1000Eh - 10011h		(dist/default/debug\BuckMsCProject.X.debug.hex)
  Unused ranges:
   6h - 7h
-  E0Ch - FFFFh
+  E00h - FFFFh
   10008h - 1000Dh
 
 ### Hex Memory Map ###
@@ -248,7 +248,6 @@
 00000DD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000DE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000DF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00000E00 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- --
 ----------------------------------------------------------
 00010000 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- H1 H1
 00010010 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --

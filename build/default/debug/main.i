@@ -4550,7 +4550,7 @@ uint32_t clockFrequency = 0;
 
 # 1 "./CurrentSensor.h" 1
 # 33 "./CurrentSensor.h"
-volatile uint16_t latestIL1 = 0;
+volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
 uint16_t currentIDSFIFO[16];
@@ -4641,7 +4641,7 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
     }
 
     if("((PIR1)&07Fh)" "," "2"){
-        latestIL1 = readILCurrentADCRaw;
+        latestIL = readILCurrentADCRaw();
         PIR1bits.CCP1IF = 0;
     }
 

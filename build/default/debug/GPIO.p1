@@ -777,48 +777,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> _portType `i -> 0 `i 383  ]
 {
 "92
-[; ;GPIO.c: 92:         uint8_t read = PORTA;
-[v _read `uc ~T0 @X0 1 a ]
-[e = _read _PORTA ]
+[; ;GPIO.c: 92:         uint8_t readA = PORTA;
+[v _readA `uc ~T0 @X0 1 a ]
+[e = _readA _PORTA ]
 "93
-[; ;GPIO.c: 93:         uint8_t check1 = (read >> ((uint8_t) portNumber));
-[v _check1 `uc ~T0 @X0 1 a ]
-[e = _check1 -> >> -> _read `i -> _portNumber `i `uc ]
+[; ;GPIO.c: 93:         uint8_t returnValueA = ((readA >> ((uint8_t) portNumber)) & 1u);
+[v _returnValueA `uc ~T0 @X0 1 a ]
+[e = _returnValueA -> & -> >> -> _readA `i -> _portNumber `i `ui -> 1 `ui `uc ]
 "94
-[; ;GPIO.c: 94:         uint8_t returnValue = (check1 & 1u);
-[v _returnValue `uc ~T0 @X0 1 a ]
-[e = _returnValue -> & -> _check1 `ui -> 1 `ui `uc ]
-"95
-[; ;GPIO.c: 95:         return returnValue;
-[e ) -> _returnValue `a ]
+[; ;GPIO.c: 94:         return returnValueA;
+[e ) -> _returnValueA `a ]
 [e $UE 380  ]
-"96
-[; ;GPIO.c: 96:     }
+"95
+[; ;GPIO.c: 95:     }
 }
 [e $U 384  ]
-"97
-[; ;GPIO.c: 97:     else if(portType == 1){
+"96
+[; ;GPIO.c: 96:     else if(portType == 1){
 [e :U 383 ]
 [e $ ! == -> _portType `i -> 1 `i 385  ]
 {
+"97
+[; ;GPIO.c: 97:         uint8_t readB = PORTB;
+[v _readB `uc ~T0 @X0 1 a ]
+[e = _readB _PORTB ]
 "98
-[; ;GPIO.c: 98:         uint8_t maskB = (uint8_t)(0b00000001 << ((uint8_t) portNumber));
-[v _maskB `uc ~T0 @X0 1 a ]
-[e = _maskB -> << -> 1 `i -> _portNumber `i `uc ]
-"99
-[; ;GPIO.c: 99:         uint8_t returnValueB = ((PORTB && maskB) >> ((uint8_t) portNumber));
+[; ;GPIO.c: 98:         uint8_t returnValueB = ((readB >> ((uint8_t) portNumber)) & 1u);
 [v _returnValueB `uc ~T0 @X0 1 a ]
-[e = _returnValueB -> >> -> && != -> _PORTB `i -> 0 `i != -> _maskB `i -> 0 `i `i -> _portNumber `i `uc ]
-"100
-[; ;GPIO.c: 100:         return returnValueB;
+[e = _returnValueB -> & -> >> -> _readB `i -> _portNumber `i `ui -> 1 `ui `uc ]
+"99
+[; ;GPIO.c: 99:         return returnValueB;
 [e ) -> _returnValueB `a ]
 [e $UE 380  ]
-"101
-[; ;GPIO.c: 101:     }
+"100
+[; ;GPIO.c: 100:     }
 }
 [e :U 385 ]
 [e :U 384 ]
-"103
-[; ;GPIO.c: 103: }
+"102
+[; ;GPIO.c: 102: }
 [e :UE 380 ]
 }

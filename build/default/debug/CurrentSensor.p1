@@ -523,9 +523,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> -> 0 `i `l `ul
 ]
 "33 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 33: volatile uint16_t latestIL1 = 0;
-[v _latestIL1 `Vus ~T0 @X0 1 e ]
-[i _latestIL1
+[; ;./CurrentSensor.h: 33: volatile uint16_t latestIL = 0;
+[v _latestIL `Vus ~T0 @X0 1 e ]
+[i _latestIL
 -> -> 0 `i `us
 ]
 "34
@@ -673,8 +673,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 367 ]
 }
 "57
-[; ;CurrentSensor.c: 57:     currentILFIFO[16 -1] = latestIL1;
-[e = *U + &U _currentILFIFO * -> -> - -> 16 `i -> 1 `i `ui `ux -> -> # *U &U _currentILFIFO `ui `ux _latestIL1 ]
+[; ;CurrentSensor.c: 57:     currentILFIFO[16 -1] = latestIL;
+[e = *U + &U _currentILFIFO * -> -> - -> 16 `i -> 1 `i `ui `ux -> -> # *U &U _currentILFIFO `ui `ux _latestIL ]
 "58
 [; ;CurrentSensor.c: 58:     uint32_t sumOfSamples = 0;
 [v _sumOfSamples `ul ~T0 @X0 1 a ]

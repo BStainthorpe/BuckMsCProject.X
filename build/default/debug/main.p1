@@ -602,9 +602,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> -> 0 `i `l `ul
 ]
 "33 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 33: volatile uint16_t latestIL1 = 0;
-[v _latestIL1 `Vus ~T0 @X0 1 e ]
-[i _latestIL1
+[; ;./CurrentSensor.h: 33: volatile uint16_t latestIL = 0;
+[v _latestIL `Vus ~T0 @X0 1 e ]
+[i _latestIL
 -> -> 0 `i `us
 ]
 "34
@@ -780,8 +780,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! != :s 4C -> -> 0 `i `*uc 364  ]
 {
 "91
-[; ;main.c: 91:         latestIL1 = readILCurrentADCRaw;
-[e = _latestIL1 -> &U _readILCurrentADCRaw `us ]
+[; ;main.c: 91:         latestIL = readILCurrentADCRaw();
+[e = _latestIL ( _readILCurrentADCRaw ..  ]
 "92
 [; ;main.c: 92:         PIR1bits.CCP1IF = 0;
 [e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]

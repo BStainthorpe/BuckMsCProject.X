@@ -4530,7 +4530,7 @@ uint32_t clockFrequency = 0;
 
 # 1 "./CurrentSensor.h" 1
 # 33 "./CurrentSensor.h"
-volatile uint16_t latestIL1 = 0;
+volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
 uint16_t currentIDSFIFO[16];
@@ -4600,7 +4600,7 @@ uint16_t readFilteredIDS(){
 
 uint16_t readFilteredIL(){
     for(uint8_t i=0; i<16 -1; i++) currentILFIFO[i] = currentILFIFO[i+1];
-    currentILFIFO[16 -1] = latestIL1;
+    currentILFIFO[16 -1] = latestIL;
     uint32_t sumOfSamples = 0;
     for(uint8_t i=0; i<16; i++) sumOfSamples += currentILFIFO[i];
 

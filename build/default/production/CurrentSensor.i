@@ -4529,8 +4529,8 @@ uint32_t clockFrequency = 0;
 # 7 "CurrentSensor.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 33 "./CurrentSensor.h"
-volatile uint16_t latestIL1 = 0;
+# 34 "./CurrentSensor.h"
+volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
 uint16_t currentIDSFIFO[16];
@@ -4543,6 +4543,8 @@ void initialiseCurrentSensors();
 _Bool currentTripRead();
 uint16_t readFilteredIDS();
 uint16_t readFilteredIL();
+void currentTripReset();
+int16_t convertRawToMilliAmps(uint16_t rawvalue);
 # 8 "CurrentSensor.c" 2
 
 
@@ -4566,7 +4568,7 @@ void initialiseCurrentSensors(){
     initialiseADCPin(pinRA0);
     initialiseADCPin(pinRA2);
     initialiseGPIO(pinRB3, 0);
-    writeGPIO(9, 0);
+    currentTripReset();
 }
 
 
@@ -4600,7 +4602,7 @@ uint16_t readFilteredIDS(){
 
 uint16_t readFilteredIL(){
     for(uint8_t i=0; i<16 -1; i++) currentILFIFO[i] = currentILFIFO[i+1];
-    currentILFIFO[16 -1] = latestIL1;
+    currentILFIFO[16 -1] = latestIL;
     uint32_t sumOfSamples = 0;
     for(uint8_t i=0; i<16; i++) sumOfSamples += currentILFIFO[i];
 
@@ -4611,6 +4613,21 @@ uint16_t readFilteredIL(){
 
 
 
+
+
 void currentTripReset(){
+    writeGPIO(pinRB3, 0);
+     _delay((unsigned long)((2)*(freq32M/4000000.0)));
     writeGPIO(pinRB3, 1);
+}
+
+
+
+
+
+
+int16_t convertRawToMilliAmps(uint16_t rawValue){
+    int16_t offsetted = (int16_t)(rawValue - 445);
+    int16_t returnValuemA = (int32_t)(offsetted * 2857) >> 0;
+    return returnValuemA;
 }

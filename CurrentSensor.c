@@ -20,7 +20,7 @@ void initialiseCurrentSensors(){
     initialiseADCPin(gpioIDSCurrent);
     initialiseADCPin(gpioILCurrent);
     initialiseGPIO(gpioOverCurrentClear, GPIO_Output);
-    writeGPIO(pinOverCurrentClear, 0);         //initially set to 0 to turn off MOSFET and clear overcurrent faults 
+    currentTripReset();        //initially set to 0 to turn off MOSFET and clear overcurrent faults 
 }
 
 /*------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ uint16_t readFilteredIDS(){
 ------------------------------------------------------------------------------*/
 uint16_t readFilteredIL(){
     for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER-1; i++) currentILFIFO[i] = currentILFIFO[i+1];       //shift all values in array to next 
-    currentILFIFO[SIZE_OF_ISENSOR_FILTER-1] =  latestIL1;                //take the newest sample from interrupt
+    currentILFIFO[SIZE_OF_ISENSOR_FILTER-1] =  latestIL;                //take the newest sample from interrupt
     uint32_t sumOfSamples = 0;
     for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER; i++) sumOfSamples += currentILFIFO[i];
     
@@ -63,8 +63,23 @@ uint16_t readFilteredIL(){
 
 /*------------------------------------------------------------------------------
  Function: currentTripReset()
- *Use: This function resets the current trip by 
+ *Use: This function resets the current trip by holding the reset pin low for 
+ * 2uS, which turns off the MOSFETs in series with the Current Sensor reset pins
+ * before turning them back on again
 ------------------------------------------------------------------------------*/
 void currentTripReset(){
-    writeGPIO(gpioOverCurrentClear, 1);
+    writeGPIO(gpioOverCurrentClear, 0);
+     __delay_us(2);
+    writeGPIO(gpioOverCurrentClear, 1); 
+}
+
+/*------------------------------------------------------------------------------
+ Function: convertRawToMilliAmps(rawvalue)
+ *Use: This function converts a raw current ADC value to milli Amps according
+ * to the current sensor gain function, note the output is signed
+------------------------------------------------------------------------------*/
+int16_t convertRawToMilliAmps(uint16_t rawValue){
+    int16_t offsetted = (int16_t)(rawValue - CURRENT_SENSOR_OFFSET); //subtract the offset to obtain a neg or pos value
+    int16_t returnValuemA = (int32_t)(offsetted * CURRENT_SENSOR_GAIN) >> CURRENT_SENSOR_MANTISSA;
+    return returnValuemA;
 }

@@ -44,10 +44,10 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
        
     //Timer Interrupt Slots:     Timing Graph:                        Functions:
     //980Hz interrupt            |------|------|------|------|        currentTripRead()
-    //490Hz Slot 1:              1-------------1-------------1        controlRoutine() or pwmSet()
-    //490Hz Slot 2:              -------2-------------2-------        controlADCRead() 
-    //245Hz Slot 3:              -------3---------------------        potentiometersRead()
-    //245Hz Slot 4:              ---------------------4-------
+    //490Hz Slot 1:              1-------------1-------------1        controlRoutine()
+    //490Hz Slot 2:              -------2-------------2-------        readFilteredVout() readFilteredIL()
+    //245Hz Slot 3:              -------3---------------------        runPotScaling()
+    //245Hz Slot 4:              ---------------------4-------        readFilteredDutyPot() readFilteredFreqPot()
        
         if(currentTripRead() == 1){
             emergencyStop = 1;         //flag an emergency stop
@@ -56,19 +56,18 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
        //each half slot occurs at 490Hz or every 2ms
         if(timerSlotHalf == false){
             //slot 1------------------------------------------------------------
-            writeGPIO(gpioSlotTest, 0); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz
+            writeGPIO(gpioSlotTest, 0); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz on RB4
         }
         if(timerSlotHalf == true){
             //slot 2------------------------------------------------------------
-           
+            filteredIL = readFilteredIL();
+            //filteredIDS = readFilteredIDS();
+            filteredVout = readFilteredVout();
+            
             //each quarter slot occurs at 245Hz or every 4ms
             if(timerSlotQuarter == false){
                 //slot 3--------------------------------------------------------
-                writeGPIO(gpioSlotTest, 1); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz
-                writeGPIO(pinOverCurrentClear, 1); //pull over current pin high to turn on OC MOSFET - OC will not clear unless pin is low for 1uS
-                
-                filteredDutyPot = readFilteredDutyPot();
-                filteredFreqPot = readFilteredFreqPot();
+                writeGPIO(gpioSlotTest, 1); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz on RB4
                 
                 if(~emergencyStop){
                     runPotScaling();
@@ -76,7 +75,9 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
             }
             
             if(timerSlotQuarter == true){
-                //slot 4-------------------------------------------------------- 
+                //slot 4--------------------------------------------------------
+                filteredDutyPot = readFilteredDutyPot();
+                filteredFreqPot = readFilteredFreqPot();               
             }           
           
             timerSlotQuarter = ~timerSlotQuarter;
@@ -88,7 +89,7 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
     }
     
     if(CCP1IF_bit){
-        latestIL1 = readILCurrentADCRaw;   //fast function for reading the IL current
+        latestIL = readILCurrentADCRaw();   //fast function for reading the IL current
         PIR1bits.CCP1IF = 0;               //clear the interrupt flag
     }
 

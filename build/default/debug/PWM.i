@@ -4930,6 +4930,7 @@ void setupPWM(){
 
     APFCON0bits.P1DSEL = 1;
     PSTR1CONbits.STR1D = 1;
+    PSTR1CONbits.STR1A = 0;
 
     T2CONbits.T2CKPS = 0b00;
     PIE1bits.TMR2IE = 0;
@@ -4942,14 +4943,14 @@ void setupPWM(){
 
     initialiseGPIO(pinRA6, 0);
 }
-# 48 "PWM.c"
+# 49 "PWM.c"
 void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period){
     PR2 = period;
     CCPR1L = dutyCycle >> 2;
     CCP1CONbits.DC1B0 = dutyCycle & 1;
     CCP1CONbits.DC1B1 = (dutyCycle & 2) > 1;
 }
-# 63 "PWM.c"
+# 64 "PWM.c"
 void setPWMPeriod(uint8_t period){
     PR2 = period;
 }

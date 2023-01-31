@@ -4549,8 +4549,8 @@ uint32_t clockFrequency = 0;
 
 
 # 1 "./CurrentSensor.h" 1
-# 33 "./CurrentSensor.h"
-volatile uint16_t latestIL1 = 0;
+# 34 "./CurrentSensor.h"
+volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
 uint16_t currentIDSFIFO[16];
@@ -4563,9 +4563,16 @@ void initialiseCurrentSensors();
 _Bool currentTripRead();
 uint16_t readFilteredIDS();
 uint16_t readFilteredIL();
+void currentTripReset();
+int16_t convertRawToMilliAmps(uint16_t rawvalue);
 # 22 "main.c" 2
 
 # 1 "./Controller.h" 1
+# 30 "./Controller.h"
+uint16_t filteredVout = 0;
+uint16_t voutFIFO[16];
+
+uint16_t readFilteredVout();
 # 23 "main.c" 2
 
 # 1 "./ADC.h" 1
@@ -4613,15 +4620,14 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
         }
         if(timerSlotHalf == 1){
 
+            filteredIL = readFilteredIL();
+
+            filteredVout = readFilteredVout();
 
 
             if(timerSlotQuarter == 0){
 
                 writeGPIO(pinRB4, 1);
-                writeGPIO(9, 1);
-
-                filteredDutyPot = readFilteredDutyPot();
-                filteredFreqPot = readFilteredFreqPot();
 
                 if(~emergencyStop){
                     runPotScaling();
@@ -4630,6 +4636,8 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
             if(timerSlotQuarter == 1){
 
+                filteredDutyPot = readFilteredDutyPot();
+                filteredFreqPot = readFilteredFreqPot();
             }
 
             timerSlotQuarter = ~timerSlotQuarter;
@@ -4641,7 +4649,7 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
     }
 
     if("((PIR1)&07Fh)" "," "2"){
-        latestIL1 = readILCurrentADCRaw;
+        latestIL = readILCurrentADCRaw();
         PIR1bits.CCP1IF = 0;
     }
 
