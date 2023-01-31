@@ -1,14 +1,23 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"14 CurrentSensor.c
-[; ;CurrentSensor.c: 14:     initialiseGPIO(pinRA3, 1);
+"18 CurrentSensor.c
+[; ;CurrentSensor.c: 18:     initialiseGPIO(pinRA3, 1);
 [c E2798 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
 [n E2798 GPIO_PORTS pinRA0 pinRA1 pinRA2 pinRA3 pinRA4 pinRA5 pinRA6 pinRA7 pinRB0 pinRB1 pinRB2 pinRB3 pinRB4 pinRB5 pinRB6 pinRB7  ]
 "50 ./GPIO.h
 [; ;./GPIO.h: 50: void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 [v _initialiseGPIO `(v ~T0 @X0 0 ef2`CE2798`uc ]
+"26 ./ADC.h
+[; ;./ADC.h: 26: void initialiseADCPin(const enum GPIO_PORTS gpioNumber);
+[v _initialiseADCPin `(v ~T0 @X0 0 ef1`CE2798 ]
+"51 ./GPIO.h
+[; ;./GPIO.h: 51: void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
+[v _writeGPIO `(v ~T0 @X0 0 ef2`CE2798`uc ]
 "52
 [; ;./GPIO.h: 52: _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 [v _readGPIO `(a ~T0 @X0 0 ef1`CE2798 ]
+"28 ./ADC.h
+[; ;./ADC.h: 28: uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
+[v _readADCRaw `(us ~T0 @X0 0 ef1`CE2798 ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -483,63 +492,224 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6749
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 6749: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"63 ./Global.h
-[; ;./Global.h: 63: uint8_t setPeriod = 0;
+"79 ./Global.h
+[; ;./Global.h: 79: uint8_t setPeriod = 0;
 [v _setPeriod `uc ~T0 @X0 1 e ]
 [i _setPeriod
 -> -> 0 `i `uc
 ]
-"64
-[; ;./Global.h: 64: uint16_t setDuty = 0;
+"80
+[; ;./Global.h: 80: uint16_t setDuty = 0;
 [v _setDuty `us ~T0 @X0 1 e ]
 [i _setDuty
 -> -> 0 `i `us
 ]
-"65
-[; ;./Global.h: 65: uint8_t prevPeriod = 0;
+"81
+[; ;./Global.h: 81: uint8_t prevPeriod = 0;
 [v _prevPeriod `uc ~T0 @X0 1 e ]
 [i _prevPeriod
 -> -> 0 `i `uc
 ]
-"66
-[; ;./Global.h: 66: uint16_t prevDuty = 0;
+"82
+[; ;./Global.h: 82: uint16_t prevDuty = 0;
 [v _prevDuty `us ~T0 @X0 1 e ]
 [i _prevDuty
 -> -> 0 `i `us
 ]
-"68
-[; ;./Global.h: 68: uint32_t clockFrequency = 0;
+"84
+[; ;./Global.h: 84: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"13 CurrentSensor.c
-[; ;CurrentSensor.c: 13: void initialiseCurrentSensors(){
+"33 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 33: volatile uint16_t latestIL1 = 0;
+[v _latestIL1 `Vus ~T0 @X0 1 e ]
+[i _latestIL1
+-> -> 0 `i `us
+]
+"34
+[; ;./CurrentSensor.h: 34: uint16_t filteredIDS = 0;
+[v _filteredIDS `us ~T0 @X0 1 e ]
+[i _filteredIDS
+-> -> 0 `i `us
+]
+"35
+[; ;./CurrentSensor.h: 35: uint16_t filteredIL = 0;
+[v _filteredIL `us ~T0 @X0 1 e ]
+[i _filteredIL
+-> -> 0 `i `us
+]
+"36
+[; ;./CurrentSensor.h: 36: uint16_t currentIDSFIFO[16];
+[v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
+"37
+[; ;./CurrentSensor.h: 37: uint16_t currentILFIFO[16];
+[v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
+"39
+[; ;./CurrentSensor.h: 39: _Bool tripIDS = 0;
+[v _tripIDS `a ~T0 @X0 1 e ]
+[i _tripIDS
+-> -> 0 `i `a
+]
+"40
+[; ;./CurrentSensor.h: 40: _Bool tripIL = 0;
+[v _tripIL `a ~T0 @X0 1 e ]
+[i _tripIL
+-> -> 0 `i `a
+]
+"17 CurrentSensor.c
+[; ;CurrentSensor.c: 17: void initialiseCurrentSensors(){
 [v _initialiseCurrentSensors `(v ~T0 @X0 1 ef ]
 {
 [e :U _initialiseCurrentSensors ]
 [f ]
-"14
-[; ;CurrentSensor.c: 14:     initialiseGPIO(pinRA3, 1);
+"18
+[; ;CurrentSensor.c: 18:     initialiseGPIO(pinRA3, 1);
 [e ( _initialiseGPIO (2 , . `E2798 3 -> -> 1 `i `uc ]
-"15
-[; ;CurrentSensor.c: 15:     initialiseGPIO(pinRA1, 1);
+"19
+[; ;CurrentSensor.c: 19:     initialiseGPIO(pinRA1, 1);
 [e ( _initialiseGPIO (2 , . `E2798 1 -> -> 1 `i `uc ]
-"16
-[; ;CurrentSensor.c: 16: }
+"20
+[; ;CurrentSensor.c: 20:     initialiseADCPin(pinRA0);
+[e ( _initialiseADCPin (1 . `E2798 0 ]
+"21
+[; ;CurrentSensor.c: 21:     initialiseADCPin(pinRA2);
+[e ( _initialiseADCPin (1 . `E2798 2 ]
+"22
+[; ;CurrentSensor.c: 22:     initialiseGPIO(pinRB3, 0);
+[e ( _initialiseGPIO (2 , . `E2798 11 -> -> 0 `i `uc ]
+"23
+[; ;CurrentSensor.c: 23:     writeGPIO(9, 0);
+[e ( _writeGPIO (2 , -> -> 9 `i `E2798 -> -> 0 `i `uc ]
+"24
+[; ;CurrentSensor.c: 24: }
 [e :UE 356 ]
 }
-"18
-[; ;CurrentSensor.c: 18: uint8_t currentTripRead(){
-[v _currentTripRead `(uc ~T0 @X0 1 ef ]
+"30
+[; ;CurrentSensor.c: 30: _Bool currentTripRead(){
+[v _currentTripRead `(a ~T0 @X0 1 ef ]
 {
 [e :U _currentTripRead ]
 [f ]
-"19
-[; ;CurrentSensor.c: 19:     return readGPIO(pinRA3) || readGPIO(pinRA1);
-[e ) -> -> || != -> ( _readGPIO (1 . `E2798 3 `i -> 0 `i != -> ( _readGPIO (1 . `E2798 1 `i -> 0 `i `i `uc ]
+"31
+[; ;CurrentSensor.c: 31:     tripIDS = ~readGPIO(pinRA1);
+[e = _tripIDS -> ~ -> ( _readGPIO (1 . `E2798 1 `i `a ]
+"32
+[; ;CurrentSensor.c: 32:     tripIL = ~readGPIO(pinRA3);
+[e = _tripIL -> ~ -> ( _readGPIO (1 . `E2798 3 `i `a ]
+"33
+[; ;CurrentSensor.c: 33:     return (tripIL || tripIDS);
+[e ) -> -> || != -> _tripIL `i -> 0 `i != -> _tripIDS `i -> 0 `i `i `a ]
 [e $UE 357  ]
-"20
-[; ;CurrentSensor.c: 20: }
+"34
+[; ;CurrentSensor.c: 34: }
 [e :UE 357 ]
+}
+"41
+[; ;CurrentSensor.c: 41: uint16_t readFilteredIDS(){
+[v _readFilteredIDS `(us ~T0 @X0 1 ef ]
+{
+[e :U _readFilteredIDS ]
+[f ]
+"42
+[; ;CurrentSensor.c: 42:     for(uint8_t i=0; i<16 -1; i++) currentIDSFIFO[i] = currentIDSFIFO[i+1];
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i - -> 16 `i -> 1 `i 359  ]
+[e $U 360  ]
+[e :U 359 ]
+[e = *U + &U _currentIDSFIFO * -> _i `ux -> -> # *U &U _currentIDSFIFO `ui `ux *U + &U _currentIDSFIFO * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _currentIDSFIFO `ui `ux ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i - -> 16 `i -> 1 `i 359  ]
+[e :U 360 ]
+}
+"43
+[; ;CurrentSensor.c: 43:     currentIDSFIFO[16 -1] = readADCRaw(pinRA0);
+[e = *U + &U _currentIDSFIFO * -> -> - -> 16 `i -> 1 `i `ui `ux -> -> # *U &U _currentIDSFIFO `ui `ux ( _readADCRaw (1 . `E2798 0 ]
+"44
+[; ;CurrentSensor.c: 44:     uint32_t sumOfSamples = 0;
+[v _sumOfSamples `ul ~T0 @X0 1 a ]
+[e = _sumOfSamples -> -> -> 0 `i `l `ul ]
+"45
+[; ;CurrentSensor.c: 45:     for(uint8_t i=0; i<16; i++) sumOfSamples += currentIDSFIFO[i];
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 16 `i 362  ]
+[e $U 363  ]
+[e :U 362 ]
+[e =+ _sumOfSamples -> *U + &U _currentIDSFIFO * -> _i `ux -> -> # *U &U _currentIDSFIFO `ui `ux `ul ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 16 `i 362  ]
+[e :U 363 ]
+}
+"47
+[; ;CurrentSensor.c: 47:     return (sumOfSamples >> 4);
+[e ) -> >> _sumOfSamples -> 4 `i `us ]
+[e $UE 358  ]
+"48
+[; ;CurrentSensor.c: 48: }
+[e :UE 358 ]
+}
+"55
+[; ;CurrentSensor.c: 55: uint16_t readFilteredIL(){
+[v _readFilteredIL `(us ~T0 @X0 1 ef ]
+{
+[e :U _readFilteredIL ]
+[f ]
+"56
+[; ;CurrentSensor.c: 56:     for(uint8_t i=0; i<16 -1; i++) currentILFIFO[i] = currentILFIFO[i+1];
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i - -> 16 `i -> 1 `i 366  ]
+[e $U 367  ]
+[e :U 366 ]
+[e = *U + &U _currentILFIFO * -> _i `ux -> -> # *U &U _currentILFIFO `ui `ux *U + &U _currentILFIFO * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _currentILFIFO `ui `ux ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i - -> 16 `i -> 1 `i 366  ]
+[e :U 367 ]
+}
+"57
+[; ;CurrentSensor.c: 57:     currentILFIFO[16 -1] = latestIL1;
+[e = *U + &U _currentILFIFO * -> -> - -> 16 `i -> 1 `i `ui `ux -> -> # *U &U _currentILFIFO `ui `ux _latestIL1 ]
+"58
+[; ;CurrentSensor.c: 58:     uint32_t sumOfSamples = 0;
+[v _sumOfSamples `ul ~T0 @X0 1 a ]
+[e = _sumOfSamples -> -> -> 0 `i `l `ul ]
+"59
+[; ;CurrentSensor.c: 59:     for(uint8_t i=0; i<16; i++) sumOfSamples += currentILFIFO[i];
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 16 `i 369  ]
+[e $U 370  ]
+[e :U 369 ]
+[e =+ _sumOfSamples -> *U + &U _currentILFIFO * -> _i `ux -> -> # *U &U _currentILFIFO `ui `ux `ul ]
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 16 `i 369  ]
+[e :U 370 ]
+}
+"61
+[; ;CurrentSensor.c: 61:     return (sumOfSamples >> 4);
+[e ) -> >> _sumOfSamples -> 4 `i `us ]
+[e $UE 365  ]
+"62
+[; ;CurrentSensor.c: 62: }
+[e :UE 365 ]
+}
+"68
+[; ;CurrentSensor.c: 68: void currentTripReset(){
+[v _currentTripReset `(v ~T0 @X0 1 ef ]
+{
+[e :U _currentTripReset ]
+[f ]
+"69
+[; ;CurrentSensor.c: 69:     writeGPIO(pinRB3, 1);
+[e ( _writeGPIO (2 , . `E2798 11 -> -> 1 `i `uc ]
+"70
+[; ;CurrentSensor.c: 70: }
+[e :UE 372 ]
 }

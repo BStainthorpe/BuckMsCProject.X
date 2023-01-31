@@ -777,28 +777,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> _portType `i -> 0 `i 383  ]
 {
 "92
-[; ;GPIO.c: 92:         return ((PORTA &= (1 << (uint8_t)portNumber)) >> (uint8_t)portNumber);
-[e ) -> >> -> =& _PORTA -> << -> 1 `i -> _portNumber `i `Vuc `i -> _portNumber `i `a ]
-[e $UE 380  ]
+[; ;GPIO.c: 92:         uint8_t readA = PORTA;
+[v _readA `uc ~T0 @X0 1 a ]
+[e = _readA _PORTA ]
 "93
-[; ;GPIO.c: 93:     }
+[; ;GPIO.c: 93:         uint8_t returnValueA = ((readA >> ((uint8_t) portNumber)) & 1u);
+[v _returnValueA `uc ~T0 @X0 1 a ]
+[e = _returnValueA -> & -> >> -> _readA `i -> _portNumber `i `ui -> 1 `ui `uc ]
+"94
+[; ;GPIO.c: 94:         return returnValueA;
+[e ) -> _returnValueA `a ]
+[e $UE 380  ]
+"95
+[; ;GPIO.c: 95:     }
 }
 [e $U 384  ]
-"94
-[; ;GPIO.c: 94:     else if(portType == 1){
+"96
+[; ;GPIO.c: 96:     else if(portType == 1){
 [e :U 383 ]
 [e $ ! == -> _portType `i -> 1 `i 385  ]
 {
-"95
-[; ;GPIO.c: 95:         return ((PORTB &= (1 << (uint8_t)portNumber)) >> (uint8_t)portNumber);
-[e ) -> >> -> =& _PORTB -> << -> 1 `i -> _portNumber `i `Vuc `i -> _portNumber `i `a ]
+"97
+[; ;GPIO.c: 97:         uint8_t readB = PORTB;
+[v _readB `uc ~T0 @X0 1 a ]
+[e = _readB _PORTB ]
+"98
+[; ;GPIO.c: 98:         uint8_t returnValueB = ((readB >> ((uint8_t) portNumber)) & 1u);
+[v _returnValueB `uc ~T0 @X0 1 a ]
+[e = _returnValueB -> & -> >> -> _readB `i -> _portNumber `i `ui -> 1 `ui `uc ]
+"99
+[; ;GPIO.c: 99:         return returnValueB;
+[e ) -> _returnValueB `a ]
 [e $UE 380  ]
-"96
-[; ;GPIO.c: 96:     }
+"100
+[; ;GPIO.c: 100:     }
 }
 [e :U 385 ]
 [e :U 384 ]
-"98
-[; ;GPIO.c: 98: }
+"102
+[; ;GPIO.c: 102: }
 [e :UE 380 ]
 }

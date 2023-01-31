@@ -4514,11 +4514,11 @@ _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 void initialiseADCPin(const enum GPIO_PORTS gpioNumber);
 void initialiseADCModule();
 uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
-uint16_t readIL1CurrentADCRaw();
+uint16_t readILCurrentADCRaw();
 # 7 "ADC.c" 2
 
 # 1 "./Global.h" 1
-# 49 "./Global.h"
+# 65 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4542,6 +4542,10 @@ uint32_t clockFrequency = 0;
 # 8 "ADC.c" 2
 
 
+
+
+
+
 void initialiseADCModule(){
 
     ADCON0 = 0b00000001;
@@ -4551,8 +4555,12 @@ void initialiseADCModule(){
 
 
     ADCON1 = 0b10000000;
-# 27 "ADC.c"
+# 31 "ADC.c"
 }
+
+
+
+
 
 void initialiseADCPin(const enum GPIO_PORTS gpioNumber){
 
@@ -4583,6 +4591,10 @@ void initialiseADCPin(const enum GPIO_PORTS gpioNumber){
         }
     }
 }
+
+
+
+
 
 uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
     uint8_t channel = 0;
@@ -4616,7 +4628,12 @@ uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
     }
 }
 
-uint16_t readIL1CurrentADCRaw(){
+
+
+
+
+
+uint16_t readILCurrentADCRaw(){
 
     if(~ADCON0bits.GO_nDONE){
         ADCON0bits.GO_nDONE = 1;

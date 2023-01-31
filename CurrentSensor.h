@@ -35,9 +35,12 @@ uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
 uint16_t currentIDSFIFO[SIZE_OF_ISENSOR_FILTER];
 uint16_t currentILFIFO[SIZE_OF_ISENSOR_FILTER];
+
+bool tripIDS = 0;
+bool tripIL = 0;
     
 void initialiseCurrentSensors();
-uint8_t currentTripRead();
+bool currentTripRead();
 uint16_t readFilteredIDS();
 uint16_t readFilteredIL();
 

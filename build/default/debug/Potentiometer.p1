@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"12 Potentiometer.c
-[; ;Potentiometer.c: 12:     initialiseADCPin(pinRB1);
+"16 Potentiometer.c
+[; ;Potentiometer.c: 16:     initialiseADCPin(pinRB1);
 [c E2798 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
 [n E2798 GPIO_PORTS pinRA0 pinRA1 pinRA2 pinRA3 pinRA4 pinRA5 pinRA6 pinRA7 pinRB0 pinRB1 pinRB2 pinRB3 pinRB4 pinRB5 pinRB6 pinRB7  ]
 "26 ./ADC.h
@@ -486,32 +486,32 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6749
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 6749: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"63 ./Global.h
-[; ;./Global.h: 63: uint8_t setPeriod = 0;
+"79 ./Global.h
+[; ;./Global.h: 79: uint8_t setPeriod = 0;
 [v _setPeriod `uc ~T0 @X0 1 e ]
 [i _setPeriod
 -> -> 0 `i `uc
 ]
-"64
-[; ;./Global.h: 64: uint16_t setDuty = 0;
+"80
+[; ;./Global.h: 80: uint16_t setDuty = 0;
 [v _setDuty `us ~T0 @X0 1 e ]
 [i _setDuty
 -> -> 0 `i `us
 ]
-"65
-[; ;./Global.h: 65: uint8_t prevPeriod = 0;
+"81
+[; ;./Global.h: 81: uint8_t prevPeriod = 0;
 [v _prevPeriod `uc ~T0 @X0 1 e ]
 [i _prevPeriod
 -> -> 0 `i `uc
 ]
-"66
-[; ;./Global.h: 66: uint16_t prevDuty = 0;
+"82
+[; ;./Global.h: 82: uint16_t prevDuty = 0;
 [v _prevDuty `us ~T0 @X0 1 e ]
 [i _prevDuty
 -> -> 0 `i `us
 ]
-"68
-[; ;./Global.h: 68: uint32_t clockFrequency = 0;
+"84
+[; ;./Global.h: 84: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
@@ -540,30 +540,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 "34
 [; ;./Potentiometer.h: 34: uint16_t dutyPotFIFO[16];
 [v _dutyPotFIFO `us ~T0 @X0 -> 16 `i e ]
-"11 Potentiometer.c
-[; ;Potentiometer.c: 11: void initialisePotentiometers(){
+"15 Potentiometer.c
+[; ;Potentiometer.c: 15: void initialisePotentiometers(){
 [v _initialisePotentiometers `(v ~T0 @X0 1 ef ]
 {
 [e :U _initialisePotentiometers ]
 [f ]
-"12
-[; ;Potentiometer.c: 12:     initialiseADCPin(pinRB1);
+"16
+[; ;Potentiometer.c: 16:     initialiseADCPin(pinRB1);
 [e ( _initialiseADCPin (1 . `E2798 9 ]
-"13
-[; ;Potentiometer.c: 13:     initialiseADCPin(pinRB2);
+"17
+[; ;Potentiometer.c: 17:     initialiseADCPin(pinRB2);
 [e ( _initialiseADCPin (1 . `E2798 10 ]
-"14
-[; ;Potentiometer.c: 14: }
+"18
+[; ;Potentiometer.c: 18: }
 [e :UE 356 ]
 }
-"16
-[; ;Potentiometer.c: 16: uint16_t readFilteredDutyPot(){
+"25
+[; ;Potentiometer.c: 25: uint16_t readFilteredDutyPot(){
 [v _readFilteredDutyPot `(us ~T0 @X0 1 ef ]
 {
 [e :U _readFilteredDutyPot ]
 [f ]
-"17
-[; ;Potentiometer.c: 17:     for(uint8_t i=0; i<16 -1; i++) dutyPotFIFO[i] = dutyPotFIFO[i+1];
+"26
+[; ;Potentiometer.c: 26:     for(uint8_t i=0; i<16 -1; i++) dutyPotFIFO[i] = dutyPotFIFO[i+1];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -575,15 +575,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i - -> 16 `i -> 1 `i 358  ]
 [e :U 359 ]
 }
-"18
-[; ;Potentiometer.c: 18:     dutyPotFIFO[16 -1] = readADCRaw(pinRB1);
+"27
+[; ;Potentiometer.c: 27:     dutyPotFIFO[16 -1] = readADCRaw(pinRB1);
 [e = *U + &U _dutyPotFIFO * -> -> - -> 16 `i -> 1 `i `ui `ux -> -> # *U &U _dutyPotFIFO `ui `ux ( _readADCRaw (1 . `E2798 9 ]
-"19
-[; ;Potentiometer.c: 19:     uint32_t sumOfSamples = 0;
+"28
+[; ;Potentiometer.c: 28:     uint32_t sumOfSamples = 0;
 [v _sumOfSamples `ul ~T0 @X0 1 a ]
 [e = _sumOfSamples -> -> -> 0 `i `l `ul ]
-"20
-[; ;Potentiometer.c: 20:     for(uint8_t i=0; i<16; i++) sumOfSamples += dutyPotFIFO[i];
+"29
+[; ;Potentiometer.c: 29:     for(uint8_t i=0; i<16; i++) sumOfSamples += dutyPotFIFO[i];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -595,22 +595,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 16 `i 361  ]
 [e :U 362 ]
 }
-"22
-[; ;Potentiometer.c: 22:     return (sumOfSamples >> 4);
+"31
+[; ;Potentiometer.c: 31:     return (sumOfSamples >> 4);
 [e ) -> >> _sumOfSamples -> 4 `i `us ]
 [e $UE 357  ]
-"23
-[; ;Potentiometer.c: 23: }
+"32
+[; ;Potentiometer.c: 32: }
 [e :UE 357 ]
 }
-"25
-[; ;Potentiometer.c: 25: uint16_t readFilteredFreqPot(){
+"39
+[; ;Potentiometer.c: 39: uint16_t readFilteredFreqPot(){
 [v _readFilteredFreqPot `(us ~T0 @X0 1 ef ]
 {
 [e :U _readFilteredFreqPot ]
 [f ]
-"26
-[; ;Potentiometer.c: 26:     for(uint8_t i=0; i<16 -1; i++) freqPotFIFO[i] = freqPotFIFO[i+1];
+"40
+[; ;Potentiometer.c: 40:     for(uint8_t i=0; i<16 -1; i++) freqPotFIFO[i] = freqPotFIFO[i+1];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -622,15 +622,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i - -> 16 `i -> 1 `i 365  ]
 [e :U 366 ]
 }
-"27
-[; ;Potentiometer.c: 27:     freqPotFIFO[16 -1] = readADCRaw(pinRB2);
+"41
+[; ;Potentiometer.c: 41:     freqPotFIFO[16 -1] = readADCRaw(pinRB2);
 [e = *U + &U _freqPotFIFO * -> -> - -> 16 `i -> 1 `i `ui `ux -> -> # *U &U _freqPotFIFO `ui `ux ( _readADCRaw (1 . `E2798 10 ]
-"28
-[; ;Potentiometer.c: 28:     uint32_t sumOfSamples = 0;
+"42
+[; ;Potentiometer.c: 42:     uint32_t sumOfSamples = 0;
 [v _sumOfSamples `ul ~T0 @X0 1 a ]
 [e = _sumOfSamples -> -> -> 0 `i `l `ul ]
-"29
-[; ;Potentiometer.c: 29:     for(uint8_t i=0; i<16; i++) sumOfSamples += freqPotFIFO[i];
+"43
+[; ;Potentiometer.c: 43:     for(uint8_t i=0; i<16; i++) sumOfSamples += freqPotFIFO[i];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -642,48 +642,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 16 `i 368  ]
 [e :U 369 ]
 }
-"31
-[; ;Potentiometer.c: 31:     return (sumOfSamples >> 4);
+"45
+[; ;Potentiometer.c: 45:     return (sumOfSamples >> 4);
 [e ) -> >> _sumOfSamples -> 4 `i `us ]
 [e $UE 364  ]
-"32
-[; ;Potentiometer.c: 32: }
+"46
+[; ;Potentiometer.c: 46: }
 [e :UE 364 ]
 }
-"34
-[; ;Potentiometer.c: 34: void runPotScaling(){
+"55
+[; ;Potentiometer.c: 55: void runPotScaling(){
 [v _runPotScaling `(v ~T0 @X0 1 ef ]
 {
 [e :U _runPotScaling ]
 [f ]
-"36
-[; ;Potentiometer.c: 36:     potSetCount++;
+"57
+[; ;Potentiometer.c: 57:     potSetCount++;
 [e ++ _potSetCount -> -> 1 `i `uc ]
-"38
-[; ;Potentiometer.c: 38:     if(potSetCount == 32){
+"59
+[; ;Potentiometer.c: 59:     if(potSetCount == 32){
 [e $ ! == -> _potSetCount `i -> 32 `i 372  ]
 {
-"40
-[; ;Potentiometer.c: 40:         setPeriod = ((uint32_t)((filteredFreqPot - 51) * (uint32_t)(159u - 15u)) >> 10 ) + 15u;
-[e = _setPeriod -> + >> * -> - -> _filteredFreqPot `ui -> -> 51 `i `ui `ul -> - -> 159 `ui -> 15 `ui `ul -> 10 `i -> -> 15 `ui `ul `uc ]
-"42
-[; ;Potentiometer.c: 42:         uint32_t check1 = (uint32_t)((uint32_t)((filteredDutyPot-51) * (uint32_t)setPeriod ));
-[v _check1 `ul ~T0 @X0 1 a ]
-[e = _check1 * -> - -> _filteredDutyPot `ui -> -> 51 `i `ui `ul -> _setPeriod `ul ]
-"43
-[; ;Potentiometer.c: 43:         setDuty = check1 >> 8;
-[e = _setDuty -> >> _check1 -> 8 `i `us ]
-"44
-[; ;Potentiometer.c: 44:         setPWMDutyandPeriod(setDuty, setPeriod);
+"61
+[; ;Potentiometer.c: 61:         setPeriod = ((uint32_t)((filteredFreqPot - 45) * (uint32_t)(159u - 15u)) >> 10 ) + 15u;
+[e = _setPeriod -> + >> * -> - -> _filteredFreqPot `ui -> -> 45 `i `ui `ul -> - -> 159 `ui -> 15 `ui `ul -> 10 `i -> -> 15 `ui `ul `uc ]
+"63
+[; ;Potentiometer.c: 63:         setDuty = (uint32_t)((uint32_t)((filteredDutyPot-45) * (uint32_t)setPeriod )) >> 8;
+[e = _setDuty -> >> * -> - -> _filteredDutyPot `ui -> -> 45 `i `ui `ul -> _setPeriod `ul -> 8 `i `us ]
+"66
+[; ;Potentiometer.c: 66:         uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+[v _maxDuty `us ~T0 @X0 1 a ]
+[e = _maxDuty -> / -> * -> -> -> 90 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
+"67
+[; ;Potentiometer.c: 67:         uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+[v _minDuty `us ~T0 @X0 1 a ]
+[e = _minDuty -> / -> * -> -> -> 10 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
+"68
+[; ;Potentiometer.c: 68:         if(setDuty > maxDuty) setDuty = maxDuty;
+[e $ ! > -> _setDuty `ui -> _maxDuty `ui 373  ]
+[e = _setDuty _maxDuty ]
+[e :U 373 ]
+"69
+[; ;Potentiometer.c: 69:         if(setDuty < minDuty) setDuty = minDuty;
+[e $ ! < -> _setDuty `ui -> _minDuty `ui 374  ]
+[e = _setDuty _minDuty ]
+[e :U 374 ]
+"71
+[; ;Potentiometer.c: 71:         setPWMDutyandPeriod(setDuty, setPeriod);
 [e ( _setPWMDutyandPeriod (2 , _setDuty _setPeriod ]
-"45
-[; ;Potentiometer.c: 45:         potSetCount = 0;
+"72
+[; ;Potentiometer.c: 72:         potSetCount = 0;
 [e = _potSetCount -> -> 0 `i `uc ]
-"46
-[; ;Potentiometer.c: 46:     }
+"73
+[; ;Potentiometer.c: 73:     }
 }
 [e :U 372 ]
-"50
-[; ;Potentiometer.c: 50: }
+"75
+[; ;Potentiometer.c: 75: }
 [e :UE 371 ]
 }

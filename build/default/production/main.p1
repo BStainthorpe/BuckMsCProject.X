@@ -1,9 +1,9 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
-"40 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 40: uint8_t currentTripRead();
-[v _currentTripRead `(uc ~T0 @X0 0 e? ]
+"43 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 43: _Bool currentTripRead();
+[v _currentTripRead `(a ~T0 @X0 0 e? ]
 "17 ./PWM.h
 [; ;./PWM.h: 17: void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
 [v _setPWMDutyandPeriod `(v ~T0 @X0 0 ef2`us`uc ]
@@ -69,8 +69,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27 ./ADC.h
 [; ;./ADC.h: 27: void initialiseADCModule();
 [v _initialiseADCModule `(v ~T0 @X0 0 e? ]
-"39 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 39: void initialiseCurrentSensors();
+"42 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 42: void initialiseCurrentSensors();
 [v _initialiseCurrentSensors `(v ~T0 @X0 0 e? ]
 "26 ./Potentiometer.h
 [; ;./Potentiometer.h: 26: void initialisePotentiometers();
@@ -625,6 +625,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "37
 [; ;./CurrentSensor.h: 37: uint16_t currentILFIFO[16];
 [v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
+"39
+[; ;./CurrentSensor.h: 39: _Bool tripIDS = 0;
+[v _tripIDS `a ~T0 @X0 1 e ]
+[i _tripIDS
+-> -> 0 `i `a
+]
+"40
+[; ;./CurrentSensor.h: 40: _Bool tripIL = 0;
+[v _tripIL `a ~T0 @X0 1 e ]
+[i _tripIL
+-> -> 0 `i `a
+]
 "24 ./Potentiometer.h
 [; ;./Potentiometer.h: 24: uint8_t potSetCount = 0;
 [v _potSetCount `uc ~T0 @X0 1 e ]

@@ -4506,7 +4506,7 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 49 "./Global.h"
+# 65 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4603,10 +4603,15 @@ _Bool readGPIO(const enum GPIO_PORTS gpioNumber){
     }
 
     if(portType == 0){
-        return ((PORTA &= (1 << (uint8_t)portNumber)) >> (uint8_t)portNumber);
+        uint8_t read = PORTA;
+        uint8_t check1 = (read >> ((uint8_t) portNumber));
+        uint8_t returnValue = (check1 & 1u);
+        return returnValue;
     }
     else if(portType == 1){
-        return ((PORTB &= (1 << (uint8_t)portNumber)) >> (uint8_t)portNumber);
+        uint8_t maskB = (uint8_t)(0b00000001 << ((uint8_t) portNumber));
+        uint8_t returnValueB = ((PORTB && maskB) >> ((uint8_t) portNumber));
+        return returnValueB;
     }
 
 }

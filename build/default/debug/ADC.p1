@@ -5,8 +5,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1968
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1968: extern volatile unsigned char ADCON1 __attribute__((address(0x09E)));
 [v _ADCON1 `Vuc ~T0 @X0 0 e@158 ]
-"29 ADC.c
-[; ;ADC.c: 29: void initialiseADCPin(const enum GPIO_PORTS gpioNumber){
+"37 ADC.c
+[; ;ADC.c: 37: void initialiseADCPin(const enum GPIO_PORTS gpioNumber){
 [c E2798 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
 [n E2798 GPIO_PORTS pinRA0 pinRA1 pinRA2 pinRA3 pinRA4 pinRA5 pinRA6 pinRA7 pinRB0 pinRB1 pinRB2 pinRB3 pinRB4 pinRB5 pinRB6 pinRB7  ]
 "1153 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
@@ -520,206 +520,206 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6749
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 6749: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"63 ./Global.h
-[; ;./Global.h: 63: uint8_t setPeriod = 0;
+"79 ./Global.h
+[; ;./Global.h: 79: uint8_t setPeriod = 0;
 [v _setPeriod `uc ~T0 @X0 1 e ]
 [i _setPeriod
 -> -> 0 `i `uc
 ]
-"64
-[; ;./Global.h: 64: uint16_t setDuty = 0;
+"80
+[; ;./Global.h: 80: uint16_t setDuty = 0;
 [v _setDuty `us ~T0 @X0 1 e ]
 [i _setDuty
 -> -> 0 `i `us
 ]
-"65
-[; ;./Global.h: 65: uint8_t prevPeriod = 0;
+"81
+[; ;./Global.h: 81: uint8_t prevPeriod = 0;
 [v _prevPeriod `uc ~T0 @X0 1 e ]
 [i _prevPeriod
 -> -> 0 `i `uc
 ]
-"66
-[; ;./Global.h: 66: uint16_t prevDuty = 0;
+"82
+[; ;./Global.h: 82: uint16_t prevDuty = 0;
 [v _prevDuty `us ~T0 @X0 1 e ]
 [i _prevDuty
 -> -> 0 `i `us
 ]
-"68
-[; ;./Global.h: 68: uint32_t clockFrequency = 0;
+"84
+[; ;./Global.h: 84: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"10 ADC.c
-[; ;ADC.c: 10: void initialiseADCModule(){
+"14 ADC.c
+[; ;ADC.c: 14: void initialiseADCModule(){
 [v _initialiseADCModule `(v ~T0 @X0 1 ef ]
 {
 [e :U _initialiseADCModule ]
 [f ]
-"12
-[; ;ADC.c: 12:     ADCON0 = 0b00000001;
+"16
+[; ;ADC.c: 16:     ADCON0 = 0b00000001;
 [e = _ADCON0 -> -> 1 `i `uc ]
-"18
-[; ;ADC.c: 18:     ADCON1 = 0b10000000;
+"22
+[; ;ADC.c: 22:     ADCON1 = 0b10000000;
 [e = _ADCON1 -> -> 128 `i `uc ]
-"27
-[; ;ADC.c: 27: }
+"31
+[; ;ADC.c: 31: }
 [e :UE 356 ]
 }
-"29
-[; ;ADC.c: 29: void initialiseADCPin(const enum GPIO_PORTS gpioNumber){
+"37
+[; ;ADC.c: 37: void initialiseADCPin(const enum GPIO_PORTS gpioNumber){
 [v _initialiseADCPin `(v ~T0 @X0 1 ef1`CE2798 ]
 {
 [e :U _initialiseADCPin ]
 [v _gpioNumber `CE2798 ~T0 @X0 1 r1 ]
 [f ]
-"31
-[; ;ADC.c: 31:     uint8_t portNumber = 0;
+"39
+[; ;ADC.c: 39:     uint8_t portNumber = 0;
 [v _portNumber `uc ~T0 @X0 1 a ]
 [e = _portNumber -> -> 0 `i `uc ]
-"32
-[; ;ADC.c: 32:     uint8_t portType = 0;
+"40
+[; ;ADC.c: 40:     uint8_t portType = 0;
 [v _portType `uc ~T0 @X0 1 a ]
 [e = _portType -> -> 0 `i `uc ]
-"33
-[; ;ADC.c: 33:     uint8_t gpioValid = 0;
+"41
+[; ;ADC.c: 41:     uint8_t gpioValid = 0;
 [v _gpioValid `uc ~T0 @X0 1 a ]
 [e = _gpioValid -> -> 0 `i `uc ]
-"35
-[; ;ADC.c: 35:     if(gpioNumber < 4){
+"43
+[; ;ADC.c: 43:     if(gpioNumber < 4){
 [e $ ! < -> _gpioNumber `ui -> -> 4 `i `ui 358  ]
 {
-"36
-[; ;ADC.c: 36:         portNumber = gpioNumber;
+"44
+[; ;ADC.c: 44:         portNumber = gpioNumber;
 [e = _portNumber -> _gpioNumber `uc ]
-"37
-[; ;ADC.c: 37:         portType = 0;
+"45
+[; ;ADC.c: 45:         portType = 0;
 [e = _portType -> -> 0 `i `uc ]
-"38
-[; ;ADC.c: 38:         gpioValid = 1;
+"46
+[; ;ADC.c: 46:         gpioValid = 1;
 [e = _gpioValid -> -> 1 `i `uc ]
-"39
-[; ;ADC.c: 39:     }
+"47
+[; ;ADC.c: 47:     }
 }
 [e :U 358 ]
-"41
-[; ;ADC.c: 41:     if((gpioNumber > 8u) && (gpioNumber <= 15u)){
+"49
+[; ;ADC.c: 49:     if((gpioNumber > 8u) && (gpioNumber <= 15u)){
 [e $ ! && > -> _gpioNumber `ui -> 8 `ui <= -> _gpioNumber `ui -> 15 `ui 359  ]
 {
-"42
-[; ;ADC.c: 42:         portNumber = gpioNumber - 8;
+"50
+[; ;ADC.c: 50:         portNumber = gpioNumber - 8;
 [e = _portNumber -> - -> _gpioNumber `ui -> -> 8 `i `ui `uc ]
-"43
-[; ;ADC.c: 43:         portType = 1;
+"51
+[; ;ADC.c: 51:         portType = 1;
 [e = _portType -> -> 1 `i `uc ]
-"44
-[; ;ADC.c: 44:         gpioValid = 1;
+"52
+[; ;ADC.c: 52:         gpioValid = 1;
 [e = _gpioValid -> -> 1 `i `uc ]
-"45
-[; ;ADC.c: 45:     }
+"53
+[; ;ADC.c: 53:     }
 }
 [e :U 359 ]
-"47
-[; ;ADC.c: 47:     if(gpioValid){
+"55
+[; ;ADC.c: 55:     if(gpioValid){
 [e $ ! != -> _gpioValid `i -> 0 `i 360  ]
 {
-"48
-[; ;ADC.c: 48:         if(portType == 0){
+"56
+[; ;ADC.c: 56:         if(portType == 0){
 [e $ ! == -> _portType `i -> 0 `i 361  ]
 {
-"49
-[; ;ADC.c: 49:             TRISA |= (1 << (uint8_t)portNumber);
+"57
+[; ;ADC.c: 57:             TRISA |= (1 << (uint8_t)portNumber);
 [e =| _TRISA -> << -> 1 `i -> _portNumber `i `Vuc ]
-"50
-[; ;ADC.c: 50:             ANSELA |= (1 << (uint8_t)portNumber);
+"58
+[; ;ADC.c: 58:             ANSELA |= (1 << (uint8_t)portNumber);
 [e =| _ANSELA -> << -> 1 `i -> _portNumber `i `Vuc ]
-"51
-[; ;ADC.c: 51:         }
+"59
+[; ;ADC.c: 59:         }
 }
 [e $U 362  ]
-"52
-[; ;ADC.c: 52:         else if(portType == 1){
+"60
+[; ;ADC.c: 60:         else if(portType == 1){
 [e :U 361 ]
 [e $ ! == -> _portType `i -> 1 `i 363  ]
 {
-"53
-[; ;ADC.c: 53:             TRISB |= (1 << (uint8_t)portNumber);
+"61
+[; ;ADC.c: 61:             TRISB |= (1 << (uint8_t)portNumber);
 [e =| _TRISB -> << -> 1 `i -> _portNumber `i `Vuc ]
-"54
-[; ;ADC.c: 54:             ANSELB |= (1 << (uint8_t)portNumber);
+"62
+[; ;ADC.c: 62:             ANSELB |= (1 << (uint8_t)portNumber);
 [e =| _ANSELB -> << -> 1 `i -> _portNumber `i `Vuc ]
-"55
-[; ;ADC.c: 55:         }
+"63
+[; ;ADC.c: 63:         }
 }
 [e :U 363 ]
 [e :U 362 ]
-"56
-[; ;ADC.c: 56:     }
+"64
+[; ;ADC.c: 64:     }
 }
 [e :U 360 ]
-"57
-[; ;ADC.c: 57: }
+"65
+[; ;ADC.c: 65: }
 [e :UE 357 ]
 }
-"59
-[; ;ADC.c: 59: uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
+"71
+[; ;ADC.c: 71: uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
 [v _readADCRaw `(us ~T0 @X0 1 ef1`CE2798 ]
 {
 [e :U _readADCRaw ]
 [v _gpioNumber `CE2798 ~T0 @X0 1 r1 ]
 [f ]
-"60
-[; ;ADC.c: 60:     uint8_t channel = 0;
+"72
+[; ;ADC.c: 72:     uint8_t channel = 0;
 [v _channel `uc ~T0 @X0 1 a ]
 [e = _channel -> -> 0 `i `uc ]
-"61
-[; ;ADC.c: 61:     uint8_t gpioValid = 0;
+"73
+[; ;ADC.c: 73:     uint8_t gpioValid = 0;
 [v _gpioValid `uc ~T0 @X0 1 a ]
 [e = _gpioValid -> -> 0 `i `uc ]
-"63
-[; ;ADC.c: 63:     if(gpioNumber < 4){
+"75
+[; ;ADC.c: 75:     if(gpioNumber < 4){
 [e $ ! < -> _gpioNumber `ui -> -> 4 `i `ui 365  ]
 {
-"64
-[; ;ADC.c: 64:         channel = gpioNumber;
+"76
+[; ;ADC.c: 76:         channel = gpioNumber;
 [e = _channel -> _gpioNumber `uc ]
-"65
-[; ;ADC.c: 65:         gpioValid = 1;
+"77
+[; ;ADC.c: 77:         gpioValid = 1;
 [e = _gpioValid -> -> 1 `i `uc ]
-"66
-[; ;ADC.c: 66:     }
+"78
+[; ;ADC.c: 78:     }
 }
 [e :U 365 ]
-"67
-[; ;ADC.c: 67:     if((gpioNumber > 8u) && (gpioNumber <= 15u)){
+"79
+[; ;ADC.c: 79:     if((gpioNumber > 8u) && (gpioNumber <= 15u)){
 [e $ ! && > -> _gpioNumber `ui -> 8 `ui <= -> _gpioNumber `ui -> 15 `ui 366  ]
 {
-"68
-[; ;ADC.c: 68:         channel = 12u - (gpioNumber - 8);
+"80
+[; ;ADC.c: 80:         channel = 12u - (gpioNumber - 8);
 [e = _channel -> - -> 12 `ui - -> _gpioNumber `ui -> -> 8 `i `ui `uc ]
-"69
-[; ;ADC.c: 69:         gpioValid = 1;
+"81
+[; ;ADC.c: 81:         gpioValid = 1;
 [e = _gpioValid -> -> 1 `i `uc ]
-"70
-[; ;ADC.c: 70:     }
+"82
+[; ;ADC.c: 82:     }
 }
 [e :U 366 ]
-"71
-[; ;ADC.c: 71:     if(gpioValid){
+"83
+[; ;ADC.c: 83:     if(gpioValid){
 [e $ ! != -> _gpioValid `i -> 0 `i 367  ]
 {
-"73
-[; ;ADC.c: 73:         if(~ADCON0bits.GO_nDONE){
+"85
+[; ;ADC.c: 85:         if(~ADCON0bits.GO_nDONE){
 [e $ ! != ~ -> . . _ADCON0bits 0 1 `i -> 0 `i 368  ]
 {
-"74
-[; ;ADC.c: 74:             ADCON0 &= ~(0b01111100);
+"86
+[; ;ADC.c: 86:             ADCON0 &= ~(0b01111100);
 [e =& _ADCON0 -> ~ -> 124 `i `Vuc ]
-"75
-[; ;ADC.c: 75:             ADCON0 |= (channel << 2);
+"87
+[; ;ADC.c: 87:             ADCON0 |= (channel << 2);
 [e =| _ADCON0 -> << -> _channel `i -> 2 `i `Vuc ]
-"76
-[; ;ADC.c: 76:             for(uint8_t i = 0; i < 8; i++);
+"88
+[; ;ADC.c: 88:             for(uint8_t i = 0; i < 8; i++);
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -730,28 +730,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 8 `i 369  ]
 [e :U 370 ]
 }
-"78
-[; ;ADC.c: 78:             ADCON0bits.GO_nDONE = 1;
+"90
+[; ;ADC.c: 90:             ADCON0bits.GO_nDONE = 1;
 [e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
-"79
-[; ;ADC.c: 79:             while(ADCON0bits.GO_nDONE);
+"91
+[; ;ADC.c: 91:             while(ADCON0bits.GO_nDONE);
 [e $U 372  ]
 [e :U 373 ]
 [e :U 372 ]
 [e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 373  ]
 [e :U 374 ]
-"80
-[; ;ADC.c: 80:             unsigned int returnValue = ((ADRESH<<8)+ADRESL);
+"92
+[; ;ADC.c: 92:             unsigned int returnValue = ((ADRESH<<8)+ADRESL);
 [v _returnValue `ui ~T0 @X0 1 a ]
 [e = _returnValue -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
-"81
-[; ;ADC.c: 81:             ADCON0 &= ~(0b01111100);
+"93
+[; ;ADC.c: 93:             ADCON0 &= ~(0b01111100);
 [e =& _ADCON0 -> ~ -> 124 `i `Vuc ]
-"82
-[; ;ADC.c: 82:             ADCON0 |= (0b010 << 2);
+"94
+[; ;ADC.c: 94:             ADCON0 |= (0b010 << 2);
 [e =| _ADCON0 -> << -> 2 `i -> 2 `i `Vuc ]
-"83
-[; ;ADC.c: 83:             for(uint8_t i = 0; i < 8; i++);
+"95
+[; ;ADC.c: 95:             for(uint8_t i = 0; i < 8; i++);
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
@@ -762,51 +762,51 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 8 `i 375  ]
 [e :U 376 ]
 }
-"85
-[; ;ADC.c: 85:             return returnValue;
+"97
+[; ;ADC.c: 97:             return returnValue;
 [e ) -> _returnValue `us ]
 [e $UE 364  ]
-"86
-[; ;ADC.c: 86:         }
+"98
+[; ;ADC.c: 98:         }
 }
 [e :U 368 ]
-"88
-[; ;ADC.c: 88:     }
+"100
+[; ;ADC.c: 100:     }
 }
 [e :U 367 ]
-"89
-[; ;ADC.c: 89: }
+"101
+[; ;ADC.c: 101: }
 [e :UE 364 ]
 }
-"91
-[; ;ADC.c: 91: uint16_t readIL1CurrentADCRaw(){
-[v _readIL1CurrentADCRaw `(us ~T0 @X0 1 ef ]
+"108
+[; ;ADC.c: 108: uint16_t readILCurrentADCRaw(){
+[v _readILCurrentADCRaw `(us ~T0 @X0 1 ef ]
 {
-[e :U _readIL1CurrentADCRaw ]
+[e :U _readILCurrentADCRaw ]
 [f ]
-"93
-[; ;ADC.c: 93:     if(~ADCON0bits.GO_nDONE){
+"110
+[; ;ADC.c: 110:     if(~ADCON0bits.GO_nDONE){
 [e $ ! != ~ -> . . _ADCON0bits 0 1 `i -> 0 `i 379  ]
 {
-"94
-[; ;ADC.c: 94:         ADCON0bits.GO_nDONE = 1;
+"111
+[; ;ADC.c: 111:         ADCON0bits.GO_nDONE = 1;
 [e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
-"95
-[; ;ADC.c: 95:         while(ADCON0bits.GO_nDONE);
+"112
+[; ;ADC.c: 112:         while(ADCON0bits.GO_nDONE);
 [e $U 380  ]
 [e :U 381 ]
 [e :U 380 ]
 [e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 381  ]
 [e :U 382 ]
-"96
-[; ;ADC.c: 96:         return ((ADRESH<<8)+ADRESL);
+"113
+[; ;ADC.c: 113:         return ((ADRESH<<8)+ADRESL);
 [e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `us ]
 [e $UE 378  ]
-"97
-[; ;ADC.c: 97:     }
+"114
+[; ;ADC.c: 114:     }
 }
 [e :U 379 ]
-"99
-[; ;ADC.c: 99: }
+"116
+[; ;ADC.c: 116: }
 [e :UE 378 ]
 }

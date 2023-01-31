@@ -89,10 +89,14 @@ bool readGPIO(const enum GPIO_PORTS gpioNumber){
     }
          
     if(portType == GPIO_PORTA){         //obtain the state of the digital input from PORTA and return from function
-        return ((PORTA &= (1 << (uint8_t)portNumber)) >> (uint8_t)portNumber);  
+        uint8_t readA = PORTA;
+        uint8_t returnValueA = ((readA >> ((uint8_t) portNumber)) & 1u); 
+        return returnValueA;  
     }
     else if(portType == GPIO_PORTB){
-        return ((PORTB &= (1 << (uint8_t)portNumber)) >> (uint8_t)portNumber);
+        uint8_t readB = PORTB;
+        uint8_t returnValueB = ((readB >> ((uint8_t) portNumber)) & 1u); 
+        return returnValueB;
     }
    
 }

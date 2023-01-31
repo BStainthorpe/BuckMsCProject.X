@@ -4505,7 +4505,7 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 49 "./Global.h"
+# 65 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4529,10 +4529,32 @@ uint32_t clockFrequency = 0;
 # 7 "CurrentSensor.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 22 "./CurrentSensor.h"
+# 33 "./CurrentSensor.h"
+volatile uint16_t latestIL1 = 0;
+uint16_t filteredIDS = 0;
+uint16_t filteredIL = 0;
+uint16_t currentIDSFIFO[16];
+uint16_t currentILFIFO[16];
+
+_Bool tripIDS = 0;
+_Bool tripIL = 0;
+
 void initialiseCurrentSensors();
-uint8_t currentTripRead();
+_Bool currentTripRead();
+uint16_t readFilteredIDS();
+uint16_t readFilteredIL();
 # 8 "CurrentSensor.c" 2
+
+
+
+# 1 "./ADC.h" 1
+# 26 "./ADC.h"
+void initialiseADCPin(const enum GPIO_PORTS gpioNumber);
+void initialiseADCModule();
+uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
+uint16_t readILCurrentADCRaw();
+# 11 "CurrentSensor.c" 2
+
 
 
 
@@ -4541,8 +4563,54 @@ uint8_t currentTripRead();
 void initialiseCurrentSensors(){
     initialiseGPIO(pinRA3, 1);
     initialiseGPIO(pinRA1, 1);
+    initialiseADCPin(pinRA0);
+    initialiseADCPin(pinRA2);
+    initialiseGPIO(pinRB3, 0);
+    writeGPIO(9, 0);
 }
 
-uint8_t currentTripRead(){
-    return readGPIO(pinRA3) || readGPIO(pinRA1);
+
+
+
+
+_Bool currentTripRead(){
+    tripIDS = ~readGPIO(pinRA1);
+    tripIL = ~readGPIO(pinRA3);
+    return (tripIL || tripIDS);
+}
+
+
+
+
+
+
+uint16_t readFilteredIDS(){
+    for(uint8_t i=0; i<16 -1; i++) currentIDSFIFO[i] = currentIDSFIFO[i+1];
+    currentIDSFIFO[16 -1] = readADCRaw(pinRA0);
+    uint32_t sumOfSamples = 0;
+    for(uint8_t i=0; i<16; i++) sumOfSamples += currentIDSFIFO[i];
+
+    return (sumOfSamples >> 4);
+}
+
+
+
+
+
+
+uint16_t readFilteredIL(){
+    for(uint8_t i=0; i<16 -1; i++) currentILFIFO[i] = currentILFIFO[i+1];
+    currentILFIFO[16 -1] = latestIL1;
+    uint32_t sumOfSamples = 0;
+    for(uint8_t i=0; i<16; i++) sumOfSamples += currentILFIFO[i];
+
+    return (sumOfSamples >> 4);
+}
+
+
+
+
+
+void currentTripReset(){
+    writeGPIO(pinRB3, 1);
 }

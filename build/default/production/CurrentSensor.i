@@ -4536,8 +4536,11 @@ uint16_t filteredIL = 0;
 uint16_t currentIDSFIFO[16];
 uint16_t currentILFIFO[16];
 
+_Bool tripIDS = 0;
+_Bool tripIL = 0;
+
 void initialiseCurrentSensors();
-uint8_t currentTripRead();
+_Bool currentTripRead();
 uint16_t readFilteredIDS();
 uint16_t readFilteredIL();
 # 8 "CurrentSensor.c" 2
@@ -4561,7 +4564,7 @@ void initialiseCurrentSensors(){
     initialiseGPIO(pinRA3, 1);
     initialiseGPIO(pinRA1, 1);
     initialiseADCPin(pinRA0);
-    initialiseADCPin(pinRA3);
+    initialiseADCPin(pinRA2);
     initialiseGPIO(pinRB3, 0);
     writeGPIO(9, 0);
 }
@@ -4570,8 +4573,10 @@ void initialiseCurrentSensors(){
 
 
 
-uint8_t currentTripRead(){
-    return (~(readGPIO(pinRA3) && readGPIO(pinRA1)));
+_Bool currentTripRead(){
+    tripIDS = ~readGPIO(pinRA1);
+    tripIL = ~readGPIO(pinRA3);
+    return (tripIL || tripIDS);
 }
 
 

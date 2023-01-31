@@ -4521,7 +4521,7 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 49 "./Global.h"
+# 65 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4935,20 +4935,21 @@ void setupPWM(){
     PIE1bits.TMR2IE = 0;
     T2CONbits.TMR2ON = 1;
 
-
+    INTCONbits.PEIE = 1;
+    PIE1bits.CCP1IE = 1;
 
 
 
     initialiseGPIO(pinRA6, 0);
 }
-# 47 "PWM.c"
+# 48 "PWM.c"
 void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period){
     PR2 = period;
     CCPR1L = dutyCycle >> 2;
     CCP1CONbits.DC1B0 = dutyCycle & 1;
     CCP1CONbits.DC1B1 = (dutyCycle & 2) > 1;
 }
-# 62 "PWM.c"
+# 63 "PWM.c"
 void setPWMPeriod(uint8_t period){
     PR2 = period;
 }

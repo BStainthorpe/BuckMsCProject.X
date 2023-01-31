@@ -4556,8 +4556,11 @@ uint16_t filteredIL = 0;
 uint16_t currentIDSFIFO[16];
 uint16_t currentILFIFO[16];
 
+_Bool tripIDS = 0;
+_Bool tripIL = 0;
+
 void initialiseCurrentSensors();
-uint8_t currentTripRead();
+_Bool currentTripRead();
 uint16_t readFilteredIDS();
 uint16_t readFilteredIL();
 # 22 "main.c" 2

@@ -4524,7 +4524,7 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 49 "./Global.h"
+# 65 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4549,9 +4549,20 @@ uint32_t clockFrequency = 0;
 
 
 # 1 "./CurrentSensor.h" 1
-# 22 "./CurrentSensor.h"
+# 33 "./CurrentSensor.h"
+volatile uint16_t latestIL1 = 0;
+uint16_t filteredIDS = 0;
+uint16_t filteredIL = 0;
+uint16_t currentIDSFIFO[16];
+uint16_t currentILFIFO[16];
+
+_Bool tripIDS = 0;
+_Bool tripIL = 0;
+
 void initialiseCurrentSensors();
-uint8_t currentTripRead();
+_Bool currentTripRead();
+uint16_t readFilteredIDS();
+uint16_t readFilteredIL();
 # 22 "main.c" 2
 
 # 1 "./Controller.h" 1
@@ -4562,7 +4573,7 @@ uint8_t currentTripRead();
 void initialiseADCPin(const enum GPIO_PORTS gpioNumber);
 void initialiseADCModule();
 uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
-uint16_t readCurrentADCRaw();
+uint16_t readILCurrentADCRaw();
 # 24 "main.c" 2
 
 # 1 "./Potentiometer.h" 1
@@ -4591,7 +4602,7 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
     if ("((INTCON)&07Fh)" "," "2") {
 # 52 "main.c"
-        if(currentTripRead() < 1){
+        if(currentTripRead() == 1){
             emergencyStop = 1;
             setPWMDutyandPeriod(0, 0);
         }
@@ -4607,6 +4618,7 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
             if(timerSlotQuarter == 0){
 
                 writeGPIO(pinRB4, 1);
+                writeGPIO(9, 1);
 
                 filteredDutyPot = readFilteredDutyPot();
                 filteredFreqPot = readFilteredFreqPot();
@@ -4628,8 +4640,18 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
     }
 
+    if("((PIR1)&07Fh)" "," "2"){
+        latestIL1 = readILCurrentADCRaw;
+        PIR1bits.CCP1IF = 0;
+    }
 
 }
+
+
+
+
+
+
 
 int main(int argc, char** argv) {
 
@@ -4647,6 +4669,11 @@ int main(int argc, char** argv) {
     }
     return (0);
 }
+
+
+
+
+
 
 void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq){
 

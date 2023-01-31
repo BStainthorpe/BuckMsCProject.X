@@ -55,8 +55,8 @@ extern "C" {
 //Current Sensors
 #define gpioIDSCurrent            pinRA0
 #define pinIDSCurrent             17
-#define gpioILCurrent             pinRA3
-#define pinILCurrent              2
+#define gpioILCurrent             pinRA2
+#define pinILCurrent              1
 //Voltage Sensor                  
 #define gpioOutputVoltage         pinRA4
 #define pinOutputVoltage          3

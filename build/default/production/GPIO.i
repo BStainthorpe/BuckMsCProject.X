@@ -4603,10 +4603,14 @@ _Bool readGPIO(const enum GPIO_PORTS gpioNumber){
     }
 
     if(portType == 0){
-        return ((PORTA &= (1 << (uint8_t)portNumber)) >> (uint8_t)portNumber);
+        uint8_t readA = PORTA;
+        uint8_t returnValueA = ((readA >> ((uint8_t) portNumber)) & 1u);
+        return returnValueA;
     }
     else if(portType == 1){
-        return ((PORTB &= (1 << (uint8_t)portNumber)) >> (uint8_t)portNumber);
+        uint8_t readB = PORTB;
+        uint8_t returnValueB = ((readB >> ((uint8_t) portNumber)) & 1u);
+        return returnValueB;
     }
 
 }
