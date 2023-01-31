@@ -4571,7 +4571,7 @@ void initialiseCurrentSensors(){
 
 
 uint8_t currentTripRead(){
-    return (~(readGPIO(pinRA3) || readGPIO(pinRA1)));
+    return (~(readGPIO(pinRA3) && readGPIO(pinRA1)));
 }
 
 

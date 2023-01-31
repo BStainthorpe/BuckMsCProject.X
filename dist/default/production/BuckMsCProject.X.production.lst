@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.36 build 20220127204148 
-                                                                                               Tue Jan 31 11:42:17 2023
+                                                                                               Tue Jan 31 11:49:51 2023
 
 Microchip MPLAB XC8 C Compiler v2.36 (Free license) build 20220127204148 Og1 
      1                           	processor	16F1827
@@ -3288,9 +3288,9 @@ Microchip MPLAB XC8 C Compiler v2.36 (Free license) build 20220127204148 Og1
   3273  0005  3180               	pagesel	$
   3274  0006                     i1l2036:
   3275                           
-  3276                           ;main.c: 52:         if(currentTripRead() < 1){
+  3276                           ;main.c: 52:         if(currentTripRead() == 1){
   3277  0006  3186  2687  3180   	fcall	_currentTripRead
-  3278  0009  3A00               	xorlw	0
+  3278  0009  3A01               	xorlw	1
   3279  000A  1D03               	skipz
   3280  000B  280D               	goto	u183_21
   3281  000C  280E               	goto	u183_20
@@ -4979,31 +4979,31 @@ Microchip MPLAB XC8 C Compiler v2.36 (Free license) build 20220127204148 Og1
   4958                           ; Regs used in _currentTripRead: [wreg+status,2+status,0+pclath+cstack]
   4959                           
   4960                           
-  4961                           ;CurrentSensor.c: 31:     return (~(readGPIO(pinRA3) || readGPIO(pinRA1)));
+  4961                           ;CurrentSensor.c: 31:     return (~(readGPIO(pinRA3) && readGPIO(pinRA1)));
   4962  0687  01F6               	clrf	_currentTripRead$739
-  4963  0688  0AF6               	incf	_currentTripRead$739,f
-  4964  0689                     i1l1810:
-  4965  0689  3003               	movlw	3
-  4966  068A  3185  2566  3186   	fcall	_readGPIO
-  4967  068D  3A00               	xorlw	0
-  4968  068E  1D03               	skipz
-  4969  068F  2E91               	goto	u161_21
-  4970  0690  2E92               	goto	u161_20
-  4971  0691                     u161_21:
-  4972  0691  2E9C               	goto	i1l1816
-  4973  0692                     u161_20:
-  4974  0692                     i1l1812:
-  4975  0692  3001               	movlw	1
-  4976  0693  3185  2566  3186   	fcall	_readGPIO
-  4977  0696  3A00               	xorlw	0
-  4978  0697  1D03               	skipz
-  4979  0698  2E9A               	goto	u162_21
-  4980  0699  2E9B               	goto	u162_20
-  4981  069A                     u162_21:
-  4982  069A  2E9C               	goto	i1l1816
-  4983  069B                     u162_20:
-  4984  069B                     i1l1814:
-  4985  069B  01F6               	clrf	_currentTripRead$739
+  4963  0688                     i1l1810:
+  4964  0688  3003               	movlw	3
+  4965  0689  3185  2566  3186   	fcall	_readGPIO
+  4966  068C  3A00               	xorlw	0
+  4967  068D  1903               	skipnz
+  4968  068E  2E90               	goto	u161_21
+  4969  068F  2E91               	goto	u161_20
+  4970  0690                     u161_21:
+  4971  0690  2E9C               	goto	i1l1816
+  4972  0691                     u161_20:
+  4973  0691                     i1l1812:
+  4974  0691  3001               	movlw	1
+  4975  0692  3185  2566  3186   	fcall	_readGPIO
+  4976  0695  3A00               	xorlw	0
+  4977  0696  1903               	skipnz
+  4978  0697  2E99               	goto	u162_21
+  4979  0698  2E9A               	goto	u162_20
+  4980  0699                     u162_21:
+  4981  0699  2E9C               	goto	i1l1816
+  4982  069A                     u162_20:
+  4983  069A                     i1l1814:
+  4984  069A  01F6               	clrf	_currentTripRead$739
+  4985  069B  0AF6               	incf	_currentTripRead$739,f
   4986  069C                     i1l1816:
   4987  069C  0976               	comf	_currentTripRead$739,w
   4988  069D                     i1l375:
@@ -5539,7 +5539,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.36 build 20220127204148 
-Symbol Table                                                                                   Tue Jan 31 11:42:17 2023
+Symbol Table                                                                                   Tue Jan 31 11:49:51 2023
 
                                  l88 0668                                   l89 0668  
                 ___wmul@multiplicand 0072                                  l200 02F1  
@@ -5684,15 +5684,15 @@ Symbol Table                                                                    
                              i1l1700 036C                               i1l2068 006F  
                              i1l1710 037D                               i1l1712 0381  
                              i1l1800 049A                               i1l1730 0567  
-                             i1l1810 0689                               i1l1722 0387  
+                             i1l1810 0688                               i1l1722 0387  
                              i1l1714 0385                               i1l1706 036D  
                              i1l1802 04A1                               i1l1740 057A  
-                             i1l1732 0568                               i1l1812 0692  
+                             i1l1732 0568                               i1l1812 0691  
                              i1l1724 038B                               i1l1716 0386  
                              i1l1708 0371                               i1l1820 050B  
                              i1l1804 04A7                               i1l1750 0595  
                              i1l1742 057B                               i1l1734 056E  
-                             i1l1814 069B                               i1l1726 0391  
+                             i1l1814 069A                               i1l1726 0391  
                              i1l1830 051F                               i1l1590 05E2  
                              i1l1752 059A                               i1l1744 0580  
                              i1l1736 0573                               i1l1816 069C  
@@ -5740,13 +5740,13 @@ Symbol Table                                                                    
                              u160_20 04A7                               u136_21 0376  
                              u160_21 04A6                               u144_24 059F  
                              u144_25 059E                               u152_25 05CB  
-                             u161_20 0692                               u137_20 037D  
-                             u153_20 05D9                               u161_21 0691  
+                             u161_20 0691                               u137_20 037D  
+                             u153_20 05D9                               u161_21 0690  
                              u137_21 037C                               u153_21 05D8  
                              u145_24 05AB                               u145_25 05AA  
-                             u162_20 069B                               u138_20 0391  
+                             u162_20 069A                               u138_20 0391  
                              u154_20 0466                               u146_20 0636  
-                             u170_20 00BC                               u162_21 069A  
+                             u170_20 00BC                               u162_21 0699  
                              u138_21 0390                               u154_21 0465  
                              u146_21 0635                               u170_25 00B8  
                              u139_20 056E                               u163_20 0525  

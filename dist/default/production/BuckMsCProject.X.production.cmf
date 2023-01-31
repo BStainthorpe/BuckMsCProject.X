@@ -45,7 +45,7 @@ bssBANK1 BANK1 1 A0 A0 40 1 1
 bssBANK2 BANK2 1 120 120 40 1 1
 clrtext CODE 0 6D1 6D1 6 2 1
 config CONFIG 4 8007 8007 2 2 1
-$C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
+$C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
 idloc IDLOC 5 8000 8000 4 2 1
 reset_vec CODE 0 0 0 2 2 1
 end_init CODE 0 72 72 2 2 1
@@ -124,30 +124,30 @@ STRING 6DD-FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\BuckMsCProject.X.production.o
-74 cinit CODE >2794:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-74 cinit CODE >2797:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-74 cinit CODE >2878:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-75 cinit CODE >2879:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-76 cinit CODE >2880:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-77 cinit CODE >2881:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-78 cinit CODE >2882:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-79 cinit CODE >2883:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-7C cinit CODE >2887:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-7D cinit CODE >2888:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-7E cinit CODE >2889:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-7F cinit CODE >2890:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-80 cinit CODE >2891:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-81 cinit CODE >2892:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-84 cinit CODE >2896:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-85 cinit CODE >2897:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-86 cinit CODE >2898:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-87 cinit CODE >2899:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-88 cinit CODE >2900:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-89 cinit CODE >2901:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-8C cinit CODE >2907:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-8C cinit CODE >2909:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-8D cinit CODE >2910:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-8E cinit CODE >2911:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
+74 cinit CODE >2794:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+74 cinit CODE >2797:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+74 cinit CODE >2878:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+75 cinit CODE >2879:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+76 cinit CODE >2880:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+77 cinit CODE >2881:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+78 cinit CODE >2882:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+79 cinit CODE >2883:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+7C cinit CODE >2887:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+7D cinit CODE >2888:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+7E cinit CODE >2889:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+7F cinit CODE >2890:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+80 cinit CODE >2891:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+81 cinit CODE >2892:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+84 cinit CODE >2896:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+85 cinit CODE >2897:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+86 cinit CODE >2898:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+87 cinit CODE >2899:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+88 cinit CODE >2900:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+89 cinit CODE >2901:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+8C cinit CODE >2907:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+8C cinit CODE >2909:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+8D cinit CODE >2910:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+8E cinit CODE >2911:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
 4 intentry CODE >41:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 6 intentry CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 A intentry CODE >52:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
@@ -188,8 +188,8 @@ E intentry CODE >53:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 5AE text21 CODE >98:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
 687 text20 CODE >30:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
 687 text20 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-68E text20 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
-697 text20 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+68D text20 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
+696 text20 CODE >31:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
 69D text20 CODE >32:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
 334 text19 CODE >71:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
 335 text19 CODE >72:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\ADC.c
@@ -458,14 +458,14 @@ EF text12 CODE >66:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiomet
 662 maintext CODE >112:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 668 maintext CODE >114:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 668 maintext CODE >116:C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
-6D1 clrtext CODE >2867:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-6D1 clrtext CODE >2868:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-6D2 clrtext CODE >2869:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-6D2 clrtext CODE >2870:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-6D3 clrtext CODE >2871:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-6D4 clrtext CODE >2872:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-6D5 clrtext CODE >2873:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
-6D6 clrtext CODE >2874:C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.s
+6D1 clrtext CODE >2867:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+6D1 clrtext CODE >2868:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+6D2 clrtext CODE >2869:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+6D2 clrtext CODE >2870:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+6D3 clrtext CODE >2871:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+6D4 clrtext CODE >2872:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+6D5 clrtext CODE >2873:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
+6D6 clrtext CODE >2874:C:\Users\B6028443\AppData\Local\Temp\xcAseb8.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -494,10 +494,10 @@ readADCRaw@gpioNumber 7A 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsC
 __Hstrings 0 0 ABS 0 strings -
 _LATA 10C 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 _LATB 10D 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
+___sp 0 0 STACK 2 stack C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
 _main C9E 0 CODE 0 maintext dist/default/production\BuckMsCProject.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-start E4 0 CODE 0 init C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
+start E4 0 CODE 0 init C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
 _filteredFreqPot 43 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 runPotScaling@minDuty 30 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 ?___lmul 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
@@ -506,12 +506,12 @@ _OPTION_REGbits 95 0 ABS 0 - dist/default/production\BuckMsCProject.X.production
 __end_of_readFilteredFreqPot A16 0 CODE 0 text17 dist/default/production\BuckMsCProject.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
 initialiseADCPin@gpioNumber 38 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
 _OSCCONbits 99 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
 readFilteredDutyPot@i_696 28 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
@@ -542,8 +542,8 @@ __Lmaintext 0 0 ABS 0 maintext -
 readFilteredFreqPot@i_700 28 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 __end_of___lldiv 960 0 CODE 0 text16 dist/default/production\BuckMsCProject.X.production.o
 _OPTION_REG 95 0 ABS 0 - dist/default/production\BuckMsCProject.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
-___stacklo 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
+___stackhi 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
+___stacklo 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
 initialiseGPIO@portType 36 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 readGPIO@portNumber 75 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 writeGPIO@portNumber 38 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
@@ -560,7 +560,7 @@ clear_ram0 DA2 0 CODE 0 clrtext dist/default/production\BuckMsCProject.X.product
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\BuckMsCProject.X.production.o
 _readADCRaw 668 0 CODE 0 text19 dist/default/production\BuckMsCProject.X.production.o
 readADCRaw@returnValue 74 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
+___int_sp 0 0 STACK 2 stack C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -717,7 +717,7 @@ __end_of_setupTimer0Interrupt DA2 0 CODE 0 text1 dist/default/production\BuckMsC
 __Lintentry 8 0 CODE 0 intentry -
 ___lldiv@divisor 76 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 _currentTripRead D0E 0 CODE 0 text20 dist/default/production\BuckMsCProject.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
 __end_of_initialisePotentiometers D92 0 CODE 0 text4 dist/default/production\BuckMsCProject.X.production.o
 _clockFrequency 3D 0 BANK0 1 bssBANK0 dist/default/production\BuckMsCProject.X.production.o
 ?_readFilteredFreqPot 7B 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
@@ -827,8 +827,8 @@ __Lreset_vec 0 0 CODE 0 reset_vec -
 __Hstringtext1 0 0 ABS 0 stringtext1 -
 __Hstringtext2 0 0 ABS 0 stringtext2 -
 __Hstringtext3 0 0 ABS 0 stringtext3 -
-___heap_hi 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
-___heap_lo 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAs6qs.o
+___heap_hi 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
+___heap_lo 0 0 ABS 0 - C:\Users\B6028443\AppData\Local\Temp\xcAseb8.o
 __end_of__initialization 118 0 CODE 0 cinit dist/default/production\BuckMsCProject.X.production.o
 ?_readADCRaw 70 0 COMMON 1 cstackCOMMON dist/default/production\BuckMsCProject.X.production.o
 __Lfunctab 0 0 ENTRY 0 functab -

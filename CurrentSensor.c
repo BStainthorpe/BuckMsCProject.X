@@ -28,7 +28,7 @@ void initialiseCurrentSensors(){
  *Use: This function reads the current trip digital IO to detect overcurrent
 ------------------------------------------------------------------------------*/
 uint8_t currentTripRead(){
-    return (~(readGPIO(gpioCurrentTripIL) || readGPIO(gpioCurrentTripIDS)));    //if either pin drops to 0, a fault has occurred, return 1
+    return (~(readGPIO(gpioCurrentTripIL) && readGPIO(gpioCurrentTripIDS)));    //if either pin drops to 0, a fault has occurred, return 1
 }
 
 /*------------------------------------------------------------------------------

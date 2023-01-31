@@ -4599,7 +4599,7 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
     if ("((INTCON)&07Fh)" "," "2") {
 # 52 "main.c"
-        if(currentTripRead() < 1){
+        if(currentTripRead() == 1){
             emergencyStop = 1;
             setPWMDutyandPeriod(0, 0);
         }

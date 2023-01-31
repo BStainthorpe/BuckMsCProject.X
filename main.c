@@ -49,7 +49,7 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
     //245Hz Slot 3:              -------3---------------------        potentiometersRead()
     //245Hz Slot 4:              ---------------------4-------
        
-        if(currentTripRead() < 1){
+        if(currentTripRead() == 1){
             emergencyStop = 1;         //flag an emergency stop
             setPWMDutyandPeriod(0, 0);   //clear PWM  
         }
