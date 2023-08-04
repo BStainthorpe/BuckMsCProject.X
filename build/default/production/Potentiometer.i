@@ -4514,6 +4514,18 @@ _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 1 "./Global.h" 1
 # 20 "./StateMachine.h" 2
 
+# 1 "./PWM.h" 1
+# 21 "./PWM.h"
+uint8_t setPeriod = 0;
+uint16_t setDuty = 0;
+uint8_t prevPeriod = 0;
+uint16_t prevDuty = 0;
+
+void setupPWM();
+void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
+void setPWMPeriod(uint8_t period);
+# 21 "./StateMachine.h" 2
+
 
 
 enum stateMachine{
@@ -4524,12 +4536,14 @@ enum stateMachine{
     overCurrentFault
 };
 
+enum stateMachine currentState = 0;
+
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 82 "./Global.h"
+# 70 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4544,16 +4558,10 @@ enum internalClockFreqSelec{
     freq32M
 };
 
-enum stateMachine currentState = 0;
-
-
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0;
-uint16_t prevDuty = 0;
-
 
 uint32_t clockFrequency = 0;
+
+uint8_t currentTripCount = 0;
 # 15 "./Potentiometer.h" 2
 
 
@@ -4564,13 +4572,7 @@ void initialiseADCModule();
 uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 uint16_t readILCurrentADCRaw();
 # 17 "./Potentiometer.h" 2
-
-
-
-
-
-
-
+# 28 "./Potentiometer.h"
 uint8_t potSetCount = 0;
 
 void initialisePotentiometers();
@@ -4584,12 +4586,6 @@ uint16_t freqPotFIFO[16];
 uint16_t dutyPotFIFO[16];
 # 8 "Potentiometer.c" 2
 
-# 1 "./PWM.h" 1
-# 16 "./PWM.h"
-void setupPWM();
-void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
-void setPWMPeriod(uint8_t period);
-# 9 "Potentiometer.c" 2
 
 
 

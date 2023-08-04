@@ -24,8 +24,8 @@ void setupPWM(){
     PSTR1CONbits.STR1D = 1;        //Steer P1D from CCP1
     PSTR1CONbits.STR1A = 0;        //Assign P1A to port pin - to prevent PWM appearing here
     
-    T2CONbits.T2CKPS = 0b00;       //1:1 prescaler on timer 1
-    PIE1bits.TMR2IE = 0;
+    T2CONbits.T2CKPS = 0b00;       //1:1 prescaler on timer 2
+    PIE1bits.TMR2IE = 0;           //disable period interrupt
     T2CONbits.TMR2ON = 1;          //start timer2 for the PWM 
     
     INTCONbits.PEIE = 1;           //enable peripheral interrupts

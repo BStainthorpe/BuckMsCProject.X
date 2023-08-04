@@ -4338,6 +4338,16 @@ extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\xc.h" 2 3
 # 15 "./PWM.h" 2
 
+
+
+
+
+
+uint8_t setPeriod = 0;
+uint16_t setDuty = 0;
+uint8_t prevPeriod = 0;
+uint16_t prevDuty = 0;
+
 void setupPWM();
 void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
 void setPWMPeriod(uint8_t period);
@@ -4529,6 +4539,7 @@ _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 
 
 
+
 enum stateMachine{
     initialising,
     potControl,
@@ -4537,12 +4548,14 @@ enum stateMachine{
     overCurrentFault
 };
 
+enum stateMachine currentState = 0;
+
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 82 "./Global.h"
+# 70 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4557,16 +4570,10 @@ enum internalClockFreqSelec{
     freq32M
 };
 
-enum stateMachine currentState = 0;
-
-
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0;
-uint16_t prevDuty = 0;
-
 
 uint32_t clockFrequency = 0;
+
+uint8_t currentTripCount = 0;
 # 8 "PWM.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\math.h" 1 3

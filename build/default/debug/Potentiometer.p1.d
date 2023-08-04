@@ -3,5 +3,6 @@ Potentiometer.c  \
 Potentiometer.h  \
 Global.h  \
 GPIO.h  \
-ADC.h  \
-PWM.h 
+StateMachine.h  \
+PWM.h  \
+ADC.h 

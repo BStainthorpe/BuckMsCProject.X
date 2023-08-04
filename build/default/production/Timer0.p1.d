@@ -3,4 +3,5 @@ Timer0.c  \
 Timer0.h  \
 Global.h  \
 GPIO.h  \
-StateMachine.h 
+StateMachine.h  \
+PWM.h 

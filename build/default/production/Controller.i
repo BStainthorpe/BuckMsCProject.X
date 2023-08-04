@@ -4511,6 +4511,18 @@ _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 1 "./Global.h" 1
 # 20 "./StateMachine.h" 2
 
+# 1 "./PWM.h" 1
+# 21 "./PWM.h"
+uint8_t setPeriod = 0;
+uint16_t setDuty = 0;
+uint8_t prevPeriod = 0;
+uint16_t prevDuty = 0;
+
+void setupPWM();
+void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
+void setPWMPeriod(uint8_t period);
+# 21 "./StateMachine.h" 2
+
 
 
 enum stateMachine{
@@ -4521,12 +4533,14 @@ enum stateMachine{
     overCurrentFault
 };
 
+enum stateMachine currentState = 0;
+
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 82 "./Global.h"
+# 70 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4541,28 +4555,33 @@ enum internalClockFreqSelec{
     freq32M
 };
 
-enum stateMachine currentState = 0;
-
-
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0;
-uint16_t prevDuty = 0;
-
 
 uint32_t clockFrequency = 0;
+
+uint8_t currentTripCount = 0;
 # 7 "Controller.c" 2
 
 # 1 "./Controller.h" 1
-# 30 "./Controller.h"
+# 54 "./Controller.h"
 uint16_t filteredVout = 0;
 uint16_t voutFIFO[16];
 
+typedef struct controllerVariables{
+    int16_t error;
+    int32_t integral;
+    int32_t proportionalOutput;
+    int32_t integralOutput;
+    int64_t integralOutputScaled;
+    int32_t sumOutput;
+    int16_t previousError;
+};
+
 uint16_t readFilteredVout();
-int16_t convertRawToDeciVolts(uint16_t rawValue);
+int16_t convertRawToMilliVolts(uint16_t rawValue);
 void controlRoutine();
 void runCurrentModeControl();
 void runVoltageModeControl();
+void initialiseController();
 # 8 "Controller.c" 2
 
 
@@ -4597,6 +4616,19 @@ int16_t convertRawToMilliAmps(uint16_t rawvalue);
 
 
 
+struct controllerVariables voltageModeVariables = {0, 0, 0, 0, 0, 0};
+struct controllerVariables currentModeVariables = {0, 0, 0, 0, 0, 0};
+
+
+
+
+
+void initialiseController(){
+    initialiseGPIO(pinRA4, 1);
+    initialiseADCPin(pinRA4);
+}
+
+
 
 
 
@@ -4605,7 +4637,7 @@ uint16_t readFilteredVout(){
     for(uint8_t i=0; i<16 -1; i++) voutFIFO[i] = voutFIFO[i+1];
     voutFIFO[16 -1] = readADCRaw(pinRA4);
     uint32_t sumOfSamples = 0;
-    for(uint8_t i=0; i<16; i++) sumOfSamples += voutFIFO[i];
+            for(uint8_t i=0; i<16; i++) sumOfSamples += voutFIFO[i];
 
     return (sumOfSamples >> 4);
 }
@@ -4615,9 +4647,10 @@ uint16_t readFilteredVout(){
 
 
 
-int16_t convertRawToDeciVolts(uint16_t rawValue){
-    int16_t offsetted = (int16_t)(rawValue - 0u);
-    int16_t returnValuedV = (int32_t)(offsetted * 245u) >> 10u;
+int16_t convertRawToMilliVolts(uint16_t rawValue){
+    int16_t offsetted = (int16_t)(rawValue) - 10u;
+    int32_t vsenseMult = ((int32_t)(((int32_t) offsetted) * 6100u));
+    int16_t returnValuedV = (int16_t) (vsenseMult >> 8u);
     return returnValuedV;
 }
 
@@ -4627,13 +4660,25 @@ int16_t convertRawToDeciVolts(uint16_t rawValue){
 
 
 void controlRoutine(){
-
     if(currentState == voltageModeControl){
         runVoltageModeControl();
+        setPeriod = 79u;
+
+        setDuty = (uint16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
     }
     if(currentState == currentModeControl){
         runCurrentModeControl();
+        setPeriod = 79u;
+
+        setDuty = (uint16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + currentModeVariables.sumOutput;
     }
+
+    uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+    uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+    if(setDuty > maxDuty) setDuty = maxDuty;
+    if(setDuty < minDuty) setDuty = minDuty;
+    if(setDuty < 0) setDuty = minDuty;
+
 }
 
 
@@ -4642,7 +4687,40 @@ void controlRoutine(){
 
 
 void runVoltageModeControl(){
-    int16_t newVoltage = convertRawToDeciVolts(filteredVout);
+
+
+   uint16_t newVoltage = convertRawToMilliVolts(filteredVout);
+
+
+   if(readGPIO(pinRB0)) voltageModeVariables.error = 16000u - newVoltage;
+   else voltageModeVariables.error = 10000u - newVoltage;
+
+
+   int64_t integralMult = ((int64_t) (5u * ((int64_t) voltageModeVariables.error) )) * 134u;
+
+   voltageModeVariables.integral = integralMult;
+   voltageModeVariables.integralOutputScaled = (voltageModeVariables.integralOutputScaled + voltageModeVariables.integral);
+
+
+   if(voltageModeVariables.integralOutputScaled > (1073741824u)){
+       voltageModeVariables.integralOutputScaled = (1073741824u);
+   }
+
+   if(voltageModeVariables.integralOutputScaled < 0){
+        if(abs(voltageModeVariables.integralOutputScaled) > (1073741824u)){
+                voltageModeVariables.integralOutputScaled = (int64_t) (0 -(1073741824u));
+        }
+   }
+
+
+   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 4u);
+
+
+   int64_t propMult = (int32_t) (18u * ((int32_t) voltageModeVariables.error));
+   voltageModeVariables.proportionalOutput = propMult >> 10u;
+
+   voltageModeVariables.sumOutput = voltageModeVariables.integralOutput + voltageModeVariables.proportionalOutput;
+   voltageModeVariables.previousError = voltageModeVariables.error;
 }
 
 

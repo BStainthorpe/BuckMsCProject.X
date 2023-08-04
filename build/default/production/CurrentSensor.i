@@ -4511,6 +4511,18 @@ _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 1 "./Global.h" 1
 # 20 "./StateMachine.h" 2
 
+# 1 "./PWM.h" 1
+# 21 "./PWM.h"
+uint8_t setPeriod = 0;
+uint16_t setDuty = 0;
+uint8_t prevPeriod = 0;
+uint16_t prevDuty = 0;
+
+void setupPWM();
+void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
+void setPWMPeriod(uint8_t period);
+# 21 "./StateMachine.h" 2
+
 
 
 enum stateMachine{
@@ -4521,12 +4533,14 @@ enum stateMachine{
     overCurrentFault
 };
 
+enum stateMachine currentState = 0;
+
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 82 "./Global.h"
+# 70 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4541,16 +4555,10 @@ enum internalClockFreqSelec{
     freq32M
 };
 
-enum stateMachine currentState = 0;
-
-
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0;
-uint16_t prevDuty = 0;
-
 
 uint32_t clockFrequency = 0;
+
+uint8_t currentTripCount = 0;
 # 7 "CurrentSensor.c" 2
 
 # 1 "./CurrentSensor.h" 1
@@ -4642,7 +4650,7 @@ uint16_t readFilteredIL(){
 
 void currentTripReset(){
     writeGPIO(pinRB3, 0);
-     _delay((unsigned long)((2)*(freq32M/4000000.0)));
+     _delay((unsigned long)((20)*(freq32M/4000000.0)));
     writeGPIO(pinRB3, 1);
 }
 

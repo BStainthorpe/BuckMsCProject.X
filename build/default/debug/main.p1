@@ -1,28 +1,47 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"32 ./StateMachine.h
+[; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
+[c E2834 0 1 2 3 4 .. ]
+[n E2834 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
-"43 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 43: _Bool currentTripRead();
+"44 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 44: _Bool currentTripRead();
 [v _currentTripRead `(a ~T0 @X0 0 e? ]
-"17 ./PWM.h
-[; ;./PWM.h: 17: void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
+"37 ./StateMachine.h
+[; ;./StateMachine.h: 37: void transToOverCurrentFault();
+[v _transToOverCurrentFault `(v ~T0 @X0 0 e? ]
+"47 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 47: void currentTripReset();
+[v _currentTripReset `(v ~T0 @X0 0 e? ]
+"27 ./PWM.h
+[; ;./PWM.h: 27: void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
 [v _setPWMDutyandPeriod `(v ~T0 @X0 0 ef2`us`uc ]
-"59 main.c
-[; ;main.c: 59:             writeGPIO(pinRB4, 0);
-[c E2805 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
-[n E2805 GPIO_PORTS pinRA0 pinRA1 pinRA2 pinRA3 pinRA4 pinRA5 pinRA6 pinRA7 pinRB0 pinRB1 pinRB2 pinRB3 pinRB4 pinRB5 pinRB6 pinRB7  ]
+"71 main.c
+[; ;main.c: 71:             writeGPIO(pinRB4, 0);
+[c E2809 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
+[n E2809 GPIO_PORTS pinRA0 pinRA1 pinRA2 pinRA3 pinRA4 pinRA5 pinRA6 pinRA7 pinRB0 pinRB1 pinRB2 pinRB3 pinRB4 pinRB5 pinRB6 pinRB7  ]
 "51 ./GPIO.h
 [; ;./GPIO.h: 51: void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
-[v _writeGPIO `(v ~T0 @X0 0 ef2`CE2805`uc ]
-"27 ./Potentiometer.h
-[; ;./Potentiometer.h: 27: uint16_t readFilteredDutyPot();
-[v _readFilteredDutyPot `(us ~T0 @X0 0 e? ]
-"28
-[; ;./Potentiometer.h: 28: uint16_t readFilteredFreqPot();
-[v _readFilteredFreqPot `(us ~T0 @X0 0 e? ]
-"29
-[; ;./Potentiometer.h: 29: void runPotScaling();
+[v _writeGPIO `(v ~T0 @X0 0 ef2`CE2809`uc ]
+"69 ./Controller.h
+[; ;./Controller.h: 69: void controlRoutine();
+[v _controlRoutine `(v ~T0 @X0 0 e? ]
+"46 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 46: uint16_t readFilteredIL();
+[v _readFilteredIL `(us ~T0 @X0 0 e? ]
+"67 ./Controller.h
+[; ;./Controller.h: 67: uint16_t readFilteredVout();
+[v _readFilteredVout `(us ~T0 @X0 0 e? ]
+"33 ./Potentiometer.h
+[; ;./Potentiometer.h: 33: void runPotScaling();
 [v _runPotScaling `(v ~T0 @X0 0 e? ]
+"31
+[; ;./Potentiometer.h: 31: uint16_t readFilteredDutyPot();
+[v _readFilteredDutyPot `(us ~T0 @X0 0 e? ]
+"32
+[; ;./Potentiometer.h: 32: uint16_t readFilteredFreqPot();
+[v _readFilteredFreqPot `(us ~T0 @X0 0 e? ]
 "358 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 358:     struct {
 [s S33 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -53,15 +72,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 571: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x011)));
 [v _PIR1bits `VS39 ~T0 @X0 0 e@17 ]
 [p mainexit ]
-"105 main.c
-[; ;main.c: 105:     setupInternalOscillator(freq32M);
-[c E2830 0 1 2 3 4 5 6 7 8 9 10 .. ]
-[n E2830 internalClockFreqSelec freq31k freq62k5 freq125k freq250k freq500k freq1M freq2M freq4M freq8M freq16M freq32M  ]
+"117 main.c
+[; ;main.c: 117:     setupInternalOscillator(freq32M);
+[c E2845 0 1 2 3 4 5 6 7 8 9 10 .. ]
+[n E2845 internalClockFreqSelec freq31k freq62k5 freq125k freq250k freq500k freq1M freq2M freq4M freq8M freq16M freq32M  ]
 "31
 [; ;main.c: 31: void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq);
-[v _setupInternalOscillator `(v ~T0 @X0 0 ef1`CE2830 ]
-"16 ./PWM.h
-[; ;./PWM.h: 16: void setupPWM();
+[v _setupInternalOscillator `(v ~T0 @X0 0 ef1`CE2845 ]
+"26 ./PWM.h
+[; ;./PWM.h: 26: void setupPWM();
 [v _setupPWM `(v ~T0 @X0 0 e? ]
 "15 ./Timer0.h
 [; ;./Timer0.h: 15:     void setupTimer0Interrupt();
@@ -69,15 +88,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27 ./ADC.h
 [; ;./ADC.h: 27: void initialiseADCModule();
 [v _initialiseADCModule `(v ~T0 @X0 0 e? ]
-"42 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 42: void initialiseCurrentSensors();
+"43 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 43: void initialiseCurrentSensors();
 [v _initialiseCurrentSensors `(v ~T0 @X0 0 e? ]
-"26 ./Potentiometer.h
-[; ;./Potentiometer.h: 26: void initialisePotentiometers();
+"30 ./Potentiometer.h
+[; ;./Potentiometer.h: 30: void initialisePotentiometers();
 [v _initialisePotentiometers `(v ~T0 @X0 0 e? ]
+"72 ./Controller.h
+[; ;./Controller.h: 72: void initialiseController();
+[v _initialiseController `(v ~T0 @X0 0 e? ]
 "50 ./GPIO.h
 [; ;./GPIO.h: 50: void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
-[v _initialiseGPIO `(v ~T0 @X0 0 ef2`CE2805`uc ]
+[v _initialiseGPIO `(v ~T0 @X0 0 ef2`CE2809`uc ]
+[v F510 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\builtins.h
+[v __delay `JF510 ~T0 @X0 0 e ]
+[p i __delay ]
+"52 ./GPIO.h
+[; ;./GPIO.h: 52: _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
+[v _readGPIO `(a ~T0 @X0 0 ef1`CE2809 ]
+"35 ./StateMachine.h
+[; ;./StateMachine.h: 35: void transToVoltageModeControl();
+[v _transToVoltageModeControl `(v ~T0 @X0 0 e? ]
+"36
+[; ;./StateMachine.h: 36: void transToCurrentModeControl();
+[v _transToCurrentModeControl `(v ~T0 @X0 0 e? ]
+"34
+[; ;./StateMachine.h: 34: void transToPotControl();
+[v _transToPotControl `(v ~T0 @X0 0 e? ]
 "1713 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1713:     struct {
 [s S96 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -571,112 +609,127 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6749
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 6749: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"79 ./Global.h
-[; ;./Global.h: 79: uint8_t setPeriod = 0;
+"21 ./PWM.h
+[; ;./PWM.h: 21: uint8_t setPeriod = 0;
 [v _setPeriod `uc ~T0 @X0 1 e ]
 [i _setPeriod
 -> -> 0 `i `uc
 ]
-"80
-[; ;./Global.h: 80: uint16_t setDuty = 0;
+"22
+[; ;./PWM.h: 22: uint16_t setDuty = 0;
 [v _setDuty `us ~T0 @X0 1 e ]
 [i _setDuty
 -> -> 0 `i `us
 ]
-"81
-[; ;./Global.h: 81: uint8_t prevPeriod = 0;
+"23
+[; ;./PWM.h: 23: uint8_t prevPeriod = 0;
 [v _prevPeriod `uc ~T0 @X0 1 e ]
 [i _prevPeriod
 -> -> 0 `i `uc
 ]
-"82
-[; ;./Global.h: 82: uint16_t prevDuty = 0;
+"24
+[; ;./PWM.h: 24: uint16_t prevDuty = 0;
 [v _prevDuty `us ~T0 @X0 1 e ]
 [i _prevDuty
 -> -> 0 `i `us
 ]
-"84
-[; ;./Global.h: 84: uint32_t clockFrequency = 0;
+"32 ./StateMachine.h
+[; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
+[v _currentState `E2834 ~T0 @X0 1 e ]
+[i _currentState
+-> -> 0 `i `E2834
+]
+"85 ./Global.h
+[; ;./Global.h: 85: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"33 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 33: volatile uint16_t latestIL = 0;
+"87
+[; ;./Global.h: 87: uint8_t currentTripCount = 0;
+[v _currentTripCount `uc ~T0 @X0 1 e ]
+[i _currentTripCount
+-> -> 0 `i `uc
+]
+"34 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 34: volatile uint16_t latestIL = 0;
 [v _latestIL `Vus ~T0 @X0 1 e ]
 [i _latestIL
 -> -> 0 `i `us
 ]
-"34
-[; ;./CurrentSensor.h: 34: uint16_t filteredIDS = 0;
+"35
+[; ;./CurrentSensor.h: 35: uint16_t filteredIDS = 0;
 [v _filteredIDS `us ~T0 @X0 1 e ]
 [i _filteredIDS
 -> -> 0 `i `us
 ]
-"35
-[; ;./CurrentSensor.h: 35: uint16_t filteredIL = 0;
+"36
+[; ;./CurrentSensor.h: 36: uint16_t filteredIL = 0;
 [v _filteredIL `us ~T0 @X0 1 e ]
 [i _filteredIL
 -> -> 0 `i `us
 ]
-"36
-[; ;./CurrentSensor.h: 36: uint16_t currentIDSFIFO[16];
-[v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
 "37
-[; ;./CurrentSensor.h: 37: uint16_t currentILFIFO[16];
+[; ;./CurrentSensor.h: 37: uint16_t currentIDSFIFO[16];
+[v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
+"38
+[; ;./CurrentSensor.h: 38: uint16_t currentILFIFO[16];
 [v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
-"39
-[; ;./CurrentSensor.h: 39: _Bool tripIDS = 0;
+"40
+[; ;./CurrentSensor.h: 40: _Bool tripIDS = 0;
 [v _tripIDS `a ~T0 @X0 1 e ]
 [i _tripIDS
 -> -> 0 `i `a
 ]
-"40
-[; ;./CurrentSensor.h: 40: _Bool tripIL = 0;
+"41
+[; ;./CurrentSensor.h: 41: _Bool tripIL = 0;
 [v _tripIL `a ~T0 @X0 1 e ]
 [i _tripIL
 -> -> 0 `i `a
 ]
-"24 ./Potentiometer.h
-[; ;./Potentiometer.h: 24: uint8_t potSetCount = 0;
+"54 ./Controller.h
+[; ;./Controller.h: 54: uint16_t filteredVout = 0;
+[v _filteredVout `us ~T0 @X0 1 e ]
+[i _filteredVout
+-> -> 0 `i `us
+]
+"55
+[; ;./Controller.h: 55: uint16_t voutFIFO[16];
+[v _voutFIFO `us ~T0 @X0 -> 16 `i e ]
+"28 ./Potentiometer.h
+[; ;./Potentiometer.h: 28: uint8_t potSetCount = 0;
 [v _potSetCount `uc ~T0 @X0 1 e ]
 [i _potSetCount
 -> -> 0 `i `uc
 ]
-"31
-[; ;./Potentiometer.h: 31: uint16_t filteredFreqPot = 0;
+"35
+[; ;./Potentiometer.h: 35: uint16_t filteredFreqPot = 0;
 [v _filteredFreqPot `us ~T0 @X0 1 e ]
 [i _filteredFreqPot
 -> -> 0 `i `us
 ]
-"32
-[; ;./Potentiometer.h: 32: uint16_t filteredDutyPot = 0;
+"36
+[; ;./Potentiometer.h: 36: uint16_t filteredDutyPot = 0;
 [v _filteredDutyPot `us ~T0 @X0 1 e ]
 [i _filteredDutyPot
 -> -> 0 `i `us
 ]
-"33
-[; ;./Potentiometer.h: 33: uint16_t freqPotFIFO[16];
+"37
+[; ;./Potentiometer.h: 37: uint16_t freqPotFIFO[16];
 [v _freqPotFIFO `us ~T0 @X0 -> 16 `i e ]
-"34
-[; ;./Potentiometer.h: 34: uint16_t dutyPotFIFO[16];
+"38
+[; ;./Potentiometer.h: 38: uint16_t dutyPotFIFO[16];
 [v _dutyPotFIFO `us ~T0 @X0 -> 16 `i e ]
-"27 main.c
-[; ;main.c: 27: volatile _Bool timerSlotHalf = 0;
+"28 main.c
+[; ;main.c: 28: volatile _Bool timerSlotHalf = 0;
 [v _timerSlotHalf `Va ~T0 @X0 1 e ]
 [i _timerSlotHalf
 -> -> 0 `i `a
 ]
-"28
-[; ;main.c: 28: volatile _Bool timerSlotQuarter = 0;
+"29
+[; ;main.c: 29: volatile _Bool timerSlotQuarter = 0;
 [v _timerSlotQuarter `Va ~T0 @X0 1 e ]
 [i _timerSlotQuarter
--> -> 0 `i `a
-]
-"29
-[; ;main.c: 29: volatile _Bool emergencyStop = 0;
-[v _emergencyStop `Va ~T0 @X0 1 e ]
-[i _emergencyStop
 -> -> 0 `i `a
 ]
 [v $root$_Tick980Hz `(v ~T0 @X0 0 e ]
@@ -688,268 +741,338 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "43
 [; ;main.c: 43:     if ("((INTCON)&07Fh)" "," "2") {
-[e $ ! != :s 2C -> -> 0 `i `*uc 357  ]
+[e $ ! != :s 2C -> -> 0 `i `*uc 358  ]
 {
 "52
 [; ;main.c: 52:         if(currentTripRead() == 1){
-[e $ ! == -> ( _currentTripRead ..  `i -> 1 `i 358  ]
+[e $ ! == -> ( _currentTripRead ..  `i -> 1 `i 359  ]
 {
 "53
-[; ;main.c: 53:             emergencyStop = 1;
-[e = _emergencyStop -> -> 1 `i `a ]
+[; ;main.c: 53:             currentTripCount++;
+[e ++ _currentTripCount -> -> 1 `i `uc ]
 "54
-[; ;main.c: 54:             setPWMDutyandPeriod(0, 0);
-[e ( _setPWMDutyandPeriod (2 , -> -> 0 `i `us -> -> 0 `i `uc ]
-"55
-[; ;main.c: 55:         }
-}
-[e :U 358 ]
-"57
-[; ;main.c: 57:         if(timerSlotHalf == 0){
-[e $ ! == -> _timerSlotHalf `i -> 0 `i 359  ]
+[; ;main.c: 54:             if(currentTripCount == 3){
+[e $ ! == -> _currentTripCount `i -> 3 `i 360  ]
 {
+"55
+[; ;main.c: 55:                 transToOverCurrentFault();
+[e ( _transToOverCurrentFault ..  ]
+"56
+[; ;main.c: 56:             }
+}
+[e $U 361  ]
+"57
+[; ;main.c: 57:             else{
+[e :U 360 ]
+{
+"58
+[; ;main.c: 58:                 currentTripReset();
+[e ( _currentTripReset ..  ]
 "59
-[; ;main.c: 59:             writeGPIO(pinRB4, 0);
-[e ( _writeGPIO (2 , . `E2805 12 -> -> 0 `i `uc ]
+[; ;main.c: 59:             }
+}
+[e :U 361 ]
 "60
 [; ;main.c: 60:         }
 }
-[e :U 359 ]
+[e $U 362  ]
 "61
-[; ;main.c: 61:         if(timerSlotHalf == 1){
-[e $ ! == -> _timerSlotHalf `i -> 1 `i 360  ]
+[; ;main.c: 61:         else{
+[e :U 359 ]
 {
-"65
-[; ;main.c: 65:             if(timerSlotQuarter == 0){
-[e $ ! == -> _timerSlotQuarter `i -> 0 `i 361  ]
+"62
+[; ;main.c: 62:             if(currentTripCount > 0){
+[e $ ! > -> _currentTripCount `i -> 0 `i 363  ]
 {
-"67
-[; ;main.c: 67:                 writeGPIO(pinRB4, 1);
-[e ( _writeGPIO (2 , . `E2805 12 -> -> 1 `i `uc ]
-"68
-[; ;main.c: 68:                 writeGPIO(9, 1);
-[e ( _writeGPIO (2 , -> -> 9 `i `E2805 -> -> 1 `i `uc ]
-"70
-[; ;main.c: 70:                 filteredDutyPot = readFilteredDutyPot();
-[e = _filteredDutyPot ( _readFilteredDutyPot ..  ]
-"71
-[; ;main.c: 71:                 filteredFreqPot = readFilteredFreqPot();
-[e = _filteredFreqPot ( _readFilteredFreqPot ..  ]
-"73
-[; ;main.c: 73:                 if(~emergencyStop){
-[e $ ! != ~ -> _emergencyStop `i -> 0 `i 362  ]
-{
-"74
-[; ;main.c: 74:                     runPotScaling();
-[e ( _runPotScaling ..  ]
-"75
-[; ;main.c: 75:                 }
-}
-[e :U 362 ]
-"76
-[; ;main.c: 76:             }
-}
-[e :U 361 ]
-"78
-[; ;main.c: 78:             if(timerSlotQuarter == 1){
-[e $ ! == -> _timerSlotQuarter `i -> 1 `i 363  ]
-{
-"80
-[; ;main.c: 80:             }
+"63
+[; ;main.c: 63:                 currentTripCount--;
+[e -- _currentTripCount -> -> 1 `i `uc ]
+"64
+[; ;main.c: 64:             }
 }
 [e :U 363 ]
-"82
-[; ;main.c: 82:             timerSlotQuarter = ~timerSlotQuarter;
-[e = _timerSlotQuarter -> ~ -> _timerSlotQuarter `i `a ]
-"83
-[; ;main.c: 83:         }
+"65
+[; ;main.c: 65:         }
 }
-[e :U 360 ]
-"85
-[; ;main.c: 85:         timerSlotHalf = ~timerSlotHalf;
-[e = _timerSlotHalf -> ~ -> _timerSlotHalf `i `a ]
-"86
-[; ;main.c: 86:         INTCONbits.TMR0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"88
-[; ;main.c: 88:     }
-}
-[e :U 357 ]
-"90
-[; ;main.c: 90:     if("((PIR1)&07Fh)" "," "2"){
-[e $ ! != :s 4C -> -> 0 `i `*uc 364  ]
+[e :U 362 ]
+"66
+[; ;main.c: 66:         setPWMDutyandPeriod(setDuty, setPeriod);
+[e ( _setPWMDutyandPeriod (2 , _setDuty _setPeriod ]
+"69
+[; ;main.c: 69:         if(timerSlotHalf == 0){
+[e $ ! == -> _timerSlotHalf `i -> 0 `i 364  ]
 {
-"91
-[; ;main.c: 91:         latestIL = readILCurrentADCRaw();
-[e = _latestIL ( _readILCurrentADCRaw ..  ]
-"92
-[; ;main.c: 92:         PIR1bits.CCP1IF = 0;
-[e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
-"93
-[; ;main.c: 93:     }
+"71
+[; ;main.c: 71:             writeGPIO(pinRB4, 0);
+[e ( _writeGPIO (2 , . `E2809 12 -> -> 0 `i `uc ]
+"72
+[; ;main.c: 72:             controlRoutine();
+[e ( _controlRoutine ..  ]
+"73
+[; ;main.c: 73:         }
 }
 [e :U 364 ]
+"75
+[; ;main.c: 75:         if(timerSlotHalf == 1){
+[e $ ! == -> _timerSlotHalf `i -> 1 `i 365  ]
+{
+"77
+[; ;main.c: 77:             filteredIL = readFilteredIL();
+[e = _filteredIL ( _readFilteredIL ..  ]
+"79
+[; ;main.c: 79:             filteredVout = readFilteredVout();
+[e = _filteredVout ( _readFilteredVout ..  ]
+"82
+[; ;main.c: 82:             if(timerSlotQuarter == 0){
+[e $ ! == -> _timerSlotQuarter `i -> 0 `i 366  ]
+{
+"84
+[; ;main.c: 84:                 writeGPIO(pinRB4, 1);
+[e ( _writeGPIO (2 , . `E2809 12 -> -> 1 `i `uc ]
+"85
+[; ;main.c: 85:                 runPotScaling();
+[e ( _runPotScaling ..  ]
+"86
+[; ;main.c: 86:             }
+}
+[e :U 366 ]
+"88
+[; ;main.c: 88:             if(timerSlotQuarter == 1){
+[e $ ! == -> _timerSlotQuarter `i -> 1 `i 367  ]
+{
+"90
+[; ;main.c: 90:                 filteredDutyPot = readFilteredDutyPot();
+[e = _filteredDutyPot ( _readFilteredDutyPot ..  ]
+"91
+[; ;main.c: 91:                 filteredFreqPot = readFilteredFreqPot();
+[e = _filteredFreqPot ( _readFilteredFreqPot ..  ]
+"92
+[; ;main.c: 92:             }
+}
+[e :U 367 ]
+"94
+[; ;main.c: 94:             timerSlotQuarter = ~timerSlotQuarter;
+[e = _timerSlotQuarter -> ~ -> _timerSlotQuarter `i `a ]
 "95
-[; ;main.c: 95: }
-[e :UE 356 ]
+[; ;main.c: 95:         }
+}
+[e :U 365 ]
+"97
+[; ;main.c: 97:         timerSlotHalf = ~timerSlotHalf;
+[e = _timerSlotHalf -> ~ -> _timerSlotHalf `i `a ]
+"98
+[; ;main.c: 98:         INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"100
+[; ;main.c: 100:     }
+}
+[e :U 358 ]
+"102
+[; ;main.c: 102:     if("((PIR1)&07Fh)" "," "2"){
+[e $ ! != :s 4C -> -> 0 `i `*uc 368  ]
+{
+"103
+[; ;main.c: 103:         latestIL = readILCurrentADCRaw();
+[e = _latestIL ( _readILCurrentADCRaw ..  ]
+"104
+[; ;main.c: 104:         PIR1bits.CCP1IF = 0;
+[e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
+"105
+[; ;main.c: 105:     }
+}
+[e :U 368 ]
+"107
+[; ;main.c: 107: }
+[e :UE 357 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"103
-[; ;main.c: 103: int main(int argc, char** argv) {
+"115
+[; ;main.c: 115: int main(int argc, char** argv) {
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-"105
-[; ;main.c: 105:     setupInternalOscillator(freq32M);
-[e ( _setupInternalOscillator (1 . `E2830 10 ]
-"107
-[; ;main.c: 107:     setupPWM();
-[e ( _setupPWM ..  ]
-"108
-[; ;main.c: 108:     setupTimer0Interrupt();
-[e ( _setupTimer0Interrupt ..  ]
-"109
-[; ;main.c: 109:     initialiseADCModule();
-[e ( _initialiseADCModule ..  ]
-"110
-[; ;main.c: 110:     initialiseCurrentSensors();
-[e ( _initialiseCurrentSensors ..  ]
-"111
-[; ;main.c: 111:     initialisePotentiometers();
-[e ( _initialisePotentiometers ..  ]
-"112
-[; ;main.c: 112:     initialiseGPIO(pinRB4, 0);
-[e ( _initialiseGPIO (2 , . `E2805 12 -> -> 0 `i `uc ]
-"114
-[; ;main.c: 114:     while(1){
-[e :U 367 ]
-{
-"116
-[; ;main.c: 116:     }
-}
-[e :U 366 ]
-[e $U 367  ]
-[e :U 368 ]
 "117
-[; ;main.c: 117:     return (0);
-[e ) -> 0 `i ]
-[e $UE 365  ]
-"118
-[; ;main.c: 118: }
-[e :UE 365 ]
+[; ;main.c: 117:     setupInternalOscillator(freq32M);
+[e ( _setupInternalOscillator (1 . `E2845 10 ]
+"119
+[; ;main.c: 119:     setupPWM();
+[e ( _setupPWM ..  ]
+"120
+[; ;main.c: 120:     setupTimer0Interrupt();
+[e ( _setupTimer0Interrupt ..  ]
+"121
+[; ;main.c: 121:     initialiseADCModule();
+[e ( _initialiseADCModule ..  ]
+"122
+[; ;main.c: 122:     initialiseCurrentSensors();
+[e ( _initialiseCurrentSensors ..  ]
+"123
+[; ;main.c: 123:     initialisePotentiometers();
+[e ( _initialisePotentiometers ..  ]
+"124
+[; ;main.c: 124:     initialiseController();
+[e ( _initialiseController ..  ]
+"126
+[; ;main.c: 126:     initialiseGPIO(pinRB4, 0);
+[e ( _initialiseGPIO (2 , . `E2809 12 -> -> 0 `i `uc ]
+"128
+[; ;main.c: 128:     _delay((unsigned long)((100)*(freq32M/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> . `E2845 10 `d .4000.0 `ul ]
+"130
+[; ;main.c: 130:     if(~readGPIO(pinRB0)){
+[e $ ! != ~ -> ( _readGPIO (1 . `E2809 8 `i -> 0 `i 370  ]
+{
+"131
+[; ;main.c: 131:         if(1 == 1) transToVoltageModeControl();
+[e $ ! == -> 1 `i -> 1 `i 371  ]
+[e ( _transToVoltageModeControl ..  ]
+[e $U 372  ]
+"132
+[; ;main.c: 132:         else if(1 == 0) transToCurrentModeControl();
+[e :U 371 ]
+[e $ ! == -> 1 `i -> 0 `i 373  ]
+[e ( _transToCurrentModeControl ..  ]
+[e :U 373 ]
+[e :U 372 ]
+"133
+[; ;main.c: 133:     }
 }
-"125
-[; ;main.c: 125: void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq){
-[v _setupInternalOscillator `(v ~T0 @X0 1 ef1`CE2830 ]
+[e $U 374  ]
+"134
+[; ;main.c: 134:     else transToPotControl();
+[e :U 370 ]
+[e ( _transToPotControl ..  ]
+[e :U 374 ]
+"136
+[; ;main.c: 136:     while(1){
+[e :U 376 ]
+{
+"138
+[; ;main.c: 138:     }
+}
+[e :U 375 ]
+[e $U 376  ]
+[e :U 377 ]
+"139
+[; ;main.c: 139:     return (0);
+[e ) -> 0 `i ]
+[e $UE 369  ]
+"140
+[; ;main.c: 140: }
+[e :UE 369 ]
+}
+"147
+[; ;main.c: 147: void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq){
+[v _setupInternalOscillator `(v ~T0 @X0 1 ef1`CE2845 ]
 {
 [e :U _setupInternalOscillator ]
-[v _selectedFreq `CE2830 ~T0 @X0 1 r1 ]
+[v _selectedFreq `CE2845 ~T0 @X0 1 r1 ]
 [f ]
-"129
-[; ;main.c: 129:     switch(selectedFreq){
-[e $U 371  ]
+"151
+[; ;main.c: 151:     switch(selectedFreq){
+[e $U 380  ]
 {
-"130
-[; ;main.c: 130:         case freq31k: OSCCONbits.IRCF = 0b0000; OSCCONbits.SPLLEN = 0; clockFrequency = 31000; break;
-[e :U 372 ]
+"152
+[; ;main.c: 152:         case freq31k: OSCCONbits.IRCF = 0b0000; OSCCONbits.SPLLEN = 0; clockFrequency = 31000; break;
+[e :U 381 ]
 [e = . . _OSCCONbits 1 2 -> -> 0 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> -> 31000 `i `l `ul ]
-[e $U 370  ]
-"131
-[; ;main.c: 131:         case freq62k5: OSCCONbits.IRCF = 0b0100; OSCCONbits.SPLLEN = 0; clockFrequency = 62500; break;
-[e :U 373 ]
+[e $U 379  ]
+"153
+[; ;main.c: 153:         case freq62k5: OSCCONbits.IRCF = 0b0100; OSCCONbits.SPLLEN = 0; clockFrequency = 62500; break;
+[e :U 382 ]
 [e = . . _OSCCONbits 1 2 -> -> 4 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 62500 `l `ul ]
-[e $U 370  ]
-"132
-[; ;main.c: 132:         case freq125k: OSCCONbits.IRCF = 0b0101; OSCCONbits.SPLLEN = 0; clockFrequency = 125000; break;
-[e :U 374 ]
+[e $U 379  ]
+"154
+[; ;main.c: 154:         case freq125k: OSCCONbits.IRCF = 0b0101; OSCCONbits.SPLLEN = 0; clockFrequency = 125000; break;
+[e :U 383 ]
 [e = . . _OSCCONbits 1 2 -> -> 5 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 125000 `l `ul ]
-[e $U 370  ]
-"133
-[; ;main.c: 133:         case freq250k: OSCCONbits.IRCF = 0b0110; OSCCONbits.SPLLEN = 0; clockFrequency = 250000; break;
-[e :U 375 ]
+[e $U 379  ]
+"155
+[; ;main.c: 155:         case freq250k: OSCCONbits.IRCF = 0b0110; OSCCONbits.SPLLEN = 0; clockFrequency = 250000; break;
+[e :U 384 ]
 [e = . . _OSCCONbits 1 2 -> -> 6 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 250000 `l `ul ]
-[e $U 370  ]
-"134
-[; ;main.c: 134:         case freq500k: OSCCONbits.IRCF = 0b0111; OSCCONbits.SPLLEN = 0; clockFrequency = 500000; break;
-[e :U 376 ]
+[e $U 379  ]
+"156
+[; ;main.c: 156:         case freq500k: OSCCONbits.IRCF = 0b0111; OSCCONbits.SPLLEN = 0; clockFrequency = 500000; break;
+[e :U 385 ]
 [e = . . _OSCCONbits 1 2 -> -> 7 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 500000 `l `ul ]
-[e $U 370  ]
-"135
-[; ;main.c: 135:         case freq1M: OSCCONbits.IRCF = 0b1011; OSCCONbits.SPLLEN = 0; clockFrequency = 1000000; break;
-[e :U 377 ]
+[e $U 379  ]
+"157
+[; ;main.c: 157:         case freq1M: OSCCONbits.IRCF = 0b1011; OSCCONbits.SPLLEN = 0; clockFrequency = 1000000; break;
+[e :U 386 ]
 [e = . . _OSCCONbits 1 2 -> -> 11 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 1000000 `l `ul ]
-[e $U 370  ]
-"136
-[; ;main.c: 136:         case freq2M: OSCCONbits.IRCF = 0b1100; OSCCONbits.SPLLEN = 0; clockFrequency = 2000000; break;
-[e :U 378 ]
+[e $U 379  ]
+"158
+[; ;main.c: 158:         case freq2M: OSCCONbits.IRCF = 0b1100; OSCCONbits.SPLLEN = 0; clockFrequency = 2000000; break;
+[e :U 387 ]
 [e = . . _OSCCONbits 1 2 -> -> 12 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 2000000 `l `ul ]
-[e $U 370  ]
-"137
-[; ;main.c: 137:         case freq4M: OSCCONbits.IRCF = 0b1101; OSCCONbits.SPLLEN = 0; clockFrequency = 4000000; break;
-[e :U 379 ]
+[e $U 379  ]
+"159
+[; ;main.c: 159:         case freq4M: OSCCONbits.IRCF = 0b1101; OSCCONbits.SPLLEN = 0; clockFrequency = 4000000; break;
+[e :U 388 ]
 [e = . . _OSCCONbits 1 2 -> -> 13 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 4000000 `l `ul ]
-[e $U 370  ]
-"138
-[; ;main.c: 138:         case freq8M: OSCCONbits.IRCF = 0b1110; OSCCONbits.SPLLEN = 0; clockFrequency = 8000000; break;
-[e :U 380 ]
+[e $U 379  ]
+"160
+[; ;main.c: 160:         case freq8M: OSCCONbits.IRCF = 0b1110; OSCCONbits.SPLLEN = 0; clockFrequency = 8000000; break;
+[e :U 389 ]
 [e = . . _OSCCONbits 1 2 -> -> 14 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 8000000 `l `ul ]
-[e $U 370  ]
-"139
-[; ;main.c: 139:         case freq16M: OSCCONbits.IRCF = 0b1111; OSCCONbits.SPLLEN = 0; clockFrequency = 16000000; break;
-[e :U 381 ]
+[e $U 379  ]
+"161
+[; ;main.c: 161:         case freq16M: OSCCONbits.IRCF = 0b1111; OSCCONbits.SPLLEN = 0; clockFrequency = 16000000; break;
+[e :U 390 ]
 [e = . . _OSCCONbits 1 2 -> -> 15 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 0 `i `uc ]
 [e = _clockFrequency -> -> 16000000 `l `ul ]
-[e $U 370  ]
-"140
-[; ;main.c: 140:         case freq32M: OSCCONbits.IRCF = 0b1110; OSCCONbits.SPLLEN = 1; clockFrequency = 32000000; break;
-[e :U 382 ]
+[e $U 379  ]
+"162
+[; ;main.c: 162:         case freq32M: OSCCONbits.IRCF = 0b1110; OSCCONbits.SPLLEN = 1; clockFrequency = 32000000; break;
+[e :U 391 ]
 [e = . . _OSCCONbits 1 2 -> -> 14 `i `uc ]
 [e = . . _OSCCONbits 0 7 -> -> 1 `i `uc ]
 [e = _clockFrequency -> -> 32000000 `l `ul ]
-[e $U 370  ]
-"141
-[; ;main.c: 141:     }
+[e $U 379  ]
+"163
+[; ;main.c: 163:     }
 }
-[e $U 370  ]
-[e :U 371 ]
-[e [\ -> _selectedFreq `ui , $ -> . `E2830 0 `ui 372
- , $ -> . `E2830 1 `ui 373
- , $ -> . `E2830 2 `ui 374
- , $ -> . `E2830 3 `ui 375
- , $ -> . `E2830 4 `ui 376
- , $ -> . `E2830 5 `ui 377
- , $ -> . `E2830 6 `ui 378
- , $ -> . `E2830 7 `ui 379
- , $ -> . `E2830 8 `ui 380
- , $ -> . `E2830 9 `ui 381
- , $ -> . `E2830 10 `ui 382
- 370 ]
-[e :U 370 ]
-"142
-[; ;main.c: 142: }
-[e :UE 369 ]
+[e $U 379  ]
+[e :U 380 ]
+[e [\ -> _selectedFreq `ui , $ -> . `E2845 0 `ui 381
+ , $ -> . `E2845 1 `ui 382
+ , $ -> . `E2845 2 `ui 383
+ , $ -> . `E2845 3 `ui 384
+ , $ -> . `E2845 4 `ui 385
+ , $ -> . `E2845 5 `ui 386
+ , $ -> . `E2845 6 `ui 387
+ , $ -> . `E2845 7 `ui 388
+ , $ -> . `E2845 8 `ui 389
+ , $ -> . `E2845 9 `ui 390
+ , $ -> . `E2845 10 `ui 391
+ 379 ]
+[e :U 379 ]
+"164
+[; ;main.c: 164: }
+[e :UE 378 ]
 }
 [a 1C 40 40 73 78 84 67 79 78 41 38 48 55 70 104 41 44 50 0 ]
 [a 2C 40 40 73 78 84 67 79 78 41 38 48 55 70 104 41 44 50 0 ]

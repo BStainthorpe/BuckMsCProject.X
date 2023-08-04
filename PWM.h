@@ -13,9 +13,21 @@ extern "C" {
 #endif
 
 #include <xc.h>                                     //PIC hardware mapping
+     
+#define MIN_DUTY               10
+#define MAX_DUTY               90    
+    
+//variables for setting duty and period
+uint8_t setPeriod = 0;
+uint16_t setDuty = 0;
+uint8_t prevPeriod = 0; 
+uint16_t prevDuty = 0;
+
 void setupPWM();
 void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
 void setPWMPeriod(uint8_t period);
+
+
         
 #ifdef	__cplusplus
 }

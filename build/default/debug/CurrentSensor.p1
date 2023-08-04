@@ -1,4 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"32 ./StateMachine.h
+[; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
+[c E2833 0 1 2 3 4 .. ]
+[n E2833 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
 "18 CurrentSensor.c
 [; ;CurrentSensor.c: 18:     initialiseGPIO(pinRA3, 1);
 [c E2798 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
@@ -9,15 +13,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26 ./ADC.h
 [; ;./ADC.h: 26: void initialiseADCPin(const enum GPIO_PORTS gpioNumber);
 [v _initialiseADCPin `(v ~T0 @X0 0 ef1`CE2798 ]
-"51 ./GPIO.h
-[; ;./GPIO.h: 51: void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
-[v _writeGPIO `(v ~T0 @X0 0 ef2`CE2798`uc ]
-"52
+"47 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 47: void currentTripReset();
+[v _currentTripReset `(v ~T0 @X0 0 e? ]
+"52 ./GPIO.h
 [; ;./GPIO.h: 52: _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 [v _readGPIO `(a ~T0 @X0 0 ef1`CE2798 ]
 "28 ./ADC.h
 [; ;./ADC.h: 28: uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 [v _readADCRaw `(us ~T0 @X0 0 ef1`CE2798 ]
+"51 ./GPIO.h
+[; ;./GPIO.h: 51: void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
+[v _writeGPIO `(v ~T0 @X0 0 ef2`CE2798`uc ]
+[v F510 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\builtins.h
+[v __delay `JF510 ~T0 @X0 0 e ]
+[p i __delay ]
+"72 CurrentSensor.c
+[; ;CurrentSensor.c: 72:      _delay((unsigned long)((20)*(freq32M/4000000.0)));
+[c E2844 0 1 2 3 4 5 6 7 8 9 10 .. ]
+[n E2844 internalClockFreqSelec freq31k freq62k5 freq125k freq250k freq500k freq1M freq2M freq4M freq8M freq16M freq32M  ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 55: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -492,68 +507,80 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6749
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 6749: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"79 ./Global.h
-[; ;./Global.h: 79: uint8_t setPeriod = 0;
+"21 ./PWM.h
+[; ;./PWM.h: 21: uint8_t setPeriod = 0;
 [v _setPeriod `uc ~T0 @X0 1 e ]
 [i _setPeriod
 -> -> 0 `i `uc
 ]
-"80
-[; ;./Global.h: 80: uint16_t setDuty = 0;
+"22
+[; ;./PWM.h: 22: uint16_t setDuty = 0;
 [v _setDuty `us ~T0 @X0 1 e ]
 [i _setDuty
 -> -> 0 `i `us
 ]
-"81
-[; ;./Global.h: 81: uint8_t prevPeriod = 0;
+"23
+[; ;./PWM.h: 23: uint8_t prevPeriod = 0;
 [v _prevPeriod `uc ~T0 @X0 1 e ]
 [i _prevPeriod
 -> -> 0 `i `uc
 ]
-"82
-[; ;./Global.h: 82: uint16_t prevDuty = 0;
+"24
+[; ;./PWM.h: 24: uint16_t prevDuty = 0;
 [v _prevDuty `us ~T0 @X0 1 e ]
 [i _prevDuty
 -> -> 0 `i `us
 ]
-"84
-[; ;./Global.h: 84: uint32_t clockFrequency = 0;
+"32 ./StateMachine.h
+[; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
+[v _currentState `E2833 ~T0 @X0 1 e ]
+[i _currentState
+-> -> 0 `i `E2833
+]
+"85 ./Global.h
+[; ;./Global.h: 85: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"33 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 33: volatile uint16_t latestIL = 0;
+"87
+[; ;./Global.h: 87: uint8_t currentTripCount = 0;
+[v _currentTripCount `uc ~T0 @X0 1 e ]
+[i _currentTripCount
+-> -> 0 `i `uc
+]
+"34 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 34: volatile uint16_t latestIL = 0;
 [v _latestIL `Vus ~T0 @X0 1 e ]
 [i _latestIL
 -> -> 0 `i `us
 ]
-"34
-[; ;./CurrentSensor.h: 34: uint16_t filteredIDS = 0;
+"35
+[; ;./CurrentSensor.h: 35: uint16_t filteredIDS = 0;
 [v _filteredIDS `us ~T0 @X0 1 e ]
 [i _filteredIDS
 -> -> 0 `i `us
 ]
-"35
-[; ;./CurrentSensor.h: 35: uint16_t filteredIL = 0;
+"36
+[; ;./CurrentSensor.h: 36: uint16_t filteredIL = 0;
 [v _filteredIL `us ~T0 @X0 1 e ]
 [i _filteredIL
 -> -> 0 `i `us
 ]
-"36
-[; ;./CurrentSensor.h: 36: uint16_t currentIDSFIFO[16];
-[v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
 "37
-[; ;./CurrentSensor.h: 37: uint16_t currentILFIFO[16];
+[; ;./CurrentSensor.h: 37: uint16_t currentIDSFIFO[16];
+[v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
+"38
+[; ;./CurrentSensor.h: 38: uint16_t currentILFIFO[16];
 [v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
-"39
-[; ;./CurrentSensor.h: 39: _Bool tripIDS = 0;
+"40
+[; ;./CurrentSensor.h: 40: _Bool tripIDS = 0;
 [v _tripIDS `a ~T0 @X0 1 e ]
 [i _tripIDS
 -> -> 0 `i `a
 ]
-"40
-[; ;./CurrentSensor.h: 40: _Bool tripIL = 0;
+"41
+[; ;./CurrentSensor.h: 41: _Bool tripIL = 0;
 [v _tripIL `a ~T0 @X0 1 e ]
 [i _tripIL
 -> -> 0 `i `a
@@ -580,8 +607,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;CurrentSensor.c: 22:     initialiseGPIO(pinRB3, 0);
 [e ( _initialiseGPIO (2 , . `E2798 11 -> -> 0 `i `uc ]
 "23
-[; ;CurrentSensor.c: 23:     writeGPIO(9, 0);
-[e ( _writeGPIO (2 , -> -> 9 `i `E2798 -> -> 0 `i `uc ]
+[; ;CurrentSensor.c: 23:     currentTripReset();
+[e ( _currentTripReset ..  ]
 "24
 [; ;CurrentSensor.c: 24: }
 [e :UE 356 ]
@@ -700,16 +727,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;CurrentSensor.c: 62: }
 [e :UE 365 ]
 }
-"68
-[; ;CurrentSensor.c: 68: void currentTripReset(){
+"70
+[; ;CurrentSensor.c: 70: void currentTripReset(){
 [v _currentTripReset `(v ~T0 @X0 1 ef ]
 {
 [e :U _currentTripReset ]
 [f ]
-"69
-[; ;CurrentSensor.c: 69:     writeGPIO(pinRB3, 1);
+"71
+[; ;CurrentSensor.c: 71:     writeGPIO(pinRB3, 0);
+[e ( _writeGPIO (2 , . `E2798 11 -> -> 0 `i `uc ]
+"72
+[; ;CurrentSensor.c: 72:      _delay((unsigned long)((20)*(freq32M/4000000.0)));
+[e ( __delay (1 -> * -> -> 20 `i `d / -> . `E2844 10 `d .4000000.0 `ul ]
+"73
+[; ;CurrentSensor.c: 73:     writeGPIO(pinRB3, 1);
 [e ( _writeGPIO (2 , . `E2798 11 -> -> 1 `i `uc ]
-"70
-[; ;CurrentSensor.c: 70: }
+"74
+[; ;CurrentSensor.c: 74: }
 [e :UE 372 ]
+}
+"81
+[; ;CurrentSensor.c: 81: int16_t convertRawToMilliAmps(uint16_t rawValue){
+[v _convertRawToMilliAmps `(s ~T0 @X0 1 ef1`us ]
+{
+[e :U _convertRawToMilliAmps ]
+[v _rawValue `us ~T0 @X0 1 r1 ]
+[f ]
+"82
+[; ;CurrentSensor.c: 82:     int16_t offsetted = (int16_t)(rawValue - 445);
+[v _offsetted `s ~T0 @X0 1 a ]
+[e = _offsetted -> - -> _rawValue `ui -> -> 445 `i `ui `s ]
+"83
+[; ;CurrentSensor.c: 83:     int16_t returnValuemA = (int32_t)(offsetted * 2857) >> 0;
+[v _returnValuemA `s ~T0 @X0 1 a ]
+[e = _returnValuemA -> >> -> * -> _offsetted `i -> 2857 `i `l -> 0 `i `s ]
+"84
+[; ;CurrentSensor.c: 84:     return returnValuemA;
+[e ) _returnValuemA ]
+[e $UE 373  ]
+"85
+[; ;CurrentSensor.c: 85: }
+[e :UE 373 ]
 }

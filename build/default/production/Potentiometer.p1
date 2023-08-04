@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"96 ./Global.h
-[; ;./Global.h: 96: enum stateMachine currentState = 0;
-[c E2823 0 1 2 3 4 .. ]
-[n E2823 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
+"32 ./StateMachine.h
+[; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
+[c E2833 0 1 2 3 4 .. ]
+[n E2833 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
 "16 Potentiometer.c
 [; ;Potentiometer.c: 16:     initialiseADCPin(pinRB1);
 [c E2798 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
@@ -487,65 +487,71 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6749
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 6749: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"96 ./Global.h
-[; ;./Global.h: 96: enum stateMachine currentState = 0;
-[v _currentState `E2823 ~T0 @X0 1 e ]
-[i _currentState
--> -> 0 `i `E2823
-]
-"99
-[; ;./Global.h: 99: uint8_t setPeriod = 0;
+"21 ./PWM.h
+[; ;./PWM.h: 21: uint8_t setPeriod = 0;
 [v _setPeriod `uc ~T0 @X0 1 e ]
 [i _setPeriod
 -> -> 0 `i `uc
 ]
-"100
-[; ;./Global.h: 100: uint16_t setDuty = 0;
+"22
+[; ;./PWM.h: 22: uint16_t setDuty = 0;
 [v _setDuty `us ~T0 @X0 1 e ]
 [i _setDuty
 -> -> 0 `i `us
 ]
-"101
-[; ;./Global.h: 101: uint8_t prevPeriod = 0;
+"23
+[; ;./PWM.h: 23: uint8_t prevPeriod = 0;
 [v _prevPeriod `uc ~T0 @X0 1 e ]
 [i _prevPeriod
 -> -> 0 `i `uc
 ]
-"102
-[; ;./Global.h: 102: uint16_t prevDuty = 0;
+"24
+[; ;./PWM.h: 24: uint16_t prevDuty = 0;
 [v _prevDuty `us ~T0 @X0 1 e ]
 [i _prevDuty
 -> -> 0 `i `us
 ]
-"105
-[; ;./Global.h: 105: uint32_t clockFrequency = 0;
+"32 ./StateMachine.h
+[; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
+[v _currentState `E2833 ~T0 @X0 1 e ]
+[i _currentState
+-> -> 0 `i `E2833
+]
+"85 ./Global.h
+[; ;./Global.h: 85: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"24 ./Potentiometer.h
-[; ;./Potentiometer.h: 24: uint8_t potSetCount = 0;
+"87
+[; ;./Global.h: 87: uint8_t currentTripCount = 0;
+[v _currentTripCount `uc ~T0 @X0 1 e ]
+[i _currentTripCount
+-> -> 0 `i `uc
+]
+"28 ./Potentiometer.h
+[; ;./Potentiometer.h: 28: uint8_t potSetCount = 0;
 [v _potSetCount `uc ~T0 @X0 1 e ]
 [i _potSetCount
 -> -> 0 `i `uc
 ]
-"31
-[; ;./Potentiometer.h: 31: uint16_t filteredFreqPot = 0;
+"35
+[; ;./Potentiometer.h: 35: uint16_t filteredFreqPot = 0;
 [v _filteredFreqPot `us ~T0 @X0 1 e ]
 [i _filteredFreqPot
 -> -> 0 `i `us
 ]
-"32
-[; ;./Potentiometer.h: 32: uint16_t filteredDutyPot = 0;
+"36
+[; ;./Potentiometer.h: 36: uint16_t filteredDutyPot = 0;
 [v _filteredDutyPot `us ~T0 @X0 1 e ]
 [i _filteredDutyPot
 -> -> 0 `i `us
 ]
-"33
-[; ;./Potentiometer.h: 33: uint16_t freqPotFIFO[16];
+"37
+[; ;./Potentiometer.h: 37: uint16_t freqPotFIFO[16];
 [v _freqPotFIFO `us ~T0 @X0 -> 16 `i e ]
-"34
-[; ;./Potentiometer.h: 34: uint16_t dutyPotFIFO[16];
+"38
+[; ;./Potentiometer.h: 38: uint16_t dutyPotFIFO[16];
 [v _dutyPotFIFO `us ~T0 @X0 -> 16 `i e ]
 "15 Potentiometer.c
 [; ;Potentiometer.c: 15: void initialisePotentiometers(){
@@ -665,7 +671,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "57
 [; ;Potentiometer.c: 57:     if(currentState == potControl){
-[e $ ! == -> _currentState `ui -> . `E2823 1 `ui 372  ]
+[e $ ! == -> _currentState `ui -> . `E2833 1 `ui 372  ]
 {
 "58
 [; ;Potentiometer.c: 58:         potSetCount++;

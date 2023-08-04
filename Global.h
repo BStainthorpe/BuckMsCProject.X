@@ -28,21 +28,9 @@ extern "C" {
 #define CLOCK_FREQUENCY_SELECT  freq32M           //this should be left as 32MHz - lower frequencies limit PWM freq    
 #define _XTAL_FREQ CLOCK_FREQUENCY_SELECT         //used by delay function
     
-//potentiometer generator settings
-#define MIN_PERIOD_FROM_POT    15u                //PR2 = (clockFrequency / (4*freq)) - 1 corresponds to 500,000 Hz
-#define MAX_PERIOD_FROM_POT    159u          
+#define CURRENT_TRIP_LIMIT  3                     //max number of consecutive current trips before transitioning to a fault
+                                                  //allow >1 as switching inductor and turn on with high duty cycle causes overcurrent due to inrush but this is OK
     
-#define MIN_DUTY               10
-#define MAX_DUTY               90
-    
-//closed loop control settings 
-#define VOLTAGE_MODE_CONTROL_FREQ   39            //39 corresponds to 200kHz
-#define VOLTAGE_MODE_KP             10
-#define VOLTAGE_MODE_KI             0   
-#define CURRENT_MODE_CONTROL_FREQ   39            //39 corresponds to 200kHz
-#define CURRENT_MODE_KP             10
-#define CURRENT_MODE_KI             0
- 
     
 //List all outputs here to keep track - gpio defines are critical, pins are for indication
     //PWM
@@ -93,16 +81,10 @@ enum internalClockFreqSelec{
     freq32M    
 }; 
 
-enum stateMachine currentState = 0;
-
-//global variables for duty and period
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0; 
-uint16_t prevDuty = 0;
-
 //global variable containing current clock frequency selection
 uint32_t clockFrequency = 0;
+
+uint8_t currentTripCount = 0;
 
 #ifdef	__cplusplus
 }

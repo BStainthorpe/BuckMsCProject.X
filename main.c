@@ -50,7 +50,18 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
     //245Hz Slot 4:              ---------------------4-------        readFilteredDutyPot() readFilteredFreqPot()
        
         if(currentTripRead() == 1){
-            transToOverCurrentFault();
+            currentTripCount++;
+            if(currentTripCount == CURRENT_TRIP_LIMIT){               
+                transToOverCurrentFault();
+            }
+            else{
+                currentTripReset();
+            }
+        }
+        else{
+            if(currentTripCount > 0){       //decrement the counter to 0 when no trips have occurred
+                currentTripCount--;
+            }
         }
         setPWMDutyandPeriod(setDuty, setPeriod);
         
@@ -60,6 +71,7 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
             writeGPIO(gpioSlotTest, 0); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz on RB4
             controlRoutine();
         }
+
         if(timerSlotHalf == true){
             //slot 2------------------------------------------------------------
             filteredIL = readFilteredIL();
@@ -109,10 +121,15 @@ int main(int argc, char** argv) {
     initialiseADCModule();
     initialiseCurrentSensors();
     initialisePotentiometers();
+    initialiseController();
+    
     initialiseGPIO(gpioSlotTest, GPIO_Output);
+    
+    __delay_ms(100);
+    
     if(~readGPIO(gpioControlSelect)){                        //read pin which selects closed loop or open loop pot controlled
-        if(CONTROL_METHOD)  transToVoltageModeControl();
-        if(~CONTROL_METHOD)  transToCurrentModeControl(); //option here to hard code voltage mode or current mode 
+        if(CONTROL_METHOD == VOLTAGE_MODE_CONTROL)  transToVoltageModeControl();
+        else if(CONTROL_METHOD == CURRENT_MODE_CONTROL)  transToCurrentModeControl(); //option here to hard code voltage mode or current mode 
     }
     else transToPotControl();
 
@@ -145,4 +162,3 @@ void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq){
         case freq32M:  OSCCONbits.IRCF = 0b1110; OSCCONbits.SPLLEN = 1; clockFrequency = 32000000; break;
     }
 }
-

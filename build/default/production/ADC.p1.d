@@ -3,4 +3,5 @@ ADC.c  \
 ADC.h  \
 GPIO.h  \
 Global.h  \
-StateMachine.h 
+StateMachine.h  \
+PWM.h 

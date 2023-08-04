@@ -1,4 +1,4 @@
-build/default/production/StateMachine.p1:  \
+build/default/debug/StateMachine.p1:  \
 StateMachine.c  \
 Global.h  \
 GPIO.h  \

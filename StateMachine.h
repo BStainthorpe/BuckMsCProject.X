@@ -18,6 +18,7 @@ extern "C" {
 #include <stdbool.h>
 #include <stdint.h>   
 #include "Global.h"  
+#include "PWM.h""
 
 //the list of states in state machine
 enum stateMachine{
@@ -27,6 +28,8 @@ enum stateMachine{
     currentModeControl,
     overCurrentFault
 };
+
+enum stateMachine currentState = 0;
 
 void transToPotControl();
 void transToVoltageModeControl();

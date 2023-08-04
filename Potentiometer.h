@@ -16,12 +16,16 @@ extern "C" {
 #include "GPIO.h"
 #include "ADC.h"
 #include <stdbool.h>
+
+//potentiometer generator settings
+#define MIN_PERIOD_FROM_POT    15u                //PR2 = (clockFrequency / (4*freq)) - 1 corresponds to 500,000 Hz
+#define MAX_PERIOD_FROM_POT    159u          
     
 #define SIZE_OF_POT_FILTER  16      //note there are variables in the filter functions which require change depending on this number
 #define POT_OFFSET          45      //experimentally obtained minimum pot value
 #define POT_SET_DIVIDER     32      //control the rate of execution for setting the POT - this value gives a rate of: Slot 4 Freq / POT_SET_DIVIDER
     
-uint8_t potSetCount = 0;
+uint8_t potSetCount = 0;            
 
 void initialisePotentiometers();
 uint16_t readFilteredDutyPot();

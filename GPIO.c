@@ -98,5 +98,7 @@ bool readGPIO(const enum GPIO_PORTS gpioNumber){
         uint8_t returnValueB = ((readB >> ((uint8_t) portNumber)) & 1u); 
         return returnValueB;
     }
+
+    else return 0;
    
 }

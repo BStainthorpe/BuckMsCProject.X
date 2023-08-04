@@ -72,7 +72,7 @@ uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
     uint8_t channel = 0;        //the ADC channel numbering, see datasheet
     uint8_t gpioValid = 0;      //flag gpio as having valid ADC - prevent trying to set a pin which doesnt have an ADC    
     
-    if(gpioNumber < 4){
+    if(gpioNumber <= 4){
         channel = gpioNumber;  //RA0 to RA4 directly converts to ADC numbering
         gpioValid = 1;         //flag gpio as having valid ADC
     }
@@ -98,6 +98,8 @@ uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
         }
 
     }  
+    
+    else return 0;
 }
 
 /*------------------------------------------------------------------------------
@@ -112,6 +114,8 @@ uint16_t readILCurrentADCRaw(){
         while(ADCON0bits.GO_nDONE);     //Wait until the conversion finishes
         return ((ADRESH<<8)+ADRESL);    //Return the result   
     }
+    
+    else return 0;
     
 }
 

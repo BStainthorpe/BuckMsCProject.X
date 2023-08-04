@@ -4518,7 +4518,42 @@ uint16_t readILCurrentADCRaw();
 # 7 "ADC.c" 2
 
 # 1 "./Global.h" 1
-# 65 "./Global.h"
+# 20 "./Global.h"
+# 1 "./StateMachine.h" 1
+# 20 "./StateMachine.h"
+# 1 "./Global.h" 1
+# 20 "./StateMachine.h" 2
+
+# 1 "./PWM.h" 1
+# 21 "./PWM.h"
+uint8_t setPeriod = 0;
+uint16_t setDuty = 0;
+uint8_t prevPeriod = 0;
+uint16_t prevDuty = 0;
+
+void setupPWM();
+void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
+void setPWMPeriod(uint8_t period);
+# 21 "./StateMachine.h" 2
+
+
+
+enum stateMachine{
+    initialising,
+    potControl,
+    voltageModeControl,
+    currentModeControl,
+    overCurrentFault
+};
+
+enum stateMachine currentState = 0;
+
+void transToPotControl();
+void transToVoltageModeControl();
+void transToCurrentModeControl();
+void transToOverCurrentFault();
+# 20 "./Global.h" 2
+# 70 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4533,12 +4568,10 @@ enum internalClockFreqSelec{
     freq32M
 };
 
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0;
-uint16_t prevDuty = 0;
 
 uint32_t clockFrequency = 0;
+
+uint8_t currentTripCount = 0;
 # 8 "ADC.c" 2
 
 
@@ -4600,7 +4633,7 @@ uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
     uint8_t channel = 0;
     uint8_t gpioValid = 0;
 
-    if(gpioNumber < 4){
+    if(gpioNumber <= 4){
         channel = gpioNumber;
         gpioValid = 1;
     }
@@ -4626,6 +4659,8 @@ uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
         }
 
     }
+
+    else return 0;
 }
 
 
@@ -4640,5 +4675,7 @@ uint16_t readILCurrentADCRaw(){
         while(ADCON0bits.GO_nDONE);
         return ((ADRESH<<8)+ADRESL);
     }
+
+    else return 0;
 
 }

@@ -4486,7 +4486,12 @@ extern __bank0 __bit __timeout;
 # 17 "main.c" 2
 
 # 1 "./PWM.h" 1
-# 16 "./PWM.h"
+# 21 "./PWM.h"
+uint8_t setPeriod = 0;
+uint16_t setDuty = 0;
+uint8_t prevPeriod = 0;
+uint16_t prevDuty = 0;
+
 void setupPWM();
 void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
 void setPWMPeriod(uint8_t period);
@@ -4524,7 +4529,31 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 65 "./Global.h"
+
+# 1 "./StateMachine.h" 1
+# 20 "./StateMachine.h"
+# 1 "./Global.h" 1
+# 20 "./StateMachine.h" 2
+
+
+
+
+enum stateMachine{
+    initialising,
+    potControl,
+    voltageModeControl,
+    currentModeControl,
+    overCurrentFault
+};
+
+enum stateMachine currentState = 0;
+
+void transToPotControl();
+void transToVoltageModeControl();
+void transToCurrentModeControl();
+void transToOverCurrentFault();
+# 20 "./Global.h" 2
+# 70 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4539,17 +4568,15 @@ enum internalClockFreqSelec{
     freq32M
 };
 
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0;
-uint16_t prevDuty = 0;
 
 uint32_t clockFrequency = 0;
+
+uint8_t currentTripCount = 0;
 # 20 "main.c" 2
 
 
 # 1 "./CurrentSensor.h" 1
-# 33 "./CurrentSensor.h"
+# 34 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
@@ -4563,9 +4590,31 @@ void initialiseCurrentSensors();
 _Bool currentTripRead();
 uint16_t readFilteredIDS();
 uint16_t readFilteredIL();
+void currentTripReset();
+int16_t convertRawToMilliAmps(uint16_t rawvalue);
 # 22 "main.c" 2
 
 # 1 "./Controller.h" 1
+# 54 "./Controller.h"
+uint16_t filteredVout = 0;
+uint16_t voutFIFO[16];
+
+typedef struct controllerVariables{
+    int16_t error;
+    int32_t integral;
+    int32_t proportionalOutput;
+    int32_t integralOutput;
+    int64_t integralOutputScaled;
+    int32_t sumOutput;
+    int16_t previousError;
+};
+
+uint16_t readFilteredVout();
+int16_t convertRawToMilliVolts(uint16_t rawValue);
+void controlRoutine();
+void runCurrentModeControl();
+void runVoltageModeControl();
+void initialiseController();
 # 23 "main.c" 2
 
 # 1 "./ADC.h" 1
@@ -4577,7 +4626,7 @@ uint16_t readILCurrentADCRaw();
 # 24 "main.c" 2
 
 # 1 "./Potentiometer.h" 1
-# 24 "./Potentiometer.h"
+# 28 "./Potentiometer.h"
 uint8_t potSetCount = 0;
 
 void initialisePotentiometers();
@@ -4592,9 +4641,9 @@ uint16_t dutyPotFIFO[16];
 # 25 "main.c" 2
 
 
+
 volatile _Bool timerSlotHalf = 0;
 volatile _Bool timerSlotQuarter = 0;
-volatile _Bool emergencyStop = 0;
 
 void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq);
 # 41 "main.c"
@@ -4603,33 +4652,45 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
     if ("((INTCON)&07Fh)" "," "2") {
 # 52 "main.c"
         if(currentTripRead() == 1){
-            emergencyStop = 1;
-            setPWMDutyandPeriod(0, 0);
+            currentTripCount++;
+            if(currentTripCount == 3){
+                transToOverCurrentFault();
+            }
+            else{
+                currentTripReset();
+            }
         }
+        else{
+            if(currentTripCount > 0){
+                currentTripCount--;
+            }
+        }
+        setPWMDutyandPeriod(setDuty, setPeriod);
+
 
         if(timerSlotHalf == 0){
 
             writeGPIO(pinRB4, 0);
+            controlRoutine();
         }
+
         if(timerSlotHalf == 1){
 
+            filteredIL = readFilteredIL();
+
+            filteredVout = readFilteredVout();
 
 
             if(timerSlotQuarter == 0){
 
                 writeGPIO(pinRB4, 1);
-                writeGPIO(9, 1);
-
-                filteredDutyPot = readFilteredDutyPot();
-                filteredFreqPot = readFilteredFreqPot();
-
-                if(~emergencyStop){
-                    runPotScaling();
-                }
+                runPotScaling();
             }
 
             if(timerSlotQuarter == 1){
 
+                filteredDutyPot = readFilteredDutyPot();
+                filteredFreqPot = readFilteredFreqPot();
             }
 
             timerSlotQuarter = ~timerSlotQuarter;
@@ -4662,7 +4723,17 @@ int main(int argc, char** argv) {
     initialiseADCModule();
     initialiseCurrentSensors();
     initialisePotentiometers();
+    initialiseController();
+
     initialiseGPIO(pinRB4, 0);
+
+    _delay((unsigned long)((100)*(freq32M/4000.0)));
+
+    if(~readGPIO(pinRB0)){
+        if(1 == 1) transToVoltageModeControl();
+        else if(1 == 0) transToCurrentModeControl();
+    }
+    else transToPotControl();
 
     while(1){
 

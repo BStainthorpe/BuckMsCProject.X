@@ -4486,7 +4486,12 @@ extern __bank0 __bit __timeout;
 # 17 "main.c" 2
 
 # 1 "./PWM.h" 1
-# 16 "./PWM.h"
+# 21 "./PWM.h"
+uint8_t setPeriod = 0;
+uint16_t setDuty = 0;
+uint8_t prevPeriod = 0;
+uint16_t prevDuty = 0;
+
 void setupPWM();
 void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
 void setPWMPeriod(uint8_t period);
@@ -4532,6 +4537,7 @@ _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 
 
 
+
 enum stateMachine{
     initialising,
     potControl,
@@ -4540,12 +4546,14 @@ enum stateMachine{
     overCurrentFault
 };
 
+enum stateMachine currentState = 0;
+
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 82 "./Global.h"
+# 70 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4560,16 +4568,10 @@ enum internalClockFreqSelec{
     freq32M
 };
 
-enum stateMachine currentState = 0;
-
-
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0;
-uint16_t prevDuty = 0;
-
 
 uint32_t clockFrequency = 0;
+
+uint8_t currentTripCount = 0;
 # 20 "main.c" 2
 
 
@@ -4593,15 +4595,26 @@ int16_t convertRawToMilliAmps(uint16_t rawvalue);
 # 22 "main.c" 2
 
 # 1 "./Controller.h" 1
-# 30 "./Controller.h"
+# 54 "./Controller.h"
 uint16_t filteredVout = 0;
 uint16_t voutFIFO[16];
 
+typedef struct controllerVariables{
+    int16_t error;
+    int32_t integral;
+    int32_t proportionalOutput;
+    int32_t integralOutput;
+    int64_t integralOutputScaled;
+    int32_t sumOutput;
+    int16_t previousError;
+};
+
 uint16_t readFilteredVout();
-int16_t convertRawToDeciVolts(uint16_t rawValue);
+int16_t convertRawToMilliVolts(uint16_t rawValue);
 void controlRoutine();
 void runCurrentModeControl();
 void runVoltageModeControl();
+void initialiseController();
 # 23 "main.c" 2
 
 # 1 "./ADC.h" 1
@@ -4613,7 +4626,7 @@ uint16_t readILCurrentADCRaw();
 # 24 "main.c" 2
 
 # 1 "./Potentiometer.h" 1
-# 24 "./Potentiometer.h"
+# 28 "./Potentiometer.h"
 uint8_t potSetCount = 0;
 
 void initialisePotentiometers();
@@ -4639,7 +4652,18 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
     if ("((INTCON)&07Fh)" "," "2") {
 # 52 "main.c"
         if(currentTripRead() == 1){
-            transToOverCurrentFault();
+            currentTripCount++;
+            if(currentTripCount == 3){
+                transToOverCurrentFault();
+            }
+            else{
+                currentTripReset();
+            }
+        }
+        else{
+            if(currentTripCount > 0){
+                currentTripCount--;
+            }
         }
         setPWMDutyandPeriod(setDuty, setPeriod);
 
@@ -4649,6 +4673,7 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
             writeGPIO(pinRB4, 0);
             controlRoutine();
         }
+
         if(timerSlotHalf == 1){
 
             filteredIL = readFilteredIL();
@@ -4698,10 +4723,15 @@ int main(int argc, char** argv) {
     initialiseADCModule();
     initialiseCurrentSensors();
     initialisePotentiometers();
+    initialiseController();
+
     initialiseGPIO(pinRB4, 0);
+
+    _delay((unsigned long)((100)*(freq32M/4000.0)));
+
     if(~readGPIO(pinRB0)){
-        if(1) transToVoltageModeControl();
-        if(~1) transToCurrentModeControl();
+        if(1 == 1) transToVoltageModeControl();
+        else if(1 == 0) transToCurrentModeControl();
     }
     else transToPotControl();
 

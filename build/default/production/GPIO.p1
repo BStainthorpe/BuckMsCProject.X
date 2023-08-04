@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"96 ./Global.h
-[; ;./Global.h: 96: enum stateMachine currentState = 0;
-[c E2823 0 1 2 3 4 .. ]
-[n E2823 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
+"32 ./StateMachine.h
+[; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
+[c E2833 0 1 2 3 4 .. ]
+[n E2833 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
 "18 GPIO.c
 [; ;GPIO.c: 18: void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction){
 [c E2798 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
@@ -505,41 +505,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6749
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 6749: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"96 ./Global.h
-[; ;./Global.h: 96: enum stateMachine currentState = 0;
-[v _currentState `E2823 ~T0 @X0 1 e ]
-[i _currentState
--> -> 0 `i `E2823
-]
-"99
-[; ;./Global.h: 99: uint8_t setPeriod = 0;
+"21 ./PWM.h
+[; ;./PWM.h: 21: uint8_t setPeriod = 0;
 [v _setPeriod `uc ~T0 @X0 1 e ]
 [i _setPeriod
 -> -> 0 `i `uc
 ]
-"100
-[; ;./Global.h: 100: uint16_t setDuty = 0;
+"22
+[; ;./PWM.h: 22: uint16_t setDuty = 0;
 [v _setDuty `us ~T0 @X0 1 e ]
 [i _setDuty
 -> -> 0 `i `us
 ]
-"101
-[; ;./Global.h: 101: uint8_t prevPeriod = 0;
+"23
+[; ;./PWM.h: 23: uint8_t prevPeriod = 0;
 [v _prevPeriod `uc ~T0 @X0 1 e ]
 [i _prevPeriod
 -> -> 0 `i `uc
 ]
-"102
-[; ;./Global.h: 102: uint16_t prevDuty = 0;
+"24
+[; ;./PWM.h: 24: uint16_t prevDuty = 0;
 [v _prevDuty `us ~T0 @X0 1 e ]
 [i _prevDuty
 -> -> 0 `i `us
 ]
-"105
-[; ;./Global.h: 105: uint32_t clockFrequency = 0;
+"32 ./StateMachine.h
+[; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
+[v _currentState `E2833 ~T0 @X0 1 e ]
+[i _currentState
+-> -> 0 `i `E2833
+]
+"85 ./Global.h
+[; ;./Global.h: 85: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
+]
+"87
+[; ;./Global.h: 87: uint8_t currentTripCount = 0;
+[v _currentTripCount `uc ~T0 @X0 1 e ]
+[i _currentTripCount
+-> -> 0 `i `uc
 ]
 "18 GPIO.c
 [; ;GPIO.c: 18: void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction){
@@ -822,9 +828,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "100
 [; ;GPIO.c: 100:     }
 }
-[e :U 385 ]
-[e :U 384 ]
+[e $U 386  ]
 "102
-[; ;GPIO.c: 102: }
+[; ;GPIO.c: 102:     else return 0;
+[e :U 385 ]
+[e ) -> -> 0 `i `a ]
+[e $UE 380  ]
+[e :U 386 ]
+[e :U 384 ]
+"104
+[; ;GPIO.c: 104: }
 [e :UE 380 ]
 }

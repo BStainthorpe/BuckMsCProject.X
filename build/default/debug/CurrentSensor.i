@@ -4505,7 +4505,42 @@ void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
 void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
 _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 # 19 "./Global.h" 2
-# 65 "./Global.h"
+
+# 1 "./StateMachine.h" 1
+# 20 "./StateMachine.h"
+# 1 "./Global.h" 1
+# 20 "./StateMachine.h" 2
+
+# 1 "./PWM.h" 1
+# 21 "./PWM.h"
+uint8_t setPeriod = 0;
+uint16_t setDuty = 0;
+uint8_t prevPeriod = 0;
+uint16_t prevDuty = 0;
+
+void setupPWM();
+void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
+void setPWMPeriod(uint8_t period);
+# 21 "./StateMachine.h" 2
+
+
+
+enum stateMachine{
+    initialising,
+    potControl,
+    voltageModeControl,
+    currentModeControl,
+    overCurrentFault
+};
+
+enum stateMachine currentState = 0;
+
+void transToPotControl();
+void transToVoltageModeControl();
+void transToCurrentModeControl();
+void transToOverCurrentFault();
+# 20 "./Global.h" 2
+# 70 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4520,16 +4555,14 @@ enum internalClockFreqSelec{
     freq32M
 };
 
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0;
-uint16_t prevDuty = 0;
 
 uint32_t clockFrequency = 0;
+
+uint8_t currentTripCount = 0;
 # 7 "CurrentSensor.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 33 "./CurrentSensor.h"
+# 34 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
@@ -4543,6 +4576,8 @@ void initialiseCurrentSensors();
 _Bool currentTripRead();
 uint16_t readFilteredIDS();
 uint16_t readFilteredIL();
+void currentTripReset();
+int16_t convertRawToMilliAmps(uint16_t rawvalue);
 # 8 "CurrentSensor.c" 2
 
 
@@ -4566,7 +4601,7 @@ void initialiseCurrentSensors(){
     initialiseADCPin(pinRA0);
     initialiseADCPin(pinRA2);
     initialiseGPIO(pinRB3, 0);
-    writeGPIO(9, 0);
+    currentTripReset();
 }
 
 
@@ -4611,6 +4646,21 @@ uint16_t readFilteredIL(){
 
 
 
+
+
 void currentTripReset(){
+    writeGPIO(pinRB3, 0);
+     _delay((unsigned long)((20)*(freq32M/4000000.0)));
     writeGPIO(pinRB3, 1);
+}
+
+
+
+
+
+
+int16_t convertRawToMilliAmps(uint16_t rawValue){
+    int16_t offsetted = (int16_t)(rawValue - 445);
+    int16_t returnValuemA = (int32_t)(offsetted * 2857) >> 0;
+    return returnValuemA;
 }

@@ -64,12 +64,12 @@ uint16_t readFilteredIL(){
 /*------------------------------------------------------------------------------
  Function: currentTripReset()
  *Use: This function resets the current trip by holding the reset pin low for 
- * 2uS, which turns off the MOSFETs in series with the Current Sensor reset pins
+ * 20uS, which turns off the MOSFETs in series with the Current Sensor reset pins
  * before turning them back on again
 ------------------------------------------------------------------------------*/
 void currentTripReset(){
     writeGPIO(gpioOverCurrentClear, 0);
-     __delay_us(2);
+     __delay_us(20);
     writeGPIO(gpioOverCurrentClear, 1); 
 }
 
