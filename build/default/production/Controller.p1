@@ -3,8 +3,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
 [c E2833 0 1 2 3 4 .. ]
 [n E2833 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
-"62 ./Controller.h
-[; ;./Controller.h: 62: typedef struct controllerVariables{
+"63 ./Controller.h
+[; ;./Controller.h: 63: typedef struct controllerVariables{
 [s S356 `s 1 `l 1 `l 1 `l 1 `o 1 `l 1 `s 1 ]
 [n S356 controllerVariables error integral proportionalOutput integralOutput integralOutputScaled sumOutput previousError ]
 "24 Controller.c
@@ -20,11 +20,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "28
 [; ;./ADC.h: 28: uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 [v _readADCRaw `(us ~T0 @X0 0 ef1`CE2798 ]
-"76 ./Controller.h
-[; ;./Controller.h: 76: void runVoltageModeControl();
+"77 ./Controller.h
+[; ;./Controller.h: 77: void runVoltageModeControl();
 [v _runVoltageModeControl `(v ~T0 @X0 0 e? ]
-"75
-[; ;./Controller.h: 75: void runCurrentModeControl();
+"76
+[; ;./Controller.h: 76: void runCurrentModeControl();
 [v _runCurrentModeControl `(v ~T0 @X0 0 e? ]
 "52 ./GPIO.h
 [; ;./GPIO.h: 52: _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
@@ -545,14 +545,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"59 ./Controller.h
-[; ;./Controller.h: 59: uint16_t filteredVout = 0;
+"60 ./Controller.h
+[; ;./Controller.h: 60: uint16_t filteredVout = 0;
 [v _filteredVout `us ~T0 @X0 1 e ]
 [i _filteredVout
 -> -> 0 `i `us
 ]
-"60
-[; ;./Controller.h: 60: uint16_t voutFIFO[16];
+"61
+[; ;./Controller.h: 61: uint16_t voutFIFO[16];
 [v _voutFIFO `us ~T0 @X0 -> 16 `i e ]
 "37 ./CurrentSensor.h
 [; ;./CurrentSensor.h: 37: volatile uint16_t latestIL = 0;
@@ -697,9 +697,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _rawValue `us ~T0 @X0 1 r1 ]
 [f ]
 "48
-[; ;Controller.c: 48:     int16_t offsetted = (int16_t)(rawValue) - 10u;
+[; ;Controller.c: 48:     int16_t offsetted = (int16_t)(rawValue) - 0u;
 [v _offsetted `s ~T0 @X0 1 a ]
-[e = _offsetted -> - -> -> _rawValue `s `ui -> 10 `ui `s ]
+[e = _offsetted -> - -> -> _rawValue `s `ui -> 0 `ui `s ]
 "49
 [; ;Controller.c: 49:     int32_t vsenseMult = ((int32_t)(((int32_t) offsetted) * 6100u));
 [v _vsenseMult `l ~T0 @X0 1 a ]
@@ -804,9 +804,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . _voltageModeVariables 0 -> - -> 12000 `ui -> _newVoltage `ui `s ]
 [e :U 374 ]
 "96
-[; ;Controller.c: 96:    int64_t integralMult = ((int64_t) (5u * ((int64_t) voltageModeVariables.error) )) * 134u;
+[; ;Controller.c: 96:    int64_t integralMult = ((int64_t) (15u * ((int64_t) voltageModeVariables.error) )) * 267u;
 [v _integralMult `o ~T0 @X0 1 a ]
-[e = _integralMult * * -> -> 5 `ui `o -> . _voltageModeVariables 0 `o -> -> 134 `ui `o ]
+[e = _integralMult * * -> -> 15 `ui `o -> . _voltageModeVariables 0 `o -> -> 267 `ui `o ]
 "98
 [; ;Controller.c: 98:    voltageModeVariables.integral = integralMult;
 [e = . _voltageModeVariables 1 -> _integralMult `l ]
@@ -814,12 +814,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Controller.c: 99:    voltageModeVariables.integralOutputScaled = (voltageModeVariables.integralOutputScaled + voltageModeVariables.integral);
 [e = . _voltageModeVariables 4 + . _voltageModeVariables 4 -> . _voltageModeVariables 1 `o ]
 "102
-[; ;Controller.c: 102:    if(voltageModeVariables.integralOutputScaled > (1073741824u)){
-[e $ ! > . _voltageModeVariables 4 -> -> 1073741824 `ul `o 375  ]
+[; ;Controller.c: 102:    if(voltageModeVariables.integralOutputScaled > (2147483648u)){
+[e $ ! > . _voltageModeVariables 4 -> -> 2147483648 `ul `o 375  ]
 {
 "103
-[; ;Controller.c: 103:        voltageModeVariables.integralOutputScaled = (1073741824u);
-[e = . _voltageModeVariables 4 -> -> 1073741824 `ul `o ]
+[; ;Controller.c: 103:        voltageModeVariables.integralOutputScaled = (2147483648u);
+[e = . _voltageModeVariables 4 -> -> 2147483648 `ul `o ]
 "104
 [; ;Controller.c: 104:    }
 }
@@ -829,12 +829,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! < . _voltageModeVariables 4 -> -> 0 `i `o 376  ]
 {
 "107
-[; ;Controller.c: 107:         if(abs(voltageModeVariables.integralOutputScaled) > (1073741824u)){
-[e $ ! > -> -> ( _abs (1 -> . _voltageModeVariables 4 `i `l `ul -> 1073741824 `ul 377  ]
+[; ;Controller.c: 107:         if(abs(voltageModeVariables.integralOutputScaled) > (2147483648u)){
+[e $ ! > -> -> ( _abs (1 -> . _voltageModeVariables 4 `i `l `ul -> 2147483648 `ul 377  ]
 {
 "108
-[; ;Controller.c: 108:                 voltageModeVariables.integralOutputScaled = (int64_t) (0 -(1073741824u));
-[e = . _voltageModeVariables 4 -> - -> -> -> 0 `i `l `ul -> 1073741824 `ul `o ]
+[; ;Controller.c: 108:                 voltageModeVariables.integralOutputScaled = (int64_t) (0 -(2147483648u));
+[e = . _voltageModeVariables 4 -> - -> -> -> 0 `i `l `ul -> 2147483648 `ul `o ]
 "109
 [; ;Controller.c: 109:         }
 }
@@ -844,8 +844,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 376 ]
 "113
-[; ;Controller.c: 113:    voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 4u);
-[e = . _voltageModeVariables 3 -> >> . _voltageModeVariables 4 + -> 16 `ui -> 4 `ui `l ]
+[; ;Controller.c: 113:    voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 6u);
+[e = . _voltageModeVariables 3 -> >> . _voltageModeVariables 4 + -> 16 `ui -> 6 `ui `l ]
 "116
 [; ;Controller.c: 116:    int64_t propMult = (int32_t) (18u * ((int32_t) voltageModeVariables.error));
 [v _propMult `o ~T0 @X0 1 a ]

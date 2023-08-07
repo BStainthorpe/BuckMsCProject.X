@@ -10,12 +10,12 @@
  Intel Hex-file ranges:
   0h - 3h		(dist/default/production\BuckMsCProject.X.production.hex)
   8h - 101Fh		(dist/default/production\BuckMsCProject.X.production.hex)
-  1836h - 1FFFh		(dist/default/production\BuckMsCProject.X.production.hex)
+  183Ah - 1FFFh		(dist/default/production\BuckMsCProject.X.production.hex)
   10000h - 10007h		(dist/default/production\BuckMsCProject.X.production.hex)
   1000Eh - 10011h		(dist/default/production\BuckMsCProject.X.production.hex)
  Unused ranges:
   4h - 7h
-  1020h - 1835h
+  1020h - 1839h
   2000h - FFFFh
   10008h - 1000Dh
 
@@ -285,7 +285,7 @@
 00001000 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001010 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 ----------------------------------------------------------
-00001830 | -- -- -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001830 | -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1 H1 H1
 00001840 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001850 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001860 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

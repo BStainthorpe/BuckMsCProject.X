@@ -18,14 +18,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27 ./PWM.h
 [; ;./PWM.h: 27: void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
 [v _setPWMDutyandPeriod `(v ~T0 @X0 0 ef2`us`uc ]
-"74 ./Controller.h
-[; ;./Controller.h: 74: void controlRoutine();
+"75 ./Controller.h
+[; ;./Controller.h: 75: void controlRoutine();
 [v _controlRoutine `(v ~T0 @X0 0 e? ]
 "52 ./CurrentSensor.h
 [; ;./CurrentSensor.h: 52: uint16_t readFilteredIL();
 [v _readFilteredIL `(us ~T0 @X0 0 e? ]
-"72 ./Controller.h
-[; ;./Controller.h: 72: uint16_t readFilteredVout();
+"73 ./Controller.h
+[; ;./Controller.h: 73: uint16_t readFilteredVout();
 [v _readFilteredVout `(us ~T0 @X0 0 e? ]
 "33 ./Potentiometer.h
 [; ;./Potentiometer.h: 33: void runPotScaling();
@@ -74,8 +74,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "30 ./Potentiometer.h
 [; ;./Potentiometer.h: 30: void initialisePotentiometers();
 [v _initialisePotentiometers `(v ~T0 @X0 0 e? ]
-"77 ./Controller.h
-[; ;./Controller.h: 77: void initialiseController();
+"78 ./Controller.h
+[; ;./Controller.h: 78: void initialiseController();
 [v _initialiseController `(v ~T0 @X0 0 e? ]
 "50 ./GPIO.h
 [; ;./GPIO.h: 50: void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
@@ -667,14 +667,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _currentTripCount
 -> -> 0 `i `uc
 ]
-"59 ./Controller.h
-[; ;./Controller.h: 59: uint16_t filteredVout = 0;
+"60 ./Controller.h
+[; ;./Controller.h: 60: uint16_t filteredVout = 0;
 [v _filteredVout `us ~T0 @X0 1 e ]
 [i _filteredVout
 -> -> 0 `i `us
 ]
-"60
-[; ;./Controller.h: 60: uint16_t voutFIFO[16];
+"61
+[; ;./Controller.h: 61: uint16_t voutFIFO[16];
 [v _voutFIFO `us ~T0 @X0 -> 16 `i e ]
 "28 ./Potentiometer.h
 [; ;./Potentiometer.h: 28: uint8_t potSetCount = 0;

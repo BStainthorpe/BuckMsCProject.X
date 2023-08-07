@@ -4596,7 +4596,7 @@ int16_t convertRawToMilliAmps(uint16_t rawvalue);
 # 22 "main.c" 2
 
 # 1 "./Controller.h" 1
-# 59 "./Controller.h"
+# 60 "./Controller.h"
 uint16_t filteredVout = 0;
 uint16_t voutFIFO[16];
 

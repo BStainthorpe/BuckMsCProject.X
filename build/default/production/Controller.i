@@ -4560,7 +4560,7 @@ uint32_t clockFrequency = 0;
 # 7 "Controller.c" 2
 
 # 1 "./Controller.h" 1
-# 59 "./Controller.h"
+# 60 "./Controller.h"
 uint16_t filteredVout = 0;
 uint16_t voutFIFO[16];
 
@@ -4649,7 +4649,7 @@ uint16_t readFilteredVout(){
 
 
 int16_t convertRawToMilliVolts(uint16_t rawValue){
-    int16_t offsetted = (int16_t)(rawValue) - 10u;
+    int16_t offsetted = (int16_t)(rawValue) - 0u;
     int32_t vsenseMult = ((int32_t)(((int32_t) offsetted) * 6100u));
     int16_t returnValuedV = (int16_t) (vsenseMult >> 8u);
     return returnValuedV;
@@ -4697,24 +4697,24 @@ void runVoltageModeControl(){
    else voltageModeVariables.error = 12000u - newVoltage;
 
 
-   int64_t integralMult = ((int64_t) (5u * ((int64_t) voltageModeVariables.error) )) * 134u;
+   int64_t integralMult = ((int64_t) (15u * ((int64_t) voltageModeVariables.error) )) * 267u;
 
    voltageModeVariables.integral = integralMult;
    voltageModeVariables.integralOutputScaled = (voltageModeVariables.integralOutputScaled + voltageModeVariables.integral);
 
 
-   if(voltageModeVariables.integralOutputScaled > (1073741824u)){
-       voltageModeVariables.integralOutputScaled = (1073741824u);
+   if(voltageModeVariables.integralOutputScaled > (2147483648u)){
+       voltageModeVariables.integralOutputScaled = (2147483648u);
    }
 
    if(voltageModeVariables.integralOutputScaled < 0){
-        if(abs(voltageModeVariables.integralOutputScaled) > (1073741824u)){
-                voltageModeVariables.integralOutputScaled = (int64_t) (0 -(1073741824u));
+        if(abs(voltageModeVariables.integralOutputScaled) > (2147483648u)){
+                voltageModeVariables.integralOutputScaled = (int64_t) (0 -(2147483648u));
         }
    }
 
 
-   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 4u);
+   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 6u);
 
 
    int64_t propMult = (int32_t) (18u * ((int32_t) voltageModeVariables.error));
