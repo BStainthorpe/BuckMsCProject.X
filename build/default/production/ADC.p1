@@ -554,17 +554,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _currentState
 -> -> 0 `i `E2839
 ]
-"85 ./Global.h
-[; ;./Global.h: 85: uint32_t clockFrequency = 0;
+"79 ./Global.h
+[; ;./Global.h: 79: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
-]
-"87
-[; ;./Global.h: 87: uint8_t currentTripCount = 0;
-[v _currentTripCount `uc ~T0 @X0 1 e ]
-[i _currentTripCount
--> -> 0 `i `uc
 ]
 "14 ADC.c
 [; ;ADC.c: 14: void initialiseADCModule(){
@@ -576,8 +570,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ADC.c: 16:     ADCON0 = 0b00000001;
 [e = _ADCON0 -> -> 1 `i `uc ]
 "22
-[; ;ADC.c: 22:     ADCON1 = 0b10000000;
-[e = _ADCON1 -> -> 128 `i `uc ]
+[; ;ADC.c: 22:     ADCON1 = 0b10010000;
+[e = _ADCON1 -> -> 144 `i `uc ]
 "31
 [; ;ADC.c: 31: }
 [e :UE 356 ]
@@ -735,15 +729,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ADC.c: 87:             ADCON0 |= (channel << 2);
 [e =| _ADCON0 -> << -> _channel `i -> 2 `i `Vuc ]
 "88
-[; ;ADC.c: 88:             for(uint8_t i = 0; i < 8; i++);
+[; ;ADC.c: 88:             for(uint8_t i = 0; i < 16; i++);
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 369  ]
+[e $ < -> _i `i -> 16 `i 369  ]
 [e $U 370  ]
 [e :U 369 ]
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 369  ]
+[e $ < -> _i `i -> 16 `i 369  ]
 [e :U 370 ]
 }
 "90
@@ -756,85 +750,73 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 372 ]
 [e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 373  ]
 [e :U 374 ]
-"92
-[; ;ADC.c: 92:             unsigned int returnValue = ((ADRESH<<8)+ADRESL);
+"93
+[; ;ADC.c: 93:             unsigned int returnValue = ((ADRESH<<8)+ADRESL);
 [v _returnValue `ui ~T0 @X0 1 a ]
 [e = _returnValue -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
-"93
-[; ;ADC.c: 93:             ADCON0 &= ~(0b01111100);
-[e =& _ADCON0 -> ~ -> 124 `i `Vuc ]
 "94
-[; ;ADC.c: 94:             ADCON0 |= (0b010 << 2);
-[e =| _ADCON0 -> << -> 2 `i -> 2 `i `Vuc ]
+[; ;ADC.c: 94:             ADCON0 &= ~(0b01111100);
+[e =& _ADCON0 -> ~ -> 124 `i `Vuc ]
 "95
-[; ;ADC.c: 95:             for(uint8_t i = 0; i < 8; i++);
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 375  ]
-[e $U 376  ]
-[e :U 375 ]
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 375  ]
-[e :U 376 ]
-}
-"97
-[; ;ADC.c: 97:             return returnValue;
+[; ;ADC.c: 95:             ADCON0 |= (0b010 << 2);
+[e =| _ADCON0 -> << -> 2 `i -> 2 `i `Vuc ]
+"98
+[; ;ADC.c: 98:             return returnValue;
 [e ) -> _returnValue `us ]
 [e $UE 364  ]
-"98
-[; ;ADC.c: 98:         }
+"99
+[; ;ADC.c: 99:         }
 }
 [e :U 368 ]
-"100
-[; ;ADC.c: 100:     }
+"101
+[; ;ADC.c: 101:     }
 }
-[e $U 378  ]
-"102
-[; ;ADC.c: 102:     else return 0;
+[e $U 375  ]
+"103
+[; ;ADC.c: 103:     else return 0;
 [e :U 367 ]
 [e ) -> -> 0 `i `us ]
 [e $UE 364  ]
-[e :U 378 ]
-"103
-[; ;ADC.c: 103: }
+[e :U 375 ]
+"104
+[; ;ADC.c: 104: }
 [e :UE 364 ]
 }
-"110
-[; ;ADC.c: 110: uint16_t readILCurrentADCRaw(){
+"111
+[; ;ADC.c: 111: uint16_t readILCurrentADCRaw(){
 [v _readILCurrentADCRaw `(us ~T0 @X0 1 ef ]
 {
 [e :U _readILCurrentADCRaw ]
 [f ]
-"112
-[; ;ADC.c: 112:     if(~ADCON0bits.GO_nDONE){
-[e $ ! != ~ -> . . _ADCON0bits 0 1 `i -> 0 `i 380  ]
-{
 "113
-[; ;ADC.c: 113:         ADCON0bits.GO_nDONE = 1;
-[e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
+[; ;ADC.c: 113:     if(~ADCON0bits.GO_nDONE){
+[e $ ! != ~ -> . . _ADCON0bits 0 1 `i -> 0 `i 377  ]
+{
 "114
-[; ;ADC.c: 114:         while(ADCON0bits.GO_nDONE);
-[e $U 381  ]
-[e :U 382 ]
-[e :U 381 ]
-[e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 382  ]
-[e :U 383 ]
+[; ;ADC.c: 114:         ADCON0bits.GO_nDONE = 1;
+[e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
 "115
-[; ;ADC.c: 115:         return ((ADRESH<<8)+ADRESL);
-[e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `us ]
-[e $UE 379  ]
-"116
-[; ;ADC.c: 116:     }
-}
-[e $U 384  ]
-"118
-[; ;ADC.c: 118:     else return 0;
+[; ;ADC.c: 115:         while(ADCON0bits.GO_nDONE);
+[e $U 378  ]
+[e :U 379 ]
+[e :U 378 ]
+[e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 379  ]
 [e :U 380 ]
+"116
+[; ;ADC.c: 116:         return ((ADRESH<<8)+ADRESL);
+[e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `us ]
+[e $UE 376  ]
+"117
+[; ;ADC.c: 117:     }
+}
+[e $U 381  ]
+"119
+[; ;ADC.c: 119:     else return 0;
+[e :U 377 ]
 [e ) -> -> 0 `i `us ]
-[e $UE 379  ]
-[e :U 384 ]
-"120
-[; ;ADC.c: 120: }
-[e :UE 379 ]
+[e $UE 376  ]
+[e :U 381 ]
+"121
+[; ;ADC.c: 121: }
+[e :UE 376 ]
 }

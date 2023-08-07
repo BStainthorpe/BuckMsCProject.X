@@ -19,9 +19,9 @@ void initialiseADCModule(){
     //bit 1: A/D conversion status, 1 starts a conversion cycle
     //bit 0: 1, ADC Enabled
     
-    ADCON1 = 0b10000000; // 
+    ADCON1 = 0b10010000; // 
     //bit 7: 1, six MSB in ADRESH are 0
-    //bit 6-4: 000 Conversion freq,Fosc/2
+    //bit 6-4: 001 Conversion freq, Fosc/8, have tried Fosc/2 and Fosc/4 but doesnt work properly
     //bit 3: unused
     //bit 2: 0, Vref- is Vss
     //bit 1-0: 00, Vref+ is Vdd
@@ -85,14 +85,15 @@ uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
         if(~ADCON0bits.GO_nDONE){                                //ensure we are not interrupting another read
             ADCON0 &= ~(0b01111100);                             //Clear ADC Channel Select
             ADCON0 |= (channel << 2);                            //Set to desired channel
-            for(uint8_t i = 0; i < 8; i++);                      //insert a small time delay using a for loop to allow channel change
+            for(uint8_t i = 0; i < 16; i++);                      //insert a small time delay using a for loop to allow channel change
             
             ADCON0bits.GO_nDONE = 1;                             //Set the Conversion begin bit
             while(ADCON0bits.GO_nDONE);                          //Wait until the conversion finishes
+            //for(uint8_t i = 0; i < 8; i++);
             unsigned int returnValue = ((ADRESH<<8)+ADRESL);
             ADCON0 &= ~(0b01111100);                             //Clear channel select
             ADCON0 |= (DEFAULT_ADC << 2);                        //Set the channel select bits to default channel 
-            for(uint8_t i = 0; i < 8; i++);                      //insert a small time delay using a for loop to allow channel change
+            //for(uint8_t i = 0; i < 8; i++);                    
             
             return returnValue;                                  //Return the result  
         }

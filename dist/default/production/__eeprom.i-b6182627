@@ -1,4 +1,4 @@
-# 1 "CurrentSensor.c"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\sources\\c99\\pic\\__eeprom.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,21 +6,25 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "CurrentSensor.c" 2
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\sources\\c99\\pic\\__eeprom.c" 2
+# 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\xc.h" 1 3
+# 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\xc.h" 3
+extern const char __xc8_OPTIM_SPEED;
+
+extern double __fpnormalize(double);
 
 
 
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\xc8debug.h" 1 3
 
 
 
-# 1 "./Global.h" 1
-# 15 "./Global.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 1 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 1 3
 
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\musl_xc8.h" 1 3
-# 4 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 2 3
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 2 3
 
 
 
@@ -28,163 +32,17 @@
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\features.h" 1 3
-# 10 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 2 3
-# 24 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 1 3
-
-
-
-
-
-typedef void * va_list[1];
-
-
-
-
-typedef void * __isoc_va_list[1];
-# 122 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef unsigned size_t;
-# 137 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long ssize_t;
-# 168 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 204 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __uint24 uint24_t;
-# 246 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long off_t;
-# 399 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef struct _IO_FILE FILE;
-# 24 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 2 3
-# 52 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdio.h" 3
-typedef union _G_fpos64_t {
- char __opaque[16];
- double __align;
-} fpos_t;
-
-extern FILE *const stdin;
-extern FILE *const stdout;
-extern FILE *const stderr;
-
-
-
-
-
-FILE *fopen(const char *restrict, const char *restrict);
-FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
-int fclose(FILE *);
-
-int remove(const char *);
-int rename(const char *, const char *);
-
-int feof(FILE *);
-int ferror(FILE *);
-int fflush(FILE *);
-void clearerr(FILE *);
-
-int fseek(FILE *, long, int);
-long ftell(FILE *);
-void rewind(FILE *);
-
-int fgetpos(FILE *restrict, fpos_t *restrict);
-int fsetpos(FILE *, const fpos_t *);
-
-size_t fread(void *restrict, size_t, size_t, FILE *restrict);
-size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
-
-int fgetc(FILE *);
-int getc(FILE *);
-int getchar(void);
-int ungetc(int, FILE *);
-
-int fputc(int, FILE *);
-int putc(int, FILE *);
-int putchar(int);
-
-char *fgets(char *restrict, int, FILE *restrict);
-
-char *gets(char *);
-
-
-int fputs(const char *restrict, FILE *restrict);
-int puts(const char *);
-
-__attribute__((__format__(__printf__, 1, 2)))
-int printf(const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int fprintf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int sprintf(char *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 3, 4)))
-int snprintf(char *restrict, size_t, const char *restrict, ...);
-
-__attribute__((__format__(__printf__, 1, 0)))
-int vprintf(const char *restrict, __isoc_va_list);
-int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 2, 0)))
-int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 3, 0)))
-int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
-
-__attribute__((__format__(__scanf__, 1, 2)))
-int scanf(const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int fscanf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int sscanf(const char *restrict, const char *restrict, ...);
-
-__attribute__((__format__(__scanf__, 1, 0)))
-int vscanf(const char *restrict, __isoc_va_list);
-int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__scanf__, 2, 0)))
-int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
-
-void perror(const char *);
-
-int setvbuf(FILE *restrict, char *restrict, int, size_t);
-void setbuf(FILE *restrict, char *restrict);
-
-char *tmpnam(char *);
-FILE *tmpfile(void);
-
-
-
-
-FILE *fmemopen(void *restrict, size_t, const char *restrict);
-FILE *open_memstream(char **, size_t *);
-FILE *fdopen(int, const char *);
-FILE *popen(const char *, const char *);
-int pclose(FILE *);
-int fileno(FILE *);
-int fseeko(FILE *, off_t, int);
-off_t ftello(FILE *);
-int dprintf(int, const char *restrict, ...);
-int vdprintf(int, const char *restrict, __isoc_va_list);
-void flockfile(FILE *);
-int ftrylockfile(FILE *);
-void funlockfile(FILE *);
-int getc_unlocked(FILE *);
-int getchar_unlocked(void);
-int putc_unlocked(int, FILE *);
-int putchar_unlocked(int);
-ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
-ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
-int renameat(int, const char *, int, const char *);
-char *ctermid(char *);
-
-
-
-
-
-
-
-char *tempnam(const char *, const char *);
-# 15 "./Global.h" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 1 3
+# 10 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 2 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
 typedef long int wchar_t;
+# 122 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef unsigned size_t;
+# 168 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 204 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef __uint24 uint24_t;
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdlib.h" 2 3
 
 
@@ -243,10 +101,21 @@ typedef struct { unsigned int quot, rem; } udiv_t;
 typedef struct { unsigned long quot, rem; } uldiv_t;
 udiv_t udiv (unsigned int, unsigned int);
 uldiv_t uldiv (unsigned long, unsigned long);
-# 16 "./Global.h" 2
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\xc8debug.h" 2 3
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdbool.h" 1 3
-# 17 "./Global.h" 2
+
+
+
+
+
+
+
+#pragma intrinsic(__builtin_software_breakpoint)
+extern void __builtin_software_breakpoint(void);
+# 24 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\xc.h" 2 3
+# 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\builtins.h" 1 3
+
+
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 3
@@ -333,28 +202,7 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 144 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\stdint.h" 2 3
-# 18 "./Global.h" 2
-
-# 1 "./GPIO.h" 1
-# 20 "./GPIO.h"
-# 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\xc.h" 1 3
-# 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\xc.h" 3
-extern const char __xc8_OPTIM_SPEED;
-
-extern double __fpnormalize(double);
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\xc8debug.h" 1 3
-# 12 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\xc8debug.h" 3
-#pragma intrinsic(__builtin_software_breakpoint)
-extern void __builtin_software_breakpoint(void);
-# 24 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\xc.h" 2 3
-# 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\builtins.h" 1 3
-
-
-
-
+# 5 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\builtins.h" 2 3
 
 
 #pragma intrinsic(__nop)
@@ -4480,213 +4328,176 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\\pic\\include\\xc.h" 2 3
-# 20 "./GPIO.h" 2
-# 31 "./GPIO.h"
-enum GPIO_PORTS{
-    pinRA0,
-    pinRA1,
-    pinRA2,
-    pinRA3,
-    pinRA4,
-    pinRA5,
-    pinRA6,
-    pinRA7,
-    pinRB0,
-    pinRB1,
-    pinRB2,
-    pinRB3,
-    pinRB4,
-    pinRB5,
-    pinRB6,
-    pinRB7
-};
-
-void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction);
-void writeGPIO(const enum GPIO_PORTS gpioNumber, uint8_t writeValue);
-_Bool readGPIO(const enum GPIO_PORTS gpioNumber);
-# 19 "./Global.h" 2
-
-# 1 "./StateMachine.h" 1
-# 20 "./StateMachine.h"
-# 1 "./Global.h" 1
-# 20 "./StateMachine.h" 2
-
-# 1 "./PWM.h" 1
-# 21 "./PWM.h"
-uint8_t setPeriod = 0;
-uint16_t setDuty = 0;
-uint8_t prevPeriod = 0;
-uint16_t prevDuty = 0;
-
-void setupPWM();
-void setPWMDutyandPeriod(uint16_t dutyCycle, uint8_t period);
-void setPWMPeriod(uint8_t period);
-# 21 "./StateMachine.h" 2
-
-
-
-enum stateMachine{
-    initialising,
-    potControl,
-    voltageModeControl,
-    currentModeControl,
-    overCurrentFault
-};
-
-enum stateMachine currentState = 0;
-
-void transToPotControl();
-void transToVoltageModeControl();
-void transToCurrentModeControl();
-void transToOverCurrentFault();
-# 20 "./Global.h" 2
-# 64 "./Global.h"
-enum internalClockFreqSelec{
-    freq31k,
-    freq62k5,
-    freq125k,
-    freq250k,
-    freq500k,
-    freq1M,
-    freq2M,
-    freq4M,
-    freq8M,
-    freq16M,
-    freq32M
-};
-
-
-uint32_t clockFrequency = 0;
-# 7 "CurrentSensor.c" 2
-
-# 1 "./CurrentSensor.h" 1
-# 37 "./CurrentSensor.h"
-volatile uint16_t latestIL = 0;
-uint16_t filteredIDS = 0;
-uint16_t filteredIL = 0;
-uint16_t currentIDSFIFO[16];
-uint16_t currentILFIFO[16];
-
-_Bool tripIDS = 0;
-_Bool tripIL = 0;
-
-
-uint8_t currentTripCount = 0;
-
-void initialiseCurrentSensors();
-_Bool currentTripRead();
-uint16_t readFilteredIDS();
-uint16_t readFilteredIL();
-void currentTripReset();
-int16_t convertRawToMilliAmps(uint16_t rawvalue);
-# 8 "CurrentSensor.c" 2
-
-
-
-# 1 "./ADC.h" 1
-# 26 "./ADC.h"
-void initialiseADCPin(const enum GPIO_PORTS gpioNumber);
-void initialiseADCModule();
-uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
-uint16_t readILCurrentADCRaw();
-# 11 "CurrentSensor.c" 2
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\sources\\c99\\pic\\__eeprom.c" 2
 
 
 
 
+void
+__eecpymem(volatile unsigned char *to, __eeprom unsigned char * from, unsigned char size)
+{
+ volatile unsigned char *cp = to;
 
+ while (EECON1bits.WR) continue;
+ EEADR = (unsigned char)from;
+ while(size--) {
+  while (EECON1bits.WR) continue;
 
+  EECON1 &= 0x7F;
 
-void initialiseCurrentSensors(){
-    initialiseGPIO(pinRA3, 1);
-    initialiseGPIO(pinRA1, 1);
-    initialiseADCPin(pinRA0);
-    initialiseADCPin(pinRA2);
-    initialiseGPIO(pinRB3, 0);
-    currentTripReset();
+  EECON1bits.RD = 1;
+  *cp++ = EEDATA;
+  ++EEADR;
+ }
+# 36 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\sources\\c99\\pic\\__eeprom.c"
 }
 
+void
+__memcpyee(__eeprom unsigned char * to, const unsigned char *from, unsigned char size)
+{
+ const unsigned char *ptr =from;
 
+ while (EECON1bits.WR) continue;
+ EEADR = (unsigned char)to - 1U;
 
+ EECON1 &= 0x7F;
 
-
-_Bool currentTripRead(){
-    tripIDS = ~readGPIO(pinRA1);
-    tripIL = ~readGPIO(pinRA3);
-    return (tripIL || tripIDS);
+ while(size--) {
+  while (EECON1bits.WR) {
+   continue;
+  }
+  EEDATA = *ptr++;
+  ++EEADR;
+  STATUSbits.CARRY = 0;
+  if (INTCONbits.GIE) {
+   STATUSbits.CARRY = 1;
+  }
+  INTCONbits.GIE = 0;
+  EECON1bits.WREN = 1;
+  EECON2 = 0x55;
+  EECON2 = 0xAA;
+  EECON1bits.WR = 1;
+  EECON1bits.WREN = 0;
+  if (STATUSbits.CARRY) {
+   INTCONbits.GIE = 1;
+  }
+ }
+# 101 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\sources\\c99\\pic\\__eeprom.c"
 }
 
-
-
-
-
-
-uint16_t readFilteredIDS(){
-    for(uint8_t i=0; i<16 -1; i++) currentIDSFIFO[i] = currentIDSFIFO[i+1];
-    currentIDSFIFO[16 -1] = readADCRaw(pinRA0);
-    uint32_t sumOfSamples = 0;
-    for(uint8_t i=0; i<16; i++) sumOfSamples += currentIDSFIFO[i];
-
-    return (sumOfSamples >> 4);
+unsigned char
+__eetoc(__eeprom void *addr)
+{
+ unsigned char data;
+ __eecpymem((unsigned char *) &data,addr,1);
+ return data;
 }
 
-
-
-
-
-
-uint16_t readFilteredIL(){
-    for(uint8_t i=0; i<16 -1; i++) currentILFIFO[i] = currentILFIFO[i+1];
-    currentILFIFO[16 -1] = latestIL;
-    uint32_t sumOfSamples = 0;
-    for(uint8_t i=0; i<16; i++) sumOfSamples += currentILFIFO[i];
-
-    return (sumOfSamples >> 4);
+unsigned int
+__eetoi(__eeprom void *addr)
+{
+ unsigned int data;
+ __eecpymem((unsigned char *) &data,addr,2);
+ return data;
 }
 
+#pragma warning push
+#pragma warning disable 2040
+__uint24
+__eetom(__eeprom void *addr)
+{
+ __uint24 data;
+ __eecpymem((unsigned char *) &data,addr,3);
+ return data;
+}
+#pragma warning pop
 
-
-
-
-
-
-void currentTripReset(){
-    writeGPIO(pinRB3, 0);
-     _delay((unsigned long)((20)*(freq32M/4000000.0)));
-    writeGPIO(pinRB3, 1);
+unsigned long
+__eetol(__eeprom void *addr)
+{
+ unsigned long data;
+ __eecpymem((unsigned char *) &data,addr,4);
+ return data;
 }
 
+#pragma warning push
+#pragma warning disable 1516
+unsigned long long
+__eetoo(__eeprom void *addr)
+{
+ unsigned long long data;
+ __eecpymem((unsigned char *) &data,addr,8);
+ return data;
+}
+#pragma warning pop
 
-
-
-
-
-int16_t convertRawToMilliAmps(uint16_t rawValue){
-    int16_t offsetted = (int16_t)(rawValue - 445);
-    int16_t returnValuemA = (int32_t)(offsetted * 2857) >> 0;
-    return returnValuemA;
+unsigned char
+__ctoee(__eeprom void *addr, unsigned char data)
+{
+ __memcpyee(addr,(unsigned char *) &data,1);
+ return data;
 }
 
+unsigned int
+__itoee(__eeprom void *addr, unsigned int data)
+{
+ __memcpyee(addr,(unsigned char *) &data,2);
+ return data;
+}
 
+#pragma warning push
+#pragma warning disable 2040
+__uint24
+__mtoee(__eeprom void *addr, __uint24 data)
+{
+ __memcpyee(addr,(unsigned char *) &data,3);
+ return data;
+}
+#pragma warning pop
 
+unsigned long
+__ltoee(__eeprom void *addr, unsigned long data)
+{
+ __memcpyee(addr,(unsigned char *) &data,4);
+ return data;
+}
 
+#pragma warning push
+#pragma warning disable 1516
+unsigned long long
+__otoee(__eeprom void *addr, unsigned long long data)
+{
+ __memcpyee(addr,(unsigned char *) &data,8);
+ return data;
+}
+#pragma warning pop
 
+float
+__eetoft(__eeprom void *addr)
+{
+ float data;
+ __eecpymem((unsigned char *) &data,addr,3);
+ return data;
+}
 
+double
+__eetofl(__eeprom void *addr)
+{
+ double data;
+ __eecpymem((unsigned char *) &data,addr,4);
+ return data;
+}
 
-int16_t currentTripMonitor(){
+float
+__fttoee(__eeprom void *addr, float data)
+{
+ __memcpyee(addr,(unsigned char *) &data,3);
+ return data;
+}
 
-        if(currentTripRead() == 1){
-        currentTripCount++;
-        if(currentTripCount == 3){
-            transToOverCurrentFault();
-        }
-        else{
-            currentTripReset();
-        }
-    }
-    else{
-        if(currentTripCount > 0){
-            currentTripCount--;
-        }
-    }
+double
+__fltoee(__eeprom void *addr, double data)
+{
+ __memcpyee(addr,(unsigned char *) &data,4);
+ return data;
 }

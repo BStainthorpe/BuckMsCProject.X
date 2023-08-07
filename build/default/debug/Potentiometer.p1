@@ -517,14 +517,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _currentState
 -> -> 0 `i `E2833
 ]
-"85 ./Global.h
-[; ;./Global.h: 85: uint32_t clockFrequency = 0;
+"87 ./Global.h
+[; ;./Global.h: 87: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"87
-[; ;./Global.h: 87: uint8_t currentTripCount = 0;
+"89
+[; ;./Global.h: 89: uint8_t currentTripCount = 0;
 [v _currentTripCount `uc ~T0 @X0 1 e ]
 [i _currentTripCount
 -> -> 0 `i `uc

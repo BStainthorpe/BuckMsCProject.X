@@ -4553,7 +4553,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 70 "./Global.h"
+# 72 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4644,13 +4644,16 @@ uint16_t dutyPotFIFO[16];
 
 volatile _Bool timerSlotHalf = 0;
 volatile _Bool timerSlotQuarter = 0;
+volatile _Bool slotTest = 0;
 
 void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq);
-# 41 "main.c"
+# 42 "main.c"
 void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
     if ("((INTCON)&07Fh)" "," "2") {
-# 52 "main.c"
+
+    writeGPIO(pinRB4, 1);
+# 55 "main.c"
         if(currentTripRead() == 1){
             currentTripCount++;
             if(currentTripCount == 3){
@@ -4670,12 +4673,13 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
         if(timerSlotHalf == 0){
 
-            writeGPIO(pinRB4, 0);
             controlRoutine();
+            writeGPIO(pinRB4, 0);
         }
 
         if(timerSlotHalf == 1){
 
+            writeGPIO(pinRB5, 1);
             filteredIL = readFilteredIL();
 
             filteredVout = readFilteredVout();
@@ -4683,7 +4687,6 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
             if(timerSlotQuarter == 0){
 
-                writeGPIO(pinRB4, 1);
                 runPotScaling();
             }
 
@@ -4694,6 +4697,8 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
             }
 
             timerSlotQuarter = ~timerSlotQuarter;
+            writeGPIO(pinRB4, 0);
+            writeGPIO(pinRB5, 0);
         }
 
         timerSlotHalf = ~timerSlotHalf;
@@ -4701,10 +4706,10 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
     }
 
-    if("((PIR1)&07Fh)" "," "2"){
-        latestIL = readILCurrentADCRaw();
-        PIR1bits.CCP1IF = 0;
-    }
+
+
+
+
 
 }
 
@@ -4726,6 +4731,7 @@ int main(int argc, char** argv) {
     initialiseController();
 
     initialiseGPIO(pinRB4, 0);
+    initialiseGPIO(pinRB5, 0);
 
     _delay((unsigned long)((100)*(freq32M/4000.0)));
 

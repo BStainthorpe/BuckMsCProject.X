@@ -4540,7 +4540,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 70 "./Global.h"
+# 64 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4557,12 +4557,10 @@ enum internalClockFreqSelec{
 
 
 uint32_t clockFrequency = 0;
-
-uint8_t currentTripCount = 0;
 # 7 "Controller.c" 2
 
 # 1 "./Controller.h" 1
-# 54 "./Controller.h"
+# 59 "./Controller.h"
 uint16_t filteredVout = 0;
 uint16_t voutFIFO[16];
 
@@ -4595,7 +4593,7 @@ uint16_t readILCurrentADCRaw();
 # 11 "Controller.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 34 "./CurrentSensor.h"
+# 37 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
@@ -4604,6 +4602,9 @@ uint16_t currentILFIFO[16];
 
 _Bool tripIDS = 0;
 _Bool tripIL = 0;
+
+
+uint8_t currentTripCount = 0;
 
 void initialiseCurrentSensors();
 _Bool currentTripRead();
@@ -4693,7 +4694,7 @@ void runVoltageModeControl(){
 
 
    if(readGPIO(pinRB0)) voltageModeVariables.error = 16000u - newVoltage;
-   else voltageModeVariables.error = 10000u - newVoltage;
+   else voltageModeVariables.error = 12000u - newVoltage;
 
 
    int64_t integralMult = ((int64_t) (5u * ((int64_t) voltageModeVariables.error) )) * 134u;

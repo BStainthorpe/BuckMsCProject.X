@@ -4553,7 +4553,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 70 "./Global.h"
+# 64 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4570,13 +4570,11 @@ enum internalClockFreqSelec{
 
 
 uint32_t clockFrequency = 0;
-
-uint8_t currentTripCount = 0;
 # 20 "main.c" 2
 
 
 # 1 "./CurrentSensor.h" 1
-# 34 "./CurrentSensor.h"
+# 37 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
@@ -4585,6 +4583,9 @@ uint16_t currentILFIFO[16];
 
 _Bool tripIDS = 0;
 _Bool tripIL = 0;
+
+
+uint8_t currentTripCount = 0;
 
 void initialiseCurrentSensors();
 _Bool currentTripRead();
@@ -4595,7 +4596,7 @@ int16_t convertRawToMilliAmps(uint16_t rawvalue);
 # 22 "main.c" 2
 
 # 1 "./Controller.h" 1
-# 54 "./Controller.h"
+# 59 "./Controller.h"
 uint16_t filteredVout = 0;
 uint16_t voutFIFO[16];
 
@@ -4644,38 +4645,28 @@ uint16_t dutyPotFIFO[16];
 
 volatile _Bool timerSlotHalf = 0;
 volatile _Bool timerSlotQuarter = 0;
+volatile _Bool slotTest = 0;
 
 void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq);
-# 41 "main.c"
-void __attribute__((picinterrupt(("")))) Tick980Hz(void){
+# 42 "main.c"
+void __attribute__((picinterrupt(("")))) Tick490Hz(void){
 
     if ("((INTCON)&07Fh)" "," "2") {
-# 52 "main.c"
-        if(currentTripRead() == 1){
-            currentTripCount++;
-            if(currentTripCount == 3){
-                transToOverCurrentFault();
-            }
-            else{
-                currentTripReset();
-            }
-        }
-        else{
-            if(currentTripCount > 0){
-                currentTripCount--;
-            }
-        }
+# 53 "main.c"
+        writeGPIO(pinRB4, 1);
+        currentTripMonitor();
         setPWMDutyandPeriod(setDuty, setPeriod);
 
 
         if(timerSlotHalf == 0){
 
-            writeGPIO(pinRB4, 0);
             controlRoutine();
+            writeGPIO(pinRB4, 0);
         }
 
         if(timerSlotHalf == 1){
 
+            writeGPIO(pinRB5, 1);
             filteredIL = readFilteredIL();
 
             filteredVout = readFilteredVout();
@@ -4683,7 +4674,6 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
             if(timerSlotQuarter == 0){
 
-                writeGPIO(pinRB4, 1);
                 runPotScaling();
             }
 
@@ -4694,6 +4684,8 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
             }
 
             timerSlotQuarter = ~timerSlotQuarter;
+            writeGPIO(pinRB4, 0);
+            writeGPIO(pinRB5, 0);
         }
 
         timerSlotHalf = ~timerSlotHalf;
@@ -4701,10 +4693,10 @@ void __attribute__((picinterrupt(("")))) Tick980Hz(void){
 
     }
 
-    if("((PIR1)&07Fh)" "," "2"){
-        latestIL = readILCurrentADCRaw();
-        PIR1bits.CCP1IF = 0;
-    }
+
+
+
+
 
 }
 
@@ -4726,6 +4718,7 @@ int main(int argc, char** argv) {
     initialiseController();
 
     initialiseGPIO(pinRB4, 0);
+    initialiseGPIO(pinRB5, 0);
 
     _delay((unsigned long)((100)*(freq32M/4000.0)));
 

@@ -29,7 +29,10 @@ extern "C" {
 #define CURRENT_SENSOR_GAIN         2857
 #define CURRENT_SENSOR_MANTISSA     0
 #define CURRENT_SENSOR_OFFSET       445    
-#define SIZE_OF_ISENSOR_FILTER      16      //note there are variables in the filter functions which require change depending on this number    
+#define SIZE_OF_ISENSOR_FILTER      16      //note there are variables in the filter functions which require change depending on this number   
+    
+#define CURRENT_TRIP_LIMIT  3                     //max number of consecutive current trips before transitioning to a fault
+                                                  //allow >1 as switching inductor and turn on with high duty cycle causes overcurrent due to inrush but this is OK
     
 volatile uint16_t latestIL = 0;       //variable containing latest IL1 sample, which is read once per PWM cycle
 uint16_t filteredIDS = 0;
@@ -39,13 +42,18 @@ uint16_t currentILFIFO[SIZE_OF_ISENSOR_FILTER];
 
 bool tripIDS = 0;
 bool tripIL = 0;
-    
+
+//variable counting number of consecutive current trips
+uint8_t currentTripCount = 0;
+
 void initialiseCurrentSensors();
 bool currentTripRead();
 uint16_t readFilteredIDS();
 uint16_t readFilteredIL();
 void currentTripReset();
 int16_t convertRawToMilliAmps(uint16_t rawvalue);
+
+
 
 
 #ifdef	__cplusplus

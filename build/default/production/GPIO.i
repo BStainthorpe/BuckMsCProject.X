@@ -4541,7 +4541,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 70 "./Global.h"
+# 64 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4558,8 +4558,6 @@ enum internalClockFreqSelec{
 
 
 uint32_t clockFrequency = 0;
-
-uint8_t currentTripCount = 0;
 # 8 "GPIO.c" 2
 # 18 "GPIO.c"
 void initialiseGPIO(const enum GPIO_PORTS gpioNumber, uint8_t direction){

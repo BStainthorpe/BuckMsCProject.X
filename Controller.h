@@ -17,10 +17,15 @@ extern "C" {
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>   
-#include "Global.h"    
+#include "Global.h" 
+
+//select the closed loop control method    
+#define VOLTAGE_MODE_CONTROL    1
+#define CURRENT_MODE_CONTROL    0
+#define CONTROL_METHOD          VOLTAGE_MODE_CONTROL
     
 //closed loop control settings 
-#define TARGET_VOLTAGE_MV_1         10000u         //target voltage in millivolts
+#define TARGET_VOLTAGE_MV_1         12000u         //target voltage in millivolts
 #define TARGET_VOLTAGE_MV_2         16000u         //option to change target voltage for step response using CL_Enable Jumper
 #define PID_OFFSET                  50u            //make the PI controller operate around 50% duty (negative output corresponds to 0-50%, positive 50-100%)
 #define INTEGRAL_SCALED_LIMIT       1073741824u    //anti windup integrator limit for scaled value, calculate using max duty cycle (1024) scaled << DT_MANTISSA + VOLTAGE_MODE_KI_MANTISSA

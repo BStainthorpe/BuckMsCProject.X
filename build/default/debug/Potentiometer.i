@@ -4543,7 +4543,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 70 "./Global.h"
+# 72 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,

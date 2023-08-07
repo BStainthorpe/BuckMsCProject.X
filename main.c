@@ -27,61 +27,50 @@
 
 volatile bool timerSlotHalf = 0;
 volatile bool timerSlotQuarter = 0;
+volatile bool slotTest = 0;
 
 void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq);
 
 /*------------------------------------------------------------------------------
- Function: Tick980Hz()
+ Function: Tick490Hz()
  *Use: This function is executed when any of the global
  * interrupts are triggered. The cause of the interrupt can be determined using
  * if statements.
  * TM0IF_bit: this corresponds to a timer0 interrupt
- * 980Hz frequency is dependent on clock being 32MHz
+ * 490Hz frequency is dependent on clock being 32MHz, and pre Scaler of 64
 ------------------------------------------------------------------------------*/
-void __interrupt() Tick980Hz(void){      //This function is called on each interrupt, 980Hz frequency is dependent on clock being 32MHz
+void __interrupt() Tick490Hz(void){      //This function is called on each interrupt, 490Hz frequency is dependent on clock being 32MHz
     
-    if (TMR0IF_bit) {   //Check if Timer0 has caused the interrupt. Timer 0 interrupt operates at 980Hz or every 1ms
-       
+    if (TMR0IF_bit) {   //Check if Timer0 has caused the interrupt. Timer 0 interrupt operates at 490Hz or every 2ms
+    
     //Timer Interrupt Slots:     Timing Graph:                        Functions:
-    //980Hz interrupt            |------|------|------|------|        currentTripRead() setPWMDutyandPeriod()
-    //490Hz Slot 1:              1-------------1-------------1        controlRoutine()
-    //490Hz Slot 2:              -------2-------------2-------        readFilteredVout() readFilteredIL()
-    //245Hz Slot 3:              -------3---------------------        runPotScaling()
-    //245Hz Slot 4:              ---------------------4-------        readFilteredDutyPot() readFilteredFreqPot()
-       
-        if(currentTripRead() == 1){
-            currentTripCount++;
-            if(currentTripCount == CURRENT_TRIP_LIMIT){               
-                transToOverCurrentFault();
-            }
-            else{
-                currentTripReset();
-            }
-        }
-        else{
-            if(currentTripCount > 0){       //decrement the counter to 0 when no trips have occurred
-                currentTripCount--;
-            }
-        }
+    //490Hz interrupt            |------|------|------|------|        currentTripMonitor() setPWMDutyandPeriod()
+    //245Hz Slot 1:              1-------------1-------------1        controlRoutine()
+    //245Hz Slot 2:              -------2-------------2-------        readFilteredVout() readFilteredIL()
+    //122.5Hz Slot 3:            -------3---------------------        runPotScaling()
+    //122.5Hz Slot 4:            ---------------------4-------        readFilteredDutyPot() readFilteredFreqPot()
+    
+        writeGPIO(gpioSlotTest, 1);     //to test slot utilisation - set GPIO pin RB4 high at start
+        currentTripMonitor();
         setPWMDutyandPeriod(setDuty, setPeriod);
         
-       //each half slot occurs at 490Hz or every 2ms
+       //each half slot occurs at 245Hz or every 4ms
         if(timerSlotHalf == false){
             //slot 1------------------------------------------------------------
-            writeGPIO(gpioSlotTest, 0); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz on RB4
             controlRoutine();
+            writeGPIO(gpioSlotTest, 0); //clear after slot 1 to measure slot 1 utilisation
         }
 
         if(timerSlotHalf == true){
             //slot 2------------------------------------------------------------
+            writeGPIO(gpioSlotTest2, 1);   //set GPIO pin RB5 to show slot 2 on scope - compare with RB4
             filteredIL = readFilteredIL();
             //filteredIDS = readFilteredIDS();     
             filteredVout = readFilteredVout();
             
-            //each quarter slot occurs at 245Hz or every 4ms
+            //each quarter slot occurs at 122.5Hz or every 8ms
             if(timerSlotQuarter == false){
                 //slot 3--------------------------------------------------------
-                writeGPIO(gpioSlotTest, 1); //write in Slot 3 and Clear in Slot 1 gives a 25% duty PWM at 245Hz on RB4
                 runPotScaling();
             }
             
@@ -92,6 +81,8 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
             }           
           
             timerSlotQuarter = ~timerSlotQuarter;
+            writeGPIO(gpioSlotTest, 0);    //clear after slot 2 to measure slot 2 utilisation
+            writeGPIO(gpioSlotTest2, 0);   //clear GPIO pin RB5 to show slot 2 on scope - compare with RB4
         }
 
         timerSlotHalf = ~timerSlotHalf;
@@ -99,10 +90,10 @@ void __interrupt() Tick980Hz(void){      //This function is called on each inter
 
     }
     
-    if(CCP1IF_bit){
+    /*if(CCP1IF_bit){
         latestIL = readILCurrentADCRaw();   //fast function for reading the IL current
         PIR1bits.CCP1IF = 0;               //clear the interrupt flag
-    }
+    }*/
 
 }
 
@@ -124,6 +115,7 @@ int main(int argc, char** argv) {
     initialiseController();
     
     initialiseGPIO(gpioSlotTest, GPIO_Output);
+    initialiseGPIO(gpioSlotTest2, GPIO_Output);
     
     __delay_ms(100);
     

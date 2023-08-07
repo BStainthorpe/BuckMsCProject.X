@@ -4555,7 +4555,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 70 "./Global.h"
+# 64 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4572,8 +4572,6 @@ enum internalClockFreqSelec{
 
 
 uint32_t clockFrequency = 0;
-
-uint8_t currentTripCount = 0;
 # 8 "PWM.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c99\\math.h" 1 3

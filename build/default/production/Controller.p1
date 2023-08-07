@@ -3,8 +3,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./StateMachine.h: 32: enum stateMachine currentState = 0;
 [c E2833 0 1 2 3 4 .. ]
 [n E2833 stateMachine initialising potControl voltageModeControl currentModeControl overCurrentFault  ]
-"57 ./Controller.h
-[; ;./Controller.h: 57: typedef struct controllerVariables{
+"62 ./Controller.h
+[; ;./Controller.h: 62: typedef struct controllerVariables{
 [s S356 `s 1 `l 1 `l 1 `l 1 `o 1 `l 1 `s 1 ]
 [n S356 controllerVariables error integral proportionalOutput integralOutput integralOutputScaled sumOutput previousError ]
 "24 Controller.c
@@ -20,11 +20,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "28
 [; ;./ADC.h: 28: uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 [v _readADCRaw `(us ~T0 @X0 0 ef1`CE2798 ]
-"71 ./Controller.h
-[; ;./Controller.h: 71: void runVoltageModeControl();
+"76 ./Controller.h
+[; ;./Controller.h: 76: void runVoltageModeControl();
 [v _runVoltageModeControl `(v ~T0 @X0 0 e? ]
-"70
-[; ;./Controller.h: 70: void runCurrentModeControl();
+"75
+[; ;./Controller.h: 75: void runCurrentModeControl();
 [v _runCurrentModeControl `(v ~T0 @X0 0 e? ]
 "52 ./GPIO.h
 [; ;./GPIO.h: 52: _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
@@ -32,8 +32,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "62 C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdlib.h
 [; ;C:\Program Files\Microchip\xc8\v2.36\pic\include\c99\stdlib.h: 62: int abs (int);
 [v _abs `(i ~T0 @X0 0 ef1`i ]
-"48 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 48: int16_t convertRawToMilliAmps(uint16_t rawvalue);
+"54 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 54: int16_t convertRawToMilliAmps(uint16_t rawvalue);
 [v _convertRawToMilliAmps `(s ~T0 @X0 0 ef1`us ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 55: __asm("INDF0 equ 00h");
@@ -539,62 +539,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _currentState
 -> -> 0 `i `E2833
 ]
-"85 ./Global.h
-[; ;./Global.h: 85: uint32_t clockFrequency = 0;
+"79 ./Global.h
+[; ;./Global.h: 79: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"87
-[; ;./Global.h: 87: uint8_t currentTripCount = 0;
-[v _currentTripCount `uc ~T0 @X0 1 e ]
-[i _currentTripCount
--> -> 0 `i `uc
-]
-"54 ./Controller.h
-[; ;./Controller.h: 54: uint16_t filteredVout = 0;
+"59 ./Controller.h
+[; ;./Controller.h: 59: uint16_t filteredVout = 0;
 [v _filteredVout `us ~T0 @X0 1 e ]
 [i _filteredVout
 -> -> 0 `i `us
 ]
-"55
-[; ;./Controller.h: 55: uint16_t voutFIFO[16];
+"60
+[; ;./Controller.h: 60: uint16_t voutFIFO[16];
 [v _voutFIFO `us ~T0 @X0 -> 16 `i e ]
-"34 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 34: volatile uint16_t latestIL = 0;
+"37 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 37: volatile uint16_t latestIL = 0;
 [v _latestIL `Vus ~T0 @X0 1 e ]
 [i _latestIL
 -> -> 0 `i `us
 ]
-"35
-[; ;./CurrentSensor.h: 35: uint16_t filteredIDS = 0;
+"38
+[; ;./CurrentSensor.h: 38: uint16_t filteredIDS = 0;
 [v _filteredIDS `us ~T0 @X0 1 e ]
 [i _filteredIDS
 -> -> 0 `i `us
 ]
-"36
-[; ;./CurrentSensor.h: 36: uint16_t filteredIL = 0;
+"39
+[; ;./CurrentSensor.h: 39: uint16_t filteredIL = 0;
 [v _filteredIL `us ~T0 @X0 1 e ]
 [i _filteredIL
 -> -> 0 `i `us
 ]
-"37
-[; ;./CurrentSensor.h: 37: uint16_t currentIDSFIFO[16];
-[v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
-"38
-[; ;./CurrentSensor.h: 38: uint16_t currentILFIFO[16];
-[v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
 "40
-[; ;./CurrentSensor.h: 40: _Bool tripIDS = 0;
+[; ;./CurrentSensor.h: 40: uint16_t currentIDSFIFO[16];
+[v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
+"41
+[; ;./CurrentSensor.h: 41: uint16_t currentILFIFO[16];
+[v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
+"43
+[; ;./CurrentSensor.h: 43: _Bool tripIDS = 0;
 [v _tripIDS `a ~T0 @X0 1 e ]
 [i _tripIDS
 -> -> 0 `i `a
 ]
-"41
-[; ;./CurrentSensor.h: 41: _Bool tripIL = 0;
+"44
+[; ;./CurrentSensor.h: 44: _Bool tripIL = 0;
 [v _tripIL `a ~T0 @X0 1 e ]
 [i _tripIL
 -> -> 0 `i `a
+]
+"47
+[; ;./CurrentSensor.h: 47: uint8_t currentTripCount = 0;
+[v _currentTripCount `uc ~T0 @X0 1 e ]
+[i _currentTripCount
+-> -> 0 `i `uc
 ]
 "16 Controller.c
 [; ;Controller.c: 16: struct controllerVariables voltageModeVariables = {0, 0, 0, 0, 0, 0};
@@ -799,9 +799,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . _voltageModeVariables 0 -> - -> 16000 `ui -> _newVoltage `ui `s ]
 [e $U 374  ]
 "93
-[; ;Controller.c: 93:    else voltageModeVariables.error = 10000u - newVoltage;
+[; ;Controller.c: 93:    else voltageModeVariables.error = 12000u - newVoltage;
 [e :U 373 ]
-[e = . _voltageModeVariables 0 -> - -> 10000 `ui -> _newVoltage `ui `s ]
+[e = . _voltageModeVariables 0 -> - -> 12000 `ui -> _newVoltage `ui `s ]
 [e :U 374 ]
 "96
 [; ;Controller.c: 96:    int64_t integralMult = ((int64_t) (5u * ((int64_t) voltageModeVariables.error) )) * 134u;

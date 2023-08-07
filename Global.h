@@ -18,18 +18,10 @@ extern "C" {
 #include <stdint.h>
 #include "GPIO.h"
 #include "StateMachine.h"
-
-//select the closed loop control method    
-#define VOLTAGE_MODE_CONTROL    1
-#define CURRENT_MODE_CONTROL    0
-#define CONTROL_METHOD          VOLTAGE_MODE_CONTROL
     
 //oscillator settings
 #define CLOCK_FREQUENCY_SELECT  freq32M           //this should be left as 32MHz - lower frequencies limit PWM freq    
 #define _XTAL_FREQ CLOCK_FREQUENCY_SELECT         //used by delay function
-    
-#define CURRENT_TRIP_LIMIT  3                     //max number of consecutive current trips before transitioning to a fault
-                                                  //allow >1 as switching inductor and turn on with high duty cycle causes overcurrent due to inrush but this is OK
     
     
 //List all outputs here to keep track - gpio defines are critical, pins are for indication
@@ -38,6 +30,8 @@ extern "C" {
 #define pinPWMout                 15
 #define gpioSlotTest              pinRB4
 #define pinSlotTest               10
+#define gpioSlotTest2             pinRB5
+#define pinSlotTest2              11
     
     //Digital IO
 //Current Sensors
@@ -83,8 +77,6 @@ enum internalClockFreqSelec{
 
 //global variable containing current clock frequency selection
 uint32_t clockFrequency = 0;
-
-uint8_t currentTripCount = 0;
 
 #ifdef	__cplusplus
 }

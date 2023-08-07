@@ -4546,7 +4546,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 70 "./Global.h"
+# 72 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4580,6 +4580,6 @@ void setupTimer0Interrupt(){
     INTCONbits.TMR0IE = 1;
     OPTION_REGbits.TMR0CS = 0;
     OPTION_REGbits.PSA = 0;
-    OPTION_REG = 0b100;
+    OPTION_REG = 0b101;
 
 }

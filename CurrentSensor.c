@@ -9,6 +9,7 @@
 #include "GPIO.h"
 #include "GPIO.h"
 #include "ADC.h"
+#include "StateMachine.h"
 
 /*------------------------------------------------------------------------------
  Function: initialiseCurrentSensors()
@@ -82,4 +83,28 @@ int16_t convertRawToMilliAmps(uint16_t rawValue){
     int16_t offsetted = (int16_t)(rawValue - CURRENT_SENSOR_OFFSET); //subtract the offset to obtain a neg or pos value
     int16_t returnValuemA = (int32_t)(offsetted * CURRENT_SENSOR_GAIN) >> CURRENT_SENSOR_MANTISSA;
     return returnValuemA;
+}
+
+/*------------------------------------------------------------------------------
+ Function: currentTripMonitor()
+ *Use: This function monitors for current trips and counts consecutive trip
+ *  faults resets the chip for a number less than CURRENT_TRIP_LIMIT, otherwise
+ *  transitions to a overcurrent fault in the state machine
+------------------------------------------------------------------------------*/
+int16_t currentTripMonitor(){
+    
+        if(currentTripRead() == 1){
+        currentTripCount++;
+        if(currentTripCount == CURRENT_TRIP_LIMIT){               
+            transToOverCurrentFault();
+        }
+        else{
+            currentTripReset();
+        }
+    }
+    else{
+        if(currentTripCount > 0){       //decrement the counter to 0 when no trips have occurred
+            currentTripCount--;
+        }
+    }
 }
