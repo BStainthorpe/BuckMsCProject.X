@@ -13,8 +13,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26 ./ADC.h
 [; ;./ADC.h: 26: void initialiseADCPin(const enum GPIO_PORTS gpioNumber);
 [v _initialiseADCPin `(v ~T0 @X0 0 ef1`CE2798 ]
-"53 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 53: void currentTripReset();
+"55 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 55: void currentTripReset();
 [v _currentTripReset `(v ~T0 @X0 0 e? ]
 "52 ./GPIO.h
 [; ;./GPIO.h: 52: _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
@@ -546,44 +546,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"37 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 37: volatile uint16_t latestIL = 0;
+"38 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 38: volatile uint16_t latestIL = 0;
 [v _latestIL `Vus ~T0 @X0 1 e ]
 [i _latestIL
 -> -> 0 `i `us
 ]
-"38
-[; ;./CurrentSensor.h: 38: uint16_t filteredIDS = 0;
+"40
+[; ;./CurrentSensor.h: 40: uint16_t filteredIDS = 0;
 [v _filteredIDS `us ~T0 @X0 1 e ]
 [i _filteredIDS
 -> -> 0 `i `us
 ]
-"39
-[; ;./CurrentSensor.h: 39: uint16_t filteredIL = 0;
+"41
+[; ;./CurrentSensor.h: 41: uint16_t filteredIL = 0;
 [v _filteredIL `us ~T0 @X0 1 e ]
 [i _filteredIL
 -> -> 0 `i `us
 ]
-"40
-[; ;./CurrentSensor.h: 40: uint16_t currentIDSFIFO[16];
+"42
+[; ;./CurrentSensor.h: 42: uint16_t currentIDSFIFO[16u];
 [v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
-"41
-[; ;./CurrentSensor.h: 41: uint16_t currentILFIFO[16];
-[v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
 "43
-[; ;./CurrentSensor.h: 43: _Bool tripIDS = 0;
+[; ;./CurrentSensor.h: 43: uint16_t currentILFIFO[16u];
+[v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
+"45
+[; ;./CurrentSensor.h: 45: _Bool tripIDS = 0;
 [v _tripIDS `a ~T0 @X0 1 e ]
 [i _tripIDS
 -> -> 0 `i `a
 ]
-"44
-[; ;./CurrentSensor.h: 44: _Bool tripIL = 0;
+"46
+[; ;./CurrentSensor.h: 46: _Bool tripIL = 0;
 [v _tripIL `a ~T0 @X0 1 e ]
 [i _tripIL
 -> -> 0 `i `a
 ]
-"47
-[; ;./CurrentSensor.h: 47: uint8_t currentTripCount = 0;
+"49
+[; ;./CurrentSensor.h: 49: uint8_t currentTripCount = 0;
 [v _currentTripCount `uc ~T0 @X0 1 e ]
 [i _currentTripCount
 -> -> 0 `i `uc
@@ -643,41 +643,41 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _readFilteredIDS ]
 [f ]
 "43
-[; ;CurrentSensor.c: 43:     for(uint8_t i=0; i<16 -1; i++) currentIDSFIFO[i] = currentIDSFIFO[i+1];
+[; ;CurrentSensor.c: 43:     for(uint8_t i=0; i<16u -1; i++) currentIDSFIFO[i] = currentIDSFIFO[i+1];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i - -> 16 `i -> 1 `i 359  ]
+[e $ < -> _i `ui - -> 16 `ui -> -> 1 `i `ui 359  ]
 [e $U 360  ]
 [e :U 359 ]
 [e = *U + &U _currentIDSFIFO * -> _i `ux -> -> # *U &U _currentIDSFIFO `ui `ux *U + &U _currentIDSFIFO * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _currentIDSFIFO `ui `ux ]
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i - -> 16 `i -> 1 `i 359  ]
+[e $ < -> _i `ui - -> 16 `ui -> -> 1 `i `ui 359  ]
 [e :U 360 ]
 }
 "44
-[; ;CurrentSensor.c: 44:     currentIDSFIFO[16 -1] = readADCRaw(pinRA0);
-[e = *U + &U _currentIDSFIFO * -> -> - -> 16 `i -> 1 `i `ui `ux -> -> # *U &U _currentIDSFIFO `ui `ux ( _readADCRaw (1 . `E2798 0 ]
+[; ;CurrentSensor.c: 44:     currentIDSFIFO[16u -1] = readADCRaw(pinRA0);
+[e = *U + &U _currentIDSFIFO * -> - -> 16 `ui -> -> 1 `i `ui `ux -> -> # *U &U _currentIDSFIFO `ui `ux ( _readADCRaw (1 . `E2798 0 ]
 "45
 [; ;CurrentSensor.c: 45:     uint32_t sumOfSamples = 0;
 [v _sumOfSamples `ul ~T0 @X0 1 a ]
 [e = _sumOfSamples -> -> -> 0 `i `l `ul ]
 "46
-[; ;CurrentSensor.c: 46:     for(uint8_t i=0; i<16; i++) sumOfSamples += currentIDSFIFO[i];
+[; ;CurrentSensor.c: 46:     for(uint8_t i=0; i<16u; i++) sumOfSamples += currentIDSFIFO[i];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 16 `i 362  ]
+[e $ < -> _i `ui -> 16 `ui 362  ]
 [e $U 363  ]
 [e :U 362 ]
 [e =+ _sumOfSamples -> *U + &U _currentIDSFIFO * -> _i `ux -> -> # *U &U _currentIDSFIFO `ui `ux `ul ]
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 16 `i 362  ]
+[e $ < -> _i `ui -> 16 `ui 362  ]
 [e :U 363 ]
 }
 "48
-[; ;CurrentSensor.c: 48:     return (sumOfSamples >> 4);
-[e ) -> >> _sumOfSamples -> 4 `i `us ]
+[; ;CurrentSensor.c: 48:     return (sumOfSamples >> 4u);
+[e ) -> >> _sumOfSamples -> 4 `ui `us ]
 [e $UE 358  ]
 "49
 [; ;CurrentSensor.c: 49: }
@@ -690,41 +690,41 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _readFilteredIL ]
 [f ]
 "57
-[; ;CurrentSensor.c: 57:     for(uint8_t i=0; i<16 -1; i++) currentILFIFO[i] = currentILFIFO[i+1];
+[; ;CurrentSensor.c: 57:     for(uint8_t i=0; i<16u -1; i++) currentILFIFO[i] = currentILFIFO[i+1];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i - -> 16 `i -> 1 `i 366  ]
+[e $ < -> _i `ui - -> 16 `ui -> -> 1 `i `ui 366  ]
 [e $U 367  ]
 [e :U 366 ]
 [e = *U + &U _currentILFIFO * -> _i `ux -> -> # *U &U _currentILFIFO `ui `ux *U + &U _currentILFIFO * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _currentILFIFO `ui `ux ]
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i - -> 16 `i -> 1 `i 366  ]
+[e $ < -> _i `ui - -> 16 `ui -> -> 1 `i `ui 366  ]
 [e :U 367 ]
 }
 "58
-[; ;CurrentSensor.c: 58:     currentILFIFO[16 -1] = latestIL;
-[e = *U + &U _currentILFIFO * -> -> - -> 16 `i -> 1 `i `ui `ux -> -> # *U &U _currentILFIFO `ui `ux _latestIL ]
+[; ;CurrentSensor.c: 58:     currentILFIFO[16u -1] = latestIL;
+[e = *U + &U _currentILFIFO * -> - -> 16 `ui -> -> 1 `i `ui `ux -> -> # *U &U _currentILFIFO `ui `ux _latestIL ]
 "59
 [; ;CurrentSensor.c: 59:     uint32_t sumOfSamples = 0;
 [v _sumOfSamples `ul ~T0 @X0 1 a ]
 [e = _sumOfSamples -> -> -> 0 `i `l `ul ]
 "60
-[; ;CurrentSensor.c: 60:     for(uint8_t i=0; i<16; i++) sumOfSamples += currentILFIFO[i];
+[; ;CurrentSensor.c: 60:     for(uint8_t i=0; i<16u; i++) sumOfSamples += currentILFIFO[i];
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 16 `i 369  ]
+[e $ < -> _i `ui -> 16 `ui 369  ]
 [e $U 370  ]
 [e :U 369 ]
 [e =+ _sumOfSamples -> *U + &U _currentILFIFO * -> _i `ux -> -> # *U &U _currentILFIFO `ui `ux `ul ]
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 16 `i 369  ]
+[e $ < -> _i `ui -> 16 `ui 369  ]
 [e :U 370 ]
 }
 "62
-[; ;CurrentSensor.c: 62:     return (sumOfSamples >> 4);
-[e ) -> >> _sumOfSamples -> 4 `i `us ]
+[; ;CurrentSensor.c: 62:     return (sumOfSamples >> 4u);
+[e ) -> >> _sumOfSamples -> 4 `ui `us ]
 [e $UE 365  ]
 "63
 [; ;CurrentSensor.c: 63: }
@@ -757,13 +757,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _rawValue `us ~T0 @X0 1 r1 ]
 [f ]
 "83
-[; ;CurrentSensor.c: 83:     int16_t offsetted = (int16_t)(rawValue - 445);
+[; ;CurrentSensor.c: 83:     int16_t offsetted = (int16_t)(rawValue - 445u);
 [v _offsetted `s ~T0 @X0 1 a ]
-[e = _offsetted -> - -> _rawValue `ui -> -> 445 `i `ui `s ]
+[e = _offsetted -> - -> _rawValue `ui -> 445 `ui `s ]
 "84
-[; ;CurrentSensor.c: 84:     int16_t returnValuemA = (int32_t)(offsetted * 2857) >> 0;
+[; ;CurrentSensor.c: 84:     int16_t returnValuemA = (int32_t)(offsetted * 2857u) >> 0u;
 [v _returnValuemA `s ~T0 @X0 1 a ]
-[e = _returnValuemA -> >> -> * -> _offsetted `i -> 2857 `i `l -> 0 `i `s ]
+[e = _returnValuemA -> >> -> * -> _offsetted `ui -> 2857 `ui `l -> 0 `ui `s ]
 "85
 [; ;CurrentSensor.c: 85:     return returnValuemA;
 [e ) _returnValuemA ]
@@ -786,8 +786,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;CurrentSensor.c: 97:         currentTripCount++;
 [e ++ _currentTripCount -> -> 1 `i `uc ]
 "98
-[; ;CurrentSensor.c: 98:         if(currentTripCount == 3){
-[e $ ! == -> _currentTripCount `i -> 3 `i 376  ]
+[; ;CurrentSensor.c: 98:         if(currentTripCount == 3u){
+[e $ ! == -> _currentTripCount `ui -> 3 `ui 376  ]
 {
 "99
 [; ;CurrentSensor.c: 99:             transToOverCurrentFault();

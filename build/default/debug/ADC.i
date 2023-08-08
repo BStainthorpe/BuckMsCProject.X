@@ -4553,7 +4553,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 72 "./Global.h"
+# 64 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4570,8 +4570,6 @@ enum internalClockFreqSelec{
 
 
 uint32_t clockFrequency = 0;
-
-uint8_t currentTripCount = 0;
 # 8 "ADC.c" 2
 
 
@@ -4650,11 +4648,11 @@ uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber){
 
             ADCON0bits.GO_nDONE = 1;
             while(ADCON0bits.GO_nDONE);
-            for(uint8_t i = 0; i < 8; i++);
+
             unsigned int returnValue = ((ADRESH<<8)+ADRESL);
             ADCON0 &= ~(0b01111100);
             ADCON0 |= (0b010 << 2);
-            for(uint8_t i = 0; i < 8; i++);
+
 
             return returnValue;
         }

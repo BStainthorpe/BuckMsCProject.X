@@ -4560,9 +4560,9 @@ uint32_t clockFrequency = 0;
 # 7 "Controller.c" 2
 
 # 1 "./Controller.h" 1
-# 60 "./Controller.h"
+# 64 "./Controller.h"
 uint16_t filteredVout = 0;
-uint16_t voutFIFO[16];
+uint16_t voutFIFO[16u];
 
 typedef struct controllerVariables{
     int16_t error;
@@ -4573,6 +4573,8 @@ typedef struct controllerVariables{
     int32_t sumOutput;
     int16_t previousError;
 };
+
+int64_t integratorScaledLimit = 0;
 
 uint16_t readFilteredVout();
 int16_t convertRawToMilliVolts(uint16_t rawValue);
@@ -4593,12 +4595,13 @@ uint16_t readILCurrentADCRaw();
 # 11 "Controller.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 37 "./CurrentSensor.h"
+# 38 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
+
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
-uint16_t currentIDSFIFO[16];
-uint16_t currentILFIFO[16];
+uint16_t currentIDSFIFO[16u];
+uint16_t currentILFIFO[16u];
 
 _Bool tripIDS = 0;
 _Bool tripIL = 0;
@@ -4617,16 +4620,13 @@ int16_t convertRawToMilliAmps(uint16_t rawvalue);
 
 
 
+
 struct controllerVariables voltageModeVariables = {0, 0, 0, 0, 0, 0};
-struct controllerVariables currentModeVariables = {0, 0, 0, 0, 0, 0};
-
-
-
-
-
+# 28 "Controller.c"
 void initialiseController(){
     initialiseGPIO(pinRA4, 1);
     initialiseADCPin(pinRA4);
+    integratorScaledLimit = (int64_t) ((int64_t) (512u) << (6u + 16u));
 }
 
 
@@ -4635,12 +4635,12 @@ void initialiseController(){
 
 
 uint16_t readFilteredVout(){
-    for(uint8_t i=0; i<16 -1; i++) voutFIFO[i] = voutFIFO[i+1];
-    voutFIFO[16 -1] = readADCRaw(pinRA4);
+    for(uint8_t i=0; i<16u -1; i++) voutFIFO[i] = voutFIFO[i+1];
+    voutFIFO[16u -1] = readADCRaw(pinRA4);
     uint32_t sumOfSamples = 0;
-            for(uint8_t i=0; i<16; i++) sumOfSamples += voutFIFO[i];
+    for(uint8_t i=0; i<16u; i++) sumOfSamples += voutFIFO[i];
 
-    return (sumOfSamples >> 4);
+    return (sumOfSamples >> 4u);
 }
 
 
@@ -4662,16 +4662,20 @@ int16_t convertRawToMilliVolts(uint16_t rawValue){
 
 void controlRoutine(){
     if(currentState == voltageModeControl){
+
         runVoltageModeControl();
         setPeriod = 79u;
 
         setDuty = (uint16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
+
     }
     if(currentState == currentModeControl){
-        runCurrentModeControl();
-        setPeriod = 79u;
 
-        setDuty = (uint16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + currentModeVariables.sumOutput;
+
+
+
+
+
     }
 
     uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
@@ -4690,6 +4694,8 @@ void controlRoutine(){
 void runVoltageModeControl(){
 
 
+
+
    uint16_t newVoltage = convertRawToMilliVolts(filteredVout);
 
 
@@ -4703,13 +4709,13 @@ void runVoltageModeControl(){
    voltageModeVariables.integralOutputScaled = (voltageModeVariables.integralOutputScaled + voltageModeVariables.integral);
 
 
-   if(voltageModeVariables.integralOutputScaled > (2147483648u)){
-       voltageModeVariables.integralOutputScaled = (2147483648u);
+   if(voltageModeVariables.integralOutputScaled > (integratorScaledLimit)){
+       voltageModeVariables.integralOutputScaled = (integratorScaledLimit);
    }
 
    if(voltageModeVariables.integralOutputScaled < 0){
-        if(abs(voltageModeVariables.integralOutputScaled) > (2147483648u)){
-                voltageModeVariables.integralOutputScaled = (int64_t) (0 -(2147483648u));
+        if(abs(voltageModeVariables.integralOutputScaled) > (integratorScaledLimit)){
+                voltageModeVariables.integralOutputScaled = (int64_t) (0 -(integratorScaledLimit));
         }
    }
 
@@ -4722,6 +4728,8 @@ void runVoltageModeControl(){
 
    voltageModeVariables.sumOutput = voltageModeVariables.integralOutput + voltageModeVariables.proportionalOutput;
    voltageModeVariables.previousError = voltageModeVariables.error;
+
+
 }
 
 
@@ -4730,5 +4738,5 @@ void runVoltageModeControl(){
 
 
 void runCurrentModeControl(){
-    int16_t newCurrent = convertRawToMilliAmps(filteredIL);
+# 180 "Controller.c"
 }

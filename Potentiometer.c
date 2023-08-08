@@ -26,9 +26,9 @@ uint16_t readFilteredDutyPot(){
     for(uint8_t i=0; i<SIZE_OF_POT_FILTER-1; i++) dutyPotFIFO[i] = dutyPotFIFO[i+1];       //shift all values in array to next 
     dutyPotFIFO[SIZE_OF_POT_FILTER-1] =  readADCRaw(gpioPotentiometerDuty);                //take the newest sample
     uint32_t sumOfSamples = 0;
-    for(uint8_t i=0; i<SIZE_OF_POT_FILTER; i++) sumOfSamples += dutyPotFIFO[i];
+    for(uint8_t i=0; i<SIZE_OF_POT_FILTER; i++) sumOfSamples += dutyPotFIFO[i];    //sum all samples
     
-    return (sumOfSamples >> 4); //shift by 4 bits to divide by 16
+    return (sumOfSamples >> POT_SENSOR_SHIFT); //shift bits to divide by number of samples to get mean
 }
 
 /*------------------------------------------------------------------------------
@@ -40,9 +40,9 @@ uint16_t readFilteredFreqPot(){
     for(uint8_t i=0; i<SIZE_OF_POT_FILTER-1; i++) freqPotFIFO[i] = freqPotFIFO[i+1];       //shift all values in array to next 
     freqPotFIFO[SIZE_OF_POT_FILTER-1] =  readADCRaw(gpioPotentiometerFreq);                //take the newest sample
     uint32_t sumOfSamples = 0;
-    for(uint8_t i=0; i<SIZE_OF_POT_FILTER; i++) sumOfSamples += freqPotFIFO[i];
+    for(uint8_t i=0; i<SIZE_OF_POT_FILTER; i++) sumOfSamples += freqPotFIFO[i];    //sum all samples
     
-    return (sumOfSamples >> 4); //shift by 4 bits to divide by 16
+    return (sumOfSamples >> POT_SENSOR_SHIFT); //shift bits to divide by number of samples to get mean
 }
 
 /*------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ void runPotScaling(){
             if(setDuty > maxDuty) setDuty = maxDuty;
             if(setDuty < minDuty) setDuty = minDuty;
 
-            potSetCount = 0;
+            potSetCount = 0;        //reset, begin counting again for next pot calculation
         }
     }  
 }

@@ -4540,7 +4540,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 72 "./Global.h"
+# 64 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4557,12 +4557,10 @@ enum internalClockFreqSelec{
 
 
 uint32_t clockFrequency = 0;
-
-uint8_t currentTripCount = 0;
 # 7 "CurrentSensor.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 34 "./CurrentSensor.h"
+# 37 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
@@ -4571,6 +4569,9 @@ uint16_t currentILFIFO[16];
 
 _Bool tripIDS = 0;
 _Bool tripIL = 0;
+
+
+uint8_t currentTripCount = 0;
 
 void initialiseCurrentSensors();
 _Bool currentTripRead();
@@ -4589,6 +4590,7 @@ void initialiseADCModule();
 uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 uint16_t readILCurrentADCRaw();
 # 11 "CurrentSensor.c" 2
+
 
 
 
@@ -4663,4 +4665,28 @@ int16_t convertRawToMilliAmps(uint16_t rawValue){
     int16_t offsetted = (int16_t)(rawValue - 445);
     int16_t returnValuemA = (int32_t)(offsetted * 2857) >> 0;
     return returnValuemA;
+}
+
+
+
+
+
+
+
+int16_t currentTripMonitor(){
+
+        if(currentTripRead() == 1){
+        currentTripCount++;
+        if(currentTripCount == 3){
+            transToOverCurrentFault();
+        }
+        else{
+            currentTripReset();
+        }
+    }
+    else{
+        if(currentTripCount > 0){
+            currentTripCount--;
+        }
+    }
 }

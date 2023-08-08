@@ -90,6 +90,7 @@ void __interrupt() Tick490Hz(void){      //This function is called on each inter
 
     }
     
+    //option to take a current sample on overflow of the CPP1 (at falling edge of PWM) - untested
     /*if(CCP1IF_bit){
         latestIL = readILCurrentADCRaw();   //fast function for reading the IL current
         PIR1bits.CCP1IF = 0;               //clear the interrupt flag

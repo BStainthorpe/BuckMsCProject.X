@@ -40,12 +40,12 @@ bool currentTripRead(){
  * FIFO filter for the IDS sensor, returning the filtered value
 ------------------------------------------------------------------------------*/
 uint16_t readFilteredIDS(){
-    for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER-1; i++) currentIDSFIFO[i] = currentIDSFIFO[i+1];       //shift all values in array to next 
-    currentIDSFIFO[SIZE_OF_ISENSOR_FILTER-1] =  readADCRaw(gpioIDSCurrent);                //take the newest sample
+    for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER-1; i++) currentIDSFIFO[i] = currentIDSFIFO[i+1];   //shift all values in array to next 
+    currentIDSFIFO[SIZE_OF_ISENSOR_FILTER-1] =  readADCRaw(gpioIDSCurrent);     //take the newest sample
     uint32_t sumOfSamples = 0;
-    for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER; i++) sumOfSamples += currentIDSFIFO[i];
+    for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER; i++) sumOfSamples += currentIDSFIFO[i];     //sum all samples 
     
-    return (sumOfSamples >> 4); //shift by 4 bits to divide by 16
+    return (sumOfSamples >> ISENSOR_SHIFT); //shift bits to divide by number of samples to get mean
 }
 
 /*------------------------------------------------------------------------------
@@ -54,12 +54,12 @@ uint16_t readFilteredIDS(){
  * FIFO filter for the IL sensor, returning the filtered value
 ------------------------------------------------------------------------------*/
 uint16_t readFilteredIL(){
-    for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER-1; i++) currentILFIFO[i] = currentILFIFO[i+1];       //shift all values in array to next 
-    currentILFIFO[SIZE_OF_ISENSOR_FILTER-1] =  latestIL;                //take the newest sample from interrupt
-    uint32_t sumOfSamples = 0;
-    for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER; i++) sumOfSamples += currentILFIFO[i];
+    for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER-1; i++) currentILFIFO[i] = currentILFIFO[i+1];  //shift all values in array to next 
+    currentILFIFO[SIZE_OF_ISENSOR_FILTER-1] =  latestIL;   //take the newest sample from interrupt
+    uint32_t sumOfSamples = 0;     
+    for(uint8_t i=0; i<SIZE_OF_ISENSOR_FILTER; i++) sumOfSamples += currentILFIFO[i];   //sum all samples
     
-    return (sumOfSamples >> 4); //shift by 4 bits to divide by 16
+    return (sumOfSamples >> ISENSOR_SHIFT); //shift bits to divide by number of samples to get mean
 }
 
 /*------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ void currentTripReset(){
  * to the current sensor gain function, note the output is signed
 ------------------------------------------------------------------------------*/
 int16_t convertRawToMilliAmps(uint16_t rawValue){
-    int16_t offsetted = (int16_t)(rawValue - CURRENT_SENSOR_OFFSET); //subtract the offset to obtain a neg or pos value
+    int16_t offsetted = (int16_t)(rawValue - CURRENT_SENSOR_OFFSET); //subtract the offset to obtain a neg or pos value, include any calibration offset 
     int16_t returnValuemA = (int32_t)(offsetted * CURRENT_SENSOR_GAIN) >> CURRENT_SENSOR_MANTISSA;
     return returnValuemA;
 }

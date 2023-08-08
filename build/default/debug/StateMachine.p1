@@ -507,17 +507,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _currentState
 -> -> 0 `i `E2833
 ]
-"87 ./Global.h
-[; ;./Global.h: 87: uint32_t clockFrequency = 0;
+"79 ./Global.h
+[; ;./Global.h: 79: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
-]
-"89
-[; ;./Global.h: 89: uint8_t currentTripCount = 0;
-[v _currentTripCount `uc ~T0 @X0 1 e ]
-[i _currentTripCount
--> -> 0 `i `uc
 ]
 "18 StateMachine.c
 [; ;StateMachine.c: 18: void transToPotControl(){

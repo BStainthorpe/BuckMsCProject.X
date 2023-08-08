@@ -24,18 +24,20 @@ extern "C" {
 //Voffset = 445 (ADC equivalent value, 2.175 / 5 * 1024)
 //current (mA)  = (vout - vref) * (1/0.350) * 1000
 //current (mA) = (ADC_value - 445) * 2857, no mantissa required
-//use signed ints as the calculated value can be negative
+//use signed ints as the calculated value can be negative   
+#define CURRENT_SENSOR_GAIN         2857u    //GAIN = 2857 / 2^0 = 2857
+#define CURRENT_SENSOR_MANTISSA     0u
+#define CURRENT_SENSOR_OFFSET       445u 
     
-#define CURRENT_SENSOR_GAIN         2857
-#define CURRENT_SENSOR_MANTISSA     0
-#define CURRENT_SENSOR_OFFSET       445    
-#define SIZE_OF_ISENSOR_FILTER      16      //note there are variables in the filter functions which require change depending on this number   
+#define SIZE_OF_ISENSOR_FILTER      16u     //must be a power of 2, also change ISENSOR_SHIFT accordingly
+#define ISENSOR_SHIFT               4u      //squareroot(SIZE_OF_ISENSOR_FILTER) = 4  
     
-#define CURRENT_TRIP_LIMIT  3                     //max number of consecutive current trips before transitioning to a fault
-                                                  //allow >1 as switching inductor and turn on with high duty cycle causes overcurrent due to inrush but this is OK
+#define CURRENT_TRIP_LIMIT  3u              //max number of consecutive current trips before transitioning to a fault
+                                            //allow >1 as switching inductor and turn on with high duty cycle causes overcurrent due to inrush but this is OK
     
-volatile uint16_t latestIL = 0;       //variable containing latest IL1 sample, which is read once per PWM cycle
-uint16_t filteredIDS = 0;
+volatile uint16_t latestIL = 0;             //variable containing latest IL1 sample, which is read once per PWM cycle if CCP1 interrupt used
+
+uint16_t filteredIDS = 0;                   //filtered current measurements and FIFO
 uint16_t filteredIL = 0;
 uint16_t currentIDSFIFO[SIZE_OF_ISENSOR_FILTER];
 uint16_t currentILFIFO[SIZE_OF_ISENSOR_FILTER];

@@ -554,17 +554,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _currentState
 -> -> 0 `i `E2839
 ]
-"87 ./Global.h
-[; ;./Global.h: 87: uint32_t clockFrequency = 0;
+"79 ./Global.h
+[; ;./Global.h: 79: uint32_t clockFrequency = 0;
 [v _clockFrequency `ul ~T0 @X0 1 e ]
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
-]
-"89
-[; ;./Global.h: 89: uint8_t currentTripCount = 0;
-[v _currentTripCount `uc ~T0 @X0 1 e ]
-[i _currentTripCount
--> -> 0 `i `uc
 ]
 "14 ADC.c
 [; ;ADC.c: 14: void initialiseADCModule(){
@@ -756,18 +750,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 372 ]
 [e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 373  ]
 [e :U 374 ]
-"92
-[; ;ADC.c: 92:             for(uint8_t i = 0; i < 8; i++);
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 375  ]
-[e $U 376  ]
-[e :U 375 ]
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 375  ]
-[e :U 376 ]
-}
 "93
 [; ;ADC.c: 93:             unsigned int returnValue = ((ADRESH<<8)+ADRESL);
 [v _returnValue `ui ~T0 @X0 1 a ]
@@ -778,18 +760,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "95
 [; ;ADC.c: 95:             ADCON0 |= (0b010 << 2);
 [e =| _ADCON0 -> << -> 2 `i -> 2 `i `Vuc ]
-"96
-[; ;ADC.c: 96:             for(uint8_t i = 0; i < 8; i++);
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 378  ]
-[e $U 379  ]
-[e :U 378 ]
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 378  ]
-[e :U 379 ]
-}
 "98
 [; ;ADC.c: 98:             return returnValue;
 [e ) -> _returnValue `us ]
@@ -801,13 +771,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "101
 [; ;ADC.c: 101:     }
 }
-[e $U 381  ]
+[e $U 375  ]
 "103
 [; ;ADC.c: 103:     else return 0;
 [e :U 367 ]
 [e ) -> -> 0 `i `us ]
 [e $UE 364  ]
-[e :U 381 ]
+[e :U 375 ]
 "104
 [; ;ADC.c: 104: }
 [e :UE 364 ]
@@ -820,33 +790,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "113
 [; ;ADC.c: 113:     if(~ADCON0bits.GO_nDONE){
-[e $ ! != ~ -> . . _ADCON0bits 0 1 `i -> 0 `i 383  ]
+[e $ ! != ~ -> . . _ADCON0bits 0 1 `i -> 0 `i 377  ]
 {
 "114
 [; ;ADC.c: 114:         ADCON0bits.GO_nDONE = 1;
 [e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
 "115
 [; ;ADC.c: 115:         while(ADCON0bits.GO_nDONE);
-[e $U 384  ]
-[e :U 385 ]
-[e :U 384 ]
-[e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 385  ]
-[e :U 386 ]
+[e $U 378  ]
+[e :U 379 ]
+[e :U 378 ]
+[e $ != -> . . _ADCON0bits 0 1 `i -> 0 `i 379  ]
+[e :U 380 ]
 "116
 [; ;ADC.c: 116:         return ((ADRESH<<8)+ADRESL);
 [e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `us ]
-[e $UE 382  ]
+[e $UE 376  ]
 "117
 [; ;ADC.c: 117:     }
 }
-[e $U 387  ]
+[e $U 381  ]
 "119
 [; ;ADC.c: 119:     else return 0;
-[e :U 383 ]
+[e :U 377 ]
 [e ) -> -> 0 `i `us ]
-[e $UE 382  ]
-[e :U 387 ]
+[e $UE 376  ]
+[e :U 381 ]
 "121
 [; ;ADC.c: 121: }
-[e :UE 382 ]
+[e :UE 376 ]
 }

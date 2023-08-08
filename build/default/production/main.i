@@ -4574,12 +4574,13 @@ uint32_t clockFrequency = 0;
 
 
 # 1 "./CurrentSensor.h" 1
-# 37 "./CurrentSensor.h"
+# 38 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
+
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
-uint16_t currentIDSFIFO[16];
-uint16_t currentILFIFO[16];
+uint16_t currentIDSFIFO[16u];
+uint16_t currentILFIFO[16u];
 
 _Bool tripIDS = 0;
 _Bool tripIL = 0;
@@ -4596,9 +4597,9 @@ int16_t convertRawToMilliAmps(uint16_t rawvalue);
 # 22 "main.c" 2
 
 # 1 "./Controller.h" 1
-# 60 "./Controller.h"
+# 64 "./Controller.h"
 uint16_t filteredVout = 0;
-uint16_t voutFIFO[16];
+uint16_t voutFIFO[16u];
 
 typedef struct controllerVariables{
     int16_t error;
@@ -4609,6 +4610,8 @@ typedef struct controllerVariables{
     int32_t sumOutput;
     int16_t previousError;
 };
+
+int64_t integratorScaledLimit = 0;
 
 uint16_t readFilteredVout();
 int16_t convertRawToMilliVolts(uint16_t rawValue);
@@ -4627,7 +4630,7 @@ uint16_t readILCurrentADCRaw();
 # 24 "main.c" 2
 
 # 1 "./Potentiometer.h" 1
-# 28 "./Potentiometer.h"
+# 32 "./Potentiometer.h"
 uint8_t potSetCount = 0;
 
 void initialisePotentiometers();
@@ -4692,6 +4695,7 @@ void __attribute__((picinterrupt(("")))) Tick490Hz(void){
         INTCONbits.TMR0IF = 0;
 
     }
+
 
 
 

@@ -4540,7 +4540,7 @@ void transToVoltageModeControl();
 void transToCurrentModeControl();
 void transToOverCurrentFault();
 # 20 "./Global.h" 2
-# 72 "./Global.h"
+# 64 "./Global.h"
 enum internalClockFreqSelec{
     freq31k,
     freq62k5,
@@ -4557,12 +4557,10 @@ enum internalClockFreqSelec{
 
 
 uint32_t clockFrequency = 0;
-
-uint8_t currentTripCount = 0;
 # 7 "Controller.c" 2
 
 # 1 "./Controller.h" 1
-# 54 "./Controller.h"
+# 60 "./Controller.h"
 uint16_t filteredVout = 0;
 uint16_t voutFIFO[16];
 
@@ -4575,6 +4573,8 @@ typedef struct controllerVariables{
     int32_t sumOutput;
     int16_t previousError;
 };
+
+int64_t integratorScaledLimit = 0;
 
 uint16_t readFilteredVout();
 int16_t convertRawToMilliVolts(uint16_t rawValue);
@@ -4595,7 +4595,7 @@ uint16_t readILCurrentADCRaw();
 # 11 "Controller.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 34 "./CurrentSensor.h"
+# 37 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
@@ -4604,6 +4604,9 @@ uint16_t currentILFIFO[16];
 
 _Bool tripIDS = 0;
 _Bool tripIL = 0;
+
+
+uint8_t currentTripCount = 0;
 
 void initialiseCurrentSensors();
 _Bool currentTripRead();
@@ -4626,6 +4629,7 @@ struct controllerVariables currentModeVariables = {0, 0, 0, 0, 0, 0};
 void initialiseController(){
     initialiseGPIO(pinRA4, 1);
     initialiseADCPin(pinRA4);
+    integratorScaledLimit = (int64_t) ((int64_t) (512u) << (6u + 16u));
 }
 
 
@@ -4648,7 +4652,7 @@ uint16_t readFilteredVout(){
 
 
 int16_t convertRawToMilliVolts(uint16_t rawValue){
-    int16_t offsetted = (int16_t)(rawValue) - 10u;
+    int16_t offsetted = (int16_t)(rawValue) - 0u;
     int32_t vsenseMult = ((int32_t)(((int32_t) offsetted) * 6100u));
     int16_t returnValuedV = (int16_t) (vsenseMult >> 8u);
     return returnValuedV;
@@ -4696,24 +4700,24 @@ void runVoltageModeControl(){
    else voltageModeVariables.error = 12000u - newVoltage;
 
 
-   int64_t integralMult = ((int64_t) (5u * ((int64_t) voltageModeVariables.error) )) * 134u;
+   int64_t integralMult = ((int64_t) (15u * ((int64_t) voltageModeVariables.error) )) * 267u;
 
    voltageModeVariables.integral = integralMult;
    voltageModeVariables.integralOutputScaled = (voltageModeVariables.integralOutputScaled + voltageModeVariables.integral);
 
 
-   if(voltageModeVariables.integralOutputScaled > (1073741824u)){
-       voltageModeVariables.integralOutputScaled = (1073741824u);
+   if(voltageModeVariables.integralOutputScaled > (integratorScaledLimit)){
+       voltageModeVariables.integralOutputScaled = (integratorScaledLimit);
    }
 
    if(voltageModeVariables.integralOutputScaled < 0){
-        if(abs(voltageModeVariables.integralOutputScaled) > (1073741824u)){
-                voltageModeVariables.integralOutputScaled = (int64_t) (0 -(1073741824u));
+        if(abs(voltageModeVariables.integralOutputScaled) > (integratorScaledLimit)){
+                voltageModeVariables.integralOutputScaled = (int64_t) (0 -(integratorScaledLimit));
         }
    }
 
 
-   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 4u);
+   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 6u);
 
 
    int64_t propMult = (int32_t) (18u * ((int32_t) voltageModeVariables.error));

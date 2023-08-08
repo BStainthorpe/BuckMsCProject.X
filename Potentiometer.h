@@ -19,11 +19,15 @@ extern "C" {
 
 //potentiometer generator settings
 #define MIN_PERIOD_FROM_POT    15u                //PR2 = (clockFrequency / (4*freq)) - 1 corresponds to 500,000 Hz
-#define MAX_PERIOD_FROM_POT    159u          
+#define MAX_PERIOD_FROM_POT    159u               //corresponds to 50Hz
     
-#define SIZE_OF_POT_FILTER  16      //note there are variables in the filter functions which require change depending on this number
+#define SIZE_OF_POT_FILTER  16      //must be a power of 2, also change POT_SENSOR_SHIFT accordingly
+#define POT_SENSOR_SHIFT    4u      //squareroot(SIZE_OF_POT_FILTER) = 4  
+    
+    
 #define POT_OFFSET          45      //experimentally obtained minimum pot value
-#define POT_SET_DIVIDER     32      //control the rate of execution for setting the POT - this value gives a rate of: Slot 4 Freq / POT_SET_DIVIDER
+#define POT_SET_DIVIDER     32      //control the rate of execution for setting the freq and duty from the POT - this value gives a rate of: Slot 4 Freq / POT_SET_DIVIDER
+                                    //this results in a low update rate 
     
 uint8_t potSetCount = 0;            
 

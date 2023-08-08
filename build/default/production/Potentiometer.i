@@ -4570,7 +4570,7 @@ void initialiseADCModule();
 uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 uint16_t readILCurrentADCRaw();
 # 17 "./Potentiometer.h" 2
-# 28 "./Potentiometer.h"
+# 32 "./Potentiometer.h"
 uint8_t potSetCount = 0;
 
 void initialisePotentiometers();
@@ -4606,7 +4606,7 @@ uint16_t readFilteredDutyPot(){
     uint32_t sumOfSamples = 0;
     for(uint8_t i=0; i<16; i++) sumOfSamples += dutyPotFIFO[i];
 
-    return (sumOfSamples >> 4);
+    return (sumOfSamples >> 4u);
 }
 
 
@@ -4620,7 +4620,7 @@ uint16_t readFilteredFreqPot(){
     uint32_t sumOfSamples = 0;
     for(uint8_t i=0; i<16; i++) sumOfSamples += freqPotFIFO[i];
 
-    return (sumOfSamples >> 4);
+    return (sumOfSamples >> 4u);
 }
 # 55 "Potentiometer.c"
 void runPotScaling(){

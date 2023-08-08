@@ -523,29 +523,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"28 ./Potentiometer.h
-[; ;./Potentiometer.h: 28: uint8_t potSetCount = 0;
+"32 ./Potentiometer.h
+[; ;./Potentiometer.h: 32: uint8_t potSetCount = 0;
 [v _potSetCount `uc ~T0 @X0 1 e ]
 [i _potSetCount
 -> -> 0 `i `uc
 ]
-"35
-[; ;./Potentiometer.h: 35: uint16_t filteredFreqPot = 0;
+"39
+[; ;./Potentiometer.h: 39: uint16_t filteredFreqPot = 0;
 [v _filteredFreqPot `us ~T0 @X0 1 e ]
 [i _filteredFreqPot
 -> -> 0 `i `us
 ]
-"36
-[; ;./Potentiometer.h: 36: uint16_t filteredDutyPot = 0;
+"40
+[; ;./Potentiometer.h: 40: uint16_t filteredDutyPot = 0;
 [v _filteredDutyPot `us ~T0 @X0 1 e ]
 [i _filteredDutyPot
 -> -> 0 `i `us
 ]
-"37
-[; ;./Potentiometer.h: 37: uint16_t freqPotFIFO[16];
+"41
+[; ;./Potentiometer.h: 41: uint16_t freqPotFIFO[16];
 [v _freqPotFIFO `us ~T0 @X0 -> 16 `i e ]
-"38
-[; ;./Potentiometer.h: 38: uint16_t dutyPotFIFO[16];
+"42
+[; ;./Potentiometer.h: 42: uint16_t dutyPotFIFO[16];
 [v _dutyPotFIFO `us ~T0 @X0 -> 16 `i e ]
 "15 Potentiometer.c
 [; ;Potentiometer.c: 15: void initialisePotentiometers(){
@@ -603,8 +603,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 362 ]
 }
 "31
-[; ;Potentiometer.c: 31:     return (sumOfSamples >> 4);
-[e ) -> >> _sumOfSamples -> 4 `i `us ]
+[; ;Potentiometer.c: 31:     return (sumOfSamples >> 4u);
+[e ) -> >> _sumOfSamples -> 4 `ui `us ]
 [e $UE 357  ]
 "32
 [; ;Potentiometer.c: 32: }
@@ -650,8 +650,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 369 ]
 }
 "45
-[; ;Potentiometer.c: 45:     return (sumOfSamples >> 4);
-[e ) -> >> _sumOfSamples -> 4 `i `us ]
+[; ;Potentiometer.c: 45:     return (sumOfSamples >> 4u);
+[e ) -> >> _sumOfSamples -> 4 `ui `us ]
 [e $UE 364  ]
 "46
 [; ;Potentiometer.c: 46: }
