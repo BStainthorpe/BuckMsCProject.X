@@ -4626,7 +4626,7 @@ struct controllerVariables voltageModeVariables = {0, 0, 0, 0, 0, 0};
 void initialiseController(){
     initialiseGPIO(pinRA4, 1);
     initialiseADCPin(pinRA4);
-    integratorScaledLimit = (int64_t) ((int64_t) (512u) << (6u + 16u));
+    integratorScaledLimit = (int64_t) ((int64_t) (512u) << (7u + 16u));
 }
 
 
@@ -4661,12 +4661,16 @@ int16_t convertRawToMilliVolts(uint16_t rawValue){
 
 
 void controlRoutine(){
+
+    int16_t setDuty_unreg = 0;
+
+
     if(currentState == voltageModeControl){
 
         runVoltageModeControl();
         setPeriod = 79u;
 
-        setDuty = (uint16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
+        setDuty_unreg = (int16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
 
     }
     if(currentState == currentModeControl){
@@ -4680,9 +4684,14 @@ void controlRoutine(){
 
     uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
     uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
-    if(setDuty > maxDuty) setDuty = maxDuty;
-    if(setDuty < minDuty) setDuty = minDuty;
-    if(setDuty < 0) setDuty = minDuty;
+
+    setDuty = setDuty_unreg;
+
+    if(setDuty_unreg < 0) setDuty = minDuty;
+    else if(setDuty_unreg >= 0){
+        if(setDuty_unreg < minDuty) setDuty = minDuty;
+        else if(setDuty_unreg > maxDuty) setDuty = maxDuty;
+    }
 
 }
 
@@ -4703,7 +4712,7 @@ void runVoltageModeControl(){
    else voltageModeVariables.error = 12000u - newVoltage;
 
 
-   int64_t integralMult = ((int64_t) (15u * ((int64_t) voltageModeVariables.error) )) * 267u;
+   int64_t integralMult = ((int64_t) (36u * ((int64_t) voltageModeVariables.error) )) * 267u;
 
    voltageModeVariables.integral = integralMult;
    voltageModeVariables.integralOutputScaled = (voltageModeVariables.integralOutputScaled + voltageModeVariables.integral);
@@ -4720,11 +4729,11 @@ void runVoltageModeControl(){
    }
 
 
-   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 6u);
+   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 7u);
 
 
-   int64_t propMult = (int32_t) (18u * ((int32_t) voltageModeVariables.error));
-   voltageModeVariables.proportionalOutput = propMult >> 10u;
+   int64_t propMult = (int32_t) (2u * ((int32_t) voltageModeVariables.error));
+   voltageModeVariables.proportionalOutput = propMult >> 9u;
 
    voltageModeVariables.sumOutput = voltageModeVariables.integralOutput + voltageModeVariables.proportionalOutput;
    voltageModeVariables.previousError = voltageModeVariables.error;
@@ -4738,5 +4747,5 @@ void runVoltageModeControl(){
 
 
 void runCurrentModeControl(){
-# 180 "Controller.c"
+# 190 "Controller.c"
 }

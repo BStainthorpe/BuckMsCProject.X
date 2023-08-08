@@ -624,8 +624,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Controller.c: 30:     initialiseADCPin(pinRA4);
 [e ( _initialiseADCPin (1 . `E2798 4 ]
 "31
-[; ;Controller.c: 31:     integratorScaledLimit = (int64_t) ((int64_t) (512u) << (6u + 16u));
-[e = _integratorScaledLimit << -> -> 512 `ui `o + -> 6 `ui -> 16 `ui ]
+[; ;Controller.c: 31:     integratorScaledLimit = (int64_t) ((int64_t) (512u) << (7u + 16u));
+[e = _integratorScaledLimit << -> -> 512 `ui `o + -> 7 `ui -> 16 `ui ]
 "32
 [; ;Controller.c: 32: }
 [e :UE 357 ]
@@ -710,145 +710,164 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _controlRoutine ]
 [f ]
-"66
-[; ;Controller.c: 66:     if(currentState == voltageModeControl){
+"67
+[; ;Controller.c: 67:     int16_t setDuty_unreg = 0;
+[v _setDuty_unreg `s ~T0 @X0 1 a ]
+[e = _setDuty_unreg -> -> 0 `i `s ]
+"70
+[; ;Controller.c: 70:     if(currentState == voltageModeControl){
 [e $ ! == -> _currentState `ui -> . `E2833 2 `ui 367  ]
 {
-"68
-[; ;Controller.c: 68:         runVoltageModeControl();
+"72
+[; ;Controller.c: 72:         runVoltageModeControl();
 [e ( _runVoltageModeControl ..  ]
-"69
-[; ;Controller.c: 69:         setPeriod = 79u;
-[e = _setPeriod -> -> 79 `ui `uc ]
-"71
-[; ;Controller.c: 71:         setDuty = (uint16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
-[e = _setDuty -> + -> -> / -> * -> -> -> 50 `ui `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us `l . _voltageModeVariables 5 `us ]
 "73
-[; ;Controller.c: 73:     }
+[; ;Controller.c: 73:         setPeriod = 79u;
+[e = _setPeriod -> -> 79 `ui `uc ]
+"75
+[; ;Controller.c: 75:         setDuty_unreg = (int16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
+[e = _setDuty_unreg -> + -> -> / -> * -> -> -> 50 `ui `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `s `l . _voltageModeVariables 5 `s ]
+"77
+[; ;Controller.c: 77:     }
 }
 [e :U 367 ]
-"74
-[; ;Controller.c: 74:     if(currentState == currentModeControl){
+"78
+[; ;Controller.c: 78:     if(currentState == currentModeControl){
 [e $ ! == -> _currentState `ui -> . `E2833 3 `ui 368  ]
 {
-"81
-[; ;Controller.c: 81:     }
+"85
+[; ;Controller.c: 85:     }
 }
 [e :U 368 ]
-"83
-[; ;Controller.c: 83:     uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+"87
+[; ;Controller.c: 87:     uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
 [v _maxDuty `us ~T0 @X0 1 a ]
 [e = _maxDuty -> / -> * -> -> -> 90 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
-"84
-[; ;Controller.c: 84:     uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+"88
+[; ;Controller.c: 88:     uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
 [v _minDuty `us ~T0 @X0 1 a ]
 [e = _minDuty -> / -> * -> -> -> 10 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
-"85
-[; ;Controller.c: 85:     if(setDuty > maxDuty) setDuty = maxDuty;
-[e $ ! > -> _setDuty `ui -> _maxDuty `ui 369  ]
-[e = _setDuty _maxDuty ]
+"90
+[; ;Controller.c: 90:     setDuty = setDuty_unreg;
+[e = _setDuty -> _setDuty_unreg `us ]
+"92
+[; ;Controller.c: 92:     if(setDuty_unreg < 0) setDuty = minDuty;
+[e $ ! < -> _setDuty_unreg `i -> 0 `i 369  ]
+[e = _setDuty _minDuty ]
+[e $U 370  ]
+"93
+[; ;Controller.c: 93:     else if(setDuty_unreg >= 0){
 [e :U 369 ]
-"86
-[; ;Controller.c: 86:     if(setDuty < minDuty) setDuty = minDuty;
-[e $ ! < -> _setDuty `ui -> _minDuty `ui 370  ]
+[e $ ! >= -> _setDuty_unreg `i -> 0 `i 371  ]
+{
+"94
+[; ;Controller.c: 94:         if(setDuty_unreg < minDuty) setDuty = minDuty;
+[e $ ! < -> _setDuty_unreg `ui -> _minDuty `ui 372  ]
 [e = _setDuty _minDuty ]
-[e :U 370 ]
-"87
-[; ;Controller.c: 87:     if(setDuty < 0) setDuty = minDuty;
-[e $ ! < -> _setDuty `ui -> -> 0 `i `ui 371  ]
-[e = _setDuty _minDuty ]
+[e $U 373  ]
+"95
+[; ;Controller.c: 95:         else if(setDuty_unreg > maxDuty) setDuty = maxDuty;
+[e :U 372 ]
+[e $ ! > -> _setDuty_unreg `ui -> _maxDuty `ui 374  ]
+[e = _setDuty _maxDuty ]
+[e :U 374 ]
+[e :U 373 ]
+"96
+[; ;Controller.c: 96:     }
+}
 [e :U 371 ]
-"89
-[; ;Controller.c: 89: }
+[e :U 370 ]
+"98
+[; ;Controller.c: 98: }
 [e :UE 366 ]
 }
-"96
-[; ;Controller.c: 96: void runVoltageModeControl(){
+"105
+[; ;Controller.c: 105: void runVoltageModeControl(){
 [v _runVoltageModeControl `(v ~T0 @X0 1 ef ]
 {
 [e :U _runVoltageModeControl ]
 [f ]
-"101
-[; ;Controller.c: 101:    uint16_t newVoltage = convertRawToMilliVolts(filteredVout);
+"110
+[; ;Controller.c: 110:    uint16_t newVoltage = convertRawToMilliVolts(filteredVout);
 [v _newVoltage `us ~T0 @X0 1 a ]
 [e = _newVoltage -> ( _convertRawToMilliVolts (1 _filteredVout `us ]
-"104
-[; ;Controller.c: 104:    if(readGPIO(pinRB0)) voltageModeVariables.error = 16000u - newVoltage;
-[e $ ! != -> ( _readGPIO (1 . `E2798 8 `i -> 0 `i 373  ]
+"113
+[; ;Controller.c: 113:    if(readGPIO(pinRB0)) voltageModeVariables.error = 16000u - newVoltage;
+[e $ ! != -> ( _readGPIO (1 . `E2798 8 `i -> 0 `i 376  ]
 [e = . _voltageModeVariables 0 -> - -> 16000 `ui -> _newVoltage `ui `s ]
-[e $U 374  ]
-"105
-[; ;Controller.c: 105:    else voltageModeVariables.error = 12000u - newVoltage;
-[e :U 373 ]
-[e = . _voltageModeVariables 0 -> - -> 12000 `ui -> _newVoltage `ui `s ]
-[e :U 374 ]
-"108
-[; ;Controller.c: 108:    int64_t integralMult = ((int64_t) (15u * ((int64_t) voltageModeVariables.error) )) * 267u;
-[v _integralMult `o ~T0 @X0 1 a ]
-[e = _integralMult * * -> -> 15 `ui `o -> . _voltageModeVariables 0 `o -> -> 267 `ui `o ]
-"110
-[; ;Controller.c: 110:    voltageModeVariables.integral = integralMult;
-[e = . _voltageModeVariables 1 -> _integralMult `l ]
-"111
-[; ;Controller.c: 111:    voltageModeVariables.integralOutputScaled = (voltageModeVariables.integralOutputScaled + voltageModeVariables.integral);
-[e = . _voltageModeVariables 4 + . _voltageModeVariables 4 -> . _voltageModeVariables 1 `o ]
+[e $U 377  ]
 "114
-[; ;Controller.c: 114:    if(voltageModeVariables.integralOutputScaled > (integratorScaledLimit)){
-[e $ ! > . _voltageModeVariables 4 _integratorScaledLimit 375  ]
-{
-"115
-[; ;Controller.c: 115:        voltageModeVariables.integralOutputScaled = (integratorScaledLimit);
-[e = . _voltageModeVariables 4 _integratorScaledLimit ]
-"116
-[; ;Controller.c: 116:    }
-}
-[e :U 375 ]
-"118
-[; ;Controller.c: 118:    if(voltageModeVariables.integralOutputScaled < 0){
-[e $ ! < . _voltageModeVariables 4 -> -> 0 `i `o 376  ]
-{
-"119
-[; ;Controller.c: 119:         if(abs(voltageModeVariables.integralOutputScaled) > (integratorScaledLimit)){
-[e $ ! > -> ( _abs (1 -> . _voltageModeVariables 4 `i `o _integratorScaledLimit 377  ]
-{
-"120
-[; ;Controller.c: 120:                 voltageModeVariables.integralOutputScaled = (int64_t) (0 -(integratorScaledLimit));
-[e = . _voltageModeVariables 4 - -> -> 0 `i `o _integratorScaledLimit ]
-"121
-[; ;Controller.c: 121:         }
-}
-[e :U 377 ]
-"122
-[; ;Controller.c: 122:    }
-}
+[; ;Controller.c: 114:    else voltageModeVariables.error = 12000u - newVoltage;
 [e :U 376 ]
+[e = . _voltageModeVariables 0 -> - -> 12000 `ui -> _newVoltage `ui `s ]
+[e :U 377 ]
+"117
+[; ;Controller.c: 117:    int64_t integralMult = ((int64_t) (36u * ((int64_t) voltageModeVariables.error) )) * 267u;
+[v _integralMult `o ~T0 @X0 1 a ]
+[e = _integralMult * * -> -> 36 `ui `o -> . _voltageModeVariables 0 `o -> -> 267 `ui `o ]
+"119
+[; ;Controller.c: 119:    voltageModeVariables.integral = integralMult;
+[e = . _voltageModeVariables 1 -> _integralMult `l ]
+"120
+[; ;Controller.c: 120:    voltageModeVariables.integralOutputScaled = (voltageModeVariables.integralOutputScaled + voltageModeVariables.integral);
+[e = . _voltageModeVariables 4 + . _voltageModeVariables 4 -> . _voltageModeVariables 1 `o ]
+"123
+[; ;Controller.c: 123:    if(voltageModeVariables.integralOutputScaled > (integratorScaledLimit)){
+[e $ ! > . _voltageModeVariables 4 _integratorScaledLimit 378  ]
+{
+"124
+[; ;Controller.c: 124:        voltageModeVariables.integralOutputScaled = (integratorScaledLimit);
+[e = . _voltageModeVariables 4 _integratorScaledLimit ]
 "125
-[; ;Controller.c: 125:    voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 6u);
-[e = . _voltageModeVariables 3 -> >> . _voltageModeVariables 4 + -> 16 `ui -> 6 `ui `l ]
-"128
-[; ;Controller.c: 128:    int64_t propMult = (int32_t) (18u * ((int32_t) voltageModeVariables.error));
-[v _propMult `o ~T0 @X0 1 a ]
-[e = _propMult -> * -> -> 18 `ui `l -> . _voltageModeVariables 0 `l `o ]
-"129
-[; ;Controller.c: 129:    voltageModeVariables.proportionalOutput = propMult >> 10u;
-[e = . _voltageModeVariables 2 -> >> _propMult -> 10 `ui `l ]
-"131
-[; ;Controller.c: 131:    voltageModeVariables.sumOutput = voltageModeVariables.integralOutput + voltageModeVariables.proportionalOutput;
-[e = . _voltageModeVariables 5 + . _voltageModeVariables 3 . _voltageModeVariables 2 ]
-"132
-[; ;Controller.c: 132:    voltageModeVariables.previousError = voltageModeVariables.error;
-[e = . _voltageModeVariables 6 . _voltageModeVariables 0 ]
-"135
-[; ;Controller.c: 135: }
-[e :UE 372 ]
+[; ;Controller.c: 125:    }
 }
-"142
-[; ;Controller.c: 142: void runCurrentModeControl(){
+[e :U 378 ]
+"127
+[; ;Controller.c: 127:    if(voltageModeVariables.integralOutputScaled < 0){
+[e $ ! < . _voltageModeVariables 4 -> -> 0 `i `o 379  ]
+{
+"128
+[; ;Controller.c: 128:         if(abs(voltageModeVariables.integralOutputScaled) > (integratorScaledLimit)){
+[e $ ! > -> ( _abs (1 -> . _voltageModeVariables 4 `i `o _integratorScaledLimit 380  ]
+{
+"129
+[; ;Controller.c: 129:                 voltageModeVariables.integralOutputScaled = (int64_t) (0 -(integratorScaledLimit));
+[e = . _voltageModeVariables 4 - -> -> 0 `i `o _integratorScaledLimit ]
+"130
+[; ;Controller.c: 130:         }
+}
+[e :U 380 ]
+"131
+[; ;Controller.c: 131:    }
+}
+[e :U 379 ]
+"134
+[; ;Controller.c: 134:    voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 7u);
+[e = . _voltageModeVariables 3 -> >> . _voltageModeVariables 4 + -> 16 `ui -> 7 `ui `l ]
+"137
+[; ;Controller.c: 137:    int64_t propMult = (int32_t) (2u * ((int32_t) voltageModeVariables.error));
+[v _propMult `o ~T0 @X0 1 a ]
+[e = _propMult -> * -> -> 2 `ui `l -> . _voltageModeVariables 0 `l `o ]
+"138
+[; ;Controller.c: 138:    voltageModeVariables.proportionalOutput = propMult >> 9u;
+[e = . _voltageModeVariables 2 -> >> _propMult -> 9 `ui `l ]
+"140
+[; ;Controller.c: 140:    voltageModeVariables.sumOutput = voltageModeVariables.integralOutput + voltageModeVariables.proportionalOutput;
+[e = . _voltageModeVariables 5 + . _voltageModeVariables 3 . _voltageModeVariables 2 ]
+"141
+[; ;Controller.c: 141:    voltageModeVariables.previousError = voltageModeVariables.error;
+[e = . _voltageModeVariables 6 . _voltageModeVariables 0 ]
+"144
+[; ;Controller.c: 144: }
+[e :UE 375 ]
+}
+"151
+[; ;Controller.c: 151: void runCurrentModeControl(){
 [v _runCurrentModeControl `(v ~T0 @X0 1 ef ]
 {
 [e :U _runCurrentModeControl ]
 [f ]
-"180
-[; ;Controller.c: 180: }
-[e :UE 378 ]
+"190
+[; ;Controller.c: 190: }
+[e :UE 381 ]
 }

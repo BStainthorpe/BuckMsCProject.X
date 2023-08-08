@@ -4570,7 +4570,7 @@ void initialiseADCModule();
 uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 uint16_t readILCurrentADCRaw();
 # 17 "./Potentiometer.h" 2
-# 28 "./Potentiometer.h"
+# 33 "./Potentiometer.h"
 uint8_t potSetCount = 0;
 
 void initialisePotentiometers();
@@ -4606,7 +4606,7 @@ uint16_t readFilteredDutyPot(){
     uint32_t sumOfSamples = 0;
     for(uint8_t i=0; i<16; i++) sumOfSamples += dutyPotFIFO[i];
 
-    return (sumOfSamples >> 4);
+    return (sumOfSamples >> 4u);
 }
 
 
@@ -4620,7 +4620,7 @@ uint16_t readFilteredFreqPot(){
     uint32_t sumOfSamples = 0;
     for(uint8_t i=0; i<16; i++) sumOfSamples += freqPotFIFO[i];
 
-    return (sumOfSamples >> 4);
+    return (sumOfSamples >> 4u);
 }
 # 55 "Potentiometer.c"
 void runPotScaling(){
@@ -4630,9 +4630,10 @@ void runPotScaling(){
 
         if(potSetCount == 32){
 
-            setPeriod = ((uint32_t)((filteredFreqPot - 45) * (uint32_t)(159u - 15u)) >> 10 ) + 15u;
+            setPeriod = ((uint32_t)((filteredFreqPot - 51) * (uint32_t)(180u - 15u)) >> 10 ) + 15u;
 
-            setDuty = (uint32_t)((uint32_t)((filteredDutyPot-45) * (uint32_t)setPeriod )) >> 8;
+            setDuty = (uint32_t)((uint32_t)((filteredDutyPot-51) * (uint32_t)setPeriod )) >> 8;
+            setDuty = (4*setPeriod) - setDuty;
 
 
             uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);

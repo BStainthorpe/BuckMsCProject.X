@@ -523,29 +523,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"32 ./Potentiometer.h
-[; ;./Potentiometer.h: 32: uint8_t potSetCount = 0;
+"33 ./Potentiometer.h
+[; ;./Potentiometer.h: 33: uint8_t potSetCount = 0;
 [v _potSetCount `uc ~T0 @X0 1 e ]
 [i _potSetCount
 -> -> 0 `i `uc
 ]
-"39
-[; ;./Potentiometer.h: 39: uint16_t filteredFreqPot = 0;
+"40
+[; ;./Potentiometer.h: 40: uint16_t filteredFreqPot = 0;
 [v _filteredFreqPot `us ~T0 @X0 1 e ]
 [i _filteredFreqPot
 -> -> 0 `i `us
 ]
-"40
-[; ;./Potentiometer.h: 40: uint16_t filteredDutyPot = 0;
+"41
+[; ;./Potentiometer.h: 41: uint16_t filteredDutyPot = 0;
 [v _filteredDutyPot `us ~T0 @X0 1 e ]
 [i _filteredDutyPot
 -> -> 0 `i `us
 ]
-"41
-[; ;./Potentiometer.h: 41: uint16_t freqPotFIFO[16];
-[v _freqPotFIFO `us ~T0 @X0 -> 16 `i e ]
 "42
-[; ;./Potentiometer.h: 42: uint16_t dutyPotFIFO[16];
+[; ;./Potentiometer.h: 42: uint16_t freqPotFIFO[16];
+[v _freqPotFIFO `us ~T0 @X0 -> 16 `i e ]
+"43
+[; ;./Potentiometer.h: 43: uint16_t dutyPotFIFO[16];
 [v _dutyPotFIFO `us ~T0 @X0 -> 16 `i e ]
 "15 Potentiometer.c
 [; ;Potentiometer.c: 15: void initialisePotentiometers(){
@@ -675,41 +675,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> _potSetCount `i -> 32 `i 373  ]
 {
 "62
-[; ;Potentiometer.c: 62:             setPeriod = ((uint32_t)((filteredFreqPot - 45) * (uint32_t)(159u - 15u)) >> 10 ) + 15u;
-[e = _setPeriod -> + >> * -> - -> _filteredFreqPot `ui -> -> 45 `i `ui `ul -> - -> 159 `ui -> 15 `ui `ul -> 10 `i -> -> 15 `ui `ul `uc ]
+[; ;Potentiometer.c: 62:             setPeriod = ((uint32_t)((filteredFreqPot - 51) * (uint32_t)(180u - 15u)) >> 10 ) + 15u;
+[e = _setPeriod -> + >> * -> - -> _filteredFreqPot `ui -> -> 51 `i `ui `ul -> - -> 180 `ui -> 15 `ui `ul -> 10 `i -> -> 15 `ui `ul `uc ]
 "64
-[; ;Potentiometer.c: 64:             setDuty = (uint32_t)((uint32_t)((filteredDutyPot-45) * (uint32_t)setPeriod )) >> 8;
-[e = _setDuty -> >> * -> - -> _filteredDutyPot `ui -> -> 45 `i `ui `ul -> _setPeriod `ul -> 8 `i `us ]
-"67
-[; ;Potentiometer.c: 67:             uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+[; ;Potentiometer.c: 64:             setDuty = (uint32_t)((uint32_t)((filteredDutyPot-51) * (uint32_t)setPeriod )) >> 8;
+[e = _setDuty -> >> * -> - -> _filteredDutyPot `ui -> -> 51 `i `ui `ul -> _setPeriod `ul -> 8 `i `us ]
+"65
+[; ;Potentiometer.c: 65:             setDuty = (4*setPeriod) - setDuty;
+[e = _setDuty -> - -> * -> 4 `i -> _setPeriod `i `ui -> _setDuty `ui `us ]
+"68
+[; ;Potentiometer.c: 68:             uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
 [v _maxDuty `us ~T0 @X0 1 a ]
 [e = _maxDuty -> / -> * -> -> -> 90 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
-"68
-[; ;Potentiometer.c: 68:             uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+"69
+[; ;Potentiometer.c: 69:             uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
 [v _minDuty `us ~T0 @X0 1 a ]
 [e = _minDuty -> / -> * -> -> -> 10 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
-"69
-[; ;Potentiometer.c: 69:             if(setDuty > maxDuty) setDuty = maxDuty;
+"70
+[; ;Potentiometer.c: 70:             if(setDuty > maxDuty) setDuty = maxDuty;
 [e $ ! > -> _setDuty `ui -> _maxDuty `ui 374  ]
 [e = _setDuty _maxDuty ]
 [e :U 374 ]
-"70
-[; ;Potentiometer.c: 70:             if(setDuty < minDuty) setDuty = minDuty;
+"71
+[; ;Potentiometer.c: 71:             if(setDuty < minDuty) setDuty = minDuty;
 [e $ ! < -> _setDuty `ui -> _minDuty `ui 375  ]
 [e = _setDuty _minDuty ]
 [e :U 375 ]
-"72
-[; ;Potentiometer.c: 72:             potSetCount = 0;
-[e = _potSetCount -> -> 0 `i `uc ]
 "73
-[; ;Potentiometer.c: 73:         }
+[; ;Potentiometer.c: 73:             potSetCount = 0;
+[e = _potSetCount -> -> 0 `i `uc ]
+"74
+[; ;Potentiometer.c: 74:         }
 }
 [e :U 373 ]
-"74
-[; ;Potentiometer.c: 74:     }
+"75
+[; ;Potentiometer.c: 75:     }
 }
 [e :U 372 ]
-"75
-[; ;Potentiometer.c: 75: }
+"76
+[; ;Potentiometer.c: 76: }
 [e :UE 371 ]
 }

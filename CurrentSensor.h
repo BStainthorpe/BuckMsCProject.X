@@ -29,7 +29,7 @@ extern "C" {
 #define CURRENT_SENSOR_MANTISSA     0u
 #define CURRENT_SENSOR_OFFSET       445u 
     
-#define SIZE_OF_ISENSOR_FILTER      16u     //must be a power of 2, also change ISENSOR_SHIFT accordingly
+#define SIZE_OF_ISENSOR_FILTER      16u     //size of FIFO filter, must be a power of 2, also change ISENSOR_SHIFT accordingly
 #define ISENSOR_SHIFT               4u      //squareroot(SIZE_OF_ISENSOR_FILTER) = 4  
     
 #define CURRENT_TRIP_LIMIT  3u              //max number of consecutive current trips before transitioning to a fault

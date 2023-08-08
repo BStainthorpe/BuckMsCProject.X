@@ -38,14 +38,14 @@ extern "C" {
 #define TARGET_VOLTAGE_MV_1         12000u         //target voltage in millivolts
 #define TARGET_VOLTAGE_MV_2         16000u         //option to change target voltage for step response using CL_Enable Jumper
 #define VOLTAGE_MODE_CONTROL_PERIOD 79u            //79 corresponds to 100kHz
-#define VOLTAGE_MODE_KP             18u            //GAIN OF 18/(2^10) = 0.017578 tuned using ziegler nichols
-#define VOLTAGE_MODE_KP_MANTISSA    10u
-#define VOLTAGE_MODE_KI             15u            //GAIN OF 15/(2^6) = 0.234 tuned using ziegler nichols
-#define VOLTAGE_MODE_KI_MANTISSA    6u             
+#define VOLTAGE_MODE_KP             2u             //GAIN OF 2/(2^9) = 0.01757 tuned using ziegler nichols
+#define VOLTAGE_MODE_KP_MANTISSA    9u
+#define VOLTAGE_MODE_KI             36u            //GAIN OF 36/(2^7) = 0.2812 tuned using ziegler nichols
+#define VOLTAGE_MODE_KI_MANTISSA    7u              
         
 //unused - current mode control code is not tested or prepared
-#define TARGET_CURRENT_MA_1         0u         //target current in milliamps
-#define TARGET_CURRENT_MA_2         0u         //option to change target current for step response using CL_Enable Jumper
+#define TARGET_CURRENT_MA_1         0u             //target current in milliamps
+#define TARGET_CURRENT_MA_2         0u             //option to change target current for step response using CL_Enable Jumper
 #define CURRENT_MODE_CONTROL_PERIOD 79u            //79 corresponds to 100kHz
 #define CURRENT_MODE_KP             10u
 #define CURRENT_MODE_KP_MANTISSA    0u
@@ -58,7 +58,7 @@ extern "C" {
 #define VOLTAGE_SENSOR_MANTISSA     8u
 #define VOLTAGE_SENSOR_OFFSET       0u
     
-#define SIZE_OF_VSENSOR_FILTER      16u      //must be a power of 2, also change VSENSOR_SHIFT accordingly
+#define SIZE_OF_VSENSOR_FILTER      16u      //size of FIFO filter, must be a power of 2, also change VSENSOR_SHIFT accordingly
 #define VSENSOR_SHIFT               4u       //squareroot(SIZE_OF_VSENSOR_FILTER) = 4
     
 uint16_t filteredVout = 0;                  //filtered Vout measurements and FIFO

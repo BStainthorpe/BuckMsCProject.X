@@ -267,7 +267,7 @@ overCurrentFault 4
 [v _convertRawToMilliVolts convertRawToMilliVolts `(s  1 e 2 0 ]
 "65
 [v _controlRoutine controlRoutine `(v  1 e 1 0 ]
-"96
+"105
 [v _runVoltageModeControl runVoltageModeControl `(v  1 e 1 0 ]
 "18 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
 [v _initialiseCurrentSensors initialiseCurrentSensors `(v  1 e 1 0 ]
@@ -338,15 +338,15 @@ overCurrentFault 4
 [v _currentTripCount currentTripCount `uc  1 e 1 0 ]
 "79 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X/Global.h
 [v _clockFrequency clockFrequency `ul  1 e 4 0 ]
-"32 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X/Potentiometer.h
+"33 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X/Potentiometer.h
 [v _potSetCount potSetCount `uc  1 e 1 0 ]
-"39
-[v _filteredFreqPot filteredFreqPot `us  1 e 2 0 ]
 "40
-[v _filteredDutyPot filteredDutyPot `us  1 e 2 0 ]
+[v _filteredFreqPot filteredFreqPot `us  1 e 2 0 ]
 "41
-[v _freqPotFIFO freqPotFIFO `[16]us  1 e 32 0 ]
+[v _filteredDutyPot filteredDutyPot `us  1 e 2 0 ]
 "42
+[v _freqPotFIFO freqPotFIFO `[16]us  1 e 32 0 ]
+"43
 [v _dutyPotFIFO dutyPotFIFO `[16]us  1 e 32 0 ]
 "21 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X/PWM.h
 [v _setPeriod setPeriod `uc  1 e 1 0 ]
@@ -673,11 +673,11 @@ overCurrentFault 4
 "55 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
 [v _runPotScaling runPotScaling `(v  1 e 1 0 ]
 {
-"68
+"69
 [v runPotScaling@minDuty minDuty `us  1 a 2 16 ]
-"67
+"68
 [v runPotScaling@maxDuty maxDuty `us  1 a 2 14 ]
-"75
+"76
 } 0
 "39 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Controller.c
 [v _readFilteredVout readFilteredVout `(us  1 e 2 0 ]
@@ -694,7 +694,7 @@ overCurrentFault 4
 [v _readFilteredIL readFilteredIL `(us  1 e 2 0 ]
 {
 "60
-[v readFilteredIL@i_920 i `uc  1 a 1 10 ]
+[v readFilteredIL@i_921 i `uc  1 a 1 10 ]
 "57
 [v readFilteredIL@i i `uc  1 a 1 11 ]
 "59
@@ -778,22 +778,24 @@ overCurrentFault 4
 "65 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Controller.c
 [v _controlRoutine controlRoutine `(v  1 e 1 0 ]
 {
-"84
+"67
+[v controlRoutine@setDuty_unreg setDuty_unreg `s  1 a 2 60 ]
+"88
 [v controlRoutine@minDuty minDuty `us  1 a 2 58 ]
-"83
+"87
 [v controlRoutine@maxDuty maxDuty `us  1 a 2 56 ]
-"89
+"98
 } 0
-"96
+"105
 [v _runVoltageModeControl runVoltageModeControl `(v  1 e 1 0 ]
 {
-"128
+"137
 [v runVoltageModeControl@propMult propMult `o  1 a 8 40 ]
-"108
+"117
 [v runVoltageModeControl@integralMult integralMult `o  1 a 8 32 ]
-"101
+"110
 [v runVoltageModeControl@newVoltage newVoltage `us  1 a 2 48 ]
-"135
+"144
 } 0
 "79 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
 [v i1_readGPIO readGPIO `(a  1 e 1 0 ]

@@ -4560,12 +4560,13 @@ uint32_t clockFrequency = 0;
 # 7 "CurrentSensor.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 37 "./CurrentSensor.h"
+# 38 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
+
 uint16_t filteredIDS = 0;
 uint16_t filteredIL = 0;
-uint16_t currentIDSFIFO[16];
-uint16_t currentILFIFO[16];
+uint16_t currentIDSFIFO[16u];
+uint16_t currentILFIFO[16u];
 
 _Bool tripIDS = 0;
 _Bool tripIL = 0;
@@ -4622,12 +4623,12 @@ _Bool currentTripRead(){
 
 
 uint16_t readFilteredIDS(){
-    for(uint8_t i=0; i<16 -1; i++) currentIDSFIFO[i] = currentIDSFIFO[i+1];
-    currentIDSFIFO[16 -1] = readADCRaw(pinRA0);
+    for(uint8_t i=0; i<16u -1; i++) currentIDSFIFO[i] = currentIDSFIFO[i+1];
+    currentIDSFIFO[16u -1] = readADCRaw(pinRA0);
     uint32_t sumOfSamples = 0;
-    for(uint8_t i=0; i<16; i++) sumOfSamples += currentIDSFIFO[i];
+    for(uint8_t i=0; i<16u; i++) sumOfSamples += currentIDSFIFO[i];
 
-    return (sumOfSamples >> 4);
+    return (sumOfSamples >> 4u);
 }
 
 
@@ -4636,12 +4637,12 @@ uint16_t readFilteredIDS(){
 
 
 uint16_t readFilteredIL(){
-    for(uint8_t i=0; i<16 -1; i++) currentILFIFO[i] = currentILFIFO[i+1];
-    currentILFIFO[16 -1] = latestIL;
+    for(uint8_t i=0; i<16u -1; i++) currentILFIFO[i] = currentILFIFO[i+1];
+    currentILFIFO[16u -1] = latestIL;
     uint32_t sumOfSamples = 0;
-    for(uint8_t i=0; i<16; i++) sumOfSamples += currentILFIFO[i];
+    for(uint8_t i=0; i<16u; i++) sumOfSamples += currentILFIFO[i];
 
-    return (sumOfSamples >> 4);
+    return (sumOfSamples >> 4u);
 }
 
 
@@ -4662,8 +4663,8 @@ void currentTripReset(){
 
 
 int16_t convertRawToMilliAmps(uint16_t rawValue){
-    int16_t offsetted = (int16_t)(rawValue - 445);
-    int16_t returnValuemA = (int32_t)(offsetted * 2857) >> 0;
+    int16_t offsetted = (int16_t)(rawValue - 445u);
+    int16_t returnValuemA = (int32_t)(offsetted * 2857u) >> 0u;
     return returnValuemA;
 }
 
@@ -4677,7 +4678,7 @@ int16_t currentTripMonitor(){
 
         if(currentTripRead() == 1){
         currentTripCount++;
-        if(currentTripCount == 3){
+        if(currentTripCount == 3u){
             transToOverCurrentFault();
         }
         else{

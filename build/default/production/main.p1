@@ -27,14 +27,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "79 ./Controller.h
 [; ;./Controller.h: 79: uint16_t readFilteredVout();
 [v _readFilteredVout `(us ~T0 @X0 0 e? ]
-"37 ./Potentiometer.h
-[; ;./Potentiometer.h: 37: void runPotScaling();
+"38 ./Potentiometer.h
+[; ;./Potentiometer.h: 38: void runPotScaling();
 [v _runPotScaling `(v ~T0 @X0 0 e? ]
-"35
-[; ;./Potentiometer.h: 35: uint16_t readFilteredDutyPot();
-[v _readFilteredDutyPot `(us ~T0 @X0 0 e? ]
 "36
-[; ;./Potentiometer.h: 36: uint16_t readFilteredFreqPot();
+[; ;./Potentiometer.h: 36: uint16_t readFilteredDutyPot();
+[v _readFilteredDutyPot `(us ~T0 @X0 0 e? ]
+"37
+[; ;./Potentiometer.h: 37: uint16_t readFilteredFreqPot();
 [v _readFilteredFreqPot `(us ~T0 @X0 0 e? ]
 "358 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 358:     struct {
@@ -71,8 +71,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "51 ./CurrentSensor.h
 [; ;./CurrentSensor.h: 51: void initialiseCurrentSensors();
 [v _initialiseCurrentSensors `(v ~T0 @X0 0 e? ]
-"34 ./Potentiometer.h
-[; ;./Potentiometer.h: 34: void initialisePotentiometers();
+"35 ./Potentiometer.h
+[; ;./Potentiometer.h: 35: void initialisePotentiometers();
 [v _initialisePotentiometers `(v ~T0 @X0 0 e? ]
 "84 ./Controller.h
 [; ;./Controller.h: 84: void initialiseController();
@@ -682,29 +682,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _integratorScaledLimit
 -> -> 0 `i `o
 ]
-"32 ./Potentiometer.h
-[; ;./Potentiometer.h: 32: uint8_t potSetCount = 0;
+"33 ./Potentiometer.h
+[; ;./Potentiometer.h: 33: uint8_t potSetCount = 0;
 [v _potSetCount `uc ~T0 @X0 1 e ]
 [i _potSetCount
 -> -> 0 `i `uc
 ]
-"39
-[; ;./Potentiometer.h: 39: uint16_t filteredFreqPot = 0;
+"40
+[; ;./Potentiometer.h: 40: uint16_t filteredFreqPot = 0;
 [v _filteredFreqPot `us ~T0 @X0 1 e ]
 [i _filteredFreqPot
 -> -> 0 `i `us
 ]
-"40
-[; ;./Potentiometer.h: 40: uint16_t filteredDutyPot = 0;
+"41
+[; ;./Potentiometer.h: 41: uint16_t filteredDutyPot = 0;
 [v _filteredDutyPot `us ~T0 @X0 1 e ]
 [i _filteredDutyPot
 -> -> 0 `i `us
 ]
-"41
-[; ;./Potentiometer.h: 41: uint16_t freqPotFIFO[16];
-[v _freqPotFIFO `us ~T0 @X0 -> 16 `i e ]
 "42
-[; ;./Potentiometer.h: 42: uint16_t dutyPotFIFO[16];
+[; ;./Potentiometer.h: 42: uint16_t freqPotFIFO[16];
+[v _freqPotFIFO `us ~T0 @X0 -> 16 `i e ]
+"43
+[; ;./Potentiometer.h: 43: uint16_t dutyPotFIFO[16];
 [v _dutyPotFIFO `us ~T0 @X0 -> 16 `i e ]
 "28 main.c
 [; ;main.c: 28: volatile _Bool timerSlotHalf = 0;

@@ -4630,7 +4630,7 @@ uint16_t readILCurrentADCRaw();
 # 24 "main.c" 2
 
 # 1 "./Potentiometer.h" 1
-# 32 "./Potentiometer.h"
+# 33 "./Potentiometer.h"
 uint8_t potSetCount = 0;
 
 void initialisePotentiometers();

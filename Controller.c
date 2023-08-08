@@ -63,12 +63,16 @@ int16_t convertRawToMilliVolts(uint16_t rawValue){
  * control if in the correct state
 ------------------------------------------------------------------------------*/
 void controlRoutine(){
+    
+    int16_t setDuty_unreg = 0;
+    
+    
     if(currentState == voltageModeControl){      //decides whether to run voltage mode control
 #if CONTROL_METHOD == VOLTAGE_MODE_CONTROL
         runVoltageModeControl();
         setPeriod = VOLTAGE_MODE_CONTROL_PERIOD;
         //add 50% duty offset to the output of PID controller to allow positive and negative output 
-        setDuty = (uint16_t) (((uint32_t)(((uint16_t) PID_OFFSET) * setPeriod)) /  25)  + voltageModeVariables.sumOutput;
+        setDuty_unreg = (int16_t) (((uint32_t)(((uint16_t) PID_OFFSET) * setPeriod)) /  25)  + voltageModeVariables.sumOutput;
 #endif
     }
     if(currentState == currentModeControl){     //decides whether to run current mode control
@@ -76,15 +80,20 @@ void controlRoutine(){
         runCurrentModeControl();                    //NO CODE YET WRITTEN FOR CURRENT MODE
         setPeriod = CURRENT_MODE_CONTROL_PERIOD;
         //add 50% duty offset to the output of PID controller to allow positive and negative output 
-        setDuty = (uint16_t) (((uint32_t)(((uint16_t) PID_OFFSET) * setPeriod)) /  25)  + currentModeVariables.sumOutput;
+        setDuty_unreg = (uint16_t) (((uint32_t)(((uint16_t) PID_OFFSET) * setPeriod)) /  25)  + currentModeVariables.sumOutput;
 #endif
     }
     //limit duty cycle between specified min and max values. Divide by 25 as MAX_DUTY is in %, and 100% duty corresponds to 4*period
     uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) MAX_DUTY) * setPeriod)) /  25);
     uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) MIN_DUTY) * setPeriod)) /  25);
-    if(setDuty > maxDuty) setDuty = maxDuty;
-    if(setDuty < minDuty) setDuty = minDuty;
-    if(setDuty < 0) setDuty = minDuty;
+    
+    setDuty = setDuty_unreg;
+    
+    if(setDuty_unreg < 0) setDuty = minDuty;
+    else if(setDuty_unreg >= 0){
+        if(setDuty_unreg < minDuty) setDuty = minDuty;
+        else if(setDuty_unreg > maxDuty) setDuty = maxDuty;
+    }
    
 }
 
