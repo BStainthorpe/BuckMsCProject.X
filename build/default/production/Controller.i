@@ -4662,37 +4662,38 @@ int16_t convertRawToMilliVolts(uint16_t rawValue){
 
 void controlRoutine(){
 
-    int16_t setDuty_unreg = 0;
+    if((currentState == voltageModeControl) || (currentState == currentModeControl)){
+        int16_t setDuty_unreg = 0;
 
 
-    if(currentState == voltageModeControl){
+        if(currentState == voltageModeControl){
 
-        runVoltageModeControl();
-        setPeriod = 79u;
+            runVoltageModeControl();
+            setPeriod = 79u;
 
-        setDuty_unreg = (int16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
+            setDuty_unreg = (int16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
 
+        }
+        if(currentState == currentModeControl){
+
+
+
+
+
+
+        }
+
+        uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+        uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+
+        setDuty = setDuty_unreg;
+
+        if(setDuty_unreg < 0) setDuty = minDuty;
+        else if(setDuty_unreg >= 0){
+            if(setDuty_unreg < minDuty) setDuty = minDuty;
+            else if(setDuty_unreg > maxDuty) setDuty = maxDuty;
+        }
     }
-    if(currentState == currentModeControl){
-
-
-
-
-
-
-    }
-
-    uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
-    uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
-
-    setDuty = setDuty_unreg;
-
-    if(setDuty_unreg < 0) setDuty = minDuty;
-    else if(setDuty_unreg >= 0){
-        if(setDuty_unreg < minDuty) setDuty = minDuty;
-        else if(setDuty_unreg > maxDuty) setDuty = maxDuty;
-    }
-
 }
 
 
@@ -4747,5 +4748,5 @@ void runVoltageModeControl(){
 
 
 void runCurrentModeControl(){
-# 190 "Controller.c"
+# 191 "Controller.c"
 }

@@ -64,37 +64,38 @@ int16_t convertRawToMilliVolts(uint16_t rawValue){
 ------------------------------------------------------------------------------*/
 void controlRoutine(){
     
-    int16_t setDuty_unreg = 0;
-    
-    
-    if(currentState == voltageModeControl){      //decides whether to run voltage mode control
+    if((currentState == voltageModeControl) || (currentState == currentModeControl)){
+        int16_t setDuty_unreg = 0;
+
+
+        if(currentState == voltageModeControl){      //decides whether to run voltage mode control
 #if CONTROL_METHOD == VOLTAGE_MODE_CONTROL
-        runVoltageModeControl();
-        setPeriod = VOLTAGE_MODE_CONTROL_PERIOD;
-        //add 50% duty offset to the output of PID controller to allow positive and negative output 
-        setDuty_unreg = (int16_t) (((uint32_t)(((uint16_t) PID_OFFSET) * setPeriod)) /  25)  + voltageModeVariables.sumOutput;
+            runVoltageModeControl();
+            setPeriod = VOLTAGE_MODE_CONTROL_PERIOD;
+            //add 50% duty offset to the output of PID controller to allow positive and negative output 
+            setDuty_unreg = (int16_t) (((uint32_t)(((uint16_t) PID_OFFSET) * setPeriod)) /  25)  + voltageModeVariables.sumOutput;
 #endif
-    }
-    if(currentState == currentModeControl){     //decides whether to run current mode control
+        }
+        if(currentState == currentModeControl){     //decides whether to run current mode control
 #if CONTROL_METHOD == CURRENT_MODE_CONTROL
-        runCurrentModeControl();                    //NO CODE YET WRITTEN FOR CURRENT MODE
-        setPeriod = CURRENT_MODE_CONTROL_PERIOD;
-        //add 50% duty offset to the output of PID controller to allow positive and negative output 
-        setDuty_unreg = (uint16_t) (((uint32_t)(((uint16_t) PID_OFFSET) * setPeriod)) /  25)  + currentModeVariables.sumOutput;
+            runCurrentModeControl();                    //NO CODE YET WRITTEN FOR CURRENT MODE
+            setPeriod = CURRENT_MODE_CONTROL_PERIOD;
+            //add 50% duty offset to the output of PID controller to allow positive and negative output 
+            setDuty_unreg = (uint16_t) (((uint32_t)(((uint16_t) PID_OFFSET) * setPeriod)) /  25)  + currentModeVariables.sumOutput;
 #endif
+        }
+        //limit duty cycle between specified min and max values. Divide by 25 as MAX_DUTY is in %, and 100% duty corresponds to 4*period
+        uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) MAX_DUTY) * setPeriod)) /  25);
+        uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) MIN_DUTY) * setPeriod)) /  25);
+
+        setDuty = setDuty_unreg;
+
+        if(setDuty_unreg < 0) setDuty = minDuty;
+        else if(setDuty_unreg >= 0){
+            if(setDuty_unreg < minDuty) setDuty = minDuty;
+            else if(setDuty_unreg > maxDuty) setDuty = maxDuty;
+        }
     }
-    //limit duty cycle between specified min and max values. Divide by 25 as MAX_DUTY is in %, and 100% duty corresponds to 4*period
-    uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) MAX_DUTY) * setPeriod)) /  25);
-    uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) MIN_DUTY) * setPeriod)) /  25);
-    
-    setDuty = setDuty_unreg;
-    
-    if(setDuty_unreg < 0) setDuty = minDuty;
-    else if(setDuty_unreg >= 0){
-        if(setDuty_unreg < minDuty) setDuty = minDuty;
-        else if(setDuty_unreg > maxDuty) setDuty = maxDuty;
-    }
-   
 }
 
 /*------------------------------------------------------------------------------

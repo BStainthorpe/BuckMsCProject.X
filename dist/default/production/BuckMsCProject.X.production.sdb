@@ -267,7 +267,7 @@ overCurrentFault 4
 [v _convertRawToMilliVolts convertRawToMilliVolts `(s  1 e 2 0 ]
 "65
 [v _controlRoutine controlRoutine `(v  1 e 1 0 ]
-"105
+"106
 [v _runVoltageModeControl runVoltageModeControl `(v  1 e 1 0 ]
 "18 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
 [v _initialiseCurrentSensors initialiseCurrentSensors `(v  1 e 1 0 ]
@@ -778,24 +778,24 @@ overCurrentFault 4
 "65 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Controller.c
 [v _controlRoutine controlRoutine `(v  1 e 1 0 ]
 {
-"67
+"68
 [v controlRoutine@setDuty_unreg setDuty_unreg `s  1 a 2 60 ]
-"88
+"89
 [v controlRoutine@minDuty minDuty `us  1 a 2 58 ]
-"87
+"88
 [v controlRoutine@maxDuty maxDuty `us  1 a 2 56 ]
-"98
+"99
 } 0
-"105
+"106
 [v _runVoltageModeControl runVoltageModeControl `(v  1 e 1 0 ]
 {
-"137
+"138
 [v runVoltageModeControl@propMult propMult `o  1 a 8 40 ]
-"117
+"118
 [v runVoltageModeControl@integralMult integralMult `o  1 a 8 32 ]
-"110
+"111
 [v runVoltageModeControl@newVoltage newVoltage `us  1 a 2 48 ]
-"144
+"145
 } 0
 "79 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
 [v i1_readGPIO readGPIO `(a  1 e 1 0 ]
