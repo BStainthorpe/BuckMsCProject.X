@@ -13,7 +13,7 @@
 ------------------------------------------------------------------------------*/
 void initialiseADCModule(){
     
-    ADCON0 = 0b00000001; //ADC ON and Fosc/16 is selected
+    ADCON0 = 0b00000001; //ADC ON and conversion control bits
     //bit 7: unused
     //bit 6-2: channel select for reads
     //bit 1: A/D conversion status, 1 starts a conversion cycle
