@@ -4548,6 +4548,7 @@ enum stateMachine{
 
 enum stateMachine currentState = 0;
 
+void transToInitialising();
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
@@ -4712,8 +4713,8 @@ void __attribute__((picinterrupt(("")))) Tick490Hz(void){
 
 int main(int argc, char** argv) {
 
+    transToInitialising();
     setupInternalOscillator(freq32M);
-
     setupPWM();
     setupTimer0Interrupt();
     initialiseADCModule();

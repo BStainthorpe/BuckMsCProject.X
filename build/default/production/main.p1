@@ -52,13 +52,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 375: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS32 ~T0 @X0 0 e@11 ]
 [p mainexit ]
-"109 main.c
-[; ;main.c: 109:     setupInternalOscillator(freq32M);
-[c E2845 0 1 2 3 4 5 6 7 8 9 10 .. ]
-[n E2845 internalClockFreqSelec freq31k freq62k5 freq125k freq250k freq500k freq1M freq2M freq4M freq8M freq16M freq32M  ]
+"34 ./StateMachine.h
+[; ;./StateMachine.h: 34: void transToInitialising();
+[v _transToInitialising `(v ~T0 @X0 0 e? ]
+"110 main.c
+[; ;main.c: 110:     setupInternalOscillator(freq32M);
+[c E2846 0 1 2 3 4 5 6 7 8 9 10 .. ]
+[n E2846 internalClockFreqSelec freq31k freq62k5 freq125k freq250k freq500k freq1M freq2M freq4M freq8M freq16M freq32M  ]
 "32
 [; ;main.c: 32: void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq);
-[v _setupInternalOscillator `(v ~T0 @X0 0 ef1`CE2845 ]
+[v _setupInternalOscillator `(v ~T0 @X0 0 ef1`CE2846 ]
 "26 ./PWM.h
 [; ;./PWM.h: 26: void setupPWM();
 [v _setupPWM `(v ~T0 @X0 0 e? ]
@@ -87,14 +90,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "52 ./GPIO.h
 [; ;./GPIO.h: 52: _Bool readGPIO(const enum GPIO_PORTS gpioNumber);
 [v _readGPIO `(a ~T0 @X0 0 ef1`CE2809 ]
-"35 ./StateMachine.h
-[; ;./StateMachine.h: 35: void transToVoltageModeControl();
+"36 ./StateMachine.h
+[; ;./StateMachine.h: 36: void transToVoltageModeControl();
 [v _transToVoltageModeControl `(v ~T0 @X0 0 e? ]
-"36
-[; ;./StateMachine.h: 36: void transToCurrentModeControl();
+"37
+[; ;./StateMachine.h: 37: void transToCurrentModeControl();
 [v _transToCurrentModeControl `(v ~T0 @X0 0 e? ]
-"34
-[; ;./StateMachine.h: 34: void transToPotControl();
+"35
+[; ;./StateMachine.h: 35: void transToPotControl();
 [v _transToPotControl `(v ~T0 @X0 0 e? ]
 "1713 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1827.h: 1713:     struct {
@@ -833,8 +836,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
 "109
-[; ;main.c: 109:     setupInternalOscillator(freq32M);
-[e ( _setupInternalOscillator (1 . `E2845 10 ]
+[; ;main.c: 109:     transToInitialising();
+[e ( _transToInitialising ..  ]
+"110
+[; ;main.c: 110:     setupInternalOscillator(freq32M);
+[e ( _setupInternalOscillator (1 . `E2846 10 ]
 "111
 [; ;main.c: 111:     setupPWM();
 [e ( _setupPWM ..  ]
@@ -861,7 +867,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _initialiseGPIO (2 , . `E2809 13 -> -> 0 `i `uc ]
 "121
 [; ;main.c: 121:     _delay((unsigned long)((100)*(freq32M/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> . `E2845 10 `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 100 `i `d / -> . `E2846 10 `d .4000.0 `ul ]
 "123
 [; ;main.c: 123:     if(~readGPIO(pinRB0)){
 [e $ ! != ~ -> ( _readGPIO (1 . `E2809 8 `i -> 0 `i 364  ]
@@ -907,10 +913,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "140
 [; ;main.c: 140: void setupInternalOscillator(const enum internalClockFreqSelec selectedFreq){
-[v _setupInternalOscillator `(v ~T0 @X0 1 ef1`CE2845 ]
+[v _setupInternalOscillator `(v ~T0 @X0 1 ef1`CE2846 ]
 {
 [e :U _setupInternalOscillator ]
-[v _selectedFreq `CE2845 ~T0 @X0 1 r1 ]
+[v _selectedFreq `CE2846 ~T0 @X0 1 r1 ]
 [f ]
 "144
 [; ;main.c: 144:     switch(selectedFreq){
@@ -998,17 +1004,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 373  ]
 [e :U 374 ]
-[e [\ -> _selectedFreq `ui , $ -> . `E2845 0 `ui 375
- , $ -> . `E2845 1 `ui 376
- , $ -> . `E2845 2 `ui 377
- , $ -> . `E2845 3 `ui 378
- , $ -> . `E2845 4 `ui 379
- , $ -> . `E2845 5 `ui 380
- , $ -> . `E2845 6 `ui 381
- , $ -> . `E2845 7 `ui 382
- , $ -> . `E2845 8 `ui 383
- , $ -> . `E2845 9 `ui 384
- , $ -> . `E2845 10 `ui 385
+[e [\ -> _selectedFreq `ui , $ -> . `E2846 0 `ui 375
+ , $ -> . `E2846 1 `ui 376
+ , $ -> . `E2846 2 `ui 377
+ , $ -> . `E2846 3 `ui 378
+ , $ -> . `E2846 4 `ui 379
+ , $ -> . `E2846 5 `ui 380
+ , $ -> . `E2846 6 `ui 381
+ , $ -> . `E2846 7 `ui 382
+ , $ -> . `E2846 8 `ui 383
+ , $ -> . `E2846 9 `ui 384
+ , $ -> . `E2846 10 `ui 385
  373 ]
 [e :U 373 ]
 "157

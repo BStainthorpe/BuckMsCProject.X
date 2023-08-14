@@ -102,12 +102,12 @@ void __interrupt() Tick490Hz(void){      //This function is called on each inter
  Function: main()
  *Use: The main application entry point, performs the initialisation functions
  * and then enters an infinite while loop, as main control functions are 
- * executed in the interrupt function
+ * executed in the interdrupt function
 ------------------------------------------------------------------------------*/
 int main(int argc, char** argv) {
     
+    transToInitialising();
     setupInternalOscillator(CLOCK_FREQUENCY_SELECT);
-    
     setupPWM();
     setupTimer0Interrupt();  
     initialiseADCModule();

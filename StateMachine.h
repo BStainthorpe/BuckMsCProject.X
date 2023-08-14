@@ -29,8 +29,9 @@ enum stateMachine{
     overCurrentFault
 };
 
-enum stateMachine currentState = 0;
+enum stateMachine currentState = 0;  //initialising by default
 
+void transToInitialising();
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();

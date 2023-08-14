@@ -30,8 +30,8 @@ pinRB5 13
 pinRB6 14
 pinRB7 15
 ]
-"109
-[e E2845 internalClockFreqSelec `uc
+"110
+[e E2846 internalClockFreqSelec `uc
 freq31k 0
 freq62k5 1
 freq125k 2
@@ -214,7 +214,7 @@ pinRB6 14
 pinRB7 15
 ]
 "73
-[e E2844 internalClockFreqSelec `uc
+[e E2845 internalClockFreqSelec `uc
 freq31k 0
 freq62k5 1
 freq125k 2
@@ -307,12 +307,14 @@ overCurrentFault 4
 "49
 [v _setPWMDutyandPeriod setPWMDutyandPeriod `(v  1 e 1 0 ]
 "18 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\StateMachine.c
+[v _transToInitialising transToInitialising `(v  1 e 1 0 ]
+"26
 [v _transToPotControl transToPotControl `(v  1 e 1 0 ]
-"27
+"35
 [v _transToVoltageModeControl transToVoltageModeControl `(v  1 e 1 0 ]
-"36
+"44
 [v _transToCurrentModeControl transToCurrentModeControl `(v  1 e 1 0 ]
-"45
+"53
 [v _transToOverCurrentFault transToOverCurrentFault `(v  1 e 1 0 ]
 "17 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
 [v _setupTimer0Interrupt setupTimer0Interrupt `(v  1 e 1 0 ]
@@ -377,7 +379,7 @@ overCurrentFault 4
 [v _PORTB PORTB `VEuc  1 e 1 @13 ]
 "962
 [v _PR2 PR2 `VEuc  1 e 1 @27 ]
-[s S323 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S327 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 T2OUTPS0 1 0 :1:3 
@@ -386,17 +388,17 @@ overCurrentFault 4
 `uc 1 T2OUTPS3 1 0 :1:6 
 ]
 "1003
-[s S331 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S335 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 T2OUTPS 1 0 :4:3 
 ]
-[u S335 . 1 `S323 1 . 1 0 `S331 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES335  1 e 1 @28 ]
+[u S339 . 1 `S327 1 . 1 0 `S335 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES339  1 e 1 @28 ]
 "1153
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1215
 [v _TRISB TRISB `VEuc  1 e 1 @141 ]
-[s S351 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S355 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSP1IE 1 0 :1:3 
@@ -406,11 +408,11 @@ overCurrentFault 4
 `uc 1 TMR1GIE 1 0 :1:7 
 ]
 "1294
-[u S360 . 1 `S351 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES360  1 e 1 @145 ]
+[u S364 . 1 `S355 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES364  1 e 1 @145 ]
 "1456
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
-[s S513 . 1 `uc 1 PS0 1 0 :1:0 
+[s S517 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 `uc 1 PSA 1 0 :1:3 
@@ -420,14 +422,14 @@ overCurrentFault 4
 `uc 1 nWPUEN 1 0 :1:7 
 ]
 "1479
-[s S522 . 1 `uc 1 PS 1 0 :3:0 
+[s S526 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 . 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
 ]
-[u S527 . 1 `S513 1 . 1 0 `S522 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES527  1 e 1 @149 ]
-[s S187 . 1 `uc 1 SCS0 1 0 :1:0 
+[u S531 . 1 `S517 1 . 1 0 `S526 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES531  1 e 1 @149 ]
+[s S191 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF0 1 0 :1:3 
@@ -437,19 +439,19 @@ overCurrentFault 4
 `uc 1 SPLLEN 1 0 :1:7 
 ]
 "1729
-[s S196 . 1 `uc 1 SCS 1 0 :2:0 
+[s S200 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 . 1 0 :1:2 
 `uc 1 IRCF 1 0 :4:3 
 ]
-[u S200 . 1 `S187 1 . 1 0 `S196 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES200  1 e 1 @153 ]
+[u S204 . 1 `S191 1 . 1 0 `S200 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES204  1 e 1 @153 ]
 "1848
 [v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
 "1868
 [v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
 "1888
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
-[s S590 . 1 `uc 1 ADON 1 0 :1:0 
+[s S594 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -458,22 +460,22 @@ overCurrentFault 4
 `uc 1 CHS4 1 0 :1:6 
 ]
 "1913
-[s S598 . 1 `uc 1 . 1 0 :1:0 
+[s S602 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
-[s S602 . 1 `uc 1 . 1 0 :1:0 
+[s S606 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[u S605 . 1 `S590 1 . 1 0 `S598 1 . 1 0 `S602 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES605  1 e 1 @157 ]
+[u S609 . 1 `S594 1 . 1 0 `S602 1 . 1 0 `S606 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES609  1 e 1 @157 ]
 "1968
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
 "2040
 [v _LATA LATA `VEuc  1 e 1 @268 ]
 "2097
 [v _LATB LATB `VEuc  1 e 1 @269 ]
-[s S287 . 1 `uc 1 CCP1SEL 1 0 :1:0 
+[s S291 . 1 `uc 1 CCP1SEL 1 0 :1:0 
 `uc 1 P1CSEL 1 0 :1:1 
 `uc 1 P1DSEL 1 0 :1:2 
 `uc 1 CCP2SEL 1 0 :1:3 
@@ -483,8 +485,8 @@ overCurrentFault 4
 `uc 1 RXDTSEL 1 0 :1:7 
 ]
 "2797
-[u S296 . 1 `S287 1 . 1 0 ]
-[v _APFCON0bits APFCON0bits `VES296  1 e 1 @285 ]
+[u S300 . 1 `S291 1 . 1 0 ]
+[v _APFCON0bits APFCON0bits `VES300  1 e 1 @285 ]
 "2862
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
 "2914
@@ -493,7 +495,7 @@ overCurrentFault 4
 [v _CCPR1L CCPR1L `VEuc  1 e 1 @657 ]
 "4634
 [v _CCP1CON CCP1CON `VEuc  1 e 1 @659 ]
-[s S408 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S412 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
@@ -503,24 +505,24 @@ overCurrentFault 4
 `uc 1 P1M1 1 0 :1:7 
 ]
 "4656
-[s S417 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S421 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 `uc 1 P1M 1 0 :2:6 
 ]
-[u S421 . 1 `S408 1 . 1 0 `S417 1 . 1 0 ]
-[v _CCP1CONbits CCP1CONbits `VES421  1 e 1 @659 ]
-[s S308 . 1 `uc 1 STR1A 1 0 :1:0 
+[u S425 . 1 `S412 1 . 1 0 `S421 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES425  1 e 1 @659 ]
+[s S312 . 1 `uc 1 STR1A 1 0 :1:0 
 `uc 1 STR1B 1 0 :1:1 
 `uc 1 STR1C 1 0 :1:2 
 `uc 1 STR1D 1 0 :1:3 
 `uc 1 STR1SYNC 1 0 :1:4 
 ]
 "4962
-[u S314 . 1 `S308 1 . 1 0 ]
-[v _PSTR1CONbits PSTR1CONbits `VES314  1 e 1 @662 ]
-[s S764 controllerVariables 28 `s 1 error 2 0 `l 1 integral 4 2 `l 1 proportionalOutput 4 6 `l 1 integralOutput 4 10 `o 1 integralOutputScaled 8 14 `l 1 sumOutput 4 22 `s 1 previousError 2 26 ]
+[u S318 . 1 `S312 1 . 1 0 ]
+[v _PSTR1CONbits PSTR1CONbits `VES318  1 e 1 @662 ]
+[s S768 controllerVariables 28 `s 1 error 2 0 `l 1 integral 4 2 `l 1 proportionalOutput 4 6 `l 1 integralOutput 4 10 `o 1 integralOutputScaled 8 14 `l 1 sumOutput 4 22 `s 1 previousError 2 26 ]
 "17 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Controller.c
-[v _voltageModeVariables voltageModeVariables `S764  1 e 28 0 ]
+[v _voltageModeVariables voltageModeVariables `S768  1 e 28 0 ]
 "28 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 [v _timerSlotHalf timerSlotHalf `VEa  1 e 1 0 ]
 "29
@@ -532,20 +534,25 @@ overCurrentFault 4
 {
 "133
 } 0
-"27 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\StateMachine.c
+"35 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\StateMachine.c
 [v _transToVoltageModeControl transToVoltageModeControl `(v  1 e 1 0 ]
 {
-"29
+"37
+} 0
+"26
+[v _transToPotControl transToPotControl `(v  1 e 1 0 ]
+{
+"28
 } 0
 "18
-[v _transToPotControl transToPotControl `(v  1 e 1 0 ]
+[v _transToInitialising transToInitialising `(v  1 e 1 0 ]
 {
 "20
 } 0
-"36
+"44
 [v _transToCurrentModeControl transToCurrentModeControl `(v  1 e 1 0 ]
 {
-"38
+"46
 } 0
 "17 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Timer0.c
 [v _setupTimer0Interrupt setupTimer0Interrupt `(v  1 e 1 0 ]
@@ -560,9 +567,9 @@ overCurrentFault 4
 "140 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 [v _setupInternalOscillator setupInternalOscillator `(v  1 e 1 0 ]
 {
-[v setupInternalOscillator@selectedFreq selectedFreq `DCE2845  1 a 1 wreg ]
-[v setupInternalOscillator@selectedFreq selectedFreq `DCE2845  1 a 1 wreg ]
-[v setupInternalOscillator@selectedFreq selectedFreq `DCE2845  1 a 1 2 ]
+[v setupInternalOscillator@selectedFreq selectedFreq `DCE2846  1 a 1 wreg ]
+[v setupInternalOscillator@selectedFreq selectedFreq `DCE2846  1 a 1 wreg ]
+[v setupInternalOscillator@selectedFreq selectedFreq `DCE2846  1 a 1 2 ]
 "157
 } 0
 "79 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\GPIO.c
@@ -683,7 +690,7 @@ overCurrentFault 4
 [v _readFilteredVout readFilteredVout `(us  1 e 2 0 ]
 {
 "43
-[v readFilteredVout@i_831 i `uc  1 a 1 8 ]
+[v readFilteredVout@i_835 i `uc  1 a 1 8 ]
 "40
 [v readFilteredVout@i i `uc  1 a 1 9 ]
 "42
@@ -694,7 +701,7 @@ overCurrentFault 4
 [v _readFilteredIL readFilteredIL `(us  1 e 2 0 ]
 {
 "60
-[v readFilteredIL@i_921 i `uc  1 a 1 10 ]
+[v readFilteredIL@i_925 i `uc  1 a 1 10 ]
 "57
 [v readFilteredIL@i i `uc  1 a 1 11 ]
 "59
@@ -705,7 +712,7 @@ overCurrentFault 4
 [v _readFilteredFreqPot readFilteredFreqPot `(us  1 e 2 0 ]
 {
 "43
-[v readFilteredFreqPot@i_754 i `uc  1 a 1 8 ]
+[v readFilteredFreqPot@i_758 i `uc  1 a 1 8 ]
 "40
 [v readFilteredFreqPot@i i `uc  1 a 1 9 ]
 "42
@@ -716,7 +723,7 @@ overCurrentFault 4
 [v _readFilteredDutyPot readFilteredDutyPot `(us  1 e 2 0 ]
 {
 "29
-[v readFilteredDutyPot@i_750 i `uc  1 a 1 8 ]
+[v readFilteredDutyPot@i_754 i `uc  1 a 1 8 ]
 "26
 [v readFilteredDutyPot@i i `uc  1 a 1 9 ]
 "28
@@ -765,10 +772,10 @@ overCurrentFault 4
 [v i1writeGPIO@gpioNumber gpioNumber `DCE2798  1 a 1 4 ]
 "73
 } 0
-"45 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\StateMachine.c
+"53 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\StateMachine.c
 [v _transToOverCurrentFault transToOverCurrentFault `(v  1 e 1 0 ]
 {
-"49
+"57
 } 0
 "31 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\CurrentSensor.c
 [v _currentTripRead currentTripRead `(a  1 e 1 0 ]

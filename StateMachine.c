@@ -12,6 +12,14 @@
 #include "ADC.h"
 
 /*------------------------------------------------------------------------------
+ Function: transToInitialising(state)
+ *Use: This function sets the state to initialising
+------------------------------------------------------------------------------*/
+void transToInitialising(){
+    currentState = initialising;
+}
+
+/*------------------------------------------------------------------------------
  Function: transToPotControl(state)
  *Use: This function sets the state to pot control and performs any setup
 ------------------------------------------------------------------------------*/
