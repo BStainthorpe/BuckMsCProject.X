@@ -65,7 +65,7 @@ void runPotScaling(){
             uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) MAX_DUTY) * setPeriod)) /  25);
             uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) MIN_DUTY) * setPeriod)) /  25);
             
-            //100% duty equates to a duty value of 4*setPeriod, therefore only shift by 8 bits to perform ADC scaling (>>10) and also multiply by 4
+            //scale according to min and max values to calculate duty cycle
             setDuty = ((uint32_t)((filteredDutyPot-POT_OFFSET) * (uint32_t)(maxDuty-minDuty)) >> 10) + minDuty;
             setDuty = (maxDuty) - (setDuty - minDuty);  //reverse direction of Duty Pot to match that of Frequency Pot - clockwise turn increases duty
 
