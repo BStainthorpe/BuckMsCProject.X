@@ -28,7 +28,7 @@ struct controllerVariables currentModeVariables = {0, 0, 0, 0, 0, 0};
 void initialiseController(){
     initialiseGPIO(gpioOutputVoltage, GPIO_Input);
     initialiseADCPin(gpioOutputVoltage);
-    integratorScaledLimit = (int64_t) ((int64_t) (INTEGRAL_LIMIT) << (VOLTAGE_MODE_KI_MANTISSA + DT_MANTISSA));
+    integratorScaledLimit = (int64_t) ((int64_t) (INTEGRAL_LIMIT) << (VOLTAGE_MODE_KI_EXPONENT + DT_EXPONENT));
 }
 
 /*------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ uint16_t readFilteredVout(){
 int16_t convertRawToMilliVolts(uint16_t rawValue){
     int16_t offsetted = (int16_t)(rawValue) - VOLTAGE_SENSOR_OFFSET; //subtract the offset obtained from calibration
     int32_t vsenseMult = ((int32_t)(((int32_t) offsetted) * VOLTAGE_SENSOR_GAIN));
-    int16_t returnValuedV = (int16_t) (vsenseMult >> VOLTAGE_SENSOR_MANTISSA);
+    int16_t returnValuedV = (int16_t) (vsenseMult >> VOLTAGE_SENSOR_EXPONENT);
     return returnValuedV;
 }
 
@@ -132,11 +132,11 @@ void runVoltageModeControl(){
    }
    
    //finally scale accordingly
-   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (DT_MANTISSA + VOLTAGE_MODE_KI_MANTISSA);
+   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (DT_EXPONENT + VOLTAGE_MODE_KI_EXPONENT);
    
    //calculate proportional component, sum with integral to obtain output, record previous error (unused))
    int64_t propMult = (int32_t) (VOLTAGE_MODE_KP * ((int32_t) voltageModeVariables.error));
-   voltageModeVariables.proportionalOutput = propMult >> VOLTAGE_MODE_KP_MANTISSA;
+   voltageModeVariables.proportionalOutput = propMult >> VOLTAGE_MODE_KP_EXPONENT;
    
    voltageModeVariables.sumOutput = voltageModeVariables.integralOutput + voltageModeVariables.proportionalOutput;
    voltageModeVariables.previousError = voltageModeVariables.error;
@@ -178,11 +178,11 @@ void runCurrentModeControl(){
    }
    
    //finally scale accordingly
-   currentModeVariables.integralOutput = currentModeVariables.integralOutputScaled >> (DT_MANTISSA + CURRENT_MODE_KI_MANTISSA);
+   currentModeVariables.integralOutput = currentModeVariables.integralOutputScaled >> (DT_EXPONENT + CURRENT_MODE_KI_EXPONENT);
    
    //calculate proportional component, sum with integral to obtain output, record previous error (unused))
    int64_t propMult = (int32_t) (CURRENT_MODE_KP * ((int32_t) currentModeVariables.error));
-   currentModeVariables.proportionalOutput = propMult >> CURRENT_MODE_KP_MANTISSA;
+   currentModeVariables.proportionalOutput = propMult >> CURRENT_MODE_KP_EXPONENT;
    
    currentModeVariables.sumOutput = currentModeVariables.integralOutput + currentModeVariables.proportionalOutput;
    currentModeVariables.previousError = currentModeVariables.error;

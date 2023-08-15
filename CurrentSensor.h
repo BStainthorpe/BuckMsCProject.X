@@ -20,13 +20,13 @@ extern "C" {
 #include "Global.h"
 
 //the current sensor conversion formula is Vout = Vref + Iin x 350mV/A, where Vref = 2.175
-//to avoid floats, we can use gains and mantissa to reduce memory consumption
+//to avoid floats, we can use gains and exponent to reduce memory consumption
 //Voffset = 445 (ADC equivalent value, 2.175 / 5 * 1024)
 //current (mA)  = (vout - vref) * (1/0.350) * 1000
-//current (mA) = (ADC_value - 445) * 2857, no mantissa required
+//current (mA) = (ADC_value - 445) * 2857, no exponent required
 //use signed ints as the calculated value can be negative   
 #define CURRENT_SENSOR_GAIN         2857u    //GAIN = 2857 / 2^0 = 2857
-#define CURRENT_SENSOR_MANTISSA     0u
+#define CURRENT_SENSOR_EXPONENT     0u
 #define CURRENT_SENSOR_OFFSET       445u 
     
 #define SIZE_OF_ISENSOR_FILTER      16u     //size of FIFO filter, must be a power of 2, also change ISENSOR_SHIFT accordingly

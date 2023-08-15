@@ -81,7 +81,7 @@ void currentTripReset(){
 ------------------------------------------------------------------------------*/
 int16_t convertRawToMilliAmps(uint16_t rawValue){
     int16_t offsetted = (int16_t)(rawValue - CURRENT_SENSOR_OFFSET); //subtract the offset to obtain a neg or pos value, include any calibration offset 
-    int16_t returnValuemA = (int32_t)(offsetted * CURRENT_SENSOR_GAIN) >> CURRENT_SENSOR_MANTISSA;
+    int16_t returnValuemA = (int32_t)(offsetted * CURRENT_SENSOR_GAIN) >> CURRENT_SENSOR_EXPONENT;
     return returnValuemA;
 }
 

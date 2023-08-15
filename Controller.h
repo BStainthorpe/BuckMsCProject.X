@@ -28,34 +28,34 @@ extern "C" {
 //closed loop control settings 
 #define PID_OFFSET                  50u            //make the PI controller operate around 50% duty (negative output corresponds to 0-50%, positive 50-100%)
 #define INTEGRAL_LIMIT              512u           //anti windup integrator limit, use 50% of max possible output (1024 / 2 = 512), this is then scaled up 
-                                                   //to << DT_MANTISSA + VOLTAGE_MODE_KI_MANTISSA
+                                                   //to by DT_EXPONENT + VOLTAGE_MODE_KI_EXPONENT in intialisation code
 //need a DT multiplication of 1/245 = 0.0040816
-//to get required accuracy with gain/mantissa need to bit shift by 16, 0.0040816 * 2^16 (65536) = 267.49
+//to get required accuracy with gain/exponent need to bit shift by 16, 0.0040816 * 2^16 (65536) = 267.49
 #define DT_GAIN     267u    //GAIN of 267 / (2^16) = 0.004074  
-#define DT_MANTISSA 16u
+#define DT_EXPONENT 16u
     
 //voltage mode specific settings    
 #define TARGET_VOLTAGE_MV_1         12000u         //target voltage in millivolts
 #define TARGET_VOLTAGE_MV_2         16000u         //option to change target voltage for step response using CL_Enable Jumper
 #define VOLTAGE_MODE_CONTROL_PERIOD 79u            //79 corresponds to 100kHz
 #define VOLTAGE_MODE_KP             2u             //GAIN OF 2/(2^9) = 0.01757 tuned using ziegler nichols
-#define VOLTAGE_MODE_KP_MANTISSA    9u
+#define VOLTAGE_MODE_KP_EXPONENT    9u
 #define VOLTAGE_MODE_KI             36u            //GAIN OF 36/(2^7) = 0.2812 tuned using ziegler nichols
-#define VOLTAGE_MODE_KI_MANTISSA    7u              
+#define VOLTAGE_MODE_KI_EXPONENT    7u              
         
 //unused - current mode control code is not tested or prepared
 #define TARGET_CURRENT_MA_1         0u             //target current in milliamps
 #define TARGET_CURRENT_MA_2         0u             //option to change target current for step response using CL_Enable Jumper
 #define CURRENT_MODE_CONTROL_PERIOD 79u            //79 corresponds to 100kHz
 #define CURRENT_MODE_KP             10u
-#define CURRENT_MODE_KP_MANTISSA    0u
+#define CURRENT_MODE_KP_EXPONENT    0u
 #define CURRENT_MODE_KI             0u 
-#define CURRENT_MODE_KI_MANTISSA    10u
+#define CURRENT_MODE_KI_EXPONENT    10u
     
 //the output voltage is scaled according to rawValue = Vout * (100k/(100k+390k)) * 1024/5 
 //to obtain milli volts from the raw value, mV = rawValue * 5/1024 * ((100k+390k)/100k) * 1000 = * 23.925 = (rawValue * 6100) >> 8, no offset required
 #define VOLTAGE_SENSOR_GAIN         6100u
-#define VOLTAGE_SENSOR_MANTISSA     8u
+#define VOLTAGE_SENSOR_EXPONENT     8u
 #define VOLTAGE_SENSOR_OFFSET       0u
     
 #define SIZE_OF_VSENSOR_FILTER      16u      //size of FIFO filter, must be a power of 2, also change VSENSOR_SHIFT accordingly
