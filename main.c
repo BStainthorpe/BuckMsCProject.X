@@ -102,7 +102,7 @@ void __interrupt() Tick490Hz(void){      //This function is called on each inter
  Function: main()
  *Use: The main application entry point, performs the initialisation functions
  * and then enters an infinite while loop, as main control functions are 
- * executed in the interdrupt function
+ * executed in the interrupt function
 ------------------------------------------------------------------------------*/
 int main(int argc, char** argv) {
     

@@ -680,11 +680,11 @@ overCurrentFault 4
 "55 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
 [v _runPotScaling runPotScaling `(v  1 e 1 0 ]
 {
-"69
-[v runPotScaling@minDuty minDuty `us  1 a 2 16 ]
-"68
-[v runPotScaling@maxDuty maxDuty `us  1 a 2 14 ]
-"76
+"66
+[v runPotScaling@minDuty minDuty `us  1 a 2 14 ]
+"65
+[v runPotScaling@maxDuty maxDuty `us  1 a 2 12 ]
+"79
 } 0
 "39 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Controller.c
 [v _readFilteredVout readFilteredVout `(us  1 e 2 0 ]

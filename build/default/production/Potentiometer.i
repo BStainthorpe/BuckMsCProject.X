@@ -4633,12 +4633,15 @@ void runPotScaling(){
 
             setPeriod = ((uint32_t)((filteredFreqPot - 51) * (uint32_t)(180u - 15u)) >> 10 ) + 15u;
 
-            setDuty = (uint32_t)((uint32_t)((filteredDutyPot-51) * (uint32_t)setPeriod )) >> 8;
-            setDuty = (4*setPeriod) - setDuty;
-
 
             uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
             uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+
+
+            setDuty = ((uint32_t)((filteredDutyPot-51) * (uint32_t)(maxDuty-minDuty)) >> 10) + minDuty;
+            setDuty = (maxDuty) - (setDuty - minDuty);
+
+
             if(setDuty > maxDuty) setDuty = maxDuty;
             if(setDuty < minDuty) setDuty = minDuty;
 

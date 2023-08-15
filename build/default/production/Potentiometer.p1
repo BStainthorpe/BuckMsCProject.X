@@ -677,42 +677,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 "62
 [; ;Potentiometer.c: 62:             setPeriod = ((uint32_t)((filteredFreqPot - 51) * (uint32_t)(180u - 15u)) >> 10 ) + 15u;
 [e = _setPeriod -> + >> * -> - -> _filteredFreqPot `ui -> -> 51 `i `ui `ul -> - -> 180 `ui -> 15 `ui `ul -> 10 `i -> -> 15 `ui `ul `uc ]
-"64
-[; ;Potentiometer.c: 64:             setDuty = (uint32_t)((uint32_t)((filteredDutyPot-51) * (uint32_t)setPeriod )) >> 8;
-[e = _setDuty -> >> * -> - -> _filteredDutyPot `ui -> -> 51 `i `ui `ul -> _setPeriod `ul -> 8 `i `us ]
 "65
-[; ;Potentiometer.c: 65:             setDuty = (4*setPeriod) - setDuty;
-[e = _setDuty -> - -> * -> 4 `i -> _setPeriod `i `ui -> _setDuty `ui `us ]
-"68
-[; ;Potentiometer.c: 68:             uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+[; ;Potentiometer.c: 65:             uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
 [v _maxDuty `us ~T0 @X0 1 a ]
 [e = _maxDuty -> / -> * -> -> -> 90 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
-"69
-[; ;Potentiometer.c: 69:             uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+"66
+[; ;Potentiometer.c: 66:             uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
 [v _minDuty `us ~T0 @X0 1 a ]
 [e = _minDuty -> / -> * -> -> -> 10 `i `us `ui -> _setPeriod `ui `ul -> -> -> 25 `i `l `ul `us ]
+"69
+[; ;Potentiometer.c: 69:             setDuty = ((uint32_t)((filteredDutyPot-51) * (uint32_t)(maxDuty-minDuty)) >> 10) + minDuty;
+[e = _setDuty -> + >> * -> - -> _filteredDutyPot `ui -> -> 51 `i `ui `ul -> - -> _maxDuty `ui -> _minDuty `ui `ul -> 10 `i -> _minDuty `ul `us ]
 "70
-[; ;Potentiometer.c: 70:             if(setDuty > maxDuty) setDuty = maxDuty;
+[; ;Potentiometer.c: 70:             setDuty = (maxDuty) - (setDuty - minDuty);
+[e = _setDuty -> - -> _maxDuty `ui - -> _setDuty `ui -> _minDuty `ui `us ]
+"73
+[; ;Potentiometer.c: 73:             if(setDuty > maxDuty) setDuty = maxDuty;
 [e $ ! > -> _setDuty `ui -> _maxDuty `ui 374  ]
 [e = _setDuty _maxDuty ]
 [e :U 374 ]
-"71
-[; ;Potentiometer.c: 71:             if(setDuty < minDuty) setDuty = minDuty;
+"74
+[; ;Potentiometer.c: 74:             if(setDuty < minDuty) setDuty = minDuty;
 [e $ ! < -> _setDuty `ui -> _minDuty `ui 375  ]
 [e = _setDuty _minDuty ]
 [e :U 375 ]
-"73
-[; ;Potentiometer.c: 73:             potSetCount = 0;
+"76
+[; ;Potentiometer.c: 76:             potSetCount = 0;
 [e = _potSetCount -> -> 0 `i `uc ]
-"74
-[; ;Potentiometer.c: 74:         }
+"77
+[; ;Potentiometer.c: 77:         }
 }
 [e :U 373 ]
-"75
-[; ;Potentiometer.c: 75:     }
+"78
+[; ;Potentiometer.c: 78:     }
 }
 [e :U 372 ]
-"76
-[; ;Potentiometer.c: 76: }
+"79
+[; ;Potentiometer.c: 79: }
 [e :UE 371 ]
 }
