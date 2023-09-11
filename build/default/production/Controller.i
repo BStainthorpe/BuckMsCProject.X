@@ -4596,7 +4596,7 @@ uint16_t readILCurrentADCRaw();
 # 11 "Controller.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 38 "./CurrentSensor.h"
+# 40 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 
 uint16_t filteredIDS = 0;

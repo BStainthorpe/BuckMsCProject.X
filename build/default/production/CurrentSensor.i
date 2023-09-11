@@ -4561,7 +4561,7 @@ uint32_t clockFrequency = 0;
 # 7 "CurrentSensor.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 38 "./CurrentSensor.h"
+# 40 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 
 uint16_t filteredIDS = 0;
@@ -4664,8 +4664,8 @@ void currentTripReset(){
 
 
 int16_t convertRawToMilliAmps(uint16_t rawValue){
-    int16_t offsetted = (int16_t)(rawValue - 445u);
-    int16_t returnValuemA = (int32_t)(offsetted * 2857u) >> 0u;
+    int16_t offsetted = (int16_t)(rawValue - 512u);
+    int16_t returnValuemA = (int32_t)(offsetted * 3125u) >> 8u;
     return returnValuemA;
 }
 

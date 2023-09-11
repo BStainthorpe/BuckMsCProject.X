@@ -21,8 +21,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "81 ./Controller.h
 [; ;./Controller.h: 81: void controlRoutine();
 [v _controlRoutine `(v ~T0 @X0 0 e? ]
-"54 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 54: uint16_t readFilteredIL();
+"56 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 56: uint16_t readFilteredIL();
 [v _readFilteredIL `(us ~T0 @X0 0 e? ]
 "79 ./Controller.h
 [; ;./Controller.h: 79: uint16_t readFilteredVout();
@@ -71,8 +71,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27 ./ADC.h
 [; ;./ADC.h: 27: void initialiseADCModule();
 [v _initialiseADCModule `(v ~T0 @X0 0 e? ]
-"51 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 51: void initialiseCurrentSensors();
+"53 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 53: void initialiseCurrentSensors();
 [v _initialiseCurrentSensors `(v ~T0 @X0 0 e? ]
 "35 ./Potentiometer.h
 [; ;./Potentiometer.h: 35: void initialisePotentiometers();
@@ -628,44 +628,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _clockFrequency
 -> -> -> 0 `i `l `ul
 ]
-"38 ./CurrentSensor.h
-[; ;./CurrentSensor.h: 38: volatile uint16_t latestIL = 0;
+"40 ./CurrentSensor.h
+[; ;./CurrentSensor.h: 40: volatile uint16_t latestIL = 0;
 [v _latestIL `Vus ~T0 @X0 1 e ]
 [i _latestIL
 -> -> 0 `i `us
 ]
-"40
-[; ;./CurrentSensor.h: 40: uint16_t filteredIDS = 0;
+"42
+[; ;./CurrentSensor.h: 42: uint16_t filteredIDS = 0;
 [v _filteredIDS `us ~T0 @X0 1 e ]
 [i _filteredIDS
 -> -> 0 `i `us
 ]
-"41
-[; ;./CurrentSensor.h: 41: uint16_t filteredIL = 0;
+"43
+[; ;./CurrentSensor.h: 43: uint16_t filteredIL = 0;
 [v _filteredIL `us ~T0 @X0 1 e ]
 [i _filteredIL
 -> -> 0 `i `us
 ]
-"42
-[; ;./CurrentSensor.h: 42: uint16_t currentIDSFIFO[16u];
+"44
+[; ;./CurrentSensor.h: 44: uint16_t currentIDSFIFO[16u];
 [v _currentIDSFIFO `us ~T0 @X0 -> 16 `i e ]
-"43
-[; ;./CurrentSensor.h: 43: uint16_t currentILFIFO[16u];
-[v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
 "45
-[; ;./CurrentSensor.h: 45: _Bool tripIDS = 0;
+[; ;./CurrentSensor.h: 45: uint16_t currentILFIFO[16u];
+[v _currentILFIFO `us ~T0 @X0 -> 16 `i e ]
+"47
+[; ;./CurrentSensor.h: 47: _Bool tripIDS = 0;
 [v _tripIDS `a ~T0 @X0 1 e ]
 [i _tripIDS
 -> -> 0 `i `a
 ]
-"46
-[; ;./CurrentSensor.h: 46: _Bool tripIL = 0;
+"48
+[; ;./CurrentSensor.h: 48: _Bool tripIL = 0;
 [v _tripIL `a ~T0 @X0 1 e ]
 [i _tripIL
 -> -> 0 `i `a
 ]
-"49
-[; ;./CurrentSensor.h: 49: uint8_t currentTripCount = 0;
+"51
+[; ;./CurrentSensor.h: 51: uint8_t currentTripCount = 0;
 [v _currentTripCount `uc ~T0 @X0 1 e ]
 [i _currentTripCount
 -> -> 0 `i `uc

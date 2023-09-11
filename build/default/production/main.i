@@ -4575,7 +4575,7 @@ uint32_t clockFrequency = 0;
 
 
 # 1 "./CurrentSensor.h" 1
-# 38 "./CurrentSensor.h"
+# 40 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 
 uint16_t filteredIDS = 0;
