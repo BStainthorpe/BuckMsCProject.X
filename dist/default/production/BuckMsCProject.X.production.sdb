@@ -340,15 +340,15 @@ overCurrentFault 4
 [v _currentTripCount currentTripCount `uc  1 e 1 0 ]
 "79 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X/Global.h
 [v _clockFrequency clockFrequency `ul  1 e 4 0 ]
-"33 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X/Potentiometer.h
+"36 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X/Potentiometer.h
 [v _potSetCount potSetCount `uc  1 e 1 0 ]
-"40
-[v _filteredFreqPot filteredFreqPot `us  1 e 2 0 ]
-"41
-[v _filteredDutyPot filteredDutyPot `us  1 e 2 0 ]
-"42
-[v _freqPotFIFO freqPotFIFO `[16]us  1 e 32 0 ]
 "43
+[v _filteredFreqPot filteredFreqPot `us  1 e 2 0 ]
+"44
+[v _filteredDutyPot filteredDutyPot `us  1 e 2 0 ]
+"45
+[v _freqPotFIFO freqPotFIFO `[16]us  1 e 32 0 ]
+"46
 [v _dutyPotFIFO dutyPotFIFO `[16]us  1 e 32 0 ]
 "21 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X/PWM.h
 [v _setPeriod setPeriod `uc  1 e 1 0 ]
@@ -520,9 +520,9 @@ overCurrentFault 4
 "4962
 [u S318 . 1 `S312 1 . 1 0 ]
 [v _PSTR1CONbits PSTR1CONbits `VES318  1 e 1 @662 ]
-[s S768 controllerVariables 28 `s 1 error 2 0 `l 1 integral 4 2 `l 1 proportionalOutput 4 6 `l 1 integralOutput 4 10 `o 1 integralOutputScaled 8 14 `l 1 sumOutput 4 22 `s 1 previousError 2 26 ]
+[s S769 controllerVariables 28 `s 1 error 2 0 `l 1 integral 4 2 `l 1 proportionalOutput 4 6 `l 1 integralOutput 4 10 `o 1 integralOutputScaled 8 14 `l 1 sumOutput 4 22 `s 1 previousError 2 26 ]
 "17 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Controller.c
-[v _voltageModeVariables voltageModeVariables `S768  1 e 28 0 ]
+[v _voltageModeVariables voltageModeVariables `S769  1 e 28 0 ]
 "28 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\main.c
 [v _timerSlotHalf timerSlotHalf `VEa  1 e 1 0 ]
 "29
@@ -680,17 +680,19 @@ overCurrentFault 4
 "55 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Potentiometer.c
 [v _runPotScaling runPotScaling `(v  1 e 1 0 ]
 {
-"66
-[v runPotScaling@minDuty minDuty `us  1 a 2 14 ]
-"65
-[v runPotScaling@maxDuty maxDuty `us  1 a 2 12 ]
-"79
+"63
+[v runPotScaling@potScaled potScaled `ul  1 a 4 12 ]
+"68
+[v runPotScaling@minDuty minDuty `us  1 a 2 18 ]
+"67
+[v runPotScaling@maxDuty maxDuty `us  1 a 2 16 ]
+"83
 } 0
 "39 C:\Users\B6028443\MPLABXProjects\BuckMsCProject.X\Controller.c
 [v _readFilteredVout readFilteredVout `(us  1 e 2 0 ]
 {
 "43
-[v readFilteredVout@i_835 i `uc  1 a 1 8 ]
+[v readFilteredVout@i_836 i `uc  1 a 1 8 ]
 "40
 [v readFilteredVout@i i `uc  1 a 1 9 ]
 "42
@@ -701,7 +703,7 @@ overCurrentFault 4
 [v _readFilteredIL readFilteredIL `(us  1 e 2 0 ]
 {
 "60
-[v readFilteredIL@i_925 i `uc  1 a 1 10 ]
+[v readFilteredIL@i_926 i `uc  1 a 1 10 ]
 "57
 [v readFilteredIL@i i `uc  1 a 1 11 ]
 "59

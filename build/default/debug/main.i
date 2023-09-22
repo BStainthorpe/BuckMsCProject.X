@@ -4548,6 +4548,7 @@ enum stateMachine{
 
 enum stateMachine currentState = 0;
 
+void transToInitialising();
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
@@ -4574,7 +4575,7 @@ uint32_t clockFrequency = 0;
 
 
 # 1 "./CurrentSensor.h" 1
-# 38 "./CurrentSensor.h"
+# 40 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 
 uint16_t filteredIDS = 0;
@@ -4630,7 +4631,7 @@ uint16_t readILCurrentADCRaw();
 # 24 "main.c" 2
 
 # 1 "./Potentiometer.h" 1
-# 33 "./Potentiometer.h"
+# 36 "./Potentiometer.h"
 uint8_t potSetCount = 0;
 
 void initialisePotentiometers();
@@ -4712,8 +4713,8 @@ void __attribute__((picinterrupt(("")))) Tick490Hz(void){
 
 int main(int argc, char** argv) {
 
+    transToInitialising();
     setupInternalOscillator(freq32M);
-
     setupPWM();
     setupTimer0Interrupt();
     initialiseADCModule();

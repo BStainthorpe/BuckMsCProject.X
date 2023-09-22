@@ -58,15 +58,19 @@ void runPotScaling(){
         potSetCount++;
         //use potSetCount and POT_SET_DIVIDER to reduce the frequency of pot reads to: Slot 4 Freq / POT_SET_DIVIDER, this reduces jitter in signal
         if(potSetCount == POT_SET_DIVIDER){
-            //to calculate the required period we scale according to the min and max periods, shift by 10 bits to perform ADC scaling (1024 max ADC value) 
-            setPeriod = ((uint32_t)((filteredFreqPot - POT_OFFSET) * (uint32_t)(MAX_PERIOD_FROM_POT - MIN_PERIOD_FROM_POT)) >> 10 ) + MIN_PERIOD_FROM_POT;
+            //for the pot readings, we scale according to minimum and max values experienced on the ADC first
+            //to calculate the required period we scale according to the min and max periods, shift by 10 bits to perform ADC scaling (1024 max ADC value)
+            uint32_t potScaled = (uint32_t) ((uint32_t)((uint32_t)(filteredFreqPot - POT_OFFSET) * POT_GAIN) >> POT_EXPONENT);
+            setPeriod = (uint32_t) ((potScaled) * (uint32_t)(MAX_PERIOD_FROM_POT-MIN_PERIOD_FROM_POT) >> (10)) + MIN_PERIOD_FROM_POT;
             
             //calculate duty cycle limits based on specified min and max values (in percent). Divide by 25 as MAX_DUTY is in %, and 100% duty corresponds to 4*period
             uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) MAX_DUTY) * setPeriod)) /  25);
             uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) MIN_DUTY) * setPeriod)) /  25);
             
-            //scale according to min and max values to calculate duty cycle
-            setDuty = ((uint32_t)((filteredDutyPot-POT_OFFSET) * (uint32_t)(maxDuty-minDuty)) >> 10) + minDuty;
+            //for the pot readings, we scale according to minimum and max values experienced on the ADC first
+            //then scale duty according to min and max values to calculate duty cycle
+            potScaled = (uint32_t) ((uint32_t)((uint32_t)(filteredDutyPot - POT_OFFSET) * POT_GAIN) >> POT_EXPONENT);
+            setDuty = ((uint32_t)((potScaled) * (uint32_t)(maxDuty-minDuty)) >> (10)) + minDuty;
             setDuty = (maxDuty) - (setDuty - minDuty);  //reverse direction of Duty Pot to match that of Frequency Pot - clockwise turn increases duty
 
             //just in case calculation error, limit duty

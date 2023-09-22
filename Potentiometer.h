@@ -25,10 +25,13 @@ extern "C" {
 #define POT_SENSOR_SHIFT    4u      //squareroot(SIZE_OF_POT_FILTER) = 4  
     
     
-#define POT_OFFSET          51      //experimentally obtained minimum pot value
+#define POT_OFFSET          51      //experimentally obtained minimum pot value 51
 #define POT_MAX             1019    //experimentally obtained max pot value
 #define POT_SET_DIVIDER     32      //control the rate of execution for setting the freq and duty from the POT - this value gives a rate of: Slot 4 Freq / POT_SET_DIVIDER
                                     //this results in a low update rate 
+#define POT_GAIN            270     //correct the pot according to min and max
+#define POT_EXPONENT        8       // gain = 1024 / (1019 - 51)) = 1.05567, gain 270, exponent 8, 270 / 256 = 1.054
+
     
 uint8_t potSetCount = 0;            
 

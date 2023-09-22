@@ -9,13 +9,13 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 3h		(dist/default/production\BuckMsCProject.X.production.hex)
-  8h - FFFh		(dist/default/production\BuckMsCProject.X.production.hex)
-  1772h - 1FFFh		(dist/default/production\BuckMsCProject.X.production.hex)
+  8h - 1023h		(dist/default/production\BuckMsCProject.X.production.hex)
+  16ECh - 1FFFh		(dist/default/production\BuckMsCProject.X.production.hex)
   10000h - 10007h		(dist/default/production\BuckMsCProject.X.production.hex)
   1000Eh - 10011h		(dist/default/production\BuckMsCProject.X.production.hex)
  Unused ranges:
   4h - 7h
-  1000h - 1771h
+  1024h - 16EBh
   2000h - FFFFh
   10008h - 1000Dh
 
@@ -282,8 +282,20 @@
 00000FD0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000FE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000FF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001000 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001010 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001020 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
-00001770 | -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+000016E0 | -- -- -- -- -- -- -- -- -- -- -- -- H1 H1 H1 H1
+000016F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001700 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001710 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001720 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001730 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001740 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001750 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001760 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00001770 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001780 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001790 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000017A0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

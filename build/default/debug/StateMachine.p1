@@ -514,60 +514,73 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> -> 0 `i `l `ul
 ]
 "18 StateMachine.c
-[; ;StateMachine.c: 18: void transToPotControl(){
-[v _transToPotControl `(v ~T0 @X0 1 ef ]
+[; ;StateMachine.c: 18: void transToInitialising(){
+[v _transToInitialising `(v ~T0 @X0 1 ef ]
 {
-[e :U _transToPotControl ]
+[e :U _transToInitialising ]
 [f ]
 "19
-[; ;StateMachine.c: 19:     currentState = potControl;
-[e = _currentState . `E2833 1 ]
+[; ;StateMachine.c: 19:     currentState = initialising;
+[e = _currentState . `E2833 0 ]
 "20
 [; ;StateMachine.c: 20: }
 [e :UE 356 ]
 }
+"26
+[; ;StateMachine.c: 26: void transToPotControl(){
+[v _transToPotControl `(v ~T0 @X0 1 ef ]
+{
+[e :U _transToPotControl ]
+[f ]
 "27
-[; ;StateMachine.c: 27: void transToVoltageModeControl(){
+[; ;StateMachine.c: 27:     currentState = potControl;
+[e = _currentState . `E2833 1 ]
+"28
+[; ;StateMachine.c: 28: }
+[e :UE 357 ]
+}
+"35
+[; ;StateMachine.c: 35: void transToVoltageModeControl(){
 [v _transToVoltageModeControl `(v ~T0 @X0 1 ef ]
 {
 [e :U _transToVoltageModeControl ]
 [f ]
-"28
-[; ;StateMachine.c: 28:     currentState = voltageModeControl;
-[e = _currentState . `E2833 2 ]
-"29
-[; ;StateMachine.c: 29: }
-[e :UE 357 ]
-}
 "36
-[; ;StateMachine.c: 36: void transToCurrentModeControl(){
+[; ;StateMachine.c: 36:     currentState = voltageModeControl;
+[e = _currentState . `E2833 2 ]
+"37
+[; ;StateMachine.c: 37: }
+[e :UE 358 ]
+}
+"44
+[; ;StateMachine.c: 44: void transToCurrentModeControl(){
 [v _transToCurrentModeControl `(v ~T0 @X0 1 ef ]
 {
 [e :U _transToCurrentModeControl ]
 [f ]
-"37
-[; ;StateMachine.c: 37:     currentState = currentModeControl;
-[e = _currentState . `E2833 3 ]
-"38
-[; ;StateMachine.c: 38: }
-[e :UE 358 ]
-}
 "45
-[; ;StateMachine.c: 45: void transToOverCurrentFault(){
+[; ;StateMachine.c: 45:     currentState = currentModeControl;
+[e = _currentState . `E2833 3 ]
+"46
+[; ;StateMachine.c: 46: }
+[e :UE 359 ]
+}
+"53
+[; ;StateMachine.c: 53: void transToOverCurrentFault(){
 [v _transToOverCurrentFault `(v ~T0 @X0 1 ef ]
 {
 [e :U _transToOverCurrentFault ]
 [f ]
-"46
-[; ;StateMachine.c: 46:     setDuty = 0;
+"54
+[; ;StateMachine.c: 54:     setDuty = 0;
 [e = _setDuty -> -> 0 `i `us ]
-"47
-[; ;StateMachine.c: 47:     setPeriod = 0;
+"55
+[; ;StateMachine.c: 55:     setPeriod = 0;
 [e = _setPeriod -> -> 0 `i `uc ]
-"48
-[; ;StateMachine.c: 48:     currentState = overCurrentFault;
+"56
+[; ;StateMachine.c: 56:     currentState = overCurrentFault;
 [e = _currentState . `E2833 4 ]
-"49
-[; ;StateMachine.c: 49: }
-[e :UE 359 ]
+"57
+[; ;StateMachine.c: 57: }
+[e :UE 360 ]
 }

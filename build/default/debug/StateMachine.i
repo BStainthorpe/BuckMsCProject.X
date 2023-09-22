@@ -4536,6 +4536,7 @@ enum stateMachine{
 
 enum stateMachine currentState = 0;
 
+void transToInitialising();
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
@@ -4571,6 +4572,14 @@ uint16_t readADCRaw(const enum GPIO_PORTS gpioNumber);
 uint16_t readILCurrentADCRaw();
 # 12 "StateMachine.c" 2
 
+
+
+
+
+
+void transToInitialising(){
+    currentState = initialising;
+}
 
 
 

@@ -4535,6 +4535,7 @@ enum stateMachine{
 
 enum stateMachine currentState = 0;
 
+void transToInitialising();
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
@@ -4595,7 +4596,7 @@ uint16_t readILCurrentADCRaw();
 # 11 "Controller.c" 2
 
 # 1 "./CurrentSensor.h" 1
-# 38 "./CurrentSensor.h"
+# 40 "./CurrentSensor.h"
 volatile uint16_t latestIL = 0;
 
 uint16_t filteredIDS = 0;
@@ -4626,7 +4627,7 @@ struct controllerVariables voltageModeVariables = {0, 0, 0, 0, 0, 0};
 void initialiseController(){
     initialiseGPIO(pinRA4, 1);
     initialiseADCPin(pinRA4);
-    integratorScaledLimit = (int64_t) ((int64_t) (512u) << (0u + 16u));
+    integratorScaledLimit = (int64_t) ((int64_t) (512u) << (7u + 16u));
 }
 
 
@@ -4662,35 +4663,38 @@ int16_t convertRawToMilliVolts(uint16_t rawValue){
 
 void controlRoutine(){
 
-    int16_t setDuty_unreg = 0;
+    if((currentState == voltageModeControl) || (currentState == currentModeControl)){
+        int16_t setDuty_unreg = 0;
 
 
-    if(currentState == voltageModeControl){
+        if(currentState == voltageModeControl){
 
-        runVoltageModeControl();
-        setPeriod = 79u;
+            runVoltageModeControl();
+            setPeriod = 79u;
 
-        setDuty_unreg = (int16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
+            setDuty_unreg = (int16_t) (((uint32_t)(((uint16_t) 50u) * setPeriod)) / 25) + voltageModeVariables.sumOutput;
 
+        }
+        if(currentState == currentModeControl){
+
+
+
+
+
+
+        }
+
+        uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
+        uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
+
+        setDuty = setDuty_unreg;
+
+        if(setDuty_unreg < 0) setDuty = minDuty;
+        else if(setDuty_unreg >= 0){
+            if(setDuty_unreg < minDuty) setDuty = minDuty;
+            else if(setDuty_unreg > maxDuty) setDuty = maxDuty;
+        }
     }
-    if(currentState == currentModeControl){
-
-
-
-
-
-
-    }
-
-    uint16_t maxDuty = (uint16_t) (((uint32_t)(((uint16_t) 90) * setPeriod)) / 25);
-    uint16_t minDuty = (uint16_t) (((uint32_t)(((uint16_t) 10) * setPeriod)) / 25);
-    if(setDuty_unreg < 0) setDuty = minDuty;
-    else if(setDuty_unreg >= 0){
-        if(setDuty_unreg < minDuty) setDuty = minDuty;
-        else if(setDuty_unreg > maxDuty) setDuty = maxDuty;
-    }
-    else setDuty = setDuty_unreg;
-
 }
 
 
@@ -4710,7 +4714,7 @@ void runVoltageModeControl(){
    else voltageModeVariables.error = 12000u - newVoltage;
 
 
-   int64_t integralMult = ((int64_t) (0u * ((int64_t) voltageModeVariables.error) )) * 267u;
+   int64_t integralMult = ((int64_t) (36u * ((int64_t) voltageModeVariables.error) )) * 267u;
 
    voltageModeVariables.integral = integralMult;
    voltageModeVariables.integralOutputScaled = (voltageModeVariables.integralOutputScaled + voltageModeVariables.integral);
@@ -4727,10 +4731,10 @@ void runVoltageModeControl(){
    }
 
 
-   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 0u);
+   voltageModeVariables.integralOutput = voltageModeVariables.integralOutputScaled >> (16u + 7u);
 
 
-   int64_t propMult = (int32_t) (5u * ((int32_t) voltageModeVariables.error));
+   int64_t propMult = (int32_t) (2u * ((int32_t) voltageModeVariables.error));
    voltageModeVariables.proportionalOutput = propMult >> 9u;
 
    voltageModeVariables.sumOutput = voltageModeVariables.integralOutput + voltageModeVariables.proportionalOutput;
@@ -4745,5 +4749,5 @@ void runVoltageModeControl(){
 
 
 void runCurrentModeControl(){
-# 188 "Controller.c"
+# 191 "Controller.c"
 }

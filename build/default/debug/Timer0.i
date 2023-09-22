@@ -4541,6 +4541,7 @@ enum stateMachine{
 
 enum stateMachine currentState = 0;
 
+void transToInitialising();
 void transToPotControl();
 void transToVoltageModeControl();
 void transToCurrentModeControl();
